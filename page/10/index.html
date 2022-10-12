@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="Shrine-Repository"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="神社的储物间"><meta property="og:url" content="http://example.com/"><meta property="og:site_name" content="神社的储物间"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:author" content="xeonds"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com"},"headline":"神社的储物间","image":["http://example.com/img/og_image.png"],"author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":null}},"description":""}</script><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/Shrine-Repository"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">神社的储物间</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-19T13:12:00.000Z" title="2020/12/19 21:12:00">2020-12-19</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:04:28.137Z" title="2022/10/12 12:04:28">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">4 分钟读完 (大约618个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/19/Markdown%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/">Markdown语法练习</a></h1><div class="content"><h2><span id="0分割线">0.分割线</span></h2><hr>
+<hr>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">---</span><br><span class="line">___</span><br></pre></td></tr></table></figure>
+
+<h2><span id="1斜体粗体和删除线">1.斜体，粗体和删除线</span></h2><p><em>斜体</em></p>
+<p><strong>粗体</strong></p>
+<p><del>删除线</del></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*斜体*</span><br><span class="line"></span><br><span class="line">**粗体**</span><br><span class="line"></span><br><span class="line">~~删除线~~</span><br></pre></td></tr></table></figure>
+
+<h2><span id="2分级标题">2.分级标题</span></h2><h3><span id="最多6级">最多6级</span></h3><h5><span id="由的数量决定">由#的数量决定</span></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">### 最多6级</span><br><span class="line">##### 由#的数量决定</span><br></pre></td></tr></table></figure>
+
+<h2><span id="3外链">3.外链</span></h2><p>如下所示：</p>
+<ul>
+<li>内联式：<a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a></li>
+<li>参考式：[文字描述][链接标签名字]</li>
+<li>链接本身： <a target="_blank" rel="noopener" href="https://www.zhihu.com/">https://www.zhihu.com</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 内联式：[百度](https://www.baidu.com)</span><br><span class="line">* 参考式：[文字描述][链接标签名字]</span><br><span class="line">* 链接本身： &lt;https://www.zhihu.com&gt;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="4无序列表">4.无序列表</span></h2><ul>
+<li>1123123</li>
+<li>2123123</li>
+<li>3123123</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 1123123</span><br><span class="line">* 2123123</span><br><span class="line">* 3123123</span><br></pre></td></tr></table></figure>
+
+<h2><span id="5文字引用">5.文字引用</span></h2><p>比如说</p>
+<blockquote>
+<p>苟利国家生死以，岂因祸福避趋之</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;苟利国家生死以，岂因祸福避趋之</span><br></pre></td></tr></table></figure>
+
+<h2><span id="6行内代码块">6.行内代码块</span></h2><p>比如说，<code>#include &lt;stdio.h&gt;</code>就像这样，会亮起来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如说，`#include &lt;stdio.h&gt;`就像这样，会亮起来</span><br></pre></td></tr></table></figure>
+
+<h2><span id="7插入图像">7.插入图像</span></h2><p> <img src="https://cdn2.mhpbooks.com/2016/02/google.jpg" alt="Google图片"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Google图片](https://cdn2.mhpbooks.com/2016/02/google.jpg)</span><br></pre></td></tr></table></figure>
+
+<h2><span id="8代码引用">8.代码引用</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<h2><span id="9表格">9.表格</span></h2><table>
+<thead>
+<tr>
+<th align="left">daze</th>
+<th align="center">daze</th>
+<th align="right">daze</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">daze</td>
+<td align="center">dazedazedaze</td>
+<td align="right">daze</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|daze|daze|daze|</span><br><span class="line">|:-|:-:|-:|</span><br><span class="line">|daze|dazedazedaze|daze</span><br></pre></td></tr></table></figure>
+
+<h2><span id="10数学latex">10.数学：LaTex</span></h2><p>这是行内公式，会像普通文本一样靠左对齐：$f(x)&#x3D;x^2+2x+1&#x3D;(x+1)^2$  </p>
+<p>这是单行公式，会自动居中：<br>$$<br>f(x)&#x3D;\int_{-\infty}^\infty<br>\hat f{\xi},e^{2\pi i\xi x}<br>,d\xi<br>$$  </p>
+<blockquote>
+<p>咱也不知道写的啥东西（乱写的XD）</p>
+</blockquote>
+<h3><span id="泰勒级数">泰勒级数</span></h3><p>$$<br>f(x)&#x3D;f(x_0)+f’(x_0)(x-x_0)+…<br>$$</p>
+<blockquote>
+<p>顺便，关于LaTex，可以看这个视频了解更多：<a target="_blank" rel="noopener" href="https://b23.tv/KNLL97">LaTex中文教程</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$f(x)=x^2+2x+1=(x+1)^2$</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">f(x)=\int_&#123;-\infty&#125;^\infty</span><br><span class="line">\hat f&#123;\xi&#125;\,e^&#123;2\pi i\xi x&#125;</span><br><span class="line">\,d\xi</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line">### 泰勒级数：</span><br><span class="line">$$</span><br><span class="line">f(x)=f(x_0)+f&#x27;(x_0)(x-x_0)+...</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">关键内容基本都写了一遍，留供参考。</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;     //这里注意一下，这个标签是控制文章列表页预览内容多少的</span><br><span class="line"></span><br><span class="line">## 0.分割线</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line">---</span><br><span class="line">___</span><br><span class="line"></span><br><span class="line">## 1.斜体和粗体</span><br><span class="line"></span><br><span class="line">*斜体*</span><br><span class="line"></span><br><span class="line">**粗体**</span><br><span class="line"></span><br><span class="line">## 2.分级标题</span><br><span class="line">### 最多6级</span><br><span class="line">##### 由#的数量决定</span><br><span class="line"></span><br><span class="line">## 3.外链</span><br><span class="line">如下所示：</span><br><span class="line"></span><br><span class="line">* 内联式：[百度](https://www.baidu.com)</span><br><span class="line">* 参考式：[文字描述][链接标签名字]</span><br><span class="line">* 链接本身： &lt;https://www.zhihu.com&gt;</span><br><span class="line"></span><br><span class="line">[链接标签名字]:https://www.google.com</span><br><span class="line"></span><br><span class="line">## 4.无序列表</span><br><span class="line">* 1123123</span><br><span class="line">* 2123123</span><br><span class="line">* 3123123</span><br><span class="line"></span><br><span class="line">## 5.文字引用</span><br><span class="line">比如说</span><br><span class="line">&gt;苟利国家生死以，岂因祸福避趋之</span><br><span class="line"></span><br><span class="line">## 6.行内代码块</span><br><span class="line">比如说，`#include &lt;stdio.h&gt;`就像这样，会亮起来</span><br><span class="line"></span><br><span class="line">## 7.插入图像</span><br><span class="line"> ![Google图片](https://cdn2.mhpbooks.com/2016/02/google.jpg)</span><br><span class="line"></span><br><span class="line">## 8.代码引用</span><br><span class="line">`` `</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">......</span><br><span class="line">`` `</span><br><span class="line">注：这三个撇是连着的，因为显示问题故以空格分割。</span><br><span class="line"></span><br><span class="line">## 9.表格</span><br><span class="line">|daze|daze|daze|</span><br><span class="line">|:-|:-:|-:|</span><br><span class="line">|daze|dazedazedaze|daze</span><br><span class="line"></span><br><span class="line">## 10.数学：LaTex</span><br><span class="line">$f(x)=x^2+2x+1=(x+1)^2$</span><br><span class="line"></span><br><span class="line">$\gamma$</span><br><span class="line">$$</span><br><span class="line">f(x)=\int_&#123;-\infty&#125;^\infty</span><br><span class="line">\hat f&#123;\xi&#125;\,e^&#123;2\pi i\xi x&#125;</span><br><span class="line">\,d\xi</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-19T12:50:00.000Z" title="2020/12/19 20:50:00">2020-12-19</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:04:38.505Z" title="2022/10/12 12:04:38">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">几秒读完 (大约48个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/19/%E7%84%A6%E7%82%B9%E5%BC%A6%E5%AE%9A%E7%90%86%E4%B9%8B%E4%B8%80/">焦点弦定理之一</a></h1><div class="content"><p>今天听了节课，感觉这个应该会很有用。记下来以备后用。</p>
+<p>公式本体：  |ecosθ|&#x3D;|(λ-1)&#x2F;(λ+1)|</p>
+<p><img src="/blog/images/pasted-0.png" alt="焦点弦重要定理证明"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-18T05:21:00.000Z" title="2020/12/18 13:21:00">2020-12-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:14:53.485Z" title="2022/10/12 12:14:53">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">6 分钟读完 (大约867个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/18/UDP53%E7%AB%AF%E5%8F%A3%E7%BB%95%E8%BF%87Wi-Fi%E7%99%BB%E9%99%86%E8%AE%A4%E8%AF%81/">UDP53端口绕过Wi-Fi登陆认证</a></h1><div class="content"><p>这段时间一直在和锐捷对线，甚至被迫营业用上kali nh（<del>本就不大的存储空间更加雪上加霜www</del>）不过好在找到了法子。</p>
+<p>就是它！UDP 53!搬一下度娘介绍：</p>
+<p>53端口为DNS(Domain Name Server，域名服务器)服务器所开放，主要用于域名解析，DNS服务在NT系统中使用的最为广泛。通过<a href="https://baike.baidu.com/item/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank" rel="noopener noreferrer">DNS服务器</a>可以实现域名与IP地址之间的转换，只要记住域名就可以快速访问网站。</p>
+<p>就是这样！但是这和我不能认证上网又有什么关系呢？有关系。因为锐捷会劫持你的页面，但是它对UDP53端口是不拦截的。所以……或许可以试试借此突破防护？</p>
+<p>我们试试连接wifi，ping一下百度（百度正确食用方法：<del>测试网络状况</del>）</p>
+<p>我们得到了下图的结果：</p>
+<p><img src="http://mxts.jiujiuer.xyz/files/picture/Screenshot_20201103-124939693.jpg" alt="ping测试结果"></p>
+<p>也就是说，我们可以通过UDP53端口来直接访问外部网络！</p>
+<p>验证结束。接下来开始实操。  </p>
+<hr>
+<p>首先，我们需要两个文件。一个是服务端软件openVPN server，另一个是服务端远程管理软件SoftEther VPN。除此之外，还需要一个有公网地址的服务器。我用的是运行Ubuntu的阿里云（毕竟学生机跟白送差不多×），也有dalao用的是vultr之类的。</p>
+<p>首先，我们需要配置我们的服务端。通过ssh连接到ubuntu服务器，创建一个目录用来下载openvpn的安装文件。</p>
+<p>下载完成之后，使用命令tar  -zxvf   [文件名]来解压。解压完成后使用cd openvpn进入软件目录，使用make命令来编译软件（默认环境已经安装了gcc等支持）。编译过程一路1+回车确定即可。</p>
+<p>编译完成后使用命令.&#x2F;vpnserver start启动服务端，使用命令.&#x2F;vpncmd进入设置。输入1后连按回车直到出现vpnserver&gt;提示符为止。使用SetVpnserverPassword指令设置openvpn服务端密码。设置完成后，使用exit指令退出。</p>
+<p>至此，服务端配置完成。可以断开ssh连接了。</p>
+<p>现在，我们需要一个运行windows系统的电脑（废话）来完成服务端的最终配置。</p>
+<p>这里的配置后面再说，我先放上已经完成的配置文件：<a target="_blank" rel="noopener" href="http://mxts.jiujiuer.xyz/files/openvpn-conf-20201121.zip">openVPN配置文件</a></p>
+<p>点击下载到本地，待会需要使用到这个文件</p>
+<p>接下来，我们便可以使用openvpn来愉快地上网了（不过ios平台可能得费些功夫，因为在国内这玩意下载起来比较困难）</p>
+<p>这里先附上安卓端：<a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/ijkMvj3ts8h">点击下载</a>。</p>
+<p>下载完成后，打开软件，点击右上角导入配置文件。然后找到我们刚下载好的配置文件，打开，确定，点击开启，输入账号密码，完成！</p>
+<hr>
+<p>到这里就差不多结束了。现在，你可以无视锐捷，愉快地免登陆上网了w</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-18T03:05:00.000Z" title="2020/12/18 11:05:00">2020-12-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:06:35.531Z" title="2022/10/12 12:06:35">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">1 分钟读完 (大约150个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/18/Ubuntu%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE/">Ubuntu内存释放</a></h1><div class="content"><p>一日，在配置MCS Manager，忽觉服务器（运行）内存有些危。 于是打开百度，往询之。 答曰：“Ubuntu不会自动释放内存，需要手动释放。”余大惊，遂询其详。得一指令，曰：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 3 &gt;/proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+
+<p> 待余输入而毕之，内存忽曾数倍有余。余直呼斯国矣（大雾）。</p>
+<p>当然，还可以在crontab里添加自动任务，每隔5分钟运行一下，效果更持久（雾）</p>
+<hr>
+<p>淦，手残把<code>vm</code>打成<code>mv</code>了</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-17T05:54:00.000Z" title="2020/12/17 13:54:00">2020-12-17</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:03:52.087Z" title="2022/10/12 12:03:52">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">10 分钟读完 (大约1465个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/17/C%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%BA%8C%EF%BC%9A%E5%87%BD%E6%95%B0/">C语言之二：函数</a></h1><div class="content"><p>函数是一组一起执行一个任务的语句。每个 C 程序都至少有一个函数，即主函数 <code>main()</code> ，所有简单的程序都可以定义其他额外的函数。</p>
+<p>你可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由你来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p>
+<p>函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。</p>
+<p>C 标准库提供了大量的程序可以调用的内置函数。例如，函数 <code>strcat()</code>用来连接两个字符串，函数 <code>memcpy()</code> 用来复制内存到另一个位置。</p>
+<p>函数还有很多叫法，比如方法、子例程或程序，等等。</p>
+<p>定义函数<br>C 语言中的函数定义的一般形式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return_type function_name( parameter list )</span><br><span class="line">&#123;</span><br><span class="line">body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 C 语言中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p>
+<ul>
+<li><p>返回类型（return_type）：一个函数可以返回一个值。return_type是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void。</p>
+</li>
+<li><p>函数名称（function_name）：这是函数的实际名称。函数名和参数列表一起构成了函数签名。</p>
+</li>
+<li><p>参数（parameter list）：参数就像是占位符。当函数被调用时，你向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。</p>
+</li>
+<li><p>函数主体（body of the function）：函数主体包含一组定义函数执行任务的语句。</p>
+</li>
+</ul>
+<h5><span id="实例">实例</span></h5><p>以下是 max() 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* 函数返回两个数中较大的那个数 */ </span><br><span class="line">int max(int num1, int num2) </span><br><span class="line">&#123; </span><br><span class="line">    /* 局部变量声明 */ </span><br><span class="line">    int result; </span><br><span class="line"></span><br><span class="line">    if (num1 &gt; num2) </span><br><span class="line">        result = num1; </span><br><span class="line">    else </span><br><span class="line">        result = num2; </span><br><span class="line">        </span><br><span class="line">    return result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5><span id="函数声明">函数声明</span></h5><p>函数声明会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。</p>
+<p>函数声明包括以下几个部分：</p>
+<p><code>return_type function_name( parameter list );</code></p>
+<p>针对上面定义的函数 max()，以下是函数声明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int num1, int num2);</span><br></pre></td></tr></table></figure>
+
+<p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int, int);</span><br></pre></td></tr></table></figure>
+
+<p>当你在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，你应该在调用函数的文件顶部声明函数。</p>
+<h5><span id="调用函数">调用函数</span></h5><p>创建 C 函数时，会定义函数做什么，然后通过调用函数来完成已定义的任务。</p>
+<p>当程序调用函数时，程序控制权会转移给被调用的函数。被调用的函数执行已定义的任务，当函数的返回语句被执行时，或到达函数的结束括号时，会把程序控制权交还给主程序。</p>
+<p>调用函数时，传递所需参数，如果函数返回一个值，则可以存储返回值。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//Example-2-1-返回最大值</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">/* 函数声明 */</span><br><span class="line">int max(int num1, int num2);</span><br><span class="line"></span><br><span class="line">int main (void)</span><br><span class="line">&#123;</span><br><span class="line">int a = 100,b = 200,ret; //局部变量定义</span><br><span class="line"></span><br><span class="line">/* 调用函数来获取最大值 */</span><br><span class="line">ret = max(a, b);</span><br><span class="line">printf( &quot;Max value is : %d\n&quot;, ret );</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 函数返回两个数中较大的那个数 */</span><br><span class="line">int max(int num1, int num2)</span><br><span class="line">&#123;</span><br><span class="line">/* 局部变量声明 */</span><br><span class="line">int result;</span><br><span class="line"></span><br><span class="line">if (num1 &gt; num2)</span><br><span class="line">result = num1;</span><br><span class="line">else</span><br><span class="line">result = num2;</span><br><span class="line"></span><br><span class="line">return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把 max() 函数和 main() 函数放一块，编译源代码。当运行最后的可执行文件时，会产生下列结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Max value is : 200</span><br></pre></td></tr></table></figure>
+
+<h5><span id="函数参数">函数参数</span></h5><p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的形式参数。</p>
+<p>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。</p>
+<p>当调用函数时，有两种向函数传递参数的方式：</p>
+<ul>
+<li><p>调用类型描述传值。调用该方法把参数的实际值复制给函数的形式参数（形式参数可以理解为占位符，就是表示这里有这么一个类型的参数）。在这种情况下，修改函数内的形式参数不会影响实际参数。也就是说，刚才的max(a,b)是通过将a和b的值分别复制到了max()函数的num1和num2两个变量中完成了将数值传递到max()中的任务。</p>
+</li>
+<li><p>引用调用。通过指针传递方式，形参为指向实参地址的指针，当对形参的指向操作时，就相当于对实参本身进行的操作。默认情况下，C 使用传值调用来传递参数。一般来说，这意味着函数内的代码不能改变用于调用函数的实际参数。（这个地方看不懂也无所谓，后面会明朗的。总之只要记住第一种方式就好）</p>
+</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-17T05:26:00.000Z" title="2020/12/17 13:26:00">2020-12-17</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:03:53.149Z" title="2022/10/12 12:03:53">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">20 分钟读完 (大约2989个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/17/C%E8%AF%AD%E8%A8%80%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">C语言之一：基础知识</a></h1><div class="content"><p>大家好啊，今天我就和大家聊一聊C语言程序的编写。</p>
+<p>首先的首先，请一定记得将你的输入法调至英文模式，确保你输入的符号是半角符号。不然，你就掉进了初学者的第一个大坑：符号的大大大大大大大大大大大大大大大大坑！</p>
+<p>那么我们正式开始。首先，我们来看一个例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Example-1-1-Hello,World!</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int year=2020;</span><br><span class="line">    /* 我的第一个 C 程序 */</span><br><span class="line">    </span><br><span class="line">    printf(&quot;Hello, World %d！\n&quot;,year);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是一个C程序的源代码。如果想让它运行起来，我们得把它编译成为可执行程序。这个“编译”的过程，就像是翻译：你用的是C语言，电脑却只能听得懂二进制语言，要让电脑听得懂，你就必须把你写的源码“翻译”成电脑能认识的二进制代码。这个工作的完成，需要借助于“编译器”的功能。</p>
+<p>你可能会想了：既然还要翻译一遍，为什么不直接用“二进制语言”来写程序呢？这个“翻译官”会不会把我写的代码翻译错啊？首先，你当然可以用二进制来直接编写程序。但是这有两个缺点：第一个，你的开发效率会非常低。第二个，你的源代码非常不便于修改和阅读。你想想，屏幕上只有一大片0和1，你肯定得看好长一阵子才能弄明白这是什么意思——哪怕它是你自己写的也一样。所以汇编语言就诞生了。但是它太过于抽象，而且可移植性也不是很强，所以还是得高级语言来干写程序的活——我们现在用的C语言就是高级语言。当然，这个“高级”不是说汇编语言不好，而是说相对于汇编语言直接操作底层，C语言是在软件层面操作的。其次，这个“翻译官”不会出错，因为它是按照你写的源码“字字对译”的。所以，如果出错，那一般是源码中出现错误（也就是bug）。</p>
+<p>那么，我们现在就需要安装一个编译器。在Windows平台上，我们常用的编译器是Mingw。要使用它，我们需要用命令行操作——太麻烦了，所以我们一般用IDE（集成开发环境）这里我推荐大家用<a target="_blank" rel="noopener" href="http://xzc.198424.com/dev-cpp_5.11_setup.zip">Dev-cpp</a>（点击下载）。当然，有能力的同学也可以尝试用VS Code搭建C语言开发环境。</p>
+<p>安装好之后，先在你的电脑里新建一个文件夹，专门用来放置源代码和程序。然后，打开Dev-cpp，新建一个文件，并保存在刚才的文件夹（下文称作“工作区”），然后在里面输入上面的源码。最后，点击运行，按照提示操作就可以。嗯，差不多就是这样了。</p>
+<p>你会看到屏幕上出现了一个黑框，可能是一闪而过的。如果是这样的话，请在return 0;的前面加上一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getchar（）;</span><br></pre></td></tr></table></figure>
+
+<p>现在再看看，黑框里是不是出现了Hello，World！呢？如果是，那么恭喜你，你写出了你的第一个C语言程序。</p>
+<p>好，让我们回过头来，看看这段源代码里都是什么。</p>
+<p>整个程序结构明显，由两大块构成。第一块是以#开头的那一行，第二块则是int main(void)和后面花括号所包住的一块。我们把第一块叫做“预处理指令”，第二块叫做“main函数”。绝大多数程序都由这两大块构成。</p>
+<h4><span id="预处理指令和预处理器">「预处理指令和预处理器」</span></h4><p>预处理器就是用来处理预处理指令的工具。C 预处理器（C Preprocessor）不是编译器的组成部分，但是它是编译过程中一个单独的步骤。换句话说，C 预处理器只不过是一个文本替换工具而已，它们会指示编译器在实际编译之前完成所需的预处在这个例子中，C预处理器将用名为stdio.h的文件内的所有内容替换这一行指令（很像复制粘贴吧）。</p>
+<p>所有的预处理器命令都是以井号（#）开头。它必须是这一行指令的第一个非空字符，为了增强可读性，预处理器指令应从第一列（也就是这一行的开头）开始换句话说，预处理指令前最好不要留空格。目前我们接触到的预处理指令只有#include一个，它的作用就是内容替换。后面我们还会接触更多。</p>
+<h4><span id="main函数">「main()函数」</span></h4><p>函数是一组一起执行一个任务的语句。函数是构成C程序的基本模块。每个C程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义其他额外的函数。</p>
+<p>main（）在c语言里，是一个程序的起点。一个程序一般会从main（）里的第一行语句开始执行，一直到最后一行的return（）函数结束程序。的确，main是一个极其普通的名称，但是这是唯一的选择。C程序一定从main()函数开始执行（目前不必考虑例外情况）。除了main()函数，你可以任意命名其他函数，而且main()函数必须是开始的函数。那一对圆括号是用于识别main()是一个函数。main前的int则是main()函数的返回类型。int表明main()函数返回的值是整数。返回到哪里？操作系统。后面我们会细说这个问题。</p>
+<h4><span id="注释">「注释」</span></h4><p>在程序中，被&#x2F;**&#x2F;两个符号括起来的部分是程序的注释。写注释能让他人（包括自己）更容易明白你写的程序。由&#x2F;&#x2F;符号开头的一行也是注释。下面是一些有效注释的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/*我是注释。*/</span><br><span class="line"></span><br><span class="line">//巧了我也是。</span><br><span class="line"></span><br><span class="line">/*我也是注释，</span><br><span class="line">不过被分成两行。*/</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">我还是注释。</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h4><span id="花括号-函数体和块">「花括号、函数体和块」</span></h4><p>在main()函数后面跟着一对花括号，里面框着main()函数的所有语句，这些语句合称函数体。一般而言，所有的C函数都使用花括号标记函数体的开始和结束。这是规定，不能省略。只有花括号能起这种作用，圆括号（()）和方括号（[]）都不行。</p>
+<p>花括号还可以用来把函数的多条语句合并为一个单元或块。如果你熟悉 Pascal, ADA, Modula-2或者 Algol（不过估计大家都没听过，毕竟是很老的东西……记得没错的话，ADA都是上世纪50年代的东西了），就会明白花括号在C语言中的作用相类似于这些语言中的begin和end。</p>
+<h4><span id="声明">「声明」</span></h4><p>程序中有这么一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int year=2020;</span><br></pre></td></tr></table></figure>
+
+<p>这是一句声明语句，声明了一个int（整数）类型的，叫做year的变量。int是C语言的一个关键字，也就是说，你在给你的函数，变量之类的东西命名时，你必须避免使用这个名称。year则是一个标识符，也就是一个变量、函数或其他实体的名称。所以，声明，就是把一个标识符和计算机内存中的一个特定位置联系起来，同时也确定了储存在某位置的信息类型或数据类型。</p>
+<p>C语言的一个很重要的特性就是，所有的变量必须先声明才能使用。并且，声明要放到块的顶部。另外，C语言的标识符在命名时，只能用小写字母、大写字母、数字和下划线（_）来命名。而且，名称的第一个字符不能是数字。另外，在C语言中，只有大小写不同的两个标识符是不同的，即“大小写敏感”。比如，STARS，Stars，stars就是三个不同的标识符。在声明标识符的时候，应该有明确的含义，就像例子中的year，能让人一眼看出这个变量是存储年份的。另外，关于标识符的长度限制，一般的标识符长度是63个字节，而外部标识符的长度是31个字节（外部标识符后面会解释）。总之，在命名标识符时，要做到简洁明了。</p>
+<h4><span id="printf函数和scanf函数">「printf()函数和scanf()函数」</span></h4><p>printf()函数是格式化输出函数, 一般用于向输出设备按规定式样输出消息（比如显示遗传字符）。printf()函数的语法为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;格式化字符串&quot;，参数表);</span><br></pre></td></tr></table></figure>
+
+<p>其中格式化字符串包括两部分内容: 一部分是正常字符, 这些字符将按原样输出；另一部分是格式化规定字符, 以”%”开头, 后跟一个或几个规定字符, 用来确定输出内容式样（比如本例中的%d就是。其实说通俗一点，这些就是占位符，表示这里要输出一个数字，具体是多少要在后面的参量表里找）。参量表是需要输出的一系列参数, 其个数务必与格式化字符串所阐明的输出参数个数一样多（就是前的%开头的占位符数量必须和后面的参量数量一样多）, 各参数之间用”,”分开, 且顺序逐一对应,不然将会出现意想不到的过失。</p>
+<p>常用的格式化规定字符还有：%s（字符串），%f（小数，也称作浮点数）,%c(单个的字母）等等。另外格式化字符串中还会出现制表符，比如\n表示换行,\t表示缩进等等，我们会在后面详细说。</p>
+<p>scanf()函数大致类似，下面我举一个例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//Example-2-Print&amp;Scan</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int age; //声明一个叫做age的整型变量</span><br><span class="line"></span><br><span class="line">    printf(&quot;Input your age:&quot;,year);</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;age);</span><br><span class="line">    printf(&quot;You are %d years old!&quot;,age);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，scanf()的用法和printf差不多，只不过在要赋值的变量名前要加上&amp;符号（解引用符号，具体在指针中会讲到）。</p>
+<p>那么第一次教程就是这样了。如你所见，东西确实不少，因为我想用尽可能短的篇幅帮大家入门C语言编程，感受C的快乐，而又限于个人水平，最后就写成了这样。如果有不完善的地方欢迎指出，谢谢。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-16T16:22:00.000Z" title="2020/12/17 00:22:00">2020-12-17</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:03:29.317Z" title="2022/10/12 12:03:29">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">13 分钟读完 (大约2007个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/17/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E4%BA%8C%E4%B8%89%E4%BA%8B/">C语言编程二三事</a></h1><div class="content"><p>作为计算机界长久不衰的编程语言，C语言到底有什么独到的优势呢？ 如果想学习，那么学习路线是什么呢？ 学会了之后，能写出些什么程序呢？ 这些，就是本文想要告诉你的。  </p>
+<h4><span id="c语言的起源">C语言的起源</span></h4><p>1972年，贝尔实验室的丹尼斯·里奇（Dannis Ritch）和肯·汤普逊（Ken Thomson）在开发UNIX操作系统时设计了C语言。然而，C语言并不完全是里奇突发奇想而来，他是在B语言（汤普逊发明）的基础上进行设计。C语言的设计初衷是将其作为程序员使用的一种编程工具，因此，其主要目标是成为有用的语言。</p>
+<p>各个编程语言的侧重点都不完全相同。例如，Pascal语言的主要目标是为更好地学习编程原理提供扎实的基础；而BASIC的主要目标是开发出类似英文的语言，让不熟悉计算机的学生轻松学习编程。这些目标固然很重要，但是随着计算机的迅猛发展，他们已经不再是主流语言。然而，最初为程序员设计开发的C语言，现在已成为首选的编程语言之一。  </p>
+<h4><span id="为什么是c语言">为什么是C语言</span></h4><p>在过去的50多年里，C语言已经成长为最重要、最流行的编程语言之一。它的成长归功于用过它的人都对它很满意。虽然现在很多人都转而使用其他编程语言，但是C语言仍凭借自身实力从众多编程语言中脱颖而出。尤其是在一些特殊场合（如嵌入式开发，操作系统底层的编写等）C语言更是有着无可替代的地位。以下列出了C语言较为突出的几点优势。</p>
+<h4><span id="高效性">高效性</span></h4><p>在设计上，C语言充分利用了当前计算机的优势，因此C程序相对更紧凑，而且运行速度很快。实际上，C语言具有通常是汇编语言才具有的微调控制能力，可以根据具体情况微调程序以获得最大运行速度或最有效地使用内存（顺便一提，绝大多数情况下，C++都可以看作C的超集，而C的运行速度通常要快于C++）。</p>
+<h4><span id="可移植性">可移植性</span></h4><p>C是可移植的语言。对于一个编程语言来讲，移植可能是最麻烦的事情。C语言是可移植方面的佼佼者。从你的电子表到超级计算机，许多计算机的体系结构都可以使用C编译器（一种把C语言转换成计算机内部指令的程序）。但是要注意，程序中针对特殊硬件设备或操作系统特殊功能编写的部分，通常是不可移植的。</p>
+<h4><span id="强大而灵活">强大而灵活</span></h4><p>C语言功能强大而灵活。例如，大家最为所熟知的Windows7操作系统，其内核的绝大部分都是由C语言完成的，剩下的则是由汇编语言完成的。不仅如此，其他语言的许多编译器和解释器都是用C语言编写的。C程序可以用于解决物理学和工程学的问题，甚至可用于制作电影的动画特效。</p>
+<h4><span id="面向程序员">面向程序员</span></h4><p>程序员利用C可以访问硬件、操控内存中的位。C语言有丰富的运算符，能让程序员简洁地表达自己的意图。C没有Pascal严谨，但是却比C++的限制多。这样的灵活性既是优点也是缺点。优点是，许多任务用C来处理都非常简洁（如，转换数据的格式）；缺点是，你可能会犯一些莫名其妙的错误，这些错误不可能在其他语言中出现。C语言在提供更多自由的同时，也让使用者承担了更大的责任。</p>
+<p>另外，大多数C实现都有一个大型的库，包含众多有用的C函数。这些函数用于处理程序员经常需要解决的问题。</p>
+<h4><span id="缺点">缺点</span></h4><p>当然，人无完人，金无足赤。C语言也有一些缺点。例如前面提到的，要享受用C语言自由编程的乐趣，就必须承担更多的责任。特别是，C语言使用指针，而涉及指针的编程错误往往难以察觉。有句话说得好：想拥有自由就必须时刻保持警惕。</p>
+<p>关于C语言，还有一项比赛，是只为C语言举办过的：年度混乱代码大赛。这正是因为C语言紧凑简洁，结合了大量的运算符，以至于我们也可以编写出让人极其费解的代码。虽然没必要但是试试也无妨。</p>
+<p>瑕不掩瑜，C语言的优点比缺点多得多。</p>
+<h4><span id="如何学习">如何学习</span></h4><p>编程语言的学习，其实和语言（比如英语，汉语）的学习是类似的。因此，大家不要有畏难心理。但后者比前者快得多（毕竟前者在“语法”和“词汇”上比后者少得多）。我的建议是：阅读C语言的教材，并且多加练习和思考，不会的问题多百度（这尤其重要，当然如果你能用谷歌更好）。当然，也可以通过这套教程快速掌握一部分基础知识（如果我不咕咕咕的话）。另外，网易云课堂和中国大学MOOC也是非常值得推荐的学习平台。</p>
+<h4><span id="c语言能干什么">C语言能干什么？</span></h4><p><del>除了不能生孩子</del>什么都能干。当然，难度是不一样的。比如，如果你想让电脑显示一些文字的话，最多也只需要7行；如果想自己制作一些游戏的话（什么2048啊，俄罗斯方块啊，贪吃蛇啊），要写的可就不止那么几行了（大触请绕行）。我曾经自己动手写过一个俄罗斯方块，大概1000多行代码（现在想想还能精简掉好多）。我甚至还用C语言解决过一个WER工程挑战赛任务（虽然最后那个任务突然被取消了……），算上图形界面，大概3、400行代码。所以，C语言能干什么，完全取决于你的学习深度。可以说，学得越深，能干的事就越多。</p>
+<p>毕竟，很多领域和C语言都是紧密相连的。比如单片机，比如操作系统开发，比如嵌入式开发（就像电脑显示器，微波炉等），比如计算机病毒（这个嘛……前面也说到了，C语言是最接近系统底层的编程语言）。在这些领域都能或多或少看到C语言的影子。</p>
+<p>总而言之，C语言是非常重要的编程语言。掌握了它，你就获得了一件屠龙宝刀。因此，加油学吧！<del>反正现在不学大学也得学</del></p>
+<p>愿你能用C语言写出你心中最美的天地。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-16T04:40:00.000Z" title="2020/12/16 12:40:00">2020-12-16</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:05:45.278Z" title="2022/10/12 12:05:45">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">几秒读完 (大约101个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/16/Reincarnation/">Reincarnation</a></h1><div class="content"><p>博客修复完毕，再度复活。  </p>
+<hr>
+<p>其实主要是因为mysql的锅，所以半天都没修好（）<br>现在已经换用hexo，<del>markdown比富文本编辑器高到不知道哪里去了</del> markdown+LaTex+vim，是个不错的组合 <del>以后写东西鼠标都不用动了</del></p>
+<p>  最近会逐步恢复以前的文章，应该不会太久。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-07-06T10:25:56.000Z" title="2020/7/6 18:25:56">2020-07-06</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:00:24.613Z" title="2022/10/12 12:00:24">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">8 分钟读完 (大约1231个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/07/06/%E6%9D%B1%E6%96%B9Project%EF%BC%9A%E5%90%8C%E4%BA%BA%E7%95%8C%E6%B0%B8%E8%BF%9C%E7%9A%84%E5%A5%87%E8%BF%B9/">東方Project：同人界永远的奇迹</a></h1><div class="content"><h2><span id="正作全收录">正作全收录</span></h2><h3><span id="东方旧作整理">东方旧作整理</span></h3><img src="https://upload.thwiki.cc/7/76/%E4%B8%9C%E6%96%B9Project%E6%97%A7%E4%BD%9CCDdisc.jpg" alt style="width: 30%;">
+
+<p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iFCgql3u39g">点击下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E5%AE%98%E6%96%B9%E6%B8%B8%E6%88%8F#.E6.97.A7.E4.BD.9C">THBWiki-东方旧作</a></p>
+<h3><span id="东方红魔乡">东方红魔乡</span></h3><img src="https://upload.thwiki.cc/b/b2/%E4%B8%9C%E6%96%B9%E7%BA%A2%E9%AD%94%E4%B9%A1%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iY8pbe062jg">点击下载</a>（汉化版-无wav文件）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E7%BA%A2%E9%AD%94%E4%B9%A1">THBWiki-东方红魔乡</a><br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E7%BA%A2%E9%AD%94%E4%B9%A1%20%EF%BD%9E%20the%20Embodiment%20of%20Scarlet%20Devil.?fromtitle=%E4%B8%9C%E6%96%B9%E7%BA%A2%E9%AD%94%E4%B9%A1&fromid=4032112" title="%E4%B8%9C%E6%96%B9%E7%BA%A2%E9%AD%94%E4%B9%A1&amp;fromid=4032112">百度百科-东方红魔乡</a></p>
+<h3><span id="东方妖妖梦">东方妖妖梦</span></h3><img src="https://upload.thwiki.cc/a/a7/%E4%B8%9C%E6%96%B9%E5%A6%96%E5%A6%96%E6%A2%A6%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/i0wpPe063cf">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E5%A6%96%E5%A6%96%E6%A2%A6">THBWiki-东方妖妖梦</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E5%A6%96%E5%A6%96%E6%A2%A6%20%EF%BD%9E%20Perfect%20Cherry%20Blossom.?fromtitle=%E4%B8%9C%E6%96%B9%E5%A6%96%E5%A6%96%E6%A2%A6&fromid=203237" title="%E4%B8%9C%E6%96%B9%E5%A6%96%E5%A6%96%E6%A2%A6&amp;fromid=203237">百度百科-东方妖妖梦</a></p>
+<h3><span id="东方永夜抄">东方永夜抄</span></h3><img src="https://upload.thwiki.cc/e/ee/%E4%B8%9C%E6%96%B9%E6%B0%B8%E5%A4%9C%E6%8A%84%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/i558Re05ldi">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/b015jziji">点击访问</a>。密码：1ztc</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E6%B0%B8%E5%A4%9C%E6%8A%84">THBWiki-东方永夜抄</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E6%B0%B8%E5%A4%9C%E6%8A%84%20%EF%BD%9E%20Imperishable%20Night.?fromtitle=%E4%B8%9C%E6%96%B9%E6%B0%B8%E5%A4%9C%E6%8A%84&fromid=1417333" title="%E4%B8%9C%E6%96%B9%E6%B0%B8%E5%A4%9C%E6%8A%84&amp;fromid=1417333">百度百科-东方永夜抄</a></p>
+<h3><span id="东方风神录">东方风神录</span></h3><img src="https://upload.thwiki.cc/thumb/4/49/%E4%B8%9C%E6%96%B9%E9%A3%8E%E7%A5%9E%E5%BD%95%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iCJw2e05mpg">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E9%A3%8E%E7%A5%9E%E5%BD%95">THBWiki-东方风神录</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E9%A3%8E%E7%A5%9E%E5%BD%95%20%EF%BD%9E%20Mountain%20of%20Faith.?fromtitle=%E4%B8%9C%E6%96%B9%E9%A3%8E%E7%A5%9E%E5%BD%95&fromid=6990809" title="%E4%B8%9C%E6%96%B9%E9%A3%8E%E7%A5%9E%E5%BD%95&amp;fromid=6990809">百度百科-东方风神录</a></p>
+<h3><span id="东方地灵殿">东方地灵殿</span></h3><img src="https://upload.thwiki.cc/thumb/7/79/%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF%E5%B0%81%E9%9D%A2.jpg/300px-%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p>原版：<a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iC7Zle05o4h">点击下载</a>（汉化+精简）</p>
+<p>魔改版（红白强拆地灵殿）：<a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/b015l57af">点击下载</a></p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF">THBWiki-东方地灵殿</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF%20%EF%BD%9E%20Subterranean%20Animism.?fromtitle=%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF&fromid=5251315" title="%E4%B8%9C%E6%96%B9%E5%9C%B0%E7%81%B5%E6%AE%BF&amp;fromid=5251315">百度百科-东方地灵殿</a></p>
+<h3><span id="东方星莲船">东方星莲船</span></h3><img src="https://upload.thwiki.cc/thumb/0/0d/%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9%E5%B0%81%E9%9D%A2.jpg/300px-%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iiAQVe05osb">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9">THBWiki-东方星莲船</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9%20%EF%BD%9E%20Undefined%20Fantastic%20Object.?fromtitle=%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9&fromid=2019608" title="%E4%B8%9C%E6%96%B9%E6%98%9F%E8%8E%B2%E8%88%B9&amp;fromid=2019608">百度百科-东方星莲船</a></p>
+<h3><span id="东方神灵庙">东方神灵庙</span></h3><img src="https://upload.thwiki.cc/thumb/7/74/%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99%E5%B0%81%E9%9D%A2.jpg/300px-%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/i3g4De05puj">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99">THBWiki-东方神灵庙</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99%20%EF%BD%9E%20Ten%20Desires.?fromtitle=%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99&fromid=6806125" title="%E4%B8%9C%E6%96%B9%E7%A5%9E%E7%81%B5%E5%BA%99&amp;fromid=6806125">百度百科-东方神灵庙</a></p>
+<h3><span id="东方辉针城">东方辉针城</span></h3><img src="https://upload.thwiki.cc/thumb/a/a5/%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E%E5%B0%81%E9%9D%A2.jpg/300px-%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iwyske05uhg">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E">THBWiki-东方辉针城</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E%20%EF%BD%9E%20Double%20Dealing%20Character.?fromtitle=%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E&fromid=4099732" title="%E4%B8%9C%E6%96%B9%E8%BE%89%E9%92%88%E5%9F%8E&amp;fromid=4099732">百度百科-东方辉针城</a></p>
+<h3><span id="东方绀珠传">东方绀珠传</span></h3><img src="https://upload.thwiki.cc/thumb/3/37/%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0%E5%B0%81%E9%9D%A2.jpg/300px-%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0%E5%B0%81%E9%9D%A2.jpg" alt style="width: 30%;">
+
+<h4><span id="游戏下载">游戏下载</span></h4><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iQm8xe05xna">点击下载</a>（汉化+精简）</p>
+<h4><span id="游戏录像收集">游戏录像收集</span></h4><p>暂无（咕</p>
+<h4><span id="游戏资料">游戏资料</span></h4><p><a target="_blank" rel="noopener" href="https://thwiki.cc/%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0">THBWiki-东方绀珠传</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0%20%EF%BD%9E%20Legacy%20of%20Lunatic%20Kingdom.?fromtitle=%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0&fromid=17366371" title="%E4%B8%9C%E6%96%B9%E7%BB%80%E7%8F%A0%E4%BC%A0&amp;fromid=17366371">百度百科-东方绀珠传</a></p>
+<h3><span id="正作魔改工具">正作魔改工具</span></h3><h4><span id="sht文件编辑工具在线">.sht文件编辑工具（在线）</span></h4><p><del><a href="./sht-webedit/index.html">点击进入</a></del> 没搬过来</p>
+<h4><span id="thtk-web-editor在线">THTK Web Editor（在线）</span></h4><p><del><a href="./thtk-web-editor/index.html">点击进入</a></del> 还没做好（</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-03-18T09:39:18.000Z" title="2020/3/18 17:39:18">2020-03-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:15:18.757Z" title="2022/10/12 12:15:18">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">4 分钟读完 (大约662个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/03/18/Minecraft/">Minecraft</a></h1><div class="content"><h2><span id="minecraft永恒的经典">Minecraft：永恒的经典</span></h2><h3><span id="游戏">游戏</span></h3><h4><span id="minecraft-pe下载">Minecraft PE下载</span></h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/ivaAVepdr1a">Minecraft PE 音乐包</a>：使用说明：把压缩包中的vanilla_music目录整个解压到<code>/games/com.mojang/resources_packs/</code>下。完成后，打开游戏，享受原版bgm。  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://minecraftpe-mods.com/apks/minecraft-1-16-201-01-xbox.apk">Minecraft PE 1.16.201.01</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/itgFfdw9kdc">Minecraft PE 1.14.60.5</a>：点击下载</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzpaj">Minecraft PE 1.14.30</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzo2f">Minecraft PE 1.13.1.5</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzq9e">Minecraft PE 1.12.1.1</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzjsb">Minecraft PE 1.11.1.2</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzibi">Minecraft PE 1.10.0.4</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzlej">Minecraft PE 1.9.0.15</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzkmb">Minecraft PE 1.8.1.2</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzhef">Minecraft PE 1.7.0.13</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz96j">Minecraft PE 1.6.1.0</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz81i">Minecraft PE 1.5.3.0</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz78j">Minecraft PE 1.4</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz69e">Minecraft PE 1.2.1.1</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz5cb">Minecraft PE 1.0.2</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz4cf">Minecraft PE 0.16.1</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzeib">Minecraft PE 0.15.4</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzeud">Minecraft PE 0.14.1</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzdxa">Minecraft PE 0.12.3</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzdif">Minecraft PE 0.10.5</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz9mf">Minecraft PE 0.9.5</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz9le">Minecraft PE 0.9.0</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajz9ha">Minecraft PE 0.8.1</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iajzcri">Minecraft PE 0.1.0</a>：点击下载  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://minecraft.azureedge.net/bin-linux/bedrock-server-1.14.60.5.zip">Bedrock Server 1.14.60.5</a>：Minecraft基岩版Linux服务端</p>
+</li>
+</ul>
+<blockquote>
+<p>其实只要把最后的版本修改一下，就能下到所有版本的服务端（</p>
+</blockquote>
+<h4><span id="minecraft-win10下载">Minecraft Win10下载</span></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/b01653z7i">Minecraft Win10 1.14.60.5</a>：点击下载（密码:755d）</li>
+<li><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/b0165c61c">Minecraft Win10 1.16.201.02</a>：点击下载（密码:fiq3）</li>
+</ul>
+<h4><span id="minecraft-java下载">Minecraft Java下载</span></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/isNubrnc2ed">HMCL-Minecraft启动器</a>：相当好用的一个MC启动器。注意：需要安装Java，并安装到默认路径，否则启动器无法正常运行。<a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iOJUrrnc2ji">Linux版下载</a>|<a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/i4Gujrnc2hg">Java下载</a>。</li>
+</ul>
+<blockquote>
+<p>用HMCL就能直接下载MC Java版。详情请看另一篇文章：HMCL食用指南</p>
+</blockquote>
+<h3><span id="材质包">材质包</span></h3><h4><span id="minecraft-pe材质包">Minecraft PE材质包</span></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/iG0k2eml94f">CSPE材质包</a>：点击下载</li>
+</ul>
+<h4><span id="minecraft-java材质包">Minecraft Java材质包</span></h4><h3><span id="行为包">行为包</span></h3><h3><span id="皮肤">皮肤</span></h3><h4><span id="minecraft-pe皮肤">Minecraft PE皮肤</span></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://dreamweb.lanzoui.com/b015m3m7g">东方Project系列皮肤</a>：红白红白红白（震声</li>
+</ul>
+<h4><span id="minecraft-pc皮肤">Minecraft PC皮肤</span></h4><p>这里是空的（咕</p>
+<h3><span id="其他资料">其他资料</span></h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.minecraftxz.com/zhilingdaquan/">Minecraft PE版指令大全</a>：点击进入</li>
+</ul>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/9/">上一页</a></div><div class="pagination-next"><a href="/page/11/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/9/">9</a></li><li><a class="pagination-link is-current" href="/page/10/">10</a></li><li><a class="pagination-link" href="/page/11/">11</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">*节操消失了*</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shaanxi,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">69</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="http://www.jiujiuer.xyz" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Main</span></span><span class="level-right"><span class="level-item tag">www.jiujiuer.xyz</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/web/"><span class="level-start"><span class="level-item">web</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-11T15:45:48.911Z">2022-10-11</time></p><p class="title"><a href="/2022/10/11/hello-world/">Hello World</a></p><p class="categories"><a href="/categories/web/">web</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-28T17:05:34.000Z">2022-06-29</time></p><p class="title"><a href="/2022/06/29/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BAMinecraft%E6%9C%8D%E5%8A%A1%E5%99%A8/">frp内网穿透搭建Minecraft服务器</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-05T12:31:58.000Z">2022-06-05</time></p><p class="title"><a href="/2022/06/05/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">PowerShell学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-06T10:46:36.000Z">2022-05-06</time></p><p class="title"><a href="/2022/05/06/Go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Go学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-01T16:54:29.000Z">2022-05-02</time></p><p class="title"><a href="/2022/05/02/WSA%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">WSA文件管理</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">十二月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">八月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/07/"><span class="level-start"><span class="level-item">七月 2021</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/05/"><span class="level-start"><span class="level-item">五月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/04/"><span class="level-start"><span class="level-item">四月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/03/"><span class="level-start"><span class="level-item">三月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/02/"><span class="level-start"><span class="level-item">二月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">十二月 2020</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/08/"><span class="level-start"><span class="level-item">八月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Crypto/"><span class="tag">Crypto</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="tag">C语言</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80%EF%BC%8C%E6%8C%87%E9%92%88/"><span class="tag">C语言，指针</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80%EF%BC%8C%E7%BC%96%E8%AF%91%E5%99%A8/"><span class="tag">C语言，编译器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git-Linux/"><span class="tag">Git,Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML%EF%BC%8CCSS%EF%BC%8Ctable/"><span class="tag">HTML，CSS，table</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hello-world/"><span class="tag">Hello-world!</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript%EF%BC%8C%E5%89%8D%E7%AB%AF/"><span class="tag">JavaScript，前端</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-shell/"><span class="tag">Linux,shell</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-%E5%B7%A5%E5%85%B7-Android/"><span class="tag">Linux,工具 Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown-%E8%B5%84%E6%96%99/"><span class="tag">Markdown,资料</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Minecraft-%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">Minecraft,计算机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Minecraft%EF%BC%8CLinux/"><span class="tag">Minecraft，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%EF%BC%8CCrypto/"><span class="tag">Python，Crypto</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WSA-Linux-ADB/"><span class="tag">WSA,Linux,ADB</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hello-world/"><span class="tag">hello-world</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs%EF%BC%8CLinux/"><span class="tag">nodejs，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project-STG-%E7%AC%A6%E5%8D%A1-%E6%B8%B8%E6%88%8F/"><span class="tag">东方project,STG,符卡,游戏</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project-%E9%AD%94%E6%94%B9-STG-%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">东方project,魔改,STG,计算机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project%EF%BC%8CSTG%EF%BC%8C%E9%AD%94%E6%94%B9/"><span class="tag">东方project，STG，魔改</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/"><span class="tag">存储清理</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7/"><span class="tag">工具</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8CLinux/"><span class="tag">工具，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">工具，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%AD%A6%E4%B9%A0/"><span class="tag">工具，学习</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">工具，文本编辑器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E9%9F%B3%E4%B9%90/"><span class="tag">工具，音乐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%8CAndroid%EF%BC%8C%E5%88%B7%E6%9C%BA/"><span class="tag">操作系统，Android，刷机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/"><span class="tag">数学</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6%EF%BC%8C%E7%AE%97%E6%B3%95/"><span class="tag">数学，算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/"><span class="tag">数据安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E5%AD%A6/"><span class="tag">文学</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E5%AD%A6%EF%BC%8C%E7%A7%91%E5%B9%BB/"><span class="tag">文学，科幻</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">文本编辑器</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">汇编语言，计算机</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F/"><span class="tag">游戏</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F-Minecraft/"><span class="tag">游戏,Minecraft</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F%EF%BC%8CSTG%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">游戏，STG，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">游戏，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B-Golang/"><span class="tag">编程,Golang</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">计算机</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux/"><span class="tag">计算机,Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux-Apache/"><span class="tag">计算机,Linux,Apache</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux-ssh/"><span class="tag">计算机,Linux,ssh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Minecraft/"><span class="tag">计算机,Minecraft</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E5%8D%95%E7%89%87%E6%9C%BA/"><span class="tag">计算机,单片机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BE%8E%E5%8C%96%EF%BC%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">计算机,美化，文本编辑器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%B5%84%E6%96%99%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">计算机,资料，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CLinux%EF%BC%8CWebIDE/"><span class="tag">计算机，Linux，WebIDE</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CLinux%EF%BC%8C%E7%BD%91%E7%BB%9C/"><span class="tag">计算机，Linux，网络</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CPwn/"><span class="tag">计算机，Pwn</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CVPN%EF%BC%8CLinux/"><span class="tag">计算机，VPN，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CWindows/"><span class="tag">计算机，Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%B1%87%E7%BC%96/"><span class="tag">计算机，汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">计算机，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><span class="tag">计算机，计算机视觉</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B5%84%E6%96%99/"><span class="tag">资料</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B5%84%E6%96%99%EF%BC%8C%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/"><span class="tag">资料，网站收集</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94%EF%BC%8C%E6%96%87%E5%AD%A6/"><span class="tag">随笔，文学</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">随笔，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90/"><span class="tag">音乐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90-%E4%B8%9C%E6%96%B9project/"><span class="tag">音乐,东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">音乐，东方project</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">神社的储物间</a><p class="is-size-7"><span>&copy; 2022 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

