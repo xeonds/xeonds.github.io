@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-13T13:48:40.832Z</updated>
+  <updated>2022-10-13T14:52:45.510Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,79 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>电源的等效转移</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.18/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.18/</id>
+    <published>2022-10-13T14:52:45.000Z</published>
+    <updated>2022-10-13T14:52:45.510Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>平衡电桥</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.20/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.20/</id>
+    <published>2022-10-13T14:52:45.000Z</published>
+    <updated>2022-10-13T14:52:45.510Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>电路的等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
     <published>2022-10-13T13:48:40.000Z</published>
     <updated>2022-10-13T13:48:40.832Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>电阻电路的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.833Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>含受控源电阻的等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.834Z</updated>
     
     
     <summary type="html">:P</summary>
@@ -56,40 +124,6 @@
     <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
     <published>2022-10-13T13:48:40.000Z</published>
     <updated>2022-10-13T13:48:40.834Z</updated>
-    
-    
-    <summary type="html">:P</summary>
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>含受控源电阻的等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
-    <published>2022-10-13T13:48:40.000Z</published>
-    <updated>2022-10-13T13:48:40.834Z</updated>
-    
-    
-    <summary type="html">:P</summary>
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>电阻电路的串并联等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
-    <published>2022-10-13T13:48:40.000Z</published>
-    <updated>2022-10-13T13:48:40.833Z</updated>
     
     
     <summary type="html">:P</summary>
@@ -148,9 +182,9 @@
     
     
     
-    <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
     <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
+    
+    <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
   </entry>
   
@@ -341,40 +375,6 @@
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="Windows" scheme="http://example.com/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法学习笔记：算法基础</title>
-    <link href="http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
-    <id>http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</id>
-    <published>2021-11-12T15:52:34.000Z</published>
-    <updated>2022-10-13T12:07:45.011Z</updated>
-    
-    
-    <summary type="html">作为我学习的记录。700+页，不知道多久能看完</summary>
-    
-    
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言学习笔记：预处理器</title>
-    <link href="http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
-    <id>http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</id>
-    <published>2021-11-11T02:38:56.000Z</published>
-    <updated>2022-10-13T12:07:45.056Z</updated>
-    
-    
-    <summary type="html">这一系列指令主要执行对源代码进行文本替换性质的操作，其中的宏也是一个十分强大和重要的工具。</summary>
-    
-    
-    
-    
-    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
