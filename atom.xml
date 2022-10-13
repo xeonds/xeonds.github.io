@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-12T04:38:35.742Z</updated>
+  <updated>2022-09-28T08:26:45.134Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,162 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/README/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/README/</id>
+    <published>2022-10-13T09:25:22.958Z</published>
+    <updated>2022-09-28T08:26:45.134Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.17/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.17/</id>
+    <published>2022-10-13T09:25:22.957Z</published>
+    <updated>2022-10-13T12:05:03.387Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;实际电源的模型及其等效变换&quot;&gt;实际电源的模型及其等效变换&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
+    <published>2022-10-13T09:25:22.956Z</published>
+    <updated>2022-10-13T12:05:03.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;独立源的串并联等效&quot;&gt;独立源的串并联等效&lt;/span&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;电压源串联而成的二端电路，可以等效成&lt;em&gt;一个电压源&lt;/em&gt;，其值为几个电压源的电压值代数和。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
+    <published>2022-10-13T09:25:22.955Z</published>
+    <updated>2022-10-13T12:05:03.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;含受控源电阻的等效&quot;&gt;含受控源电阻的等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;无独立源&quot;&gt;无独立源&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
+    <published>2022-10-13T09:25:22.947Z</published>
+    <updated>2022-10-13T12:05:03.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电路的-delta-形y形连接等效&quot;&gt;电路的 $\Delta$ 形Y形连接等效&lt;/span&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;问题的提出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
+    <published>2022-10-13T09:25:22.946Z</published>
+    <updated>2022-10-13T12:05:03.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电阻电路的串并联等效&quot;&gt;电阻电路的串并联等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
+    <published>2022-10-13T09:25:22.945Z</published>
+    <updated>2022-10-13T12:05:03.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电路的等效&quot;&gt;电路的等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;定义&quot;&gt;定义&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;对于任何电路A，如果C和B接在A的端子上，电压、电流、功率完全一样，则称C与B等效。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://example.com/2022/10/11/hello-world/"/>
     <id>http://example.com/2022/10/11/hello-world/</id>
     <published>2022-10-11T15:45:48.911Z</published>
-    <updated>2022-10-12T04:38:35.742Z</updated>
+    <updated>2022-10-13T12:08:04.178Z</updated>
     
     
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
-    
-    <category term="Hello-World" scheme="http://example.com/categories/Hello-World/"/>
     
     
     <category term="hello-world" scheme="http://example.com/tags/hello-world/"/>
@@ -40,7 +184,7 @@
     <link href="http://example.com/2022/06/29/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BAMinecraft%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://example.com/2022/06/29/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BAMinecraft%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
     <published>2022-06-28T17:05:34.000Z</published>
-    <updated>2022-10-12T04:54:01.650Z</updated>
+    <updated>2022-10-13T12:07:45.056Z</updated>
     
     
     <summary type="html">我真傻，真的.mp4</summary>
@@ -59,7 +203,7 @@
     <link href="http://example.com/2022/06/05/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/06/05/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-06-05T12:31:58.000Z</published>
-    <updated>2022-10-12T04:37:43.526Z</updated>
+    <updated>2022-10-13T12:07:45.051Z</updated>
     
     
       
@@ -82,7 +226,7 @@
     <link href="http://example.com/2022/05/06/Go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/05/06/Go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-05-06T10:46:36.000Z</published>
-    <updated>2022-10-12T04:54:01.650Z</updated>
+    <updated>2022-10-13T12:07:45.056Z</updated>
     
     
     <summary type="html">希望以后能少踩点坑</summary>
@@ -101,7 +245,7 @@
     <link href="http://example.com/2022/05/02/WSA%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
     <id>http://example.com/2022/05/02/WSA%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/</id>
     <published>2022-05-01T16:54:29.000Z</published>
-    <updated>2022-10-12T04:54:01.633Z</updated>
+    <updated>2022-10-13T12:07:45.051Z</updated>
     
     
     <summary type="html">ADB真不戳</summary>
@@ -122,7 +266,7 @@
     <link href="http://example.com/2022/04/22/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/04/22/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-04-22T15:18:41.000Z</published>
-    <updated>2022-10-12T04:54:01.650Z</updated>
+    <updated>2022-10-13T12:07:45.056Z</updated>
     
     
     <summary type="html">用Git管理源代码版本以及团队协作是一件非常舒适的事。看到一个个仓库不仅成就感满满，而且完全不担心混乱</summary>
@@ -141,7 +285,7 @@
     <link href="http://example.com/2022/04/22/PHP%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BDzip.so/"/>
     <id>http://example.com/2022/04/22/PHP%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BDzip.so/</id>
     <published>2022-04-22T14:46:01.000Z</published>
-    <updated>2022-10-12T04:54:01.649Z</updated>
+    <updated>2022-10-13T12:07:45.056Z</updated>
     
     
     <summary type="html">所以是为甚么呢（</summary>
@@ -158,7 +302,7 @@
     <link href="http://example.com/2022/04/21/%E5%88%A9%E7%94%A8Bash%E4%BF%9D%E7%95%99%E6%9C%80%E8%BF%91%E4%B8%89%E5%A4%A9%E6%96%87%E4%BB%B6/"/>
     <id>http://example.com/2022/04/21/%E5%88%A9%E7%94%A8Bash%E4%BF%9D%E7%95%99%E6%9C%80%E8%BF%91%E4%B8%89%E5%A4%A9%E6%96%87%E4%BB%B6/</id>
     <published>2022-04-21T06:39:07.000Z</published>
-    <updated>2022-10-12T04:54:01.608Z</updated>
+    <updated>2022-10-13T12:07:45.030Z</updated>
     
     
     <summary type="html">bashの花式用法</summary>
@@ -177,7 +321,7 @@
     <link href="http://example.com/2022/03/31/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/"/>
     <id>http://example.com/2022/03/31/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/</id>
     <published>2022-03-31T12:24:37.000Z</published>
-    <updated>2022-10-12T04:54:01.608Z</updated>
+    <updated>2022-10-13T12:07:45.030Z</updated>
     
     
     <summary type="html">在使用C语言写程序的时候，往往会使用到scanf函数，然而如果对这个函数的机制不太清楚，不正确的输入下，产生的结果难以估计。于是通过实验，总结了一下scanf函数的机制。</summary>
@@ -194,7 +338,7 @@
     <link href="http://example.com/2022/03/26/%E8%AE%B0%E4%B8%80%E6%AC%A1npm%E5%92%8Cnodejs%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/"/>
     <id>http://example.com/2022/03/26/%E8%AE%B0%E4%B8%80%E6%AC%A1npm%E5%92%8Cnodejs%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</id>
     <published>2022-03-26T12:05:42.000Z</published>
-    <updated>2022-10-12T04:54:01.606Z</updated>
+    <updated>2022-10-13T12:18:19.790Z</updated>
     
     
     <summary type="html">有问题就去官网和StackOverflow找资料</summary>
@@ -202,7 +346,9 @@
     
     
     
-    <category term="nodejs，Linux" scheme="http://example.com/tags/nodejs%EF%BC%8CLinux/"/>
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="node.js" scheme="http://example.com/tags/node-js/"/>
     
   </entry>
   
@@ -211,7 +357,7 @@
     <link href="http://example.com/2022/01/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>http://example.com/2022/01/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/</id>
     <published>2022-01-11T10:34:40.000Z</published>
-    <updated>2022-10-12T04:54:01.650Z</updated>
+    <updated>2022-10-13T12:07:45.056Z</updated>
     
     
     <summary type="html">《Java核心技术》的读书笔记。虽然现在用的是Kotlin，不过Java也是很有学习必要的</summary>
@@ -228,7 +374,7 @@
     <link href="http://example.com/2021/12/29/Win10%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8WiFi%E7%83%AD%E7%82%B9/"/>
     <id>http://example.com/2021/12/29/Win10%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8WiFi%E7%83%AD%E7%82%B9/</id>
     <published>2021-12-29T10:33:02.000Z</published>
-    <updated>2022-10-12T04:54:01.641Z</updated>
+    <updated>2022-10-13T12:22:07.634Z</updated>
     
     
     <summary type="html">自作聪明的Win10认为没网就不需要开热点......拨号上网也算没网？</summary>
@@ -236,7 +382,9 @@
     
     
     
-    <category term="计算机，Windows" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8CWindows/"/>
+    <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
     
   </entry>
   
@@ -245,7 +393,7 @@
     <link href="http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     <id>http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</id>
     <published>2021-11-12T15:52:34.000Z</published>
-    <updated>2022-10-12T04:54:01.606Z</updated>
+    <updated>2022-10-13T12:07:45.011Z</updated>
     
     
     <summary type="html">作为我学习的记录。700+页，不知道多久能看完</summary>
@@ -254,127 +402,6 @@
     
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言学习笔记：预处理器</title>
-    <link href="http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
-    <id>http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</id>
-    <published>2021-11-11T02:38:56.000Z</published>
-    <updated>2022-10-12T04:54:01.651Z</updated>
-    
-    
-    <summary type="html">这一系列指令主要执行对源代码进行文本替换性质的操作，其中的宏也是一个十分强大和重要的工具。</summary>
-    
-    
-    
-    
-    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《C语言入门教程》阮一峰</title>
-    <link href="http://example.com/2021/11/02/%E3%80%8AC%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E3%80%8B%E9%98%AE%E4%B8%80%E5%B3%B0/"/>
-    <id>http://example.com/2021/11/02/%E3%80%8AC%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E3%80%8B%E9%98%AE%E4%B8%80%E5%B3%B0/</id>
-    <published>2021-11-02T05:20:21.000Z</published>
-    <updated>2022-10-12T04:54:01.633Z</updated>
-    
-    
-    <summary type="html">转自阮一峰大佬的教程。专家写的教程确实不一样，非常简洁易懂。</summary>
-    
-    
-    
-    
-    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写一个基岩版的启动脚本</title>
-    <link href="http://example.com/2021/10/28/%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%B2%A9%E7%89%88%E7%9A%84%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/"/>
-    <id>http://example.com/2021/10/28/%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%B2%A9%E7%89%88%E7%9A%84%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-10-28T07:24:39.000Z</published>
-    <updated>2022-10-12T04:54:01.608Z</updated>
-    
-    
-    <summary type="html">基岩版开服还挺简单方便的。管理的话，不试试MCSManager？</summary>
-    
-    
-    
-    
-    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
-    
-    <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用JavaScript写一个运行时间统计</title>
-    <link href="http://example.com/2021/10/27/%E7%94%A8JavaScript%E5%86%99%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/"/>
-    <id>http://example.com/2021/10/27/%E7%94%A8JavaScript%E5%86%99%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/</id>
-    <published>2021-10-27T15:00:46.000Z</published>
-    <updated>2022-10-12T04:54:01.607Z</updated>
-    
-    
-    <summary type="html">以前：js（）都不用  现在：js真香（</summary>
-    
-    
-    
-    
-    <category term="JavaScript，前端" scheme="http://example.com/tags/JavaScript%EF%BC%8C%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言学习笔记：scanf与printf</title>
-    <link href="http://example.com/2021/10/27/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ascanf%E4%B8%8Eprintf/"/>
-    <id>http://example.com/2021/10/27/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ascanf%E4%B8%8Eprintf/</id>
-    <published>2021-10-27T02:44:29.000Z</published>
-    <updated>2022-10-12T04:54:01.651Z</updated>
-    
-    
-    <summary type="html">C语言中两个可以接收不定量参数的神奇函数</summary>
-    
-    
-    
-    
-    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++学习笔记：基础篇</title>
-    <link href="http://example.com/2021/10/26/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
-    <id>http://example.com/2021/10/26/C++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/</id>
-    <published>2021-10-26T09:14:26.000Z</published>
-    <updated>2022-10-12T04:54:01.651Z</updated>
-    
-    
-    <summary type="html">和C语言一样的部分我就不详细写了。听学长说，C++主要是学STL（标准模板库）</summary>
-    
-    
-    
-    
-    <category term="C++" scheme="http://example.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可道云折腾小记</title>
-    <link href="http://example.com/2021/10/05/%E5%8F%AF%E9%81%93%E4%BA%91%E6%8A%98%E8%85%BE%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://example.com/2021/10/05/%E5%8F%AF%E9%81%93%E4%BA%91%E6%8A%98%E8%85%BE%E5%B0%8F%E8%AE%B0/</id>
-    <published>2021-10-04T16:59:02.000Z</published>
-    <updated>2022-10-12T04:54:01.608Z</updated>
-    
-    
-    <summary type="html">还是自己定制比较爽</summary>
-    
-    
-    
-    
-    <category term="工具，Linux" scheme="http://example.com/tags/%E5%B7%A5%E5%85%B7%EF%BC%8CLinux/"/>
     
   </entry>
   
