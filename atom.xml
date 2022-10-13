@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-28T08:26:45.134Z</updated>
+  <updated>2022-10-13T13:38:50.742Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,98 +17,47 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/README/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/README/</id>
-    <published>2022-10-13T09:25:22.958Z</published>
-    <updated>2022-09-28T08:26:45.134Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.17/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.17/</id>
-    <published>2022-10-13T09:25:22.957Z</published>
-    <updated>2022-10-13T12:05:03.387Z</updated>
+    <title>电路的等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.742Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;实际电源的模型及其等效变换&quot;&gt;实际电源的模型及其等效变换&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
-    <published>2022-10-13T09:25:22.956Z</published>
-    <updated>2022-10-13T12:05:03.392Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;独立源的串并联等效&quot;&gt;独立源的串并联等效&lt;/span&gt;&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;电压源串联而成的二端电路，可以等效成&lt;em&gt;一个电压源&lt;/em&gt;，其值为几个电压源的电压值代数和。&lt;/li&gt;
-&lt;/ul&gt;
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;定义&quot;&gt;定义&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;对于任何电路A，如果C和B接在A的端子上，电压、电流、功率完全一样，则称C与B等效。&lt;/p&gt;
 &lt;p&gt;&lt;img</summary>
         
       
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
-    <published>2022-10-13T09:25:22.955Z</published>
-    <updated>2022-10-13T12:05:03.392Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;含受控源电阻的等效&quot;&gt;含受控源电阻的等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;无独立源&quot;&gt;无独立源&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>电路的 $\Delta$ 形Y形连接等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
-    <published>2022-10-13T09:25:22.947Z</published>
-    <updated>2022-10-13T12:05:03.392Z</updated>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.743Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电路的-delta-形y形连接等效&quot;&gt;电路的 $\Delta$ 形Y形连接等效&lt;/span&gt;&lt;/h1&gt;&lt;ol&gt;
+    <summary type="html">&lt;ol&gt;
 &lt;li&gt;问题的提出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/image/20220928-170646.png&quot;&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;等效&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img</summary>
         
@@ -116,48 +65,124 @@
     
     
     
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>含受控源电阻的等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.743Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;无独立源&quot;&gt;无独立源&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/image/20221013-164057.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>电阻电路的串并联等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
-    <published>2022-10-13T09:25:22.946Z</published>
-    <updated>2022-10-13T12:05:03.392Z</updated>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.743Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电阻电路的串并联等效&quot;&gt;电阻电路的串并联等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
-    <published>2022-10-13T09:25:22.945Z</published>
-    <updated>2022-10-13T12:05:03.392Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;电路的等效&quot;&gt;电路的等效&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;定义&quot;&gt;定义&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;对于任何电路A，如果C和B接在A的端子上，电压、电流、功率完全一样，则称C与B等效。&lt;/p&gt;
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;电阻电路的串并联等效&quot;&gt;电阻电路的串并联等效&lt;/span&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;串联等效&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特征：流过各电阻的电流是同一电流。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;img</summary>
         
       
     
     
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>独立源的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.744Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;电压源串联而成的二端电路，可以等效成&lt;em&gt;一个电压源&lt;/em&gt;，其值为几个电压源的电压值代数和。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/image/20221013-170113.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>实际电源的模型及其等效变换</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.17/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.17/</id>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.744Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;实际电源的模型&quot;&gt;实际电源的模型&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;将实际电源（例如干电池）外接滑动变阻器，得到其电源特性曲线：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/20221013-171413.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2022/10/13/circuit-basic/README/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/README/</id>
+    <published>2022-10-13T13:38:50.000Z</published>
+    <updated>2022-10-13T13:38:50.744Z</updated>
+    
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
@@ -192,9 +217,9 @@
     
     
     
-    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
-    
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
     
   </entry>
   
