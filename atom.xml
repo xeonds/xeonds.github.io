@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-13T13:38:50.742Z</updated>
+  <updated>2022-10-13T13:48:40.832Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -20,18 +20,11 @@
     <title>电路的等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.742Z</updated>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.832Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2&gt;&lt;span id=&quot;定义&quot;&gt;定义&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;对于任何电路A，如果C和B接在A的端子上，电压、电流、功率完全一样，则称C与B等效。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
+    <summary type="html">:P</summary>
     
     
     
@@ -44,76 +37,11 @@
     <title>电路的 $\Delta$ 形Y形连接等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.743Z</updated>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.834Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;问题的提出&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/image/20220928-170646.png&quot;&gt;&lt;/p&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;等效&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>含受控源电阻的等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.743Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2&gt;&lt;span id=&quot;无独立源&quot;&gt;无独立源&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/image/20221013-164057.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>电阻电路的串并联等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.743Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2&gt;&lt;span id=&quot;电阻电路的串并联等效&quot;&gt;电阻电路的串并联等效&lt;/span&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;串联等效&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;特征：流过各电阻的电流是同一电流。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
+    <summary type="html">:P</summary>
     
     
     
@@ -126,20 +54,45 @@
     <title>独立源的串并联等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.744Z</updated>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.834Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;电压源串联而成的二端电路，可以等效成&lt;em&gt;一个电压源&lt;/em&gt;，其值为几个电压源的电压值代数和。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/image/20221013-170113.png&quot;</summary>
-        
-      
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>含受控源电阻的等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.15/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.15/</id>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.834Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>电阻电路的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.833Z</updated>
+    
+    
+    <summary type="html">:P</summary>
     
     
     
@@ -152,33 +105,11 @@
     <title>实际电源的模型及其等效变换</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.17/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.17/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.744Z</updated>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.834Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2&gt;&lt;span id=&quot;实际电源的模型&quot;&gt;实际电源的模型&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;将实际电源（例如干电池）外接滑动变阻器，得到其电源特性曲线：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/20221013-171413.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/10/13/circuit-basic/README/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/README/</id>
-    <published>2022-10-13T13:38:50.000Z</published>
-    <updated>2022-10-13T13:38:50.744Z</updated>
-    
+    <summary type="html">:P</summary>
     
     
     
@@ -427,6 +358,23 @@
     
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言学习笔记：预处理器</title>
+    <link href="http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://example.com/2021/11/11/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <published>2021-11-11T02:38:56.000Z</published>
+    <updated>2022-10-13T12:07:45.056Z</updated>
+    
+    
+    <summary type="html">这一系列指令主要执行对源代码进行文本替换性质的操作，其中的宏也是一个十分强大和重要的工具。</summary>
+    
+    
+    
+    
+    <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
