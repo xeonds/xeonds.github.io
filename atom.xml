@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-13T14:52:45.510Z</updated>
+  <updated>2022-10-17T09:09:52.598Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KCL&amp;KVL独立方程</title>
+    <link href="http://example.com/2022/10/17/circuit-basic/2.1/"/>
+    <id>http://example.com/2022/10/17/circuit-basic/2.1/</id>
+    <published>2022-10-17T09:09:52.000Z</published>
+    <updated>2022-10-17T09:09:52.598Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2b法&amp;支路法</title>
+    <link href="http://example.com/2022/10/17/circuit-basic/2.2/"/>
+    <id>http://example.com/2022/10/17/circuit-basic/2.2/</id>
+    <published>2022-10-17T09:09:52.000Z</published>
+    <updated>2022-10-17T09:09:52.598Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>电源的等效转移</title>
@@ -68,11 +102,11 @@
   </entry>
   
   <entry>
-    <title>电阻电路的串并联等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
+    <title>电路的 $\Delta$ 形Y形连接等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
     <published>2022-10-13T13:48:40.000Z</published>
-    <updated>2022-10-13T13:48:40.833Z</updated>
+    <updated>2022-10-13T13:48:40.834Z</updated>
     
     
     <summary type="html">:P</summary>
@@ -102,11 +136,11 @@
   </entry>
   
   <entry>
-    <title>电路的 $\Delta$ 形Y形连接等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
+    <title>电阻电路的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
     <published>2022-10-13T13:48:40.000Z</published>
-    <updated>2022-10-13T13:48:40.834Z</updated>
+    <updated>2022-10-13T13:48:40.833Z</updated>
     
     
     <summary type="html">:P</summary>
@@ -339,42 +373,6 @@
     <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
     <category term="node.js" scheme="http://example.com/tags/node-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java学习笔记：基础篇</title>
-    <link href="http://example.com/2022/01/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
-    <id>http://example.com/2022/01/11/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/</id>
-    <published>2022-01-11T10:34:40.000Z</published>
-    <updated>2022-10-13T12:07:45.056Z</updated>
-    
-    
-    <summary type="html">《Java核心技术》的读书笔记。虽然现在用的是Kotlin，不过Java也是很有学习必要的</summary>
-    
-    
-    
-    
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win10使用命令行启动WiFi热点</title>
-    <link href="http://example.com/2021/12/29/Win10%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8WiFi%E7%83%AD%E7%82%B9/"/>
-    <id>http://example.com/2021/12/29/Win10%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8WiFi%E7%83%AD%E7%82%B9/</id>
-    <published>2021-12-29T10:33:02.000Z</published>
-    <updated>2022-10-13T12:22:07.634Z</updated>
-    
-    
-    <summary type="html">自作聪明的Win10认为没网就不需要开热点......拨号上网也算没网？</summary>
-    
-    
-    
-    
-    <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
     
   </entry>
   
