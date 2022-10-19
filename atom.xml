@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-17T09:09:52.598Z</updated>
+  <updated>2022-10-19T13:05:02.540Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一章：电路的基本规律</title>
+    <link href="http://example.com/2022/10/19/circuit-basic/ch1/"/>
+    <id>http://example.com/2022/10/19/circuit-basic/ch1/</id>
+    <published>2022-10-19T13:05:02.000Z</published>
+    <updated>2022-10-19T13:05:02.540Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>KCL&amp;KVL独立方程</title>
@@ -85,6 +102,23 @@
   </entry>
   
   <entry>
+    <title>电阻电路的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
+    <published>2022-10-13T13:48:40.000Z</published>
+    <updated>2022-10-13T13:48:40.833Z</updated>
+    
+    
+    <summary type="html">:P</summary>
+    
+    
+    
+    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>电路的等效</title>
     <link href="http://example.com/2022/10/13/circuit-basic/1.12/"/>
     <id>http://example.com/2022/10/13/circuit-basic/1.12/</id>
@@ -102,9 +136,9 @@
   </entry>
   
   <entry>
-    <title>电路的 $\Delta$ 形Y形连接等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
+    <title>独立源的串并联等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
     <published>2022-10-13T13:48:40.000Z</published>
     <updated>2022-10-13T13:48:40.834Z</updated>
     
@@ -136,26 +170,9 @@
   </entry>
   
   <entry>
-    <title>电阻电路的串并联等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.13/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.13/</id>
-    <published>2022-10-13T13:48:40.000Z</published>
-    <updated>2022-10-13T13:48:40.833Z</updated>
-    
-    
-    <summary type="html">:P</summary>
-    
-    
-    
-    <category term="电路基础笔记" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>独立源的串并联等效</title>
-    <link href="http://example.com/2022/10/13/circuit-basic/1.16/"/>
-    <id>http://example.com/2022/10/13/circuit-basic/1.16/</id>
+    <title>电路的 $\Delta$ 形Y形连接等效</title>
+    <link href="http://example.com/2022/10/13/circuit-basic/1.14/"/>
+    <id>http://example.com/2022/10/13/circuit-basic/1.14/</id>
     <published>2022-10-13T13:48:40.000Z</published>
     <updated>2022-10-13T13:48:40.834Z</updated>
     
@@ -354,25 +371,6 @@
     
     
     <category term="C语言" scheme="http://example.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次npm和nodejs安装过程</title>
-    <link href="http://example.com/2022/03/26/%E8%AE%B0%E4%B8%80%E6%AC%A1npm%E5%92%8Cnodejs%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/"/>
-    <id>http://example.com/2022/03/26/%E8%AE%B0%E4%B8%80%E6%AC%A1npm%E5%92%8Cnodejs%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</id>
-    <published>2022-03-26T12:05:42.000Z</published>
-    <updated>2022-10-13T12:18:19.790Z</updated>
-    
-    
-    <summary type="html">有问题就去官网和StackOverflow找资料</summary>
-    
-    
-    
-    
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
-    <category term="node.js" scheme="http://example.com/tags/node-js/"/>
     
   </entry>
   
