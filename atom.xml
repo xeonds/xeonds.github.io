@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-19T13:05:02.540Z</updated>
+  <updated>2022-10-25T13:59:33.758Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电磁学笔记</title>
+    <link href="http://example.com/2022/10/25/em/"/>
+    <id>http://example.com/2022/10/25/em/</id>
+    <published>2022-10-25T13:59:12.000Z</published>
+    <updated>2022-10-25T13:59:33.758Z</updated>
+    
+    
+    <summary type="html">XD</summary>
+    
+    
+    
+    
+    <category term="物理学" scheme="http://example.com/tags/%E7%89%A9%E7%90%86%E5%AD%A6/"/>
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>第一章：电路的基本规律</title>
@@ -97,9 +116,9 @@
     
     
     
-    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
-    
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
     
   </entry>
   
@@ -357,28 +376,9 @@
     
     
     
-    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
-    
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-  </entry>
-  
-  <entry>
-    <title>用JavaScript写一个运行时间统计</title>
-    <link href="http://example.com/2021/10/27/%E7%94%A8JavaScript%E5%86%99%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/"/>
-    <id>http://example.com/2021/10/27/%E7%94%A8JavaScript%E5%86%99%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1/</id>
-    <published>2021-10-27T15:00:46.000Z</published>
-    <updated>2022-10-13T12:20:55.124Z</updated>
-    
-    
-    <summary type="html">以前：js（）都不用  现在：js真香（</summary>
-    
-    
-    
-    
-    <category term="JavaScript" scheme="http://example.com/tags/JavaScript/"/>
-    
-    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
     
   </entry>
   
