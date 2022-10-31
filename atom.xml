@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-31T09:22:29.168Z</updated>
+  <updated>2022-10-31T09:22:59.160Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/"/>
     <id>http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</id>
     <published>2022-10-31T08:24:16.000Z</published>
-    <updated>2022-10-31T09:22:29.168Z</updated>
+    <updated>2022-10-31T09:22:59.160Z</updated>
     
     
     <summary type="html">(￣﹃￣)</summary>
     
     
+    
+    <category term="电路分析基础" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
