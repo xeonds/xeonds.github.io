@@ -34,10 +34,12 @@
     <link href="http://example.com/2022/11/07/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%95%B0%E5%88%B6%EF%BC%8C%E7%BC%96%E7%A0%81%E5%92%8C%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/"/>
     <id>http://example.com/2022/11/07/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%95%B0%E5%88%B6%EF%BC%8C%E7%BC%96%E7%A0%81%E5%92%8C%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/</id>
     <published>2022-11-07T11:31:05.176Z</published>
-    <updated>2022-11-03T06:01:38.525Z</updated>
+    <updated>2022-11-08T03:15:41.993Z</updated>
     
     
     
+    
+    <category term="数字电路" scheme="http://example.com/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
     
     
   </entry>
@@ -47,10 +49,12 @@
     <link href="http://example.com/2022/11/07/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/"/>
     <id>http://example.com/2022/11/07/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/</id>
     <published>2022-11-07T11:31:05.172Z</published>
-    <updated>2022-11-03T06:02:56.498Z</updated>
+    <updated>2022-11-08T03:15:41.993Z</updated>
     
     
     
+    
+    <category term="数字电路" scheme="http://example.com/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
     
     
   </entry>
