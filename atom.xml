@@ -161,9 +161,9 @@
     
     
     
-    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
-    
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
     
   </entry>
   
