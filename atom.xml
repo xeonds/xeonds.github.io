@@ -274,9 +274,9 @@
     
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
     <category term="Git" scheme="http://example.com/tags/Git/"/>
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
   </entry>
   
