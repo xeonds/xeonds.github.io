@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-16T02:01:37.408Z</updated>
+  <updated>2022-11-16T02:01:44.218Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/"/>
     <id>http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/</id>
     <published>2022-11-16T02:00:23.000Z</published>
-    <updated>2022-11-16T02:01:37.408Z</updated>
+    <updated>2022-11-16T02:01:44.218Z</updated>
     
     
     <summary type="html">(*/ω＼*)</summary>
     
     
+    
+    <category term="数字电路" scheme="http://example.com/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
     
     
   </entry>
@@ -36,12 +38,14 @@
     <link href="http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%95%B0%E5%88%B6%EF%BC%8C%E7%BC%96%E7%A0%81%E5%92%8C%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/"/>
     <id>http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%95%B0%E5%88%B6%EF%BC%8C%E7%BC%96%E7%A0%81%E5%92%8C%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/</id>
     <published>2022-11-16T02:00:11.000Z</published>
-    <updated>2022-11-16T02:01:34.060Z</updated>
+    <updated>2022-11-16T02:01:44.218Z</updated>
     
     
     <summary type="html">(*/ω＼*)</summary>
     
     
+    
+    <category term="数字电路" scheme="http://example.com/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
     
     
   </entry>
@@ -176,16 +180,10 @@
     <link href="http://example.com/2022/06/05/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Script/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/06/05/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Script/PowerShell%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-06-05T12:31:58.000Z</published>
-    <updated>2022-11-16T01:58:19.698Z</updated>
+    <updated>2022-11-16T04:59:31.144Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;文件操作&quot;&gt;&lt;a href=&quot;#文件操作&quot; class=&quot;headerlink&quot; title=&quot;文件操作&quot;&gt;&lt;/a&gt;文件操作&lt;/h1&gt;&lt;h2 id=&quot;批量改后缀&quot;&gt;&lt;a href=&quot;#批量改后缀&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">ps怎么感觉有点用linux的感觉？</summary>
     
     
     
@@ -255,9 +253,9 @@
     
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
     <category term="Git" scheme="http://example.com/tags/Git/"/>
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
     
   </entry>
   
@@ -307,8 +305,8 @@
   
   <entry>
     <title>对C语言scanf函数机制的浅探究</title>
-    <link href="http://example.com/2022/03/31/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/"/>
-    <id>http://example.com/2022/03/31/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/</id>
+    <link href="http://example.com/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/"/>
+    <id>http://example.com/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%AF%B9C%E8%AF%AD%E8%A8%80scanf%E5%87%BD%E6%95%B0%E6%9C%BA%E5%88%B6%E7%9A%84%E6%B5%85%E6%8E%A2%E7%A9%B6/</id>
     <published>2022-03-31T12:24:37.000Z</published>
     <updated>2022-10-25T14:33:11.800Z</updated>
     
