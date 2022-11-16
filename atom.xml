@@ -102,23 +102,6 @@
   </entry>
   
   <entry>
-    <title>第二章：电阻电路分析</title>
-    <link href="http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90.sync-conflict-20221116-225954-OXUSNT7/"/>
-    <id>http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90.sync-conflict-20221116-225954-OXUSNT7/</id>
-    <published>2022-10-31T08:24:16.000Z</published>
-    <updated>2022-11-16T14:56:25.579Z</updated>
-    
-    
-    <summary type="html">(￣﹃￣)</summary>
-    
-    
-    
-    <category term="电路分析基础" scheme="http://example.com/categories/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Kali Linux学习笔记</title>
     <link href="http://example.com/2022/10/30/Kali%20Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2022/10/30/Kali%20Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
@@ -274,9 +257,9 @@
     
     
     
-    <category term="Git" scheme="http://example.com/tags/Git/"/>
-    
     <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="Git" scheme="http://example.com/tags/Git/"/>
     
   </entry>
   
@@ -401,6 +384,23 @@
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="Windows" scheme="http://example.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法学习笔记：算法基础</title>
+    <link href="http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <id>http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</id>
+    <published>2021-11-12T15:52:34.000Z</published>
+    <updated>2022-10-25T14:33:11.799Z</updated>
+    
+    
+    <summary type="html">作为我学习的记录。700+页，不知道多久能看完</summary>
+    
+    
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
