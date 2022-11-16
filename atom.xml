@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-16T01:59:08.129Z</updated>
+  <updated>2022-11-16T01:59:17.996Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%A7%A6%E5%8F%91%E5%99%A8%E4%B8%8E%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/"/>
     <id>http://example.com/2022/11/16/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%A7%A6%E5%8F%91%E5%99%A8%E4%B8%8E%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/</id>
     <published>2022-11-16T01:58:53.000Z</published>
-    <updated>2022-11-16T01:59:08.129Z</updated>
+    <updated>2022-11-16T01:59:17.996Z</updated>
     
     
     <summary type="html">(*/ω＼*)</summary>
     
     
+    
+    <category term="数字电路" scheme="http://example.com/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
     
     
   </entry>
@@ -223,9 +225,9 @@
     
     
     
-    <category term="Git" scheme="http://example.com/tags/Git/"/>
-    
     <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="Git" scheme="http://example.com/tags/Git/"/>
     
   </entry>
   
