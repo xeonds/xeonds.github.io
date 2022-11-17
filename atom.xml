@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-16T02:01:44.218Z</updated>
+  <updated>2022-11-17T14:33:23.348Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一章：概率论的基本概念</title>
+    <link href="http://example.com/2022/11/17/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://example.com/2022/11/17/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
+    <published>2022-11-17T07:41:16.000Z</published>
+    <updated>2022-11-17T14:33:23.348Z</updated>
+    
+    
+    <summary type="html">╰(￣ω￣ｏ)</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>第二章：组合逻辑电路</title>
@@ -89,7 +104,7 @@
     <link href="http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/"/>
     <id>http://example.com/2022/10/31/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</id>
     <published>2022-10-31T08:24:16.000Z</published>
-    <updated>2022-11-16T15:07:22.208Z</updated>
+    <updated>2022-11-16T15:10:17.104Z</updated>
     
     
     <summary type="html">(￣﹃￣)</summary>
@@ -384,23 +399,6 @@
     <category term="计算机" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="Windows" scheme="http://example.com/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法学习笔记：算法基础</title>
-    <link href="http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
-    <id>http://example.com/2021/11/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</id>
-    <published>2021-11-12T15:52:34.000Z</published>
-    <updated>2022-10-25T14:33:11.799Z</updated>
-    
-    
-    <summary type="html">作为我学习的记录。700+页，不知道多久能看完</summary>
-    
-    
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
