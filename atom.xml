@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-22T12:34:23.333Z</updated>
+  <updated>2022-11-25T03:36:10.466Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitHub博客搭建</title>
+    <link href="http://example.com/2022/11/25/GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2022/11/25/GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <published>2022-11-25T03:35:50.000Z</published>
+    <updated>2022-11-25T03:36:10.466Z</updated>
+    
+    
+    <summary type="html">ψ(｀∇´)ψ</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>C语言命令行参数解析</title>
@@ -51,7 +66,7 @@
     <link href="http://example.com/2022/11/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/"/>
     <id>http://example.com/2022/11/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/</id>
     <published>2022-11-22T12:07:07.964Z</published>
-    <updated>2022-11-22T12:07:24.843Z</updated>
+    <updated>2022-11-24T15:06:00.310Z</updated>
     
     
       
@@ -63,6 +78,8 @@
       
     
     
+    
+    <category term="计算机科学" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
     
     
   </entry>
@@ -333,27 +350,6 @@
     
     
     <category term="物理" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第二章：电阻电路分析</title>
-    <link href="http://example.com/2022/10/31/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/"/>
-    <id>http://example.com/2022/10/31/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</id>
-    <published>2022-10-31T08:24:16.000Z</published>
-    <updated>2022-11-20T00:53:59.787Z</updated>
-    
-    
-    <summary type="html">(￣﹃￣)</summary>
-    
-    
-    
-    <category term="物理" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/"/>
-    
-    <category term="微电子技术" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="电路分析基础" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
