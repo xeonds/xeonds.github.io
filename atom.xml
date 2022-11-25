@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-25T03:36:10.466Z</updated>
+  <updated>2022-11-25T03:40:45.534Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Software Preservation Group</title>
+    <link href="http://example.com/2022/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/"/>
+    <id>http://example.com/2022/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/</id>
+    <published>2022-11-25T03:39:58.000Z</published>
+    <updated>2022-11-25T03:40:45.534Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="计算机科学" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>GitHub博客搭建</title>
@@ -57,29 +80,6 @@
     <summary type="html">大一大作业那会用了一次</summary>
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/11/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/"/>
-    <id>http://example.com/2022/11/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Software%20Preservation%20Group/</id>
-    <published>2022-11-22T12:07:07.964Z</published>
-    <updated>2022-11-24T15:06:00.310Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.softwarepreservation.org/&quot;&gt;Software Preservation Group — Software Preservation</summary>
-        
-      
-    
-    
-    
-    <category term="计算机科学" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
     
     
   </entry>
