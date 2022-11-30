@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-11-25T03:40:45.534Z</updated>
+  <updated>2022-11-30T09:32:40.393Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>告全党全军全国各族人民书</title>
+    <link href="http://example.com/2022/11/30/%E5%91%8A%E5%85%A8%E5%85%9A%E5%85%A8%E5%86%9B%E5%85%A8%E5%9B%BD%E5%90%84%E6%97%8F%E4%BA%BA%E6%B0%91%E4%B9%A6/"/>
+    <id>http://example.com/2022/11/30/%E5%91%8A%E5%85%A8%E5%85%9A%E5%85%A8%E5%86%9B%E5%85%A8%E5%9B%BD%E5%90%84%E6%97%8F%E4%BA%BA%E6%B0%91%E4%B9%A6/</id>
+    <published>2022-11-30T08:34:00.000Z</published>
+    <updated>2022-11-30T09:32:40.393Z</updated>
+    
+    
+    <summary type="html">我们敬爱的江泽民同志患白血病合并多脏器功能衰竭，抢救无效，于2022年11月30日12时13分在上海逝世，享年96岁</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Software Preservation Group</title>
@@ -203,21 +218,6 @@
   </entry>
   
   <entry>
-    <title>Java Arrays.sort()详解</title>
-    <link href="http://example.com/2022/11/22/Java%20Arrays.sort()%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://example.com/2022/11/22/Java%20Arrays.sort()%E8%AF%A6%E8%A7%A3/</id>
-    <published>2022-11-22T11:04:01.000Z</published>
-    <updated>2022-11-25T12:16:48.502Z</updated>
-    
-    
-    <summary type="html">Java practice note.</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Java 分割出字符串中的字母或数字</title>
     <link href="http://example.com/2022/11/22/Java%20%E5%88%86%E5%89%B2%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AF%8D%E6%88%96%E6%95%B0%E5%AD%97/"/>
     <id>http://example.com/2022/11/22/Java%20%E5%88%86%E5%89%B2%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AF%8D%E6%88%96%E6%95%B0%E5%AD%97/</id>
@@ -226,6 +226,21 @@
     
     
     <summary type="html">Java practice note. 以及这其实应该算到正则里。不过各种语言的正则都不太一样。</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java Arrays.sort()详解</title>
+    <link href="http://example.com/2022/11/22/Java%20Arrays.sort()%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://example.com/2022/11/22/Java%20Arrays.sort()%E8%AF%A6%E8%A7%A3/</id>
+    <published>2022-11-22T11:04:01.000Z</published>
+    <updated>2022-11-25T12:16:48.502Z</updated>
+    
+    
+    <summary type="html">Java practice note.</summary>
     
     
     
@@ -327,23 +342,6 @@
     <category term="微电子技术" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/"/>
     
     <category term="数字电路" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/%E5%BE%AE%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>狭义相对论笔记</title>
-    <link href="http://example.com/2022/11/01/%E7%89%A9%E7%90%86/%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
-    <id>http://example.com/2022/11/01/%E7%89%A9%E7%90%86/%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E7%AC%94%E8%AE%B0/</id>
-    <published>2022-11-01T01:47:45.000Z</published>
-    <updated>2022-11-01T03:41:43.817Z</updated>
-    
-    
-    <summary type="html">╰（‵□′）╯</summary>
-    
-    
-    
-    <category term="物理" scheme="http://example.com/categories/%E7%89%A9%E7%90%86/"/>
     
     
   </entry>
