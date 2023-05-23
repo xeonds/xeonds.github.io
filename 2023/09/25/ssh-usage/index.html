@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SSH学习笔记 - 神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="节省生命从小事做起"><meta property="og:type" content="blog"><meta property="og:title" content="SSH学习笔记"><meta property="og:url" content="https://mxts.jiujiuer.xyz/2023/09/25/ssh-usage/"><meta property="og:site_name" content="神社的储物间"><meta property="og:description" content="节省生命从小事做起"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mxts.jiujiuer.xyz/img/og_image.png"><meta property="article:published_time" content="2023-09-25T06:16:18.000Z"><meta property="article:modified_time" content="2024-04-09T10:17:01.614Z"><meta property="article:author" content="xeonds"><meta property="article:tag" content="Linux"><meta property="article:tag" content="SSH"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mxts.jiujiuer.xyz/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mxts.jiujiuer.xyz/2023/09/25/ssh-usage/"},"headline":"SSH学习笔记","image":["https://mxts.jiujiuer.xyz/img/og_image.png"],"datePublished":"2023-09-25T06:16:18.000Z","dateModified":"2024-04-09T10:17:01.614Z","author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":"https://mxts.jiujiuer.xyz/img/favicon.ico"}},"description":"节省生命从小事做起"}</script><link rel="canonical" href="https://mxts.jiujiuer.xyz/2023/09/25/ssh-usage/"><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?59fd9f709f6626bf608f0b08415e0283";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archive</a><a class="navbar-item" href="/categories">Category</a><a class="navbar-item" href="/tags">Tag</a><a class="navbar-item" href="/links">Link</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T06:16:18.000Z" title="9/25/2023, 6:16:18 AM">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-04-09T10:17:01.614Z" title="4/9/2024, 10:17:01 AM">2024-04-09</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">15 分钟读完 (大约2314个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">SSH学习笔记</h1><div class="content"><blockquote>
+<p>文章是我和GPT一块写的，回头再慢慢丰富润色。</p>
+</blockquote>
+<p>OpenSSH是一种强大的远程登录和数据传输工具，也是SSH协议目前最流行的实现。它提供了许多安全功能，如数据加密、身份验证和会话完整性。安全性上，SSH能吊着明文传输的Telnet打。并且SSH的配置也相对容易，目前基本所有主流Linux发行版都默认安装了OpenSSH，Win10&#x2F;11也自带了OpenSSH Cilent。</p>
+<p>追求效率提升，首先需要看看日常重复次数最多的操作，然后试着优化——比如SSH，虽然每次只有1,2秒，但累积起来节省的时间也不少。配置好了基本能实现无感登陆那种程度，让你几乎忘掉这个环节，还是挺爽的。除了效率，提升点安全性也是挺好的：公网服务器改用密钥登陆，又无感又安全——只要密钥别丢。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><p>基本格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh [options] [username]@[hostname]  </span><br></pre></td></tr></table></figure>
+<p><code>[username]</code> 是远程主机的用户名，<code>[hostname]</code> 是远程主机的主机名或 IP 地址。</p>
+<p><code>[options]</code> 是可选的参数，例如 <code>-i</code> 指定要使用的私钥文件，<code>-L</code> 指定要使用的本地端口转发，<code>-R</code> 指定要使用的远程端口转发等。</p>
+<p>一般用的最多的是默认端口密码登陆：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@hostname &lt;-p 22&gt;</span><br></pre></td></tr></table></figure>
+<p>后面的<code>-p 22</code>是缺省参数，可以不加。</p>
+<p>不过密码登陆安全性并不太高，建议重要场合上密钥登陆。例如，用密钥文件 <code>id_rsa</code> 以用户 <code>username</code> 登录远程主机 <code>example.com</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i id-rsa username@example.com</span><br></pre></td></tr></table></figure>
+<p>密钥和公钥就像锁和钥匙一一对应，你可以用同一对公钥密钥登陆多个主机，不过显然不太安全。建议一对公密钥只用于一个服务器的登陆。</p>
+<p>它们的创建很简单，使用 <code>OpenSSH</code> 自带的 <code>ssh-keygen</code> 命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">xeonds@ark-station:~$ ssh-keygen </span><br><span class="line">Generating public/private ed25519 key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/xeonds/.ssh/id_ed25519): example-key     <span class="comment"># 指定公钥私钥保存在哪</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):                                         <span class="comment"># 指定私钥使用密码</span></span><br><span class="line">Enter same passphrase again: </span><br><span class="line">Your identification has been saved <span class="keyword">in</span> example-key</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> example-key.pub</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:tFoZLdZFg3HDMqGG6rC5jq+zysxClfBCUvffMYgS5GY xeonds@ark-station</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+--[ED25519 256]--+</span></span><br><span class="line"><span class="string">| ...+     o**    |</span></span><br><span class="line"><span class="string">|.o o o o =+o.o   |</span></span><br><span class="line"><span class="string">|o o E + O =o     |</span></span><br><span class="line"><span class="string">| . * o = * o     |</span></span><br><span class="line"><span class="string">|  + .   S .      |</span></span><br><span class="line"><span class="string">| . =   o         |</span></span><br><span class="line"><span class="string">|. o . .          |</span></span><br><span class="line"><span class="string">|*. .             |</span></span><br><span class="line"><span class="string">|BX+              |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br><span class="line"><span class="string">xeonds@ark-station:~$ ls | grep example</span></span><br><span class="line"><span class="string">example-key</span></span><br><span class="line"><span class="string">example-key.pub</span></span><br></pre></td></tr></table></figure>
+<p>上面带<code>.pub</code>后缀的就是公钥，私钥是不带后缀的那个。创建完成之后，可以用 <code>ssh-copy-id</code> 把公钥传给你要登陆的服务器，把私钥妥善保管好：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i example-key.pub username@example.com</span><br></pre></td></tr></table></figure>
+<p>还可以用<code>-p xxxx</code>指定端口。传完之后就能用前面的指令登陆服务器了。但是这样也挺麻烦的对吧。你别急，还有办法：把下面的内容保存到你的<code>~/.ssh/config</code>文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host my-server</span><br><span class="line">    HostName example.com</span><br><span class="line">    User username</span><br><span class="line">    Port 22                             # 端口默认22的话可以不写</span><br><span class="line">    IdentityFile ~/.ssh/example-key     # 指向你的密钥路径</span><br><span class="line">    PreferredAuthentications publickey  # 指定优先使用公钥</span><br></pre></td></tr></table></figure>
+<p>现在就可以直接用下面的指令登陆了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh my-server</span><br></pre></td></tr></table></figure>
+<p>直接登陆，几乎无感。当然要是你给私钥设置密码了就得在登陆的时候再输入一遍密码。</p>
+<blockquote>
+<p>不过跟现代计算机系统比起来，还是人参与的环节更加脆弱，最终还是得小心社工手段。</p>
+</blockquote>
+<h3 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h3><p>因为忘了断开另一个开发机的ssh连接导致我有几个端口一直被占用着，所以得想办法断开另一台机器的连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w <span class="comment"># 查看所有连接</span></span><br><span class="line">pkill -<span class="built_in">kill</span> -t pts/x <span class="comment"># 断开编号为x的连接</span></span><br><span class="line">pkill -9 -t pts/x <span class="comment"># 和上边一样，不过是强制断联</span></span><br></pre></td></tr></table></figure>
+<p>不过不知道为啥好像远程shell的服务还活着，只能手动杀掉了。下次建议用tmux，省事省心。</p>
+<h3 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h3><p>OpenSSH 还提供了一种安全传输文件的方法，称为 SFTP（SSH 文件传输协议）。要使用 SFTP 传输文件，您需要使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp [options] [username]@[hostname]  </span><br></pre></td></tr></table></figure>
+<p>其中，<code>[options]</code> 是可选的参数，例如 <code>-i</code> 指定要使用的私钥文件，<code>-L</code> 指定要使用的本地端口转发，<code>-R</code> 指定要使用的远程端口转发等。<code>[username]</code> 是远程主机的用户名，<code>[hostname]</code> 是远程主机的主机名或 IP 地址。<br>例如，如果您要使用密钥文件 <code>id_rsa</code> 将本地文件 <code>file.txt</code> 传输到远程主机 <code>example.com</code>，可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp -i id_rsa example.com  </span><br></pre></td></tr></table></figure>
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><h3 id="1-端口转发"><a href="#1-端口转发" class="headerlink" title="1. 端口转发"></a>1. 端口转发</h3><blockquote>
+<p>ref:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57630633">SSH命令的三种代理功能 - 韦易笑</a></p>
+</blockquote>
+<p>OpenSSH 提供了一种称为端口转发的功能，允许您将本地端口与远程端口进行映射。这使得您可以在本地网络上使用远程服务，而无需将服务暴露给外部网络。要使用端口转发，您需要使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L [local_port:]local_host [username]@[hostname]  </span><br></pre></td></tr></table></figure>
+<p>其中，<code>[local_port]</code> 是本地端口的名称，<code>local_host</code> 是本地主机的名称或 IP 地址，<code>[username]</code> 是远程主机的用户名，<code>[hostname]</code> 是远程主机的主机名或 IP 地址。<br>例如，如果您要将本地端口 8080 映射到远程主机的 SSH 服务（端口 22），可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8080:localhost username@example.com  </span><br></pre></td></tr></table></figure>
+
+<p>上面的指令就能很轻易实现基于<code>xxx over SSH</code>的内网穿透。举个例子，前面我配置好了我的服务器的<code>ssh config</code>，假设我的服务器配置项名为<code>server</code>，在局域网中有一台地址为<code>1.14.5.14</code>的Windows服务器，那么我就可以使用一行指令通过SSH跳转连接到这台Windows服务器的远程桌面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 3389:1.14.5.14:3389 server -N &amp; rdesktop localhost</span><br></pre></td></tr></table></figure>
+<p>假设我的这台服务器<code>server</code>在层层内网中，需要经过多重跳板才能从公网进行访问，一般的远程桌面面对这种网络环境可能比较困难，但是对于上面的<code>RDP over SSH</code>，这种方法既能享受<code>SSH</code>的安全性，又能相对便利地进行访问——只要配置好这台<code>server</code>服务器的<code>ProxyJump</code>路径和登陆就行。</p>
+<p>端口转发有三种方式，上边的<code>-L</code>是正向代理，也就是在本地启动端口，把本地的数据转发到远端。上面转发桌面的例子就是这样，把本地3389端口的RDP请求转发到了远端的3389端口，从而实现了从本地访问远程服务器所在局域网的计算机的需求。另外两种分别是反向代理<code>-R</code>和socks5代理<code>-D</code>。这个一般可以作为兜底方案，长期需求建议上服务器。</p>
+<p>按照正向代理的思路，反向代理就是把远端端口的访问请求转发到本地的计算机上。比如访问一个公网计算机的1234端口，就可以通过<code>-R</code>启动反向代理将这个端口的请求转发到本地的任意端口（比如4514）从而将内网的某个服务映射到公网中。这一点特别适合临时给某个服务搭建一个预览平台。</p>
+<p>另外就是socks5转发，可以直接点上边链接看原文，这种我还没用过就不做阐述了。</p>
+<p>下面用指令总结下这几种代理方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转发本地请求到远端，例如访问远程局域网的远程桌面</span></span><br><span class="line">ssh -L [本地主机所在局域网任意主机:端口]:[目标主机所在局域网任意主机:端口] 要连接的主机</span><br><span class="line"><span class="comment"># 转发远端请求到本地，例如穿透本机某端口的服务到公网</span></span><br><span class="line">ssh -R [远端主机:端口]:[本地主机局域网任意主机:端口] 远端主机</span><br><span class="line"><span class="comment"># 本地socks5代理，效果大概就是让远端主机成为自己1080端口的上网代理？</span></span><br><span class="line"><span class="comment"># 完成之后，在浏览器代理设置里边设置代理为socks5，地址为localhost:1080就行</span></span><br><span class="line">ssh -D localhost:1080 远端主机</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>连接后执行一条指令后断开</li>
+</ol>
+<p>直接在连接命令后边跟上要执行的指令就行。</p>
+<ol start="3">
+<li>在远程主机运行X程序</li>
+</ol>
+<p>连接命令加上<code>-X</code>参数，然后主机就会开启X转发。用<code>-x</code>则是关闭X转发。没用过，不过看起来像是服务器上跑进程，本地跑GUI的做法？</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>SSH学习笔记</p><p><a href="https://mxts.jiujiuer.xyz/2023/09/25/ssh-usage/">https://mxts.jiujiuer.xyz/2023/09/25/ssh-usage/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>xeonds</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-25</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Linux/">Linux</a><a class="link-muted mr-2" rel="tag" href="/tags/SSH/">SSH</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://mxts.jiujiuer.xyz/" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%9F%BA%E4%BA%8EBash%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BA%A7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">基于Bash的目录级环境配置工具</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/16/flutter-intro/"><span class="level-item">Flutter速通指南</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "98718e72d69d7ffd2e1554047ceee2df",
+            repo: "xeonds.github.io",
+            owner: "xeonds",
+            clientID: "2bfc40bc0b5fef7b0688",
+            clientSecret: "475f278f70ff3f0888e047f10766ab6929168f78",
+            admin: ["xeonds"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#基本用法"><span class="level-left"><span class="level-item">1</span><span class="level-item">基本用法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#远程登录"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">远程登录</span></span></a></li><li><a class="level is-mobile" href="#断开连接"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">断开连接</span></span></a></li><li><a class="level is-mobile" href="#传输文件"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">传输文件</span></span></a></li></ul></li><li><a class="level is-mobile" href="#高级用法"><span class="level-left"><span class="level-item">2</span><span class="level-item">高级用法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-端口转发"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">1. 端口转发</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">ENJ0Y CREATiNG.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Solaris, Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">161</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">31</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">82</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://holynia.github.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Holynia</span></span><span class="level-right"><span class="level-item tag">holynia.github.io</span></span></a></li><li><a class="level is-mobile" href="https://ray.al" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Ray</span></span><span class="level-right"><span class="level-item tag">ray.al</span></span></a></li><li><a class="level is-mobile" href="https://moefactory.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Robotxm</span></span><span class="level-right"><span class="level-item tag">moefactory.com</span></span></a></li><li><a class="level is-mobile" href="https://blog.dml.ink" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Dimole</span></span><span class="level-right"><span class="level-item tag">blog.dml.ink</span></span></a></li><li><a class="level is-mobile" href="https://mxts.jiujiuer.xyz/links" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">All</span></span><span class="level-right"><span class="level-item tag">mxts.jiujiuer.xyz</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-18T14:41:07.000Z">2024-03-18</time></p><p class="title"><a href="/2024/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/API%E5%8E%8B%E6%B5%8B%E7%AC%94%E8%AE%B0/">API压测笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-18T05:53:51.000Z">2024-01-18</time></p><p class="title"><a href="/2024/01/18/%E6%96%87%E5%AD%A6/%E6%B8%B8%E8%AE%B0/trip-to-tsingdao/">青岛之行</a></p><p class="categories"><a href="/categories/%E6%96%87%E5%AD%A6/">文学</a> / <a href="/categories/%E6%96%87%E5%AD%A6/%E6%B8%B8%E8%AE%B0/">游记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-15T11:17:19.000Z">2024-01-15</time></p><p class="title"><a href="/2024/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/db-review/">数据库复习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-31T12:30:31.000Z">2023-12-31</time></p><p class="title"><a href="/2023/12/31/%E6%96%87%E5%AD%A6/%E6%9D%82%E8%B0%88/2023%E8%BF%99%E4%B8%80%E5%B9%B4/">2023这一年</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T00:27:36.000Z">2023-12-29</time></p><p class="title"><a href="/2023/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9E%B6%E6%9E%84%E7%9A%84%E7%8E%B0%E7%8A%B6%E5%92%8C%E6%9C%AA%E6%9D%A5/">云原生架构的现状和未来</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/"><span class="level-start"><span class="level-item">2024</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">50</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">56</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/"><span class="level-start"><span class="level-item">2020</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/"><span class="level-start"><span class="level-item">2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/"><span class="level-start"><span class="level-item">2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2002/"><span class="level-start"><span class="level-item">2002</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a><p class="is-size-7"><span>&copy; 2024 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
