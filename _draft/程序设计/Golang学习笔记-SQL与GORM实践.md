@@ -154,6 +154,86 @@ if err := db.Where("name = ?", "user").DeleteInBatches(User{}, 100).Error; err !
 
 ### 代码复用、分库分表、Sharding
 
+#### 代码复用-分页最佳实践
+
+分页是查询的一个基本要求之一。这部分代码大多重复，适合复用。下面是一种最佳实践：
+
+这是一个传有分页数据的Gin Handler，它需要对数据库进行分页查询：
+
+```go
+func (p propertyRepository) GetPagedAndFiltered (limit, page int){
+}
+```
+
+随后我们定义一个`gorm`中间件去对数据库进行分页：
+
+```go
+import "gorm.io/gorm"  
+  
+type paginate struct {  
+limit int  
+page int  
+}  
+  
+func newPaginate(limit int, page int) *paginate {  
+return &paginate{limit: limit,page: page}  
+}  
+  
+func (p *paginate) paginatedResult(db *gorm.DB) *gorm.DB {  
+offset := (p.page - 1) * p.limit  
+  
+return db.Offset(offset).  
+Limit(p.limit)  
+}
+```
+
+随后，就可以在数据库中使用分页了：
+
+```go
+func (p propertyRepository) GetPagedAndFiltered(limit, page int) ([]Property, error) {  
+var properties []Property  
+  
+err := p.db.Scopes(newPaginate(limit,page).paginatedResult).Find(&properties).Error  
+  
+return properties, err  
+}
+```
+
+当然，我对上面的代码进行了进一步的集成。虽然损失了低耦合性质，但是只是在Gin使用的话体验拉满：
+
+```go
+type Pagination struct {
+	PageSize int
+	PageNum  int
+}
+
+// GetPagination Get pagination info
+func GetPagination(c *gin.Context) Pagination {
+	var data Pagination
+	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
+	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
+	switch {
+	case pageSize >= 100:
+		data.PageSize = 100
+	case pageSize <= 0:
+		data.PageSize = 10
+	}
+	if pageNum <= 0 {
+		data.PageNum = 1
+	}
+	return data
+}
+
+func (p *Pagination) PaginatedResults(db *gorm.DB) *gorm.DB {
+	offset := (p.PageNum - 1) * p.PageSize
+	return db.Offset(offset).Limit(p.PageSize)
+}
+```
+
+使用方法就是在Gin Handler中用`GetPagination`获取分页参数，然后在`model`的具体数据库实现操作中使用`db.Scopes(page.PaginatedResult).xxx`直接分页。
+
+应该是一种最佳实践。
+
 ### 混沌工程/压测
 
 ### Logger/Trace
@@ -174,3 +254,85 @@ GORM提供了一些安全相关的方法，以便我们更好地保护数据安�
 - `db.Set("gorm:association_autocreate_join_table", false)`：禁止自动创建关联表。
 
 这些方法可以帮助我们更好地保护数据安全，避免意外的数据修改和删除。同时，我们也需要注意数据安全和代码复用等方面的问题，以便更好地应对实际开发中的需求。
+
+### 多表查询
+
+多表查询的时候记得字段名得首字母大写，和结构体名称保持一致：
+
+```golang
+//  model
+// 公司
+type Company struct {
+	ID        uint `gorm:"primaryKey;autoIncrement"`
+	Name      string
+	CreatedAt time.Time
+}
+
+// 车队
+type Team struct {
+	ID          uint `gorm:"primaryKey;autoIncrement"`
+	Name        string
+	CompanyID   uint
+	Company     Company `gorm:"foreignKey:CompanyID;onDelete:CASCADE"`
+	ManagerName string
+}
+
+// 路线
+type Route struct {
+	ID     uint `gorm:"primaryKey;autoIncrement"`
+	Name   string
+	TeamID uint
+	Team   Team `gorm:"foreignKey:TeamID;onDelete:CASCADE"`
+}
+
+// 司机
+type Driver struct {
+	ID      uint `gorm:"primaryKey;autoIncrement"`
+	Name    string
+	RouteID uint
+	Route   Route `gorm:"foreignKey:RouteID;onDelete:CASCADE"`
+}
+
+// 队长
+type RoadManager struct {
+	ID      uint `gorm:"primaryKey"`
+	Name    string
+	RouteID uint
+	Route   Route `gorm:"foreignKey:RouteID;onDelete:CASCADE"`
+}
+
+// 违章
+type Violation struct {
+	ID            uint `gorm:"primaryKey;autoIncrement"`
+	DriverID      uint
+	VehicleID     uint
+	TeamID        uint
+	RouteID       uint
+	OccurredAt    time.Time
+	ViolationType string
+
+	Driver  Driver  `gorm:"foreignKey:DriverID;onDelete:CASCADE"`
+	Vehicle Vehicle `gorm:"foreignKey:VehicleID;onDelete:CASCADE"`
+	Team    Team    `gorm:"foreignKey:TeamID;onDelete:CASCADE"`
+	Route   Route   `gorm:"foreignKey:RouteID;onDelete:CASCADE"`
+}
+
+// 车辆
+type Vehicle struct {
+	ID  uint `gorm:"primaryKey;autoIncrement"`
+	VIN string
+}
+
+// handler
+api.POST("query/violation/driver", func(c *gin.Context) {
+    var data ReqeustQuery
+    c.ShouldBindJSON(&data)
+    query := db.Model(&Violation{}).Joins("Vehicle").Joins("Team").Joins("Route").Joins("Driver")
+    start, _ := time.Parse(time.RFC3339, data.Time[0])
+    end, _ := time.Parse(time.RFC3339, data.Time[1])
+    query = query.Where("Driver.Name = ? AND occurred_at BETWEEN ? AND ?", data.Name, start, end)
+    var violations []Violation
+    query.Find(&violations)
+    c.JSON(200, violations)
+})
+```

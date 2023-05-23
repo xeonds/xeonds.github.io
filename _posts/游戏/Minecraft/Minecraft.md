@@ -10,6 +10,7 @@ date: '2020.03.18 17:39:18'
 categories:
   - 游戏
   - Minecraft
+cover: /img/79c2fe8bd08250e6505ed783980d3739.jpeg
 ---
 
 ## Minecraft：永恒的经典

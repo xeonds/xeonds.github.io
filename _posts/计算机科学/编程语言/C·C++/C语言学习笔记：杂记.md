@@ -194,3 +194,22 @@ float avarage(int n_values, ...)
     return sum/n_values;
 }
 ```
+
+## 灵活性
+
+```c
+switch(cond) {
+    do{
+        case 1: i++; 
+        case 2: i++; 
+        case 3: i++; 
+        case 4: i++; 
+        case 5: i++; 
+        case 6: i++; 
+        case 7: i++; 
+    }
+    while(cond2);
+}
+```
+
+没啥技巧，就是反映了C实现的灵活性。原作者为了减少转移次数来优化性能，就整了这么个写法来增加一次跳转后执行的指令数，同时借助`switch`控制非整数量来对齐结果。最重要的是，这用法反应了编译器/C标准对`switch`这个语法结构的描述，以及对于程序执行流控制的方式。

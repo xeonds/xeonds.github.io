@@ -151,21 +151,23 @@ deploy:
 
 这次的步骤需要使用到`git`和`hexo`两个工具，并且我们需要创建三个分支用来实现自动化博客部署。
 
+>	啊对了，如果不想自己搭建直接用的话，也不是不可以。只需要打开我的[仓库页面](https://github.com/xeonds/xeonds.github.io)，然后点击那个fork，接着到你的仓库下继续操作：首先把`.github/workflows/hexo-deploy.yml`最后的`REPOSITORY_NAME`改成你自己博客的名字（xxx.github.io)，然后把仓库名字改成刚才设置的名字，再检查仓库设置的Pages页面和Actions->General页面的设置项是否和底下的一样。完成后，clone到本地，把我的博文换成你的，再到deploy分支配置好你的博客发布设置，最后push到GitHub检查一下有没有问题即可。
+
 ### 开始！
 
 首先，在GitHub上创建你的博客仓库：
 
 >特别注意，这里我建这个名字只是作为示范，你们建立仓库的时候直接用`用户名.github.io`当仓库名就ok
 
-![](Pasted%20image%2020230521011305.png)
+![](/img/Pasted%20image%2020230521011305.png)
 
 并克隆到本地：
 
-![](Pasted%20image%2020230521011417.png)
+![](/img/Pasted%20image%2020230521011417.png)
 
 完成后打开：
 
-![](Pasted%20image%2020230521005753.png)
+![](/img/Pasted%20image%2020230521005753.png)
 
 上面我已经用VSCode打开了。创建好之后，在当前目录下打开命令行工具，再使用下面的命令创建两个分支：`deploy`和`html`。
 
@@ -182,11 +184,11 @@ git branch html
 
 先用`git checkout deploy`切换到构建分支，**并删除LICENSE和README.md**。随后创建一个临时目录`tmp`，并在其中运行`hexo init`来初始化博客构建工具hexo。
 
-![](Pasted%20image%2020230521012200.png)
+![](/img/Pasted%20image%2020230521012200.png)
 
 随后将`tmp`下除了`.git`的所有文件移动到文件夹根目录下，并删除`tmp`目录。然后运行一下`npm i`再安装下依赖。
 
-![](Pasted%20image%2020230521012421.png)
+![](/img/Pasted%20image%2020230521012421.png)
 
 然后和上面一样，在根目录下安装必要的依赖：
 
@@ -205,7 +207,7 @@ deploy:
 
 这时候应该就可以试着推送一下。没有问题的话会看到这个结果：
 
-![](Pasted%20image%2020230521013346.png)
+![](/img/Pasted%20image%2020230521013346.png)
 
 这证明我们的推送已经配置好了。如果之前没设置git的用户名和邮箱的话会出问题，设置一下就好了。
 
@@ -221,7 +223,7 @@ deploy:
 
 完成这一步后，我们用`git checkout main`切换到main分支，开始我们最后的工作。不过在这之前，先在根目录添加一个`.gitignore`，把这几个文件添加进去：
 
-![](Pasted%20image%2020230521015420.png)
+![](/img/Pasted%20image%2020230521015420.png)
 
 完成之后，我们就可以把之前移出去的source目录下的所有东西移动进来了。
 
@@ -281,13 +283,13 @@ git push -u origin deploy
 
 现在可以关掉其他东西，打开浏览器了。找到我们的仓库，点开设置并找到**Pages**选项卡：
 
-![](Pasted%20image%2020230523215123.png)
+![](/img/Pasted%20image%2020230523215123.png)
 
 按照上图的设置进行配置：首先在Source选项中，选择**Deploy from a branch**，然后在Branch选项中，选择`html`分支的`/(root)`目录作为部署的源路径。
 
 保存之后，在左侧找到**Actions > General**选项卡：
 
-![](Pasted%20image%2020230523215832.png)
+![](/img/Pasted%20image%2020230523215832.png)
 
 翻到最底下，把**Workflow Permossions**的选项改成**Read and write permissions**，然后保存。
 
@@ -299,7 +301,7 @@ git push -u origin deploy
 
 随后，等待大概1分钟左右，打开你的仓库首页，查看GitHub Action运行情况：
 
-![](Pasted%20image%2020230523220538.png)
+![](/img/Pasted%20image%2020230523220538.png)
 
 一切顺利的话，就会看到成功的对勾和右下角的Environments为Active。此时打开你的GitHub Pages链接（通常是`https://[用户名].github.io/`），应该就能正常看到你的博客首页了。
 
@@ -328,7 +330,7 @@ Obsidian（黑曜石）是一个很好用的专业Markdown写作和管理工具�
 
 首先，安装[Obsidian](https://github.com/obsidianmd/obsidian-releases/releases/download/v1.1.9/Obsidian.1.1.9.exe)，下不下来就用梯子。安装完成后打开你的博客文件夹：
 
-![就中间那个打开本地仓库](img/Pasted%20image%2020230210143902.png)
+![就中间那个打开本地仓库](/img/Pasted%20image%2020230210143902.png)
 
 打开之后进入设置，在文件与链接最底下的忽略文件中添加`node_modules`、`scaffolds`、`public`和`themes`四个文件夹。随后往上拉，存放新建笔记的文件夹改为`source/_posts`。
 
@@ -338,6 +340,8 @@ Obsidian（黑曜石）是一个很好用的专业Markdown写作和管理工具�
 
 改为下面的格式即可（author后面改成你自己的名字）。简单介绍下，title标题，date文章创建日期，author作者，toc目录（table of contents），excerpt文章简介，tags文章标签。
 
+如果是使用部署方案2，那么只需要用obsidian打开仓库根目录，然后把scaffolds目录复制到博客目录里，然后改名成_scaffolds，然后把你要添加的模板添加到目录里，再在设置里改好，就能愉快地使用了。另外，不要忘了忽略node_modules之类的目录。
+
 ---
 
 到这里就配置完了。接下来讲讲写作流程：
@@ -345,3 +349,7 @@ Obsidian（黑曜石）是一个很好用的专业Markdown写作和管理工具�
 打开Obsidian，新建文章并确定好标题。随后点击左侧模板图标，选择post模板，它会根据模板格式自动生成文章标题、作者、时间等文章元信息，随后就是写作了。
 
 完成后，在博客目录打开命令行，运行`hexo s`预览博客发布后的效果，确认无误后使用`hexo g && hexo d`来生成并发布博客到GitHub Pages。当然，如果还能折腾的动，还可以使用Obsidin的Git插件+Git命令在Obsidian中一键发布博客。
+
+如果是使用方案2部署，那么就更简单了。直接把博客目录作为Markdown仓库打开，并设置好Obsidian Git插件，配置好模板目录。写作完成后，直接`Ctrl+P`来commit+push就行，直接推送到远程仓库，让GitHub Actions帮你发布到html分支上。
+
+这应该就是折腾的尽头了。如果你还想再折腾的话，那可以试试更改之前的workflow，来添加你的自定义操作，比如一键部署到你的服务器上，或者邮件通知发布结果之类的。

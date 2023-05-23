@@ -10,6 +10,7 @@ date: '2021.07.23 21:39:02'
 categories:
   - 游戏
   - Minecraft
+cover: /img/79c2fe8bd08250e6505ed783980d3739.jpeg
 ---
 
 ## 前言
