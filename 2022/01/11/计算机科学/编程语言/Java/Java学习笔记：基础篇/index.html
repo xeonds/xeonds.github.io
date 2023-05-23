@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Java学习笔记：基础篇 - 神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="《Java核心技术》的读书笔记。虽然现在用的是Kotlin，不过Java也是很有学习必要的"><meta property="og:type" content="blog"><meta property="og:title" content="Java学习笔记：基础篇"><meta property="og:url" content="https://xeonds.github.io/2022/01/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"><meta property="og:site_name" content="神社的储物间"><meta property="og:description" content="《Java核心技术》的读书笔记。虽然现在用的是Kotlin，不过Java也是很有学习必要的"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://xeonds.github.io/img/og_image.png"><meta property="article:published_time" content="2022-01-11T10:34:40.000Z"><meta property="article:modified_time" content="2023-05-23T14:50:29.996Z"><meta property="article:author" content="xeonds"><meta property="article:tag" content="Java"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://xeonds.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xeonds.github.io/2022/01/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"},"headline":"Java学习笔记：基础篇","image":["https://xeonds.github.io/img/og_image.png"],"datePublished":"2022-01-11T10:34:40.000Z","dateModified":"2023-05-23T14:50:29.996Z","author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":"https://xeonds.github.io/img/favicon.ico"}},"description":"《Java核心技术》的读书笔记。虽然现在用的是Kotlin，不过Java也是很有学习必要的"}</script><link rel="canonical" href="https://xeonds.github.io/2022/01/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%AF%87/"><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?59fd9f709f6626bf608f0b08415e0283";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archive</a><a class="navbar-item" href="/categories">Category</a><a class="navbar-item" href="/links">Link</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-01-11T10:34:40.000Z" title="1/11/2022, 10:34:40 AM">2022-01-11</time>发表</span><span class="level-item"><time dateTime="2023-05-23T14:50:29.996Z" title="5/23/2023, 2:50:29 PM">2023-05-23</time>更新</span><span class="level-item"> xeonds </span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a><span> / </span><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span> / </span><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/">Java</a></span><span class="level-item">18 分钟读完 (大约2749个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Java学习笔记：基础篇</h1><div class="content"><h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>说起来，自从学完了C语言，很久都没有成系统地学完一门编程语言了。</p>
+<p>Python和PHP比较简单，基本都是边用边查学完的；Kotlin则是最近学Android开发顺便学的；C++倒是系统看过一遍书，不过最近基本没咋写过，忘的也差不多了；C#好久之前学的了，也就是写UWP的时候学了一点；JS？好像会，又好像不会（</p>
+<p>快寒假了，也该摸点鱼了。梳理一下：Android学了大半，ML&#x2F;DL没碰，Unity还在新建文件夹，算法就看了一点点。仔细想了想，还是先学点Java吧，一来下学期要学，二来和Android开发联系也紧密。最重要的是，这次得认真学学面向对象了。虽然在Python和PHP里都在用，但是终归还是系统学习一遍为上。</p>
+<p>我用的是《Java核心技术》卷一&#x2F;二。很多人在推荐，试读了一下，感觉不错，不像黑皮系列那么难读，废话也比较少。</p>
+<h1 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h1><p>官方白皮书给出了如下关键字：简单性（接近C++）、面向对象（支持多重继承）、分布式、健壮性（优秀的指针模型）、安全性（复杂的安全模型）、体系结构中立（Java虚拟机）、可移植性（众多平台独立的Java库）、<strong>解释型</strong>（轻量的编译过程）、高性能（即时编译器）、多线程、动态性。</p>
+<blockquote>
+<p>虽然关键字里有“解释型”，然而Java是真正的编译型语言。</p>
+</blockquote>
+<p>虽然说Java是纯粹的面向对象语言，不过它并没有做到完全的面向对象：int，double等基本数据类型仍然不是对象。不过同样基于JVM（Java虚拟机）的Kotlin做到了完全的面向对象。</p>
+<h1 id="Java环境配置"><a href="#Java环境配置" class="headerlink" title="Java环境配置"></a>Java环境配置</h1><ul>
+<li><p>在Windows下，访问<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">Oracle官网</a>，下载JDK（Java Development Kit）后安装，并将<code>jdk/bin/</code>目录加入环境变量（详情百度）即可。</p>
+</li>
+<li><p>Linux使用相应的包管理器（apt，yum等）直接安装即可。</p>
+</li>
+</ul>
+<p>安装完成后，可以安装库源文件：找到<code>jdk/lib</code>目录，将<code>src.zip</code>解压到<code>jdk/javasrc/</code>目录下即可。同时也可下载官方文档，在官网上能找到。</p>
+<h1 id="JDK基本使用"><a href="#JDK基本使用" class="headerlink" title="JDK基本使用"></a>JDK基本使用</h1><p>打开记事本（或其他文本编辑器），写入以下内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> <span class="string">&quot;Hello, world!&quot;</span>;</span><br><span class="line">        System.out.println(greeting);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;greeting.length();i++)</span><br><span class="line">            System.out.print(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另存为<code>Hello.java</code>并打开<code>cmd</code>并切换到当前目录。在<code>cmd</code>中输入以下内容以编译并运行：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac Hello.java</span><br><span class="line">java Hello</span><br></pre></td></tr></table></figure>
+
+<p>这是我们的第一个程序。掌握基础操作后，你可以使用你喜欢的IDE进行开发。我偏向使用VSCode（理论上Android Studio应该也可以）。</p>
+<h1 id="Java基本内容"><a href="#Java基本内容" class="headerlink" title="Java基本内容"></a>Java基本内容</h1><h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><p>Java程序是以类为单位的，类则是一种自定义数据结构（类似于C中的结构体struct）。上面的程序包含了一个public类型的class（类），Hello是这个类的类名，这名称需和文件名同名。和C语言一样，Java也是大小写敏感的。习惯上将类名的每个单词首字母大写。</p>
+<p>这个类中包含了一个main方法（也就是函数），作为这个Java程序的运行起点。这个方法中包含了该程序的所有逻辑，和C非常相似。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Java注释和C&#x2F;C++基本一样，支持<code>//</code>和<code>/*</code>、<code>*/</code>，同时也支持另一种：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*这是一个注释</span></span><br><span class="line"><span class="comment">*它可以自动生成文档</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>后两种都不能嵌套。这和C&#x2F;C++一致。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Java是强类型语言。它共有8种基本数据类型：</p>
+<ul>
+<li>整型：int（4字节）、short（2字节）、long（8字节）、byte（1字节）</li>
+<li>浮点类型：float（4字节）、double（8字节）</li>
+<li>char类型</li>
+<li>boolean（布尔）类型</li>
+</ul>
+<p>这些都是关键字，用于声明对应类型的变量。</p>
+<p>关于整型，和C差不多，有几点要注意：Java没有无符号类型整数。在整数后加L或l表示long类型整数，前缀0X或0x表示16进制整数，前缀0B或0b表示2进制整数，前缀0表示8进制数。为了可读性，还可以用下划线<code>_</code>分割整数：例如<code>0b1111_0100</code>这样的形式都是合法的。</p>
+<p>关于浮点类型，double的使用相较于float更精确。浮点数后缀有两种：F或f表示float类型，而D或d表示double类型。不加后缀默认为double类型。也可以用16进制表示浮点数值：由于0.125&#x3D;2的-3次幂，故可表示成0x1.0p-3。同时，还有三个特殊的浮点数值：正无穷大，负无穷大，NaN（Not a Number，不是一个数字）。例如0&#x2F;0的结果就是NaN。可用Double.isNaN()可以检测一个变量是否为数值。另外，浮点数值采用二进制系统表示，因而不能精确表示1&#x2F;10。此时可以使用BigDecimal类作为替代。</p>
+<p>关于char类型：char原本表示单个字符。不过如今部分Unicode字符需要两个char来表示。和C一样，单引号表示字符，双引号表示字符串，反斜杠表示转义符。另外，可以直接用诸如<code>\u2122</code>而不加引号的方式表示字符，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String\u005B\u005D args)</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说，这种Unicode转义字符会在编译前被处理。因此<strong>使用反斜杠时一定注意</strong>。</p>
+<p>关于boolean类型：C中没有布尔类型，而是使用int类型替代。Java中boolean类型只有true和false两个值。它和整数不能相互转换。这可以预防很多潜在的编程错误（例如<code>if(x=0)</code>在C语言中永远为假）。</p>
+<p>Java的变量声明和C&#x2F;C++基本一样，都是<code>关键字 变量名</code>的形式。同样可以在声明时对变量进行初始化（例如<code>int a=5</code>）。和C++一样，Java的声明可以在代码中的任何地方。用关键字final可以声明常量，这种变量只能被赋值一次。final就相当于C中的const关键字（const也是Java的关键字，不过Java并没有用它）。常量名一般习惯全部大写。常量也可以声明在main外部，类内部，使用关键字static final即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DAY_OF_WEEK</span> <span class="operator">=</span> <span class="number">7</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>这和C&#x2F;C++基本一致：<code>+ - * /</code>表示四则运算，<code>%</code>表示<strong>整数求模运算</strong>。对于除法，整数被0除会产生异常，而浮点数被0除则会得到无穷大或者NaN结果。</p>
+<p>Java中有一个很有用的Math库，用来进行各种数学运算，并且还有一些数学常量。</p>
+<ul>
+<li><code>Math.sqrt(x)</code>：返回一个<em>数值</em>的平方根</li>
+<li><code>Math.pow(x,a)</code>：返回x的a次幂。参数x和a以及返回值都是double类型</li>
+<li><code>Math.floorMod(x,a)</code>：返回x对a取余的结果。它的存在是为了修补%运算不能正确处理负数的问题：负数的模显然应该是正数</li>
+<li><code>Math.sin/cos/tan/atan/atan2</code>：常用三角函数</li>
+<li><code>Math.exp/log/log10</code>：指数函数和它的反函数，以及以10为底的对数</li>
+<li><code>Math.PI/E</code>：两个近似表示π和e的常量</li>
+</ul>
+<p>在源文件顶部加上这行代码，就可以省略这些方法&#x2F;常量的Math.前缀了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.*;</span><br></pre></td></tr></table></figure>
+
+<p>数据类型转换和强制类型转换，和C&#x2F;C++基本相同。此外，Java还有<code>Math.round</code>方法，可以对浮点数进行四舍五入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">9.997</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">nx</span> <span class="operator">=</span> (<span class="type">int</span>)Math.round(x);</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>Math.round</code>返回的是long类型，所以需要用<code>(int)</code>显式转换，避免数据丢失。</p>
+<p>和C&#x2F;C++一样，Java也有<code>+=</code>,<code>-=</code>,<code>*=</code>,<code>/=</code>和<code>%=</code>这几个结合赋值和运算符的运算符。左右数据类型不同时会发生强制类型转换，将运算结果转换成左值的类型。自增，自减运算符和C&#x2F;C++完全一样，不需要说明。</p>
+<p>Java中的逻辑运算符和C&#x2F;C++一致，且支持短路特性。Java也支持三目运算符<code>?:</code>。下面的表达式&#96;&#96;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x&gt;y?x:y;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>x</code>和<code>y</code>中较大的值。</p>
+<p>位运算符有<code>&amp; | ^ ~</code>四个，分别表示与，或，异或，非。利用位运算我们可以获得一个整数的各个位，也就是掩码技术。另外它的运算对象如果是布尔类型，则返回值也是布尔类型，但这种方式不使用路求值。</p>
+<p><code>&lt;&lt;</code>和<code>&gt;&gt;</code>是移位运算符，用法和C&#x2F;C++一样：将左值左移&#x2F;右移右值相应的位数。<code>&gt;&gt;&gt;</code>会用0填充高位，而<code>&gt;&gt;</code>会用符号位填充高位。没有<code>&lt;&lt;&lt;</code>运算符。</p>
+<p>枚举类型包括有限个命名的值，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Size</span>&#123;SMALL, LARGE&#125;;</span><br><span class="line"><span class="type">Size</span> <span class="variable">s</span> <span class="operator">=</span> Size.LARGE;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>Java字符串就是Unicode字符序列。Java没有内置字符串类型，而是在标准Java类库中提供了一个String预定义类。每个用双引号括起来的字符串都是String类的一个实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">e</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>substring</code>方法可以从一个较大的字符串提取出一个子串：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> greeting.substring(<span class="number">0</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>s</code>是一个由”hel”组成的字符串。这方法表示从第0个字符开始，复制到第三个（不包括）为止。</p>
+<ul>
+<li><code>+</code>用来连接字符串。非字符串值被应用于这个操作符时，会被转换成字符串类型。<strong>任何一个Java对象都可以转换成字符串。</strong>如果需要用定界符分隔并连接，只需要用<code>String.join</code>静态方法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> String.join(<span class="string">&quot;,&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面的<code>s</code>为<code>a,b,c</code>。</p>
+<p>Java的String类对象被称为<strong>不可变字符串</strong>，也就是说一旦创建String对象，就不能对其进行修改。</p>
+<p>利用<code>String.equals</code>方法检测两个字符串是否相等。例如<code>s.equals(t)</code>，返回<code>s</code>和<code>t</code>的比较结果。这里的<code>s</code>和<code>t</code>可以是字符串实例，也可以是字符串字面量。</p>
+<p><code>char</code>类型在Java中并不是很常用，因为现在很多字符需要两个char类型存储单元才能表示。因此尽量不要用<code>char</code>类型。</p>
+<p>下面是常用的String类的方法：</p>
+<ul>
+<li><code>boolean equals(Object other)</code> 字符串比较</li>
+<li><code>boolean equalsIgnoreCase(String other)</code>  字符串比较，忽略大小写</li>
+<li><code>boolean startsWith(String str)</code> 判断字符串是否以<code>str</code>开头</li>
+<li><code>boolean endsWith(String str)</code> 判断字符串是否以<code>str</code>结束</li>
+<li><code>int length()</code> 返回字符串的长度</li>
+<li><code>String substring(int begin)</code></li>
+<li><code>String substring(int begin, int end)</code></li>
+<li><code>String toLowerCase()</code></li>
+<li><code>String toUpperCase()</code></li>
+<li><code>String trim()</code> 返回删除左右空格的字符串</li>
+<li><code>String join(CharSequence delimiter, CharSequence... elements)</code> 就是上面的<code>String.join</code>方法</li>
+</ul>
+<p>构建字符串时，可以用<code>StringBuilder</code>类避免每次都新建一个String对象，节省空间：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">sb.append(ch);　　<span class="comment">//添加一个字符ch</span></span><br><span class="line">sb.append(str);　　<span class="comment">//添加一个字符串str</span></span><br><span class="line"><span class="type">String</span> <span class="variable">completedString</span> <span class="operator">=</span> sb.toString();　　<span class="comment">//完成后的字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是<code>StringBuilder</code>类的方法：</p>
+<ul>
+<li><code>StringBuilder()</code> 构造器</li>
+<li><code>int length()</code></li>
+<li><code>StringBuilder append(String str/char c)</code> 追加字符串&#x2F;字符并返回<code>this</code></li>
+<li><code>StringBuilder insert(String str/char c)</code> 插入字符并返回<code>this</code></li>
+<li><code>StringBuilder delete(int start, int end)</code> 删除<code>start</code>到<code>end</code>（不包括end）的代码单元并返回<code>this</code></li>
+<li><code>String toString()</code> 返回一个内容相同的字符串</li>
+</ul>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>输入基于<code>Scanner</code>类。首先得声明Scanner对象，并与标准输入流System.in关联：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br></pre></td></tr></table></figure>
+
+<p>随后就可以使用<code>Scanner</code>类的各种方法实现输入操作了。比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.print(<span class="string">&quot;input your name:&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> in.nextLine();</span><br></pre></td></tr></table></figure>
+
+<p>要使用<code>Scanner</code>类，需要在<strong>源码开头</strong>导入<code>java.util.*</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure>
+
+<p>下面是Scanner类的方法：</p>
+<ul>
+<li><code>Scanner(InputStream in)</code> 用给定的输入流创建一个Scanner对象</li>
+<li><code>String nextLine()</code> 读取下一行输入的内容</li>
+<li><code>int nextInt()</code> 读取下一个整数</li>
+<li><code>int nextDouble()</code> 读取下一个整数或浮点数</li>
+<li><code>boolean hasNex()</code> 检测输入中是否还有其他单词</li>
+<li><code>boolean hasNextInt()</code></li>
+<li><code>boolean hasNextDouble()</code></li>
+</ul>
+<p>用Scanner类进行格式化输出非常简单。使用<code>System.out.print()</code>方法可以直接输出<code>x</code>，用<code>System.out.printf()</code>可以格式化输出字符串。它的用法和C中的<code>printf()</code>完全一致。同时还新增了一些标志。详见<em>用于printf的标志</em>。同时，printf支持输出格式化日期与时间，但它已经被废弃（Deprecated），应当使用<code>java.time</code>包的方法。</p>
+<p>此外，也可以使用<code>String.format()</code>静态方法创建一个 格式化的字符串而不输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> String.format(<span class="string">&quot;Hllo, %s. Next year, you&#x27;ll be %d&quot;</span>, name, age);</span><br></pre></td></tr></table></figure>
+
+<p>Scanner类也支持文件输入输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(Paths.get(<span class="string">&quot;myfile.exe&quot;</span>), <span class="string">&quot;UTF-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>文件名中包含反斜杠的话，则需要再多添加一个反斜杠转义。另外，其中的<code>UTF-8</code>可省略，缺省值为运行  该程序的机器的默认编码。不过为了兼容性尽量不要这么做。还有，路径支持相对路径，不过位置是相对于Java虚拟机的启动路径而言的：即命令解释器的当前路径。也可以用下面的方式得到路径位置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">dir</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;user.dir&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>Java中也有块（block）的概念。大多数内容都和C一致，除了嵌套的块中不能声明重名变量。下面说一下流程控制语句：</p>
+<ul>
+<li><code>if-else if-else</code> 和C一样</li>
+<li><code>while/do-while</code> 和C一样</li>
+<li><code>for</code> 和C一样。不过添加了一种for each循环</li>
+<li><code>switch</code> 和C一样。不过从Java SE 7 开始，case标签可以是字符串字面量</li>
+<li><code>break</code> 后面可以带标签，用法和C中的goto一样。不过只能跳出语句块而不能跳入</li>
+<li><code>continue</code> 和C一样</li>
+</ul>
+<h2 id="大数值"><a href="#大数值" class="headerlink" title="大数值"></a>大数值</h2><p>java.math包中有BigInterger和BigDecimal两个类，分别表示任意精度的整数和浮点数。使用静态方法valueOf()将普通数值转换成大数值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigInterger</span> <span class="variable">a</span> <span class="operator">=</span> BigInterger.valueOf(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然而因为Java没有提供运算符重载，所以不能用<code>+-*/</code>来进行大数的四则运算，只能使用它们的<code>add subtract mulyiply divide mod compareTo</code>方法进行加减乘除以及求模、比较运算。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>和C差不多。不过<code>[]</code>得写在数据类型后而非变量名后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a;</span><br><span class="line">a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line"><span class="type">int</span>[] b = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>&#125;</span><br><span class="line">a = &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;</span><br><span class="line"><span class="type">int</span>[] d = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>]; <span class="comment">//允许数组长度为0</span></span><br></pre></td></tr></table></figure>
+
+<p>可以用<code>a.length</code>获取数组a的长度，其余的用法和C无异：数组长度也是不可变的。如果需要长度可变则应该考虑使用<code>array list</code>。</p>
+<p>数组除了可以用for循环遍历，也可以用for each循环遍历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(value : collection) statement</span><br><span class="line"><span class="comment">//例如，对于int数组a而言：</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> num: a)&#123;</span><br><span class="line">    System.out.println(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过，打印数组还可以用<code>System.out.println(Arrays.toString(a));</code>来完成。</p>
+<p>和上面类似，用<code>Arrays.copyOf(array, length)</code>可以复制数组。</p>
+<p>现在可以说说main()函数的参数<code>String[] args</code>了。这是一个参数数组，和C的argv参数基本一样。不过这里的args[0]指示的不是程序名，而是第一个参数。</p>
+<p>使用Arrays.sort(a)可以对数组进行排序。Arrays还有很多方法：</p>
+<ul>
+<li><code>Arrays.binarySearch(type[] a, type v)</code> 二分搜索值v，返回下标或负数值（若为未查找到）</li>
+<li><code>Arrays.fill(typr[] a, type v)</code> 用v填充数组</li>
+<li><code>Arrays.equals(type[] a, type[] b)</code> 数组比较，长度和对应位置的值都相等则返回true</li>
+</ul>
+<p>多位数组使用这样的方式声明：<code>int[][] a = new int[100][100];</code> 赋值和迭代等都和C差不多，按照java中一维数组的情况类推即可。</p>
+<hr>
+<p>好了，这些就是Java的基本内容了。下一节是关于Java的面向对象体系的介绍。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Java学习笔记：基础篇</p><p><a href="https://xeonds.github.io/2022/01/11/计算机科学/编程语言/Java/Java学习笔记：基础篇/">https://xeonds.github.io/2022/01/11/计算机科学/编程语言/Java/Java学习笔记：基础篇/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>xeonds</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-01-11</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-05-23</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://xeonds.github.io/" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/%E8%AE%B0%E4%B8%80%E6%AC%A1npm%E5%92%8Cnodejs%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">记一次npm和nodejs安装过程</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/Win10%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8WiFi%E7%83%AD%E7%82%B9/"><span class="level-item">Win10使用命令行启动WiFi热点</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">Enjoy creating.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Solaris, Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">124</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">61</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#序言"><span class="level-left"><span class="level-item">1</span><span class="level-item">序言</span></span></a></li><li><a class="level is-mobile" href="#Java简介"><span class="level-left"><span class="level-item">2</span><span class="level-item">Java简介</span></span></a></li><li><a class="level is-mobile" href="#Java环境配置"><span class="level-left"><span class="level-item">3</span><span class="level-item">Java环境配置</span></span></a></li><li><a class="level is-mobile" href="#JDK基本使用"><span class="level-left"><span class="level-item">4</span><span class="level-item">JDK基本使用</span></span></a></li><li><a class="level is-mobile" href="#Java基本内容"><span class="level-left"><span class="level-item">5</span><span class="level-item">Java基本内容</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#程序结构"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">程序结构</span></span></a></li><li><a class="level is-mobile" href="#注释"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">注释</span></span></a></li><li><a class="level is-mobile" href="#数据类型"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">数据类型</span></span></a></li><li><a class="level is-mobile" href="#运算符"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">运算符</span></span></a></li><li><a class="level is-mobile" href="#字符串"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">字符串</span></span></a></li><li><a class="level is-mobile" href="#输入输出"><span class="level-left"><span class="level-item">5.6</span><span class="level-item">输入输出</span></span></a></li><li><a class="level is-mobile" href="#流程控制"><span class="level-left"><span class="level-item">5.7</span><span class="level-item">流程控制</span></span></a></li><li><a class="level is-mobile" href="#大数值"><span class="level-left"><span class="level-item">5.8</span><span class="level-item">大数值</span></span></a></li><li><a class="level is-mobile" href="#数组"><span class="level-left"><span class="level-item">5.9</span><span class="level-item">数组</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:51:19.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux命令行工具学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-17T00:34:19.000Z">2023-03-17</time></p><p class="title"><a href="/2023/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">计组笔记：第三章-运算方法和运算器</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-16T15:12:16.000Z">2023-03-16</time></p><p class="title"><a href="/2023/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/GDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">GDB学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-13T13:06:51.000Z">2023-03-13</time></p><p class="title"><a href="/2023/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Linux%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%8D%E5%8A%A1/">Linux添加自定义服务</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-21T09:15:55.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/">第五章：数理统计初步</a></p><p class="categories"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a> / <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a><p class="is-size-7"><span>&copy; 2023 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

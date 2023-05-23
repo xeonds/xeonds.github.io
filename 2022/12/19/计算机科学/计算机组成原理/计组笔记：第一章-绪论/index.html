@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>计组笔记：第一章-绪论 - 神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="课程简介"><meta property="og:type" content="blog"><meta property="og:title" content="计组笔记：第一章-绪论"><meta property="og:url" content="https://xeonds.github.io/2022/12/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA/"><meta property="og:site_name" content="神社的储物间"><meta property="og:description" content="课程简介"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://xeonds.github.io/img/og_image.png"><meta property="article:published_time" content="2022-12-19T00:34:19.000Z"><meta property="article:modified_time" content="2023-05-23T14:50:30.000Z"><meta property="article:author" content="xeonds"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://xeonds.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xeonds.github.io/2022/12/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA/"},"headline":"计组笔记：第一章-绪论","image":["https://xeonds.github.io/img/og_image.png"],"datePublished":"2022-12-19T00:34:19.000Z","dateModified":"2023-05-23T14:50:30.000Z","author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":"https://xeonds.github.io/img/favicon.ico"}},"description":"课程简介"}</script><link rel="canonical" href="https://xeonds.github.io/2022/12/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA/"><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?59fd9f709f6626bf608f0b08415e0283";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archive</a><a class="navbar-item" href="/categories">Category</a><a class="navbar-item" href="/links">Link</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-12-19T00:34:19.000Z" title="12/19/2022, 12:34:19 AM">2022-12-19</time>发表</span><span class="level-item"><time dateTime="2023-05-23T14:50:30.000Z" title="5/23/2023, 2:50:30 PM">2023-05-23</time>更新</span><span class="level-item"> xeonds </span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a><span> / </span><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span><span class="level-item">11 分钟读完 (大约1644个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">计组笔记：第一章-绪论</h1><div class="content"><blockquote>
+<p>学时：78+20+1周<br>学分：5.5<br>类型：必修<br>参考书-教材：计算机组成与系统结构（十二五·第二版）、计算机组成原理（王闵，电子工业出版社，2001），计算机系统结构（李学干，西电，2001），深入理解计算机系统（机械工业出版社）<br>考核：期末考试，期中考试（&gt;40课时）-80%、作业，测验，出勤-10%、实验（5个）-10%<br>动机：不是专业基础课，但是有助于对计算机的理解和问题解决<br>要求：做笔记，纸质优先</p>
+</blockquote>
+<p>![[Pasted image 20221219100518.png]]</p>
+<h2 id="计算机硬件基本组成"><a href="#计算机硬件基本组成" class="headerlink" title="计算机硬件基本组成"></a>计算机硬件基本组成</h2><p>计算机的物理硬件有很多，不过可以大致划分为几类。作为现代计算机原型的冯诺依曼机，其结构可作如下划分：</p>
+<p><strong>输入设备</strong> 可以是磁盘，键盘，摄像头等设备<br><strong>控制器</strong><br><strong>运算器</strong> 负责进行运算<br><strong>存储器</strong> 包含寄存器等<br><strong>输出设备</strong> 可以是网卡等I&#x2F;O设备</p>
+<p>也可以说是三部分：中央处理器，存储器，I&#x2F;O</p>
+<h3 id="计算机中的数据流动"><a href="#计算机中的数据流动" class="headerlink" title="计算机中的数据流动"></a>计算机中的数据流动</h3><p>计算机的最主要用途是数据处理（借助运算器）。处理结果发送到输出设备。数据流向是从输入设备到运算器再到输出设备。在这过程中，可能会借助存储器（CPU存储空间不太大），因此运算器和存储器有交换。数据还会从运算器到控制器。这就是<strong>数据流</strong>。</p>
+<p>对应的还有控制流。控制器控制输入设备，运算器，存储器，输出设备。它控制硬件协调方式。</p>
+<p>还有<strong>指令流</strong>的说法。指令从存储器到指令，控制器对其解析并执行。</p>
+<h3 id="冯式架构计算机特点"><a href="#冯式架构计算机特点" class="headerlink" title="冯式架构计算机特点"></a>冯式架构计算机特点</h3><ol>
+<li><strong>内部进行二进制运算</strong> 无论数值数据是什么类型都会以二进制模式处理。非数值数据也会以二进制模式存储。指令在编译之后也会变成二进制文件，供控制器解析执行</li>
+<li><strong>存储程序</strong> 控制程序会预先存储在控制器中供后续执行</li>
+<li><strong>程序控制</strong> 计算机由程序控制运行</li>
+</ol>
+<p>早期计算机并非如此。比如以前的进制有十进制的，也有手动控制的计算机，有些计算机的程序是以硬件固定表示的。但是现在的计算机已经由以前的专用机进化成为如今的冯诺依曼通用机。</p>
+<p>后续的讲解会按照冯式机的结构展开。上面的冯式机结构是经过一定抽象的，下面是PC机的结构。</p>
+<p>总线挂载内存，处理器，I&#x2F;O。总线包含三种线：控制线（传输控制指令，比如读写等），数据线（传输数据），地址线（传输地址）。</p>
+<p>内存中的东西是一段一段存储的。每个最小单元大小是字节，若干字节构成一个段。段有指令段，数据段等。</p>
+<p>以计算1+2为例，CPU向内存发送x地址和读取指令，内存将值发送给CPU（取址）；对于y执行同样操作。然后，CPU计算1+2（执行），再将结果和地址还有写指令发送给内存，内存完成写入（写回）。</p>
+<p>以前的PC机是南北桥结构。北桥链接高速设备（CPU，内存，显卡等），南桥链接低速设备（I&#x2F;O，外接设备等）。相对于CPU寄存器而言，内存速度低几个数量级，因而在CPU内设Cache，映射内存中最常用区域。命中率越高处理器使用率越高。Cache目前按照速度递减空间递增分为L1，L2，L3。内存不够时，也可以把硬盘的一部分作为虚拟的内存使用，这软件实现类似上面硬件实现的Cache。</p>
+<h2 id="计算机层次结构"><a href="#计算机层次结构" class="headerlink" title="计算机层次结构"></a>计算机层次结构</h2><p>自上而下可以分为这么几层</p>
+<ul>
+<li>高级语言（应用层）（程序设计语言）</li>
+<li>汇编语言（一种助记符）（微机原理）</li>
+<li>机器语言（二进制码）</li>
+<li>硬件结构</li>
+<li>逻辑电路（构成硬件结构）（数电+模电）</li>
+</ul>
+<p>计组的讲解范围是机器语言和硬件结构。操作系统在汇编语言和机器语言之间。编译原理在前三层间。</p>
+<p>机器语言和硬件结构之间有指令集（ISA）。一般有Intel X86，ARM等。</p>
+<h2 id="计算机分类和性能描述"><a href="#计算机分类和性能描述" class="headerlink" title="计算机分类和性能描述"></a>计算机分类和性能描述</h2><h3 id="计算机分类法"><a href="#计算机分类法" class="headerlink" title="计算机分类法"></a>计算机分类法</h3><p>传统分类有按体积分类，现在已经不用；另一种是按照用途分为通用机和嵌入式计算机。前者包含</p>
+<ul>
+<li>个人计算机</li>
+<li>服务器</li>
+<li>超级计算机</li>
+</ul>
+<p>后者应用广泛。</p>
+<p>更常用的是Flynn分类法：根据三种数据流分类。有</p>
+<ul>
+<li>单指令流单数据流（SISD）</li>
+<li>SIMD</li>
+<li>MISD：无现实例子</li>
+<li>MIMD</li>
+</ul>
+<h3 id="计算机性能描述"><a href="#计算机性能描述" class="headerlink" title="计算机性能描述"></a>计算机性能描述</h3><ul>
+<li>性能指标 MIPS（百万指令数每秒）等</li>
+<li>测试程序</li>
+<li>Amdahl定律 升级硬件后，系统的加速比和这硬件的使用频率&#x2F;使用时间占比有关，所谓好钢用在刀刃上。<br>加速比定义：</li>
+</ul>
+<p>$$<br>S_p&#x3D;\frac{T_\text{改进前}}{T_\text{改进后}}<br>$$</p>
+<p>计算时用下式：</p>
+<p>$$<br>S_p&#x3D;\frac{1}{(1-f)+\frac{f}{s}}<br>$$</p>
+<p>f是改进的部分占比，s是这硬件提升的倍数。若f取40%，对s取极限可以得到极限整体提升为1.66。因此可以得到结论：<strong>部分系统优化若趋近于极限，则边际效应递减</strong>。此外，f越大，整体提升越大。正所谓“抓住主要矛盾”。</p>
+<h2 id="计算机发展史"><a href="#计算机发展史" class="headerlink" title="计算机发展史"></a>计算机发展史</h2><ul>
+<li>早期工作<ul>
+<li>Charles Babbage：<ul>
+<li>差分机，分析机</li>
+<li>内存、打孔卡片、CPU</li>
+</ul>
+</li>
+<li>George Boole：<ul>
+<li>布尔代数：0 1</li>
+</ul>
+</li>
+<li>Claude Shannon：<ul>
+<li>Switching theory 开关理论</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第一代电子计算机<ul>
+<li>ABC，1942<ul>
+<li>最早的电子计算机</li>
+<li>真空管，280</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>计组笔记：第一章-绪论</p><p><a href="https://xeonds.github.io/2022/12/19/计算机科学/计算机组成原理/计组笔记：第一章-绪论/">https://xeonds.github.io/2022/12/19/计算机科学/计算机组成原理/计组笔记：第一章-绪论/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>xeonds</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-12-19</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-05-23</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="sharethis-inline-share-buttons"></div><script src="https://xeonds.github.io/" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/12/20/%E7%89%A9%E7%90%86/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">信号与系统笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/12/15/%E7%89%A9%E7%90%86/%E6%BF%80%E5%85%89%E4%B8%8E%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86%E7%AC%94%E8%AE%B0/"><span class="level-item">激光与固体物理笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">Enjoy creating.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Solaris, Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">124</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">61</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#计算机硬件基本组成"><span class="level-left"><span class="level-item">1</span><span class="level-item">计算机硬件基本组成</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#计算机中的数据流动"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">计算机中的数据流动</span></span></a></li><li><a class="level is-mobile" href="#冯式架构计算机特点"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">冯式架构计算机特点</span></span></a></li></ul></li><li><a class="level is-mobile" href="#计算机层次结构"><span class="level-left"><span class="level-item">2</span><span class="level-item">计算机层次结构</span></span></a></li><li><a class="level is-mobile" href="#计算机分类和性能描述"><span class="level-left"><span class="level-item">3</span><span class="level-item">计算机分类和性能描述</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#计算机分类法"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">计算机分类法</span></span></a></li><li><a class="level is-mobile" href="#计算机性能描述"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">计算机性能描述</span></span></a></li></ul></li><li><a class="level is-mobile" href="#计算机发展史"><span class="level-left"><span class="level-item">4</span><span class="level-item">计算机发展史</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:51:19.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux命令行工具学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-17T00:34:19.000Z">2023-03-17</time></p><p class="title"><a href="/2023/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/">计组笔记：第三章-运算方法和运算器</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a> / <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-16T15:12:16.000Z">2023-03-16</time></p><p class="title"><a href="/2023/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/GDB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">GDB学习笔记</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-13T13:06:51.000Z">2023-03-13</time></p><p class="title"><a href="/2023/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Linux%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%8D%E5%8A%A1/">Linux添加自定义服务</a></p><p class="categories"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">计算机科学</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-21T09:15:55.000Z">2023-02-21</time></p><p class="title"><a href="/2023/02/21/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/">第五章：数理统计初步</a></p><p class="categories"><a href="/categories/%E6%95%B0%E5%AD%A6/">数学</a> / <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a><p class="is-size-7"><span>&copy; 2023 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
