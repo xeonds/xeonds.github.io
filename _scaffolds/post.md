@@ -1,6 +1,6 @@
 ---
 title: {{title}}
-date: {{date}}
+date: {{date}} {{time}}
 author: xeonds
 toc: true
 excerpt: 
