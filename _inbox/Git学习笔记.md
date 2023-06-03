@@ -87,3 +87,15 @@ git tag -l "v1.*"    # 列出所有以v1开头的标签
 错误原因很显然，就是我们在合并分支时想要撤销上次提交。我通常是因为在一个设备上commit&push了一些代码，而在另一台设备上已经commit了一些代码，随后打算先pull同步一下再push上去。这时就会提示将pull下来的代码merge到本地仓库中，这时候我一般会merge&push，但是有时候发现不小心把另一个分支的给pull到当前分支了，这时候就需要取消错误的pull操作。然而此时已经进入了merge状态，所以只能先退出这状态再重新正确地同步仓库。
 
 首先，用`git stash`保存当前的更改，然后`git reset --merge`退出合并状态。这时再重新正确拉取代码即可。
+
+- Linux平台鉴权失败
+
+这是因为GitHub现在已经禁用了Git Cli的登录方式。因此我们需要重新配置其他的凭据管理器。比如我使用了`git-credential-oauth`，这样我就可以跳转到浏览器里登录认证GitHub凭据。配置方法很简单：
+
+```bash
+git config --global --unset credential.helper
+git-credential-oauth configure
+```
+
+完成后，再执行push时，就会弹出浏览器窗口提示授权GitHub帐号了。
+
