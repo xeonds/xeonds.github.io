@@ -1,6 +1,6 @@
 ---
 title: Bash学习笔记
-date: 2023.05.04 16:01:46
+date: 2023-06-03 21:43:09
 author: xeonds
 toc: true
 excerpt: 积累起来的bash使用技巧，用来处理日常的一些问题
