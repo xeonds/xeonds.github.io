@@ -1,26 +1,23 @@
 ---
-title: Using Kali Tools to crack WiFi
-date: '2023.01.28 16:30:04'
+title: 基于Kali的WiFi攻击
+date: 2023.01.28 16:30:04
 author: xeonds
 toc: true
-excerpt: Break routers or get passwd by aircrack-ng.
+excerpt: 通过aircrack-ng，我们能够瘫痪路由器，或者破解WiFi的密码。
 categories:
   - 计算机科学
 ---
 
-## Tools
+>仅限于合法用途，责任自负
+>Legal purpose only, do it at your own risk.
 
->Do it under legal supervision.
+## 准备
 
-We need a PC(Laptop usually), WiFi device and kali.
-
-## Preparation
-
-1. Check if device is connecteed
+1. 检查网卡情况
 
 Input `ifconfig` in tty, if `wlan0` is shown, then move on next step.
 
-2. Start monitor mode
+2. 启动监控模式
 
 Load device by typing
 
