@@ -111,3 +111,117 @@ kill -9 进程pid
 ```
 
 完事儿。
+
+### nc
+
+用`nc`可以进行局域网聊天（不是
+  
+用 `socat` 还可以群聊： 局域网内所有 Linux 机器，输入下方命令加入群聊（指 UDP 广播）（狗头）（狗头）  
+
+```bash
+socat - UDP-DATAGRAM:255.255.255.255:12345,broadcast,bind=0.0.0.0:12345
+```
+
+### 根据nginx日志自动ban异常IP
+
+```bash
+#!/bin/bash  
+  
+line=1000  
+times=10  
+conf=/opt/nginx/conf/blockip.conf  
+  
+tail /data/logs/nginx/access.log -n $line | \  
+grep -E '("status":"404"|"status":"302")' | awk '{print $1}' | \  
+sort | uniq -c | \  
+awk '$1>$times{print "deny "$2 ";"}' >> $conf  
+  
+deny=$(sort $conf | uniq -c | awk '{print "deny "$3}')  
+echo $deny | sed "s/; /;\n/g" > $conf  
+  
+/usr/local/sbin/nginx -t || exit  
+/usr/bin/systemctl reload nginx
+```
+
+### 一些小工具
+
+lazygit ，Git 的终端界面  
+ranger ，终端文件管理器  
+lolcat ，对输出做渐变色处理  
+trash ，mv 的垃圾回收站版本  
+icdiff ，diff 的样式改进版本  
+lsd ，带文件类型图标的 ls
+
+### 跟踪某网页特定内容
+
+```bash
+#!/bin/bash
+
+url="http://v2ex.com"
+want="好玩"
+wget "$url" -O contents
+if
+    result=$(cat contents | ack -i "$want")
+then
+    echo "$result" | mail -s "Notification" youe@mail.com
+else
+    echo "nothing"
+fi
+```
+
+### 空间查看
+
+最近经常在用这个指令查看空间使用情况：
+
+```bash
+du -sh ./* 2>/dev/null | sort -u
+```
+
+比如看下缓存占用情况啥的：
+
+```bash
+❯ sudo du -sh ./* 2>/dev/null | sort -u
+0       ./motd-news
+1.4M    ./apparmor
+2.0M    ./man
+20K     ./snapd
+228K    ./fontconfig
+3.8M    ./debconf
+32K     ./ldconfig
+4.0K    ./pollinate
+4.0K    ./private
+8.0K    ./PackageKit
+8.0K    ./apache2
+8.0K    ./app-info
+971M    ./apt
+```
+
+### 用PushPlus集成事件通知服务
+
+这个脚本读取第一，二个命令行参数，然后发送通知。可以跟其他工具串一块，简单实现服务器监控报警功能：
+
+```bash
+#!/bin/bash
+
+token=PUSH_PLUS_TOKEN
+url=http://www.pushplus.plus/send
+
+json="{\"token\": \"$token\", \"title\": \"$1\", \"content\": \"$2\"}"
+curl -H "Content-Type: application/json" -X POST -d "$json" $url
+```
+
+单行脚本：
+
+```bash
+tail -F /var/log/syslog | grep -E --line-buffered "error|fail|warn" | while read line; do bash /path/to/pushplus.sh your_topic_here "服务器异常日志" "$line"; done
+```
+
+效果如下：
+
+![添加一个“错误”消息](img/Pasted%20image%2020230610193751.png)
+
+![发送成功](img/Pasted%20image%2020230610193904.png)
+
+![](img/Pasted%20image%2020230610193940.png)
+
+测试就完成了。然后直接nohup丢到后台，就能很方便地实现异常告警了。
