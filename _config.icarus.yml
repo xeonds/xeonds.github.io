@@ -85,7 +85,7 @@ comment:
   type: gitalk
   client_id: 2bfc40bc0b5fef7b0688
   client_secret: 475f278f70ff3f0888e047f10766ab6929168f78
-  repo: https://github.com/xeonds/xeonds.github.io.git
+  repo: xeonds.github.io
   owner: xeonds
   admin:
     - xeonds
