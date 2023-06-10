@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>计算机网络笔记 - 神社的储物间</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="神社的储物间"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="神社的储物间"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="物理层重点是信号的几种编码方式：两种NRZ，两种曼彻斯特编码，还有一些其他的编码规则。还有信道容量，模数转换，信噪比之类的概念也得了解"><meta property="og:type" content="blog"><meta property="og:title" content="计算机网络笔记"><meta property="og:url" content="https://xeonds.github.io/2023/01/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E4%BB%8B%E8%B4%A8/"><meta property="og:site_name" content="神社的储物间"><meta property="og:description" content="物理层重点是信号的几种编码方式：两种NRZ，两种曼彻斯特编码，还有一些其他的编码规则。还有信道容量，模数转换，信噪比之类的概念也得了解"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://xeonds.github.io/img/Pasted%20image%2020230609210936.png"><meta property="og:image" content="https://xeonds.github.io/img/Pasted%20image%2020230609211704.png"><meta property="og:image" content="https://xeonds.github.io/img/Pasted%20image%2020230609211836.png"><meta property="og:image" content="https://xeonds.github.io/img/Pasted%20image%2020230609212031.png"><meta property="article:published_time" content="2023-01-27T15:07:45.000Z"><meta property="article:modified_time" content="2023-06-10T02:51:15.537Z"><meta property="article:author" content="xeonds"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://xeonds.github.io/img/Pasted%20image%2020230609210936.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://xeonds.github.io/2023/01/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E4%BB%8B%E8%B4%A8/"},"headline":"计算机网络笔记","image":["https://xeonds.github.io/img/Pasted%20image%2020230609210936.png","https://xeonds.github.io/img/Pasted%20image%2020230609211704.png","https://xeonds.github.io/img/Pasted%20image%2020230609211836.png","https://xeonds.github.io/img/Pasted%20image%2020230609212031.png"],"datePublished":"2023-01-27T15:07:45.000Z","dateModified":"2023-06-10T02:51:15.537Z","author":{"@type":"Person","name":"xeonds"},"publisher":{"@type":"Organization","name":"神社的储物间","logo":{"@type":"ImageObject","url":"https://xeonds.github.io/img/favicon.ico"}},"description":"物理层重点是信号的几种编码方式：两种NRZ，两种曼彻斯特编码，还有一些其他的编码规则。还有信道容量，模数转换，信噪比之类的概念也得了解"}</script><link rel="canonical" href="https://xeonds.github.io/2023/01/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E4%BB%8B%E8%B4%A8/"><link rel="alternate" href="/atom.xml" title="神社的储物间" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?59fd9f709f6626bf608f0b08415e0283";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archive</a><a class="navbar-item" href="/categories">Category</a><a class="navbar-item" href="/links">Link</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-27T15:07:45.000Z" title="1/27/2023, 3:07:45 PM">2023-01-27</time>发表</span><span class="level-item"><time dateTime="2023-06-10T02:51:15.537Z" title="6/10/2023, 2:51:15 AM">2023-06-10</time>更新</span><span class="level-item"> xeonds </span><span class="level-item">8 分钟读完 (大约1221个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">计算机网络笔记</h1><div class="content"><h2 id="Chap-3-数据和信号"><a href="#Chap-3-数据和信号" class="headerlink" title="Chap.3.数据和信号"></a>Chap.3.数据和信号</h2><h3 id="模拟和数字"><a href="#模拟和数字" class="headerlink" title="模拟和数字"></a>模拟和数字</h3><ul>
+<li>信息 要传输的，被人理解的内容</li>
+<li>数据 对个人&#x2F;程序有用，可以用信号表示</li>
+<li>信号 物理层面的概念。可以用模拟和数字两种形式</li>
+</ul>
+<p>信号的描述方式我们已经很熟悉了，就是频率，周期，相位之类的指标，再加上频域特征的表示。</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><ul>
+<li><strong>带宽</strong>：就是复合信号包含的频率范围</li>
+<li><strong>信噪比</strong>：定义是$\frac{\text{信号能量}}{\text{噪波能量}}$</li>
+<li><strong>比特率</strong>：1秒发送的位数</li>
+</ul>
+<p>通道有两种类型：<strong>低通通道（频率下限从0开始）和带通通道（从非0频率开始）</strong>。同时，数字信号传输方式有两种：<strong>基带传输和宽带传输</strong></p>
+<ul>
+<li>基带传输：借助一个低通通道，将信号直接传输。但是数字信号是带宽无穷的复合模拟信号，因此这种方式在现实中总会存在失真。<ul>
+<li>所需带宽和比特率成正比；想发送地更快，就需要更大的带宽</li>
+<li>要以1Mbps速率发送数据，最小带宽是1&#x2F;2&#x3D;500KHz。如果用到N次谐波，则再乘以N得到所需带宽。</li>
+</ul>
+</li>
+<li>宽带传输（使用调制）：使用带通通道时，只能使用这种方法发送数字信号。它在发送前将数字信号转换成模拟信号。</li>
+</ul>
+<h3 id="传输减损"><a href="#传输减损" class="headerlink" title="传输减损"></a>传输减损</h3><p>三种类型：<strong>衰减、失真和噪声</strong></p>
+<h3 id="数据速率限制"><a href="#数据速率限制" class="headerlink" title="数据速率限制"></a>数据速率限制</h3><p>受制于<strong>有效带宽、使用的信号电平数、通道的质量（噪声电平）</strong> 这三个因素。</p>
+<ul>
+<li>奈奎斯特定理：无噪通道时，理论最大比特率为$2\times\text{带宽}\times log_2L$，其中$L$是电平数。</li>
+<li>香农定理：有噪声通道的理论容量为$\text{带宽}\times log_2(1+SNR)$。</li>
+</ul>
+<p>香农容量定理给出数据速率的上限，奈奎斯特公式给出所需的信号电平数。</p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><ul>
+<li>吞吐量&#x3D;$frame*bits&#x2F;time$，表示单位时间内成功传输的数据量</li>
+<li>延迟：有四个组成要素：传播时间、传输时间、排队时间、处理延迟<ul>
+<li>传播时间：传输一个bit从原到目标的时间，取决于物理速度</li>
+<li>延迟：传播延迟+传输时间+排队时间+处理延迟</li>
+<li>传播延迟：距离&#x2F;传播速度</li>
+<li>传输时间：报文长度&#x2F;传输速度</li>
+</ul>
+</li>
+<li>带宽延迟积：$\text{带宽}\times\text{延迟}$，定义了能充满链路的位数</li>
+</ul>
+<h2 id="Chap-4-数字传输"><a href="#Chap-4-数字传输" class="headerlink" title="Chap.4.数字传输"></a>Chap.4.数字传输</h2><h3 id="数字到数字转换"><a href="#数字到数字转换" class="headerlink" title="数字到数字转换"></a>数字到数字转换</h3><h4 id="线路编码"><a href="#线路编码" class="headerlink" title="线路编码"></a>线路编码</h4><p>这是将数据转数字信号的技术。它将数字元素编码为信号元素，根据<strong>每个信号元素承载的数字元素数量，我们定义比率r</strong>。</p>
+<p>数据速率和信号速率的关系如下：$S&#x3D;c\frac{N}{r} (baud)$。其中N是数据速率，S是信号元素数量，r是信号元素的数据元素承载量。</p>
+<p>线路编码会遇到几个问题：</p>
+<ul>
+<li>基线偏移：接收到信号的平均功率（基线）在接收一长串0&#x2F;1时，会产生偏移，不利于解码。</li>
+<li>直流成分：长时间0&#x2F;1时，会产生很低的频率成分，会给不允许低频&#x2F;使用电耦合的系统带来问题。</li>
+<li>自同步：接收&#x2F;发送的间隔必须严格对应。长1&#x2F;0可能会引起失去同步（不知道到底连续发送了几个连续的0&#x2F;1）。</li>
+<li>内置差错检测</li>
+<li>抗干扰抗噪声能力</li>
+<li>复杂性</li>
+</ul>
+<h4 id="线路编码方案"><a href="#线路编码方案" class="headerlink" title="线路编码方案"></a>线路编码方案</h4><p>主要是这几种</p>
+<p><img src="/img/Pasted%20image%2020230609210936.png"></p>
+<ol>
+<li>NRZ：不归零编码，它有N&#x2F;2的信号速率，但是有DC成分问题</li>
+</ol>
+<p><img src="/img/Pasted%20image%2020230609211704.png"></p>
+<pre><code>1. NRZ-L：电平决定值，0是正电平，1是负电平
+2. NRZ-I：下一位是1则反相，0则不反相
+</code></pre>
+<ol start="2">
+<li>RZ编码：三个值的编码，它的方式如下所示：</li>
+</ol>
+<p><img src="/img/Pasted%20image%2020230609211836.png"></p>
+<p>缺点是占用带宽大，以及实现复杂。</p>
+<ol start="3">
+<li>双相-曼彻斯特编码：<ol>
+<li>普通版本：周期中点跳变，如下图。</li>
+<li>差分版本：下一位是1就不反相，是0则反相。</li>
+</ol>
+</li>
+</ol>
+<p><img src="/img/Pasted%20image%2020230609212031.png"></p>
+<p>它唯一的缺点是信号速率，是NRZ的两倍。</p>
+<ol start="4">
+<li>AMI<ol>
+<li>AMI（交替传号反转）：传号就是1，所以意思是1交替用正负表示，0用0电平表示</li>
+<li>伪三元编码：1是0电平，0是正负交替表示</li>
+</ol>
+</li>
+</ol>
+<h3 id="模拟到数字转换"><a href="#模拟到数字转换" class="headerlink" title="模拟到数字转换"></a>模拟到数字转换</h3><h3 id="传输模式"><a href="#传输模式" class="headerlink" title="传输模式"></a>传输模式</h3><h2 id="Chap-5-模拟传输"><a href="#Chap-5-模拟传输" class="headerlink" title="Chap.5.模拟传输"></a>Chap.5.模拟传输</h2><h2 id="Chap-6-带宽利用"><a href="#Chap-6-带宽利用" class="headerlink" title="Chap.6.带宽利用"></a>Chap.6.带宽利用</h2></div><div class="article-licensing box"><div class="licensing-title"><p>计算机网络笔记</p><p><a href="https://xeonds.github.io/2023/01/27/计算机科学/计算机网络/计网笔记：第二部分-物理层和介质/">https://xeonds.github.io/2023/01/27/计算机科学/计算机网络/计网笔记：第二部分-物理层和介质/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>xeonds</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-01-27</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-06-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="sharethis-inline-share-buttons"></div><script src="https://xeonds.github.io/" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%9F%BA%E4%BA%8EKali%E7%9A%84WiFi%E6%94%BB%E5%87%BB/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">基于Kali的WiFi攻击</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/12/29/%E6%96%87%E5%AD%A6/%E6%9D%82%E8%B0%88/%E4%B9%A6%E6%91%98%EF%BC%9A%E3%80%8A%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB%E3%80%8B/"><span class="level-item">书摘：《娱乐至死》</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="xeonds"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">xeonds</p><p class="is-size-6 is-block">Enjoy creating.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Solaris, Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">123</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">61</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/xeonds" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/xeonds"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Chap-3-数据和信号"><span class="level-left"><span class="level-item">1</span><span class="level-item">Chap.3.数据和信号</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#模拟和数字"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">模拟和数字</span></span></a></li><li><a class="level is-mobile" href="#带宽"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">带宽</span></span></a></li><li><a class="level is-mobile" href="#传输减损"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">传输减损</span></span></a></li><li><a class="level is-mobile" href="#数据速率限制"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">数据速率限制</span></span></a></li><li><a class="level is-mobile" href="#性能"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">性能</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Chap-4-数字传输"><span class="level-left"><span class="level-item">2</span><span class="level-item">Chap.4.数字传输</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#数字到数字转换"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">数字到数字转换</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#线路编码"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">线路编码</span></span></a></li><li><a class="level is-mobile" href="#线路编码方案"><span class="level-left"><span class="level-item">2.1.2</span><span class="level-item">线路编码方案</span></span></a></li></ul></li><li><a class="level is-mobile" href="#模拟到数字转换"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">模拟到数字转换</span></span></a></li><li><a class="level is-mobile" href="#传输模式"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">传输模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Chap-5-模拟传输"><span class="level-left"><span class="level-item">3</span><span class="level-item">Chap.5.模拟传输</span></span></a></li><li><a class="level is-mobile" href="#Chap-6-带宽利用"><span class="level-left"><span class="level-item">4</span><span class="level-item">Chap.6.带宽利用</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-06-09T05:38:14.000Z">2023-06-09</time></p><p class="title"><a href="/2023/06/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E6%A6%82%E8%BF%B0/">计网笔记：第一部分-概述</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-06-07T07:06:44.000Z">2023-06-07</time></p><p class="title"><a href="/2023/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E4%B9%A0/">计网笔记：复习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-06-05T09:16:16.000Z">2023-06-05</time></p><p class="title"><a href="/2023/06/05/%E7%89%A9%E7%90%86/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/%E6%A8%A1%E7%94%B5%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%B8%89%E6%9E%81%E7%AE%A1/">模电：第二章-三极管</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-06-03T13:43:09.000Z">2023-06-03</time></p><p class="title"><a href="/2023/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Script/Bash%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Bash学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-05-31T21:55:17.000Z">2023-06-01</time></p><p class="title"><a href="/2023/05/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%BB%84%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">计组笔记：第四章-存储系统</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="神社的储物间" height="28"></a><p class="is-size-7"><span>&copy; 2023 xeonds</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
