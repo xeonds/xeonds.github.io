@@ -213,7 +213,7 @@ curl -H "Content-Type: application/json" -X POST -d "$json" $url
 单行脚本：
 
 ```bash
-tail -F /var/log/syslog | grep -E --line-buffered "error|fail|warn" | while read line; do bash /path/to/pushplus.sh your_topic_here "服务器异常日志" "$line"; done
+tail -F /var/log/syslog | grep -E --line-buffered "error|fail|warn" | while read line; do bash /path/to/pushplus.sh "服务器异常日志" "$line"; done
 ```
 
 效果如下：
