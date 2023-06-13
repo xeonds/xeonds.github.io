@@ -14,6 +14,7 @@
   "dependencies": {
     "hexo": "^6.3.0",
     "hexo-auto-category": "^0.2.1",
+    "hexo-blog-encrypt": "^3.1.9",
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
