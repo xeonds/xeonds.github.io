@@ -46,7 +46,7 @@ data:text/html;base64,PGh0bWw+PGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgIC
 再加强：VSCode版（不过这个因为用了外置js得联网）：
 
 ```html
-data:text/html;charset=utf-8,<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /></head><body style="margin: 0; height: 100vh"><div id="container" style="width: 100%; height: 100%"></div><script type="text/javascript" src="[https://unpkg.com/monaco-editor@latest/min/vs/loader.js](https://unpkg.com/monaco-editor@latest/min/vs/loader.js)"></script><script>require.config({ paths: { vs: "[https://unpkg.com/monaco-editor@latest/min/vs](https://unpkg.com/monaco-editor@latest/min/vs)" } }); require(["vs/editor/editor.main"], function () { monaco.editor.create(document.getElementById("container"), { language: "json", theme: "vs-dark", }); });</script></body></html>
+data:text/html;charset=utf-8,<!DOCTYPE html> <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> </head> <body style="margin: 0; height: 100vh"> <div id="container" style="width: 100%; height: 100%"></div> <script type="text/javascript" src="[https://unpkg.com/monaco-editor@latest/min/vs/loader.js](https://unpkg.com/monaco-editor@latest/min/vs/loader.js)"></script> <script> require.config({ paths: { vs: "[https://unpkg.com/monaco-editor@latest/min/vs](https://unpkg.com/monaco-editor@latest/min/vs)" } }); require(["vs/editor/editor.main"], function () { monaco.editor.create(document.getElementById("container"), { language: "json", theme: "vs-dark", }); }); </script> </body> </html>
 ```
 
 ## 花活1：升级版前端IDE
