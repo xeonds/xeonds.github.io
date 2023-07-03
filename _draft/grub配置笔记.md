@@ -70,3 +70,12 @@ GRUB_COLOR_NORMAL="light-blue/black"
 GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 其中，GRUB_COLOR_NORMAL是菜单项的默认颜色，GRUB_COLOR_HIGHLIGHT是菜单项被选中时的颜色。
+
+## 高级配置
+
+1. 重启后自动启动上一次的系统
+
+- 编辑 /etc/default/grub 文件，添加 **GRUB_SAVEDEFAULT=true** 字段（保存上一次启动项）
+- 修改 **GRUB_DEFAULT=0** 为 **GRUB_DEFAULT=saved**（设置默认启动项为保存的上一次启动项）
+- 保存文件并执行 **sudo update-grub** 命令更新配置
+- 重启电脑，grub菜单自动选择到上一次启动的系统

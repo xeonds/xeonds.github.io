@@ -38,7 +38,7 @@ ExecStart=/path/to/my-script
 WantedBy=multi-user.target
 ```
 
-其中，[Unit]部分包含服务的描述和启动顺序，[Service]部分包含服务的用户、类型和执行命令，[Install]部分包含服务的安装目标。
+其中，**Unit**部分包含服务的描述和启动顺序，**Service**部分包含服务的用户、类型和执行命令，**Install**部分包含服务的安装目标。
 
 3. 重新加载systemd配置
 
