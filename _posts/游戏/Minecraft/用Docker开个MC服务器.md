@@ -7,6 +7,7 @@ excerpt: Docker真香.jpg
 tags:
   - Docker
   - Minecraft
+cover: /img/79c2fe8bd08250e6505ed783980d3739.jpeg
 ---
 
 前段时间好好学了下Docker，于是想试着用它去部署一些比较麻烦的服务端。所以首先就是试试MC了，毕竟能实现服务端跟地图数据分离以及服务端自动化部署，便于迁移确实很爽。

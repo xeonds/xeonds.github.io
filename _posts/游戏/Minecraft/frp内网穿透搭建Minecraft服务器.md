@@ -10,6 +10,7 @@ date: '2022.06.29 01:05:34'
 categories:
   - 游戏
   - Minecraft
+cover: /img/79c2fe8bd08250e6505ed783980d3739.jpeg
 ---
 
 ## ~~原料~~
