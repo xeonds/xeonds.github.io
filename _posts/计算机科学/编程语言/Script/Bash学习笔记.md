@@ -225,3 +225,31 @@ tail -F /var/log/syslog | grep -E --line-buffered "error|fail|warn" | while read
 ![](img/Pasted%20image%2020230610193940.png)
 
 测试就完成了。然后直接nohup丢到后台，就能很方便地实现异常告警了。
+
+### 文本文件合并
+
+This is technically what `cat` ("concatenate") is supposed to do, even though most people just use it for outputting files to stdout. If you give it multiple filenames it will output them all sequentially, and then you can redirect that into a new file; in the case of all files just use `./*` (or `/path/to/directory/*` if you're not in the directory already) and your shell will expand it to all the filenames (excluding hidden ones by default).
+
+```
+$ cat ./* > merged-file
+```
+
+Make sure you don't use the `csh` or `tcsh` shells for that which expand the glob _after_ opening the `merged-file` for output, and that `merged-file` doesn't exist before hand, or you'll likely end up with an infinite loop that fills up the filesystem.
+
+The list of files is sorted lexically. If using `zsh`, you can change the order (to numeric, or by age, size...) with glob qualifiers.
+
+To include files in sub-directories, use:
+
+```
+find . ! -path ./merged-file -type f -exec cat {} + > merged-file
+```
+
+Though beware the list of files is not sorted and hidden files are included. `-type f` here restricts to _regular_ files only as it's unlikely you'll want to include other types of files. With GNU `find`, you can change it to `-xtype f` to also include symlinks to regular files.
+
+With the zsh shell,
+
+```
+cat ./**/*(-.) > merged-file
+```
+
+Would do the same (`(-.)` achieving the equivalent of `-xtype f`) but give you a sorted list and exclude hidden files (add the `D` qualifier to bring them back). `zargs` can be used there to work around _argument list too long_ errors.
