@@ -46,6 +46,26 @@ git是重要且强大的版本控制工具。
 
 ### Merge
 
+基本用法：假设当前是master分支，你想要将dev分支合并进来：
+
+```bash
+git merge dev
+```
+
+如果没有冲突的话，合并就会顺利完成；否则，你需要在合并编辑器里手动处理那些冲突，然后再提交，完成合并。
+
+#### Fast-Forward
+
+就和它的名字一样，它是用于快速跟进的合并功能。一般的merge会生车工一个merge提交，而fast-forward只是让主分支的HEAD指向被merge的分支的HEAD。这样做的好处显而易见：开发进度跟进非常容易，只需要移动一个指针即可，并且节省了git的空间占用开销。缺点却很是问题：当被合并的分支删除后，**git的树结构就会被“捋平”**——那些fast-forward的点上没有merge生成的commit节点，所有fast-forward之间的连线自然就相当于“断开”的。
+
+因此，Merge时，尽量禁用fast-forward，否则一旦删除分支，就无法再看到那个分支上到底干了什么。这对于代码问题追踪是很不利的因素。因此在开发中，应当尽量禁用fast-forward。
+
+全局禁用的指令如下：
+
+```bash
+git config --global --add merge.ff false
+```
+
 ### Branch
 
 ### Log
