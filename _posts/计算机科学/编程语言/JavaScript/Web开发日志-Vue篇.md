@@ -1,9 +1,9 @@
 ---
-title: Web开发日志：Vue篇
+title: Web开发日志-Vue篇
 date: 2023-07-17 19:24:35
 author: xeonds
 toc: true
-excerpt: (*/ω＼*)
+excerpt: 相当重要的一个前端框架，它的身影也随着前端范围的扩大而用在越来越多的地方
 tags:
   - Vue
 ---
@@ -130,4 +130,3 @@ export default store;
 遇到过一次输入框无法输入的问题。查看了下[官方文档](https://element-plus.gitee.io/zh-CN/component/input.html#input-%E8%BE%93%E5%85%A5%E6%A1%86)发现是设计特性。正常来说，Input总是会响应输入事件，但是**el-input是受控组件，所以它总是会更优先保证显示v-model绑定的数据值**。这也就是为什么输入不会被正常响应的原因：没有给它加`v-model`，或者绑定了不存在/错误的对象。
 
 >不过我绑定不存在元素的时候居然没有报错，神奇......
-
