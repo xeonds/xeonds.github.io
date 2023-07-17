@@ -1,3 +1,43 @@
+---
+title: Web开发日志：Vue篇
+date: 2023-07-17 19:24:35
+author: xeonds
+toc: true
+excerpt: (*/ω＼*)
+tags:
+  - Vue
+---
+
+## Vue
+
+### 关于Slot
+
+Slot，即“插槽”，是Vue的一个很重要的功能。通过插槽，可以将其他的组件“插入”到当前组件的某个槽位。这个机制的优点，就是在保留了子组件的控制的同时，也给父组件保留了一定的内容控制权。比如elementUI，它的很多功能都提供了slot来让我们插入自定义的内容。
+
+#### 用法
+
+它的用法很简单，分两部分。
+
+1. 组件
+
+```vue
+...
+<slot name="component-a" :param1="123"></slot>
+...
+```
+
+2. 父组件
+
+```vue
+<Component>
+	<template #component-a="{ param_1 }">
+		{{ param_1 }}
+	</template>
+</Component>
+```
+
+上面是完整示例，一个**具名**的**作用域**插槽。它将子组件的一个参数`param1`通过解构赋值，回传到了父组件的形参`param_1`中，并在其中渲染出了它的值。同时，父组件将这部分template中的内容传入了子组件中，和子组件的其他部分内容一同渲染。
+
 ## Vue-router
 
 ### 历史模式的问题
