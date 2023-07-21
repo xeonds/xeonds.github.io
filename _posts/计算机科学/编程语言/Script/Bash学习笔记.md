@@ -112,6 +112,14 @@ kill -9 进程pid
 
 完事儿。
 
+或者可以用awk和管道把命令缩短到一行：
+
+```bash
+netstat -anlp | grep 3000 | awk '{print $7}' | awk -F '/' '{print $1}' | xargs kill -9
+```
+
+不太好看但是还挺方便。起码手不疼了（
+
 ### nc
 
 用`nc`可以进行局域网聊天（不是

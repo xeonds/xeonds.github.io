@@ -123,6 +123,12 @@ export default store;
 
 这种结构便于我们维护前端的数据模型。
 
+## Vite
+
+### pathResolve
+
+
+
 ## ElementUI
 
 ### el-input的输入问题
