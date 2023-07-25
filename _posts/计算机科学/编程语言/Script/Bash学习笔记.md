@@ -16,6 +16,8 @@ Bash对于绝大多数任务来说够用。所以没必要太折腾，先试试B
 
 ## 命令介绍
 
+### 数据操作类指令
+
 head命令用于显示文件的开头几行，sort命令用于对文件或标准输入进行排序，可以按照字母顺序、数字大小、日期等方式进行排序，uniq命令则用于去除重复的行，可以通过参数指定只保留重复行的数量或只显示重复行。
 
 head命令的语法：`head [选项] [文件]`。例如，要查看文件file.txt的前10行，请使用以下命令：`head -n 10 file.txt`。¹\
@@ -23,6 +25,16 @@ head命令的语法：`head [选项] [文件]`。例如，要查看文件file.tx
 sort命令的语法：`sort [选项] [文件]`。例如，要按字母顺序对文件file.txt进行排序，请使用以下命令：`sort file.txt`。要按数字大小对文件进行排序，请使用以下命令：`sort -n file.txt`。
 
 uniq命令的语法：`uniq [选项] [输入文件] [输出文件]`。例如，要从文件file.txt中删除重复的行并将结果写入新文件newfile.txt，请使用以下命令：`uniq file.txt newfile.txt`。要显示重复行及其出现次数，请使用以下命令：`uniq -c file.txt`。
+
+### Bash的语法
+
+bash的一行语句结尾可以写分号`;`，也可以不写。用分号可以将多条指令串联起来运行，比如`cmd1; cmd2; cmd3; ...`
+
+它的管道是一个相当好用的东西，可以将几个命令的输入输出相互串起来，得到一个组合后的工具，并且管道是系统级工具，因此十分灵活且高效。比如`cmd1 | cmd2 | xargs cmd3 | ...`。
+
+这里的`xargs`是另一个工具，它可以将它得到的stdin转化成后面跟随指令的参数列表。比如`find . -type f -name "* *" -print0 | xargs -0 rm -f`，它就可以将符合条件的文件作为一个参数列表传递给`rm -f`指令。另外，这里的`-0`是告诉xargs，在读入stdin时，使用 null 作为分隔符。
+
+除了管道和分号，还有`&&`，也可以连接多条指令。它和分号类似，不过区别是它会检查前一条指令的运行结果（返回值），并且根据这个来决定是否运行下一条指令。例如，`cmd1 && cmd2 && cmd3`，这样写的话，只要任意一个指令运行失败，那么它之后的所有指令都会不执行，这样可以有效防止发生一些难以预料的情况。
 
 ## 一些用法
 
@@ -261,3 +273,22 @@ cat ./**/*(-.) > merged-file
 ```
 
 Would do the same (`(-.)` achieving the equivalent of `-xtype f`) but give you a sorted list and exclude hidden files (add the `D` qualifier to bring them back). `zargs` can be used there to work around _argument list too long_ errors.
+
+### 更改时区
+
+今天看系统日志的时候发现时间不太对，估计应该是没设置对时区。所以就记录一下。只需要一行：
+
+```bash
+ sudo timedatectl set-timezone Asia/Shanghai
+ # 如果要查看所有可用时区的话
+ timedatectl list-timezones
+ # 查看当前时区信息
+ timedatectl
+```
+
+或者也可以用创建符号链接的方式更改：
+
+```bash
+sudo rm -rf /etc/localtime && \
+sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```

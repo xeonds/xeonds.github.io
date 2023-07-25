@@ -3,11 +3,13 @@ title: 关于我
 date: 2022-10-12 00:58:46
 ---
 
->Enjoy creating.
+>EnJOY CREATiNG
 
 ---
 
-西电计算机科学与技术专业在读大二生。相信，并且希望以代码创造一切。
+[![CodeTime badge](https://img.shields.io/endpoint?style=social&url=https%3A%2F%2Fapi.codetime.dev%2Fshield%3Fid%3D17726%26project%3D%26in%3D0)](https://codetime.dev)
+
+计科在读大二生。相信，并且希望以代码创造一切。
 
 兴趣~~比较~~非常杂，有Vue/Go/node.js/PHP/Linux/Reverse/Unity/Kotlin Android开发/C#桌面开发/.NET/嵌入式/渗透等，还想在能力之内学学AI等有意思的方向。
 
