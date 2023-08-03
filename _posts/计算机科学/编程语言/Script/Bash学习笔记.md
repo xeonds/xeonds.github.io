@@ -246,6 +246,18 @@ tail -F /var/log/syslog | grep -E --line-buffered "error|fail|warn" | while read
 
 测试就完成了。然后直接nohup丢到后台，就能很方便地实现异常告警了。
 
+- 集成到crontab
+
+用了一段时间之后，发现是挺舒服，配合crontab定时触发更是自动运维的好东西。
+
+假设有一个运维工具将信息直接输出到stdout，那么我们可以在crontab里这么写：
+
+```bash
+output=$(/path/to/script.sh); pushplus "自动任务完成" "$output"
+```
+
+不过得先将上面的`pushplus.sh`去掉后缀放在`/usr/local/bin/`之类的地方才能全局使用。
+
 ### 文本文件合并
 
 This is technically what `cat` ("concatenate") is supposed to do, even though most people just use it for outputting files to stdout. If you give it multiple filenames it will output them all sequentially, and then you can redirect that into a new file; in the case of all files just use `./*` (or `/path/to/directory/*` if you're not in the directory already) and your shell will expand it to all the filenames (excluding hidden ones by default).
@@ -291,4 +303,46 @@ Would do the same (`(-.)` achieving the equivalent of `-xtype f`) but give you
 ```bash
 sudo rm -rf /etc/localtime && \
 sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+### 监控硬盘状态信息
+
+借助`smartctl`就能做到。这工具输出十分丰富，还能跑硬盘测试，这里演示下最简单的用法：
+
+```bash
+for DEVICE in "sda sdb sdc"; do
+  smartctl -a $DEVICE | \
+   grep 'SMART overall-health self-assessment test result'
+done
+```
+
+加强版，输出报告：
+
+```bash
+#!/bin/bash
+SMARTCTL="smartctl"
+DEVICES="sdb sdc"
+
+get_model() {
+  DEVICE=$1
+  $SMARTCTL -i $DEVICE | grep "Device Model" | awk '{print $3}'
+}
+check_disk() {
+  DEVICE=$1
+  MODEL=$(get_model $DEVICE)
+  STATUS=$($SMARTCTL -a $DEVICE | grep 'SMART overall-health self-assessment test result')
+  RESULT=$(echo $STATUS | awk '{print $NF}')
+  if [ "$RESULT" != "PASSED" ]; then
+    ALERTS="$ALERTS\n硬盘异常：$DEVICE ($MODEL)\n$STATUS\n" # 追加到变量中，用换行符分隔不同的硬盘信息
+  else
+    ALERTS="$ALERTS\n硬盘正常：$DEVICE ($MODEL)\n$STATUS\n" # 追加到变量中，用换行符分隔不同的硬盘信息
+  fi
+}
+
+ALERTS=""
+for DEV in $DEVICES; do
+  check_disk /dev/$DEV
+done
+
+echo "$ALERTS"
 ```
