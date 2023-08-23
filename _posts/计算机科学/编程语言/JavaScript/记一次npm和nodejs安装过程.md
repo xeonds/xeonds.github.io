@@ -57,3 +57,25 @@ sudo rm npm && sudo ln -s /usr/bin/npm /usr/local/bin/npm
 ```
 
 这时候再输入`npm -v`，就可以看到npm正常运行了。
+
+## 再安装
+
+直接扔`/usr/local`底下然后把`bin`加到`$PATH`就行，省时省力。
+
+```bash
+wget https://mirrors.ustc.edu.cn/node/latest-v20.x/node-v20.5.1-linux-x64.tar.gz \
+&& tar -zxvf node-v20.5.1-linux-x64.tar.gz \
+&& sudo mv node-v20.5.1-linux-x64 /usr/local/node \
+&& echo 'export PATH=$PATH:"/usr/local/node/bin"' >> ~./bahsrc \
+&& source ~/.bashrc
+```
+
+## 换源
+
+一条指令就行，执行结果会在`~/.npmrc`里。
+
+```bash
+npm config set registry https://registry.npm.taobao.org
+```
+
+换了淘宝源。

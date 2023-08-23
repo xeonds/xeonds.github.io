@@ -13,7 +13,7 @@ categories:
   - Golang
 ---
 
-# 安装
+## 安装
 
 - 访问[这里](https://go.dev/) ，下载安装包进行安装即可。或者访问[这里](https://studygolang.com/dl/)下载也可。
 
@@ -51,6 +51,18 @@ export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 ```
 
-# 资料
+## 资料
 
 - [《Go语言圣经》](https://books.studygolang.com/gopl-zh)
+
+## 常见问题
+
+- Go test报错
+
+报错内容：`call has possible formatting directive %v`
+
+原因：`go test` 中不能使用 `fmt.Println("%v", v)`
+
+## 方案
+
+使用 `fmt.Printf("%+v", v)`
