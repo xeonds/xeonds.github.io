@@ -119,3 +119,13 @@ git-credential-oauth configure
 
 完成后，再执行push时，就会弹出浏览器窗口提示授权GitHub帐号了。
 
+- 文件上传和下载后，文件名大小写变化
+
+git默认设置中，对于文件名的设置是**大小写不敏感**。因此如果有必要的话，还是把这个设为false来解决问题吧：
+
+```bash
+# 首先获取当前设置状态，为true则执行下一条指令
+git config --get core.ignorecase 
+# 设置不忽略大小写
+git config core.ignorecase false
+```
