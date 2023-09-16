@@ -6,6 +6,7 @@ toc: true
 excerpt: (*/ω＼*)
 tags:
   - Linux
+cover: /img/89596288_p0_master1200.jpg
 ---
 
 ## 安装
@@ -43,5 +44,19 @@ xrandr --output eDP-1 --auto --output HDMI-1 --auto --panning [C*E]x[D*F]+[A]+0 
 
 ```bash
 systemctl start sshd
+```
+## Connect to Wireless Network
+
+First, start Network Manager:
+
+```bash
+sudo systemctl enable --now NetworkManager
+```
+
+Then use nmcli to connect to network:
+
+```bash
+nmcli dev wifi list
+nmcli dev wifi connect "SSID" password "password"
 ```
 
