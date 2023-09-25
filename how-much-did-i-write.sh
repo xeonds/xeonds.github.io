@@ -1,5 +1,3 @@
 #!/bin/bash
 
-res=$(find ./_* | xargs cat 2>/dev/null | wc -l)
-
-echo "You have wrote $res lines in total!"
+echo "You have wrote $(find _* -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
