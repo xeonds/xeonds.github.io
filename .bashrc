@@ -24,3 +24,7 @@ function line_count() {
     echo "You have wrote $(find _* -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
 }
 
+function push_to_github() {
+    git add . && git commit -m "Vault backup $(date)"
+    git push
+}
