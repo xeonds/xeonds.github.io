@@ -86,3 +86,11 @@ vim /etc/fstab
 ```bash
 sudo systemctl restart display-manager
 ```
+
+## Vim
+
+装上Arch之后我很快就把Vim装上了。结果发现没法和系统剪贴板联动。在Vim里边检查`has(clipboard)`之后发现，好像这个Vim不支持剪贴板。
+
+解决方法：装`gvim`：`sudo pacman -S gvim`。会提示你是否卸载Vim，选是，配置不会删除所以放心删。安装完了之后你就会发现Vim还能用，而且剪贴板功能好了：
+
+![](img/Pasted%20image%2020230926210217.png)
