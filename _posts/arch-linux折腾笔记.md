@@ -45,18 +45,52 @@ xrandr --output eDP-1 --auto --output HDMI-1 --auto --panning [C*E]x[D*F]+[A]+0 
 ```bash
 systemctl start sshd
 ```
-## Connect to Wireless Network
+## 在命令行连接Wi-Fi
 
-First, start Network Manager:
+在完成安装后，启动NetworkManager：
 
 ```bash
 sudo systemctl enable --now NetworkManager
 ```
 
-Then use nmcli to connect to network:
+然后使用`nmcli`来连接Wi-Fi：
 
 ```bash
 nmcli dev wifi list
+# 后面的password部分不指定的话，会自动要求输入
 nmcli dev wifi connect "SSID" password "password"
 ```
 
+## 使用TimeShift备份系统
+
+TimeShift是一个很好用的系统备份软件，特别是结合了btrfs之后，备份的体积比借助`rsync`时更小。
+
+折腾系统时不时可能滚挂，这种时候有个定期创建的映像就很有用了。
+
+```bash
+sudo timeshift --list # 获取快照列表
+sudo timeshift --restore --snapshot '20XX-XX-XX_XX-XX-XX' --skip-grub # 选择一个快照进行还原，并跳过 GRUB 安装，一般来说 GRUB 不需要重新安装
+```
+
+如果恢复后无法使用，用安装盘通过`arch-chroot`进去系统，然后手动更改`subvolid`来手动修复，或者直接删除`subvolid`：
+
+```bash
+# 获取subvolid
+sudo btrfs sub list -u /
+# 编辑,根据自己情况，修复
+vim /etc/fstab
+```
+
+## 重启显示管理器（Xorg/Wayland）
+
+```bash
+sudo systemctl restart display-manager
+```
+
+## Vim
+
+装上Arch之后我很快就把Vim装上了。结果发现没法和系统剪贴板联动。在Vim里边检查`has(clipboard)`之后发现，好像这个Vim不支持剪贴板。
+
+解决方法：装`gvim`：`sudo pacman -S gvim`。会提示你是否卸载Vim，选是，配置不会删除所以放心删。安装完了之后你就会发现Vim还能用，而且剪贴板功能好了：
+
+![](img/Pasted%20image%2020230926210217.png)
