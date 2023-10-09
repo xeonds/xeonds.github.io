@@ -94,3 +94,15 @@ sudo systemctl restart display-manager
 解决方法：装`gvim`：`sudo pacman -S gvim`。会提示你是否卸载Vim，选是，配置不会删除所以放心删。安装完了之后你就会发现Vim还能用，而且剪贴板功能好了：
 
 ![](img/Pasted%20image%2020230926210217.png)
+
+## 桌面目录映射
+
+今天看到群里一个老哥家目录下的文件都堆到桌面了，顺便了解了一下关于桌面目录映射的问题。因为有时候中文模式创建的家目录下的文件夹都是中文，那个老哥就是改成英文目录的时候遇到了这个问题。
+
+`XDG_DESKTOP_DIR`这个环境变量的介绍，在archWiki上也能翻到。
+
+>[XDG_DESKTOP_DIR是一个环境变量，用于指定用户的桌面文件夹的位置。它是XDG Base Directory规范](https://wiki.archlinux.org/title/XDG_Base_Directory)[1](https://wiki.archlinux.org/title/XDG_Base_Directory)[的一部分，该规范定义了一些标准的用户目录，如音乐、图片、下载等，以及一些用于存储配置、缓存、数据和状态的目录。XDG_DESKTOP_DIR的默认值是$HOME/Desktop，但用户可以通过编辑~/.config/user-dirs.dirs文件或使用xdg-user-dirs-update命令来修改它](https://wiki.archlinux.org/title/XDG_user_directories)[2](https://wiki.archlinux.org/title/XDG_user_directories)。
+>
+>[KDE桌面环境遵循XDG Base Directory规范，并使用XDG_DESKTOP_DIR变量来确定桌面文件夹的位置。如果用户更改了XDG_DESKTOP_DIR的值，KDE会自动更新桌面设置，并将桌面文件夹更改为新的位置。这样，用户可以灵活地管理自己的桌面文件夹，而不影响其他应用程序或桌面环境](https://wiki.archlinux.org/title/Desktop_entries)[3](https://wiki.archlinux.org/title/Desktop_entries)。
+
+所以出问题的话看看`.config`底下配置炸没炸就行。
