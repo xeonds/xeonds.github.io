@@ -28,3 +28,9 @@ function push_to_github() {
     git add . && git commit -m "Vault backup $(date)"
     git push
 }
+
+function knote() {
+    datetime=$(date '+%Y-%m-%d-%H:%M:%S')
+    echo -e $(sed -e "s/{{title}}/$datetime/" -e "s/{{date}} {{time}}/$(date '+%Y-%m-%d %H:%M:%S')/" $TMPL) > "_inbox/$datetime.md"
+    vim "_inbox/$datetime.md"
+}
