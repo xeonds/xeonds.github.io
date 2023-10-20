@@ -106,3 +106,12 @@ sudo systemctl restart display-manager
 >[KDE桌面环境遵循XDG Base Directory规范，并使用XDG_DESKTOP_DIR变量来确定桌面文件夹的位置。如果用户更改了XDG_DESKTOP_DIR的值，KDE会自动更新桌面设置，并将桌面文件夹更改为新的位置。这样，用户可以灵活地管理自己的桌面文件夹，而不影响其他应用程序或桌面环境](https://wiki.archlinux.org/title/Desktop_entries)[3](https://wiki.archlinux.org/title/Desktop_entries)。
 
 所以出问题的话看看`.config`底下配置炸没炸就行。
+
+## 添加多系统启动项
+
+在安装Arch的时候，会发现中间有一步是`sudo vim /etc/default/grub`然后`grub-mkconfig -o /boot/grub/grub.cfg`。这一步就是先编辑grub的配置，然后生成grub文件到`/boot/grub/`下的配置文件中。因此，我们如果突然心血来潮想装个Windows玩玩~~谁装啊~~，就可以改改grub配置让它为我们添加启动项。
+
+因为最终的配置项是由`grub-mkconfig`生成的，所以并不推荐直接修改这个文件。更好的做法是安装`os-prober`，然后挂载其他系统的分区，并编辑grub配置文件启用os探测，最后再用`grub-mkconfig`生成新的grub启动项文件。
+
+>至于为啥grub现在默认禁用掉了os-prober，注释里边说的是因为安全问题所以禁用掉了。
+
