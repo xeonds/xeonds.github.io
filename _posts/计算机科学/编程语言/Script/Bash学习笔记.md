@@ -354,3 +354,103 @@ echo "$ALERTS"
 ```bash
 ls | awk '{print "zip -r \"" $0".zip\" \""$0"\""}' | bash
 ```
+
+### 图片生成
+
+>JYY的奇妙课堂.jpg
+
+Linux原生支持PPM图片(Portable Pixel Map)格式。它的结构很简单：
+
+```
+P6              // magic number
+WIDTH HEIGHT
+MAX COLOR       // number of single color, mostly be 255
+...PIXELS       // pixels
+```
+
+每一个像素都是一个结构体，存储了图像的rgb信息：
+
+```c
+// A struct to represent a RGB pixel
+typedef struct {
+    unsigned char r, g, b;
+} Pixel;
+```
+
+所以，理论上可以直接~~手写二进制~~写出一张图片，或者用C实现：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the image dimensions and the maximum color value
+#define WIDTH 200
+#define HEIGHT 100
+#define MAX_COLOR 255
+
+// A struct to represent a RGB pixel
+typedef struct {
+    unsigned char r, g, b;
+} Pixel;
+
+// A function to write a PPM image to a file
+void write_ppm(const char *filename, Pixel *image) {
+    // Open the file for writing in binary mode
+    FILE *fp = fopen(filename, "wb");
+    if (!fp) {
+        fprintf(stderr, "Error: cannot open file %s\n", filename);
+        exit(1);
+    }
+
+    // Write the PPM header
+    fprintf(fp, "P6\n"); // Magic number for binary PPM
+    fprintf(fp, "%d %d\n", WIDTH, HEIGHT); // Image width and height
+    fprintf(fp, "%d\n", MAX_COLOR); // Maximum color value
+
+    // Write the pixel data
+    fwrite(image, sizeof(Pixel), WIDTH * HEIGHT, fp);
+
+    // Close the file
+    fclose(fp);
+}
+
+// A function to create a gradient image
+void create_gradient(Pixel *image) {
+    // Loop over each pixel
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            // Compute the pixel index
+            int i = y * WIDTH + x;
+
+            // Set the pixel color based on its position
+            image[i].r = x * MAX_COLOR / WIDTH; // Red component
+            image[i].g = y * MAX_COLOR / HEIGHT; // Green component
+            image[i].b = (x + y) * MAX_COLOR / (WIDTH + HEIGHT); // Blue component
+        }
+    }
+}
+
+// The main function
+int main() {
+    // Allocate memory for the image
+    Pixel *image = malloc(sizeof(Pixel) * WIDTH * HEIGHT);
+    if (!image) {
+        fprintf(stderr, "Error: cannot allocate memory for the image\n");
+        exit(1);
+    }
+
+    // Create the gradient image
+    create_gradient(image);
+
+    // Write the image to a file
+    write_ppm("gradient.ppm", image);
+
+    // Free the memory
+    free(image);
+
+    return 0;
+}
+```
+
+完成之后，可以用`ImageMagick`的`convert gradient.ppm gradient.jpg`将图片转换成jpg格式的图片。
+
