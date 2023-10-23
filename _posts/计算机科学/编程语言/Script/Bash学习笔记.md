@@ -468,3 +468,13 @@ rsync -av -e "ssh -p PORT_NUMBER" files-or-dirs user@remote-server:/path/to/dest
 
 其中的`-a`代表archive，`-v`代表verbose。它的优点在于能够断点续传，以及增量同步。这样的特性使得它在镜像站搭建上也有重要地位。
 
+另外，还可以结合`find`来做批量文件处理。比如我要将递归地将当前目录下所有以DCIM命名的文件夹合并到当前目录下，那么只需要：
+
+```bash
+find . -type d -name "DCIM" \
+       -exec rsync -av --ignore-existing {}/ ./DCIM/ \
+       -exec rmdir {}
+```
+
+上面的指令先找到所有名为`DCIM`的目录，然后使用`rsync`将所有文件合并到当前目录的DCIM目录中，最后使用`rmdir`删除其他无用文件夹。
+
