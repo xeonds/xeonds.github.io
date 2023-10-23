@@ -454,3 +454,17 @@ int main() {
 
 完成之后，可以用`ImageMagick`的`convert gradient.ppm gradient.jpg`将图片转换成jpg格式的图片。
 
+### rsync的使用
+
+>好东西，比`scp`好用
+
+```bash
+# 同步多个文件/文件夹到远程服务器目录
+rsync -av files-or-dirs user@remote-server:/path/to/destination/
+
+# 如果远程服务器的ssh端口不是默认22
+rsync -av -e "ssh -p PORT_NUMBER" files-or-dirs user@remote-server:/path/to/destination/
+```
+
+其中的`-a`代表archive，`-v`代表verbose。它的优点在于能够断点续传，以及增量同步。这样的特性使得它在镜像站搭建上也有重要地位。
+
