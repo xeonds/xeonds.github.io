@@ -177,6 +177,35 @@ vmkfstools -z /vmfs/devices/disks/[target disk] /vmfs/voluems/datastore1/[target
 
 总之，充分利用嘛。
 
+- Samba
+
+开个Samba给Windows共享用还是挺爽的。Win的Native WebDAV好像有点问题，不然就省事了。
+
+详细配置教程可以参考[Ubuntu tutorials - Install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)。我搬ge简略版的下来：
+
+```bash
+sudo apt update && sudo apt install samba
+# 创建你要共享的目录
+mkdir ~/sambashare
+# 编辑samba配置文件
+# 为了以命令形式展示这边用了古法编辑
+# 建议用Vim/sed/nano之类的搞定
+sudo cat << EOF >> /etc/samba/smb.conf
+[sambashare]
+    comment = Samba on Ubuntu
+    path = /home/username/sambashare
+    read only = no
+    browsable = yes
+EOF
+sudo systemctl enable --now smbd && sudo service start samba
+# 更改samba共享账户和密码
+# 这个用户账户得是系统中现存的账户
+sudo smbpasswd -a [username]
+# 然后根据指引设定共享密码，完成
+```
+
+完成后，从其他机器上以`\\ip-address\sambashare`就能访问共享的目录。
+
 ## 运维
 
 服务器的躯体是硬件，灵魂是数据。物理上的安全备份这里先不论，这里主要说说数据上的安全和管理。
