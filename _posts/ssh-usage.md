@@ -1,5 +1,6 @@
 ---
-title: SSH学习笔记date: 2023-09-25 14:16:18
+title: SSH学习笔记
+date: 2023-09-25 14:16:18
 author: xeonds
 toc: true
 excerpt: (*/ω＼*)

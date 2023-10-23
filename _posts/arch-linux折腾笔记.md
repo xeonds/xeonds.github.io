@@ -94,3 +94,24 @@ sudo systemctl restart display-manager
 解决方法：装`gvim`：`sudo pacman -S gvim`。会提示你是否卸载Vim，选是，配置不会删除所以放心删。安装完了之后你就会发现Vim还能用，而且剪贴板功能好了：
 
 ![](img/Pasted%20image%2020230926210217.png)
+
+## 桌面目录映射
+
+今天看到群里一个老哥家目录下的文件都堆到桌面了，顺便了解了一下关于桌面目录映射的问题。因为有时候中文模式创建的家目录下的文件夹都是中文，那个老哥就是改成英文目录的时候遇到了这个问题。
+
+`XDG_DESKTOP_DIR`这个环境变量的介绍，在archWiki上也能翻到。
+
+>[XDG_DESKTOP_DIR是一个环境变量，用于指定用户的桌面文件夹的位置。它是XDG Base Directory规范](https://wiki.archlinux.org/title/XDG_Base_Directory)[1](https://wiki.archlinux.org/title/XDG_Base_Directory)[的一部分，该规范定义了一些标准的用户目录，如音乐、图片、下载等，以及一些用于存储配置、缓存、数据和状态的目录。XDG_DESKTOP_DIR的默认值是$HOME/Desktop，但用户可以通过编辑~/.config/user-dirs.dirs文件或使用xdg-user-dirs-update命令来修改它](https://wiki.archlinux.org/title/XDG_user_directories)[2](https://wiki.archlinux.org/title/XDG_user_directories)。
+>
+>[KDE桌面环境遵循XDG Base Directory规范，并使用XDG_DESKTOP_DIR变量来确定桌面文件夹的位置。如果用户更改了XDG_DESKTOP_DIR的值，KDE会自动更新桌面设置，并将桌面文件夹更改为新的位置。这样，用户可以灵活地管理自己的桌面文件夹，而不影响其他应用程序或桌面环境](https://wiki.archlinux.org/title/Desktop_entries)[3](https://wiki.archlinux.org/title/Desktop_entries)。
+
+所以出问题的话看看`.config`底下配置炸没炸就行。
+
+## 添加多系统启动项
+
+在安装Arch的时候，会发现中间有一步是`sudo vim /etc/default/grub`然后`grub-mkconfig -o /boot/grub/grub.cfg`。这一步就是先编辑grub的配置，然后生成grub文件到`/boot/grub/`下的配置文件中。因此，我们如果突然心血来潮想装个Windows玩玩~~谁装啊~~，就可以改改grub配置让它为我们添加启动项。
+
+因为最终的配置项是由`grub-mkconfig`生成的，所以并不推荐直接修改这个文件。更好的做法是安装`os-prober`，然后挂载其他系统的分区，并编辑grub配置文件启用os探测，最后再用`grub-mkconfig`生成新的grub启动项文件。
+
+>至于为啥grub现在默认禁用掉了os-prober，注释里边说的是因为安全问题所以禁用掉了。
+
