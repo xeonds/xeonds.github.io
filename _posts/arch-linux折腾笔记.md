@@ -106,3 +106,61 @@ sudo systemctl restart display-manager
 >[KDE桌面环境遵循XDG Base Directory规范，并使用XDG_DESKTOP_DIR变量来确定桌面文件夹的位置。如果用户更改了XDG_DESKTOP_DIR的值，KDE会自动更新桌面设置，并将桌面文件夹更改为新的位置。这样，用户可以灵活地管理自己的桌面文件夹，而不影响其他应用程序或桌面环境](https://wiki.archlinux.org/title/Desktop_entries)[3](https://wiki.archlinux.org/title/Desktop_entries)。
 
 所以出问题的话看看`.config`底下配置炸没炸就行。
+
+## 添加多系统启动项
+
+在安装Arch的时候，会发现中间有一步是`sudo vim /etc/default/grub`然后`grub-mkconfig -o /boot/grub/grub.cfg`。这一步就是先编辑grub的配置，然后生成grub文件到`/boot/grub/`下的配置文件中。因此，我们如果突然心血来潮想装个Windows玩玩~~谁装啊~~，就可以改改grub配置让它为我们添加启动项。
+
+因为最终的配置项是由`grub-mkconfig`生成的，所以并不推荐直接修改这个文件。更好的做法是安装`os-prober`，然后挂载其他系统的分区，并编辑grub配置文件启用os探测，最后再用`grub-mkconfig`生成新的grub启动项文件。
+
+>至于为啥grub现在默认禁用掉了os-prober，注释里边说的是因为安全问题所以禁用掉了。
+
+## 代理配置
+
+既然都上Arch了，那代理软件不得整个自由点的？直接扔了cfw，拥抱clash-core。具体配置教程参考[这篇](https://blog.linioi.com/posts/clash-on-arch/)，我给个简洁版的：
+
+```bash
+# 实在懒得sudo了
+# 不过记得看清命令再回车
+sudo su
+pacman -S clash
+mkdir -p /etc/clash
+
+# 然后从provider那里下载yaml配置文件
+# 假设文件名为config.yaml
+mv ./config.yaml /etc/clash/
+
+# 配置环境变量，配完了记得重启/重新登陆一下
+cat << EOF >> /etc/environment
+https_proxy=http://127.0.0.1:7890
+http_proxy=http://127.0.0.1:7890
+all_proxy=http://127.0.0.1:7890
+EOF
+
+# 配置systemd服务项
+# 配完了就能开机自启动了哦
+cat << EOF > /etc/systemd/system/clash.service
+[Unit]
+Description=Clash daemon, A rule-based proxy in Go.
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/clash -d /etc/clash # /usr/bin/clash 为绝对路径，请根据你实际情况修改
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+###############
+# clash，启动！
+###############
+systemctl enable --now clash.service
+```
+
+里边比较重要的一步是配置环境变量env，上回配置的时候忘了加`http`前缀，结果系统里边啥玩意都不认我的代理设置。
+
+哦对，配置完成之后还得在系统里边设置好代理：
+
+![](img/Pasted%20image%2020231023164736.png)

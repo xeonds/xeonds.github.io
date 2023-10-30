@@ -101,6 +101,14 @@ vmkfstools -z /vmfs/devices/disks/[target disk] /vmfs/voluems/datastore1/[target
 
 >TODO：等啥时候加个ssd扩容系统盘再说吧。。空间居然不够用了
 
+### 自动启动
+
+装完机器之后想配置宿主机启动后，子主机跟着自动启动。但是在机器的虚拟机设置里边开开了自动启动之后，却没有按照预期开机自动启动VM。排查一番之后发现原来还有个设置没开。
+
+从左侧导航栏到`主机->管理->系统->自动启动`，点编辑设置，把自动启动打开就行。
+
+这边的两个延时，指的是ESXi启动/关闭所有虚拟机的间隔时间，全局设置会被主机的设置覆盖。而等待检测信号（Wait for heartbeat）指的是，在VM中安装VMWare工具后，系统启动完成后会告知宿主机。此时，如果这个设置为真，则ESXi会跳过启动等待时间，去启动下一个系统。
+
 ## 服务
 
 折腾好服务器了，就得想想作何用途了。整理出来的大概有这些：
@@ -168,6 +176,35 @@ vmkfstools -z /vmfs/devices/disks/[target disk] /vmfs/voluems/datastore1/[target
 其他服务的话，比如我写的NanoOJ就可以挂上去给搞算法竞赛的~~小东西~~们训练用，也可以把我写那个XDU-Planet挂上去，聚合大家的博客~~黑历史~~博文，还能整点其他的花活。
 
 总之，充分利用嘛。
+
+- Samba
+
+开个Samba给Windows共享用还是挺爽的。Win的Native WebDAV好像有点问题，不然就省事了。
+
+详细配置教程可以参考[Ubuntu tutorials - Install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)。我搬ge简略版的下来：
+
+```bash
+sudo apt update && sudo apt install samba
+# 创建你要共享的目录
+mkdir ~/sambashare
+# 编辑samba配置文件
+# 为了以命令形式展示这边用了古法编辑
+# 建议用Vim/sed/nano之类的搞定
+sudo cat << EOF >> /etc/samba/smb.conf
+[sambashare]
+    comment = Samba on Ubuntu
+    path = /home/username/sambashare
+    read only = no
+    browsable = yes
+EOF
+sudo systemctl enable --now smbd && sudo service start samba
+# 更改samba共享账户和密码
+# 这个用户账户得是系统中现存的账户
+sudo smbpasswd -a [username]
+# 然后根据指引设定共享密码，完成
+```
+
+完成后，从其他机器上以`\\ip-address\sambashare`就能访问共享的目录。
 
 ## 运维
 

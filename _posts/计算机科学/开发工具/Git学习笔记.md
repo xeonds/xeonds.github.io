@@ -202,4 +202,11 @@ git config core.ignorecase false
 
 两种方式的选择取决于你们项目的开发规范，以及你的喜好。如果偏爱简洁，你可能更喜欢rebase；如果你追求commit的尽可能详尽，那么merge可能更适合你。
 
+- Git拉取submodule
+
+编译thtk的时候发现submodule没拉取，记录一下这玩意怎么拉）
+
+```bash
+git submodule update --init --recursive
+```
 

@@ -354,3 +354,127 @@ echo "$ALERTS"
 ```bash
 ls | awk '{print "zip -r \"" $0".zip\" \""$0"\""}' | bash
 ```
+
+### 图片生成
+
+>JYY的奇妙课堂.jpg
+
+Linux原生支持PPM图片(Portable Pixel Map)格式。它的结构很简单：
+
+```
+P6              // magic number
+WIDTH HEIGHT
+MAX COLOR       // number of single color, mostly be 255
+...PIXELS       // pixels
+```
+
+每一个像素都是一个结构体，存储了图像的rgb信息：
+
+```c
+// A struct to represent a RGB pixel
+typedef struct {
+    unsigned char r, g, b;
+} Pixel;
+```
+
+所以，理论上可以直接~~手写二进制~~写出一张图片，或者用C实现：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the image dimensions and the maximum color value
+#define WIDTH 200
+#define HEIGHT 100
+#define MAX_COLOR 255
+
+// A struct to represent a RGB pixel
+typedef struct {
+    unsigned char r, g, b;
+} Pixel;
+
+// A function to write a PPM image to a file
+void write_ppm(const char *filename, Pixel *image) {
+    // Open the file for writing in binary mode
+    FILE *fp = fopen(filename, "wb");
+    if (!fp) {
+        fprintf(stderr, "Error: cannot open file %s\n", filename);
+        exit(1);
+    }
+
+    // Write the PPM header
+    fprintf(fp, "P6\n"); // Magic number for binary PPM
+    fprintf(fp, "%d %d\n", WIDTH, HEIGHT); // Image width and height
+    fprintf(fp, "%d\n", MAX_COLOR); // Maximum color value
+
+    // Write the pixel data
+    fwrite(image, sizeof(Pixel), WIDTH * HEIGHT, fp);
+
+    // Close the file
+    fclose(fp);
+}
+
+// A function to create a gradient image
+void create_gradient(Pixel *image) {
+    // Loop over each pixel
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            // Compute the pixel index
+            int i = y * WIDTH + x;
+
+            // Set the pixel color based on its position
+            image[i].r = x * MAX_COLOR / WIDTH; // Red component
+            image[i].g = y * MAX_COLOR / HEIGHT; // Green component
+            image[i].b = (x + y) * MAX_COLOR / (WIDTH + HEIGHT); // Blue component
+        }
+    }
+}
+
+// The main function
+int main() {
+    // Allocate memory for the image
+    Pixel *image = malloc(sizeof(Pixel) * WIDTH * HEIGHT);
+    if (!image) {
+        fprintf(stderr, "Error: cannot allocate memory for the image\n");
+        exit(1);
+    }
+
+    // Create the gradient image
+    create_gradient(image);
+
+    // Write the image to a file
+    write_ppm("gradient.ppm", image);
+
+    // Free the memory
+    free(image);
+
+    return 0;
+}
+```
+
+完成之后，可以用`ImageMagick`的`convert gradient.ppm gradient.jpg`将图片转换成jpg格式的图片。
+
+### rsync的使用
+
+>好东西，比`scp`好用
+
+```bash
+# 同步多个文件/文件夹到远程服务器目录
+rsync -av files-or-dirs user@remote-server:/path/to/destination/
+
+# 如果远程服务器的ssh端口不是默认22
+rsync -av -e "ssh -p PORT_NUMBER" files-or-dirs user@remote-server:/path/to/destination/
+```
+
+其中的`-a`代表archive，`-v`代表verbose。它的优点在于能够断点续传，以及增量同步。这样的特性使得它在镜像站搭建上也有重要地位。
+
+另外，还可以结合`find`来做批量文件处理。比如我要将递归地将当前目录下所有以DCIM命名的文件夹合并到当前目录下，那么只需要：
+
+```bash
+find . -type d -name "DCIM" \
+       -exec rsync -av --ignore-existing {}/ ./DCIM/ \
+       -exec rmdir {}
+```
+
+上面的指令先找到所有名为`DCIM`的目录，然后使用`rsync`将所有文件合并到当前目录的DCIM目录中，最后使用`rmdir`删除其他无用文件夹。
+
