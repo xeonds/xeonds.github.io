@@ -478,3 +478,22 @@ find . -type d -name "DCIM" \
 
 上面的指令先找到所有名为`DCIM`的目录，然后使用`rsync`将所有文件合并到当前目录的DCIM目录中，最后使用`rmdir`删除其他无用文件夹。
 
+### 文件管理
+
+这是CLI对GUI的一次薄纱。
+
+- 按规则重命名所有文件
+
+例如我想移除当前目录下所有文件的`.`前缀，我就可以使用这样的命令：
+
+```bash
+for file in .*; do [ -f "$file" ] && mv "$file" "${file#.}"; done
+```
+
+还能扩展出更多的用法：
+
+- 重命名文件: `${file#.}`可以移除文件名的前导字符
+- 路径修改: 可以从全路径移除特定的路径。比如`${full_path#/path/to/}`可以变换路径为相对路径
+- 修改/删除文件后缀: `${file%.*}`会删除文件的后缀，比如文件名是`document.pdf`,`${file%.*}`就是`document`
+- 替换文件名: `${parameter/pattern/replacement}`：比如`${file/.old./.new.}`能把文件名的`.old.`换为`.new.`
+
