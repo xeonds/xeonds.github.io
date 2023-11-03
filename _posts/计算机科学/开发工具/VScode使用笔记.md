@@ -70,3 +70,9 @@ categories:
 
 1. 折叠/展开当前行 `Ctrl+Shift+[/]`
 2. 文本自动换行 `Alt+Z`
+command + p 搜索文件  
+command + shift + o 搜索当前文件里的 symbol  
+command + t 全局搜索 symbol  
+command + f 当前文件文本搜索  
+command + shift + f 全局文本搜索  
+Windows 上把 command 替换成 ctrl 应该就可以。
