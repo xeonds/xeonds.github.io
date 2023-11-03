@@ -84,6 +84,10 @@ data:text/html;base64,PGNhbnZhcyBpZD12PjxzY3JpcHQ+ZD1kb2N1bWVudCxkLmJvZHkuc3R5bG
 
 ## 花活：一键存档网页
 
+这个注意，前缀`javascript:`是不会自动粘贴上的（由于浏览器安全策略的原因），必须手动输入前缀才能运行。
+
 ```html
-javascript:location.href="[https://web.archive.org/save/](https://web.archive.org/save/)"+location.href;
+javascript:location.href="https://web.archive.org/save/"+location.href;
 ```
+
+>以及之前的URL因为Obsidian的原因，粘贴的时候错误格式化了

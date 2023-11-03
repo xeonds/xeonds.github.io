@@ -149,57 +149,69 @@ vmkfstools -z /vmfs/devices/disks/[target disk] /vmfs/voluems/datastore1/[target
 
 目前搭建的基本就是`gitea, mc, cloudreve, jupyter, mysql`这几个，后台还跑着一些运维脚本，目前这些已吃完我的内存了QAQ。总之简述下搭建流程吧。毕竟是个blog不是manual，就不贴太详细的步骤了。如果给出了指令，请确保在理解的情况下，按照真实系统环境执行。
 
-- gitea
+### gitea
 
 这个搭建起来很简单，直接wget最新的build到你要安装的目录，然后把官方的service配置cat到`/etc/systemd/system/gitea.service`，再`sudo systemctl enable --now gitea.service`，之后再在给出的Web链接里配置好服务，最后修改好`config.ini`再重启服务就好了。
 
-这东西我最喜欢的点是支持WebDAV，所以配合上AutoSync之类的客户端，就能实现数据增量备份和同步。
+很好用的客户端
 
-- cloudreve
+### cloudreve
 
 跟上面基本一样，先wget下来，再运行一下产生配置文件并修改好设置，并配置好systemd的服务管理，最后启动就行。不过，安装完成后，还得配置下**存储策略**来确定文件存储的物理位置，并在用户组中修改每种用户的空间限额大小和权限等。
 
-- Minecraft
+这东西我最喜欢的点是支持WebDAV，所以配合上AutoSync之类的客户端，就能实现数据增量备份和同步。
+
+### Minecraft
 
 喜闻乐见的MC时间。这边我是用Docker开服的，环境最干净，并且最方便于管理。具体参考以前写过的Docker-MC开服的博文。
 
-- Jupyter
+这次为了运维简单，使用了某docker镜像来开服。官方服的唯一优点估计只剩下官方俩字了，实际表现可以说是一般环境一般，弱网环境逆天。据说原因是因为官方服务器只要丢包发生，无论几个都给你踢了。
+
+所以建议用`Paper`之类的第三方服务端，性能好的多。
+
+### JupyterLab
 
 直接`python3 -m pip install jupyterlab`或者用`apt, pacman`之类的包管理器安装就行。装完了照着上面的在systemd把它添加为服务就行。装好之后，直接浏览器访问端口使用就行了。
 
-- database
+唯一要注意的就是安全性了，注意设个复杂点的密码，小心暴力破解。
+
+### database
 
 刚好这边有个项目得用数据库，所以就用docker开了个mysql的daemon当数据库。不得不说是真的方便
 
-- Compiling Service
+### Compiling Service
 
 这部分我是用gitea-action搞定的。其他时候，我一般直接ssh到服务器上手动编译。不过注意，**服务器的稳定性至关重要**，别随便跑啥若治脚本把服务器玩炸了。数据可靠性很关键。特别是当你的服务器还挂了一堆存着重要数据的硬盘，要是真手欠`rm -rf`了你哭都没地方去。所以建议这种任务通通扔docker，反正没啥性能损失。
 
-- Calculation
+### Calculation
 
 用JupyterLab能搞定一部分~~反正他们数据科学的基本全是python~~，另一部分相对需求较小的，就直接跑专门的计算进程算了。
 
-- VM Servers
+由于计算任务的强性能需求和性能抢占特性，务必设置守护进程等手段，防止一个计算任务炸了整个服务器。
+
+>实在不行在ESXi再开个机器专门跑计算。（
+
+### VM Servers
 
 打算先搓个轮子，然后基于这个轮子整个自动new container并绑定账号和tty的web service。安全性问题后面再说，这些机器可以用来租借或者提供给其他人学习使用。
 
-- Web Services
+### Web Services
 
 比如可以把`XDU-ISC`的主页/blog挂上去，或者挂点其他Web服务，比如自动打卡之类的。
 
-- Mirror Site
+### Mirror Site
 
 给各种大型镜像源整个分流，分担下压力造福开源——不过我这点硬盘容量就算了罢。
 
-其他服务的话，比如我写的NanoOJ就可以挂上去给搞算法竞赛的~~小东西~~们训练用，也可以把我写那个XDU-Planet挂上去，聚合大家的博客~~黑历史~~博文，还能整点其他的花活。
+>2023.11.03 昨天`Clash For Windows`删库，今天`clash core`和其他`Clash`系的全部删库
+>哎 常用软件还是得整份源码小心删库
+>实在不行也能自己维护。
 
-总之，充分利用嘛。
-
-- Samba
+### Samba
 
 开个Samba给Windows共享用还是挺爽的。Win的Native WebDAV好像有点问题，不然就省事了。
 
-详细配置教程可以参考[Ubuntu tutorials - Install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)。我搬ge简略版的下来：
+详细配置教程可以参考[Ubuntu tutorials - Install and configure samba](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview)。我搬个简略版的下来：
 
 ```bash
 sudo apt update && sudo apt install samba
@@ -224,6 +236,13 @@ sudo smbpasswd -a [username]
 
 完成后，从其他机器上以`\\ip-address\sambashare`就能访问共享的目录。
 
+### 其他服务
+
+其他服务的话，比如我写的`NanoOJ`就可以挂上去给搞算法竞赛的~~小东西~~们训练用，也可以把我写那个`XDU-Planet`挂上去，聚合大家的博客~~黑历史~~博文，还能整点其他的花活。
+
+>最近把`XDU-Planet`贡献给`XDOSC`社区了，目前挂了很多人的~~黑~~历史，可以来[Planet](https://xdlinux.github.io/planet/)看看。
+
+总之，充分利用嘛。
 ## 运维
 
 服务器的躯体是硬件，灵魂是数据。物理上的安全备份这里先不论，这里主要说说数据上的安全和管理。
