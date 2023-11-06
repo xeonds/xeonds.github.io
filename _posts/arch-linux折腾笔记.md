@@ -129,6 +129,9 @@ mkdir -p /etc/clash
 # 然后从provider那里下载yaml配置文件
 # 假设文件名为config.yaml
 mv ./config.yaml /etc/clash/
+# 设置控制面板路径
+# 我这里的控制面板路径在/etc/clash/clash-dashboard
+echo 'external-ui: clash-dashboard' >> /etc/clash/config.yaml
 
 # 配置环境变量，配完了记得重启/重新登陆一下
 cat << EOF >> /etc/environment
@@ -164,3 +167,14 @@ systemctl enable --now clash.service
 哦对，配置完成之后还得在系统里边设置好代理：
 
 ![](img/Pasted%20image%2020231023164736.png)
+
+>悲：cfw跑路之后clash-core也跑路了
+>然后所有client都跑路了
+>为clash家族 + 1s
+>以及我的评价是：
+>![](img/Pasted%20image%2020231103203831.png)
+>以及某作者的睿频：
+>最适合这个民族的其实是一群小
+白围着大大转，大大通过小白的夸奖获得自我满足，然后小白的吃喝拉撒都包给大大解决的模式。通过这个项目我感觉我已经彻底认识到这个民族的前面为什么会有一堵墙了。没有墙哪来的大大。所以到处都是什么附件回帖可见，等级多少用户组可见，一个论坛一个大大供小白跪舔，不需要政府造墙，网民也会自发造墙。这尼玛连做个翻墙软件都要造墙，真是令人叹为观止。这是一个造了几干年墙的保守的农耕民族，缺乏对别人的基本尊重，不愿意分享，喜欢遮遮掩掩，喜欢小圈子抱团，大概这些传统是改不掉了吧。
+
+另外还有一个，就是切换节点必须得使用clash的控制端口（在`config.yaml`中给出，一般是`9090`），所以还必须得有个控制面板。一般Windows平台都是用~~已经似了的~~Clash For Windows作为控制面板的，而Linux这边使用<https://clash.razord.top/>也就是~~也已经似了的~~[Clash的官方控制面板](https://github.com/Dreamacro/clash-dashboard/)作为控制面板的。实在不行了可以用命令行下的TUI工具`clashctl`来手动切换节点，应该也能用。
