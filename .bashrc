@@ -1,6 +1,5 @@
 # My blog's utiilties and aliases
-set -e
-TMPL=$(find ./_scaffolds | grep .md)
+template=$(find ./_scaffolds | grep .md)
 
 function deploy() {
     cd ..
@@ -17,7 +16,7 @@ function image_url_proc() {
 }
 
 function new_post() {
-    sed -e "s/{{title}}/$1/" -e "s/{{date}} {{time}}/$(date '+%Y-%m-%d %H:%M:%S')/" $TMPL
+    sed -e "s/{{title}}/$1/" -e "s/{{date}} {{time}}/$(date '+%Y-%m-%d %H:%M:%S')/" $template
 }
 
 function line_count() {
@@ -31,6 +30,6 @@ function push_to_github() {
 
 function knote() {
     datetime=$(date '+%Y-%m-%d-%H:%M:%S')
-    echo -e $(sed -e "s/{{title}}/$datetime/" -e "s/{{date}} {{time}}/$(date '+%Y-%m-%d %H:%M:%S')/" $TMPL) > "_inbox/$datetime.md"
+    echo -e $(sed -e "s/{{title}}/$datetime/" -e "s/{{date}} {{time}}/$(date '+%Y-%m-%d %H:%M:%S')/" $template) > "_inbox/$datetime.md"
     vim "_inbox/$datetime.md"
 }
