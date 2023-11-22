@@ -10,6 +10,7 @@ date: 2022-10-25 22:39:58
 [Holynia](https://holynia.github.io/)：二次元の文科佬
 [Albert](https://albertwnu.github.io)：TISの神
 [Ray](https://ray.al)：计算机收藏の佬
+[陈俊丞](https://comeintocalm.cn):ACM的跌
 [Dimole](https://blog.dml.ink)：hacked by Dimole（逃
 [康师傅](https://blog.ksfu.top)：(╹ڡ╹ )
 [孤筝の温暖小窝](https://guzhengsvt.top):Ciallo～(∠・ω< )⌒☆
