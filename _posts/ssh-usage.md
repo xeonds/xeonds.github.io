@@ -106,3 +106,9 @@ ssh -L [local_port:]local_host [username]@[hostname]
 ```  
 ssh -L 8080:localhost username@example.com  
 ```
+
+上面的指令就能很轻易实现基于`xxx over SSH`的内网穿透。举个例子，前面我配置好了我的服务器的`ssh config`，假设我的服务器配置项名为`server`，在局域网中有一台地址为`1.14.5.14`的Windows服务器，那么我就可以使用一行指令通过SSH跳转连接到这台Windows服务器的远程桌面：
+```bash
+ssh -L 3389:1.14.5.14:3389 server -N & rdesktop localhost
+```
+假设我的这台服务器`server`在层层内网中，需要经过多重跳板才能从公网进行访问，一般的远程桌面面对这种网络环境可能比较困难，但是对于上面的`RDP over SSH`，这种方法既能享受`SSH`的安全性，又能相对便利地进行访问——只要配置好这台`server`服务器的`ProxyJump`路径和登陆就行。
