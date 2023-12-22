@@ -189,3 +189,30 @@ rdesktop 114.5.1.4
 ```
 
 然后输账号密码登陆就行了。因为暂时这样就够用所以就没咋折腾。
+
+## X11迁移Wayland
+主要动机：支持一下双屏不同缩放的功能，不然一个高分屏+一个普通1080p的组合太痛苦了。
+
+```bash
+pacman -Qi wayland  # 已安装则继续，否则安装
+sudo pacman -S --needed wayland
+yay -S sddm-git     # 必须得是sddm-git，其他版本好像没完善的Wayland支持
+pacman -S --needed xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
+pacman -S --needed plasma kde-applications
+pacman -S --needed plasma-wayland-session
+```
+按照[这里](https://linux.cn/article-16171-1.html)给出的流程，装完上面的包之后，Logout之后应该就能在左下角看到登陆`Plasma(Wayland)`的提示了。
+
+>你还能通过查看 `$XDG_SESSION_TYPE` 变量来 核实你是否在运行 `Wayland`。
+
+先去装了，一会回来记录。
+
+装完了，兼容性没啥大问题，我甚至没重启，只是重新登陆了下。就是`latte-dock`的图标缩放看着怪怪的，而且桌面小组件也乱飞了。以及，输入法好像不太对劲，在firefox以外的地方皮肤会丢失。
+
+刚重新设置了下屏幕排列，现在能单独设置两块屏幕的缩放了，爽。就是高分屏看着有点糊，以及字体缩放问题，还有这个fcitx也不太对劲。
+
+先重启下看看吧。
+
+草了，重启回来变回x11 seession了。找找默认值在哪保存着吧。
+
+找到了，在`/usr/lib/sddm/sddm.conf.d/default.conf`里边，有一个`DisplayServer=x11`的项，把`x11`改为`wayland`应该就行了。重启看看。
