@@ -7,6 +7,8 @@ function ctl() {
         git add . && git commit -m "Vault backup $(date)" && git push 
     elif [[ $1 == "fetch" ]]; then
         git pull --rebase && echo "pull completed"
+    elif [[ $1 == "stat" ]]; then
+        git status
     elif [[ $1 == "new" ]]; then
         new_post $2 && vim "_inbox/$2.md"
     elif [[ $1 == "open" ]]; then
