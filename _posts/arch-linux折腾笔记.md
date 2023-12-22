@@ -211,8 +211,24 @@ pacman -S --needed plasma-wayland-session
 
 刚重新设置了下屏幕排列，现在能单独设置两块屏幕的缩放了，爽。就是高分屏看着有点糊，以及字体缩放问题，还有这个fcitx也不太对劲。
 
+关于fcitx，系统给了一段报错：
+
+```
+Fcitx should be launched by KWin under KDE Wayland in order to use Wayland input method frontend. This can improve the experience when using Fcitx on Wayland. To configure this, you need to go to "System Settings" -> "Virtual keyboard" and select "Fcitx 5" from it. You may also need to disable tools that launches input method, such as imsettings on Fedora, or im-config on Debian/Ubuntu. For more details see https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma 
+```
+
 先重启下看看吧。
 
 草了，重启回来变回x11 seession了。找找默认值在哪保存着吧。
 
 找到了，在`/usr/lib/sddm/sddm.conf.d/default.conf`里边，有一个`DisplayServer=x11`的项，把`x11`改为`wayland`应该就行了。重启看看。
+
+好像不太行，而且现在切不过去Wayland了，坏。
+
+把设置都改回去了，现在好像能进去了。但是还是默认进入x11的plasma桌面。
+
+哎，把用户空间的那个sddm configuration改了一下，删了里边的[Autologin]底下的session=的值，重启下试试。以及又得到了一段关于fcitx的建议：
+
+```
+Detect GTK_IM_MODULE and QT_IM_MODULE being set and Wayland Input method frontend is working. It is recommended to unset GTK_IM_MODULE and QT_IM_MODULE and use Wayland input method frontend instead. For more details see https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
+```
