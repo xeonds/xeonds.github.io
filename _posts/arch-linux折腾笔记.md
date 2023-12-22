@@ -232,3 +232,7 @@ Fcitx should be launched by KWin under KDE Wayland in order to use Wayland input
 ```
 Detect GTK_IM_MODULE and QT_IM_MODULE being set and Wayland Input method frontend is working. It is recommended to unset GTK_IM_MODULE and QT_IM_MODULE and use Wayland input method frontend instead. For more details see https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
 ```
+
+好好好搞定了。按照上面的设置先屏蔽了俩环境变量，然后删除了默认值，现在系统已经处于完全可用的状态。回头有时间了整理整理过程。
+
+>Fri 22 Dec 2023 05:14:55 PM CST

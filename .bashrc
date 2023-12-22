@@ -2,7 +2,7 @@
 template=$(find ./_scaffolds | grep .md)
 usage="Usage:\tblog\tpush\n\t\tfetch\n\t\tnew\tpost_name\n\t\topen\tregex\n\t\tlines"
 
-function blog() {
+function ctl() {
     if [[ $1 == "push" ]]; then
         git add . && git commit -m "Vault backup $(date)" && git push 
     elif [[ $1 == "fetch" ]]; then
