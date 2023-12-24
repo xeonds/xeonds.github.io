@@ -9,14 +9,16 @@ function ctl() {
         git pull --rebase && echo "pull completed"
     elif [[ $1 == "stat" ]]; then
         git status
+    elif [[ $1 == "add" ]]; then
+        git add . && git status
     elif [[ $1 == "new" ]]; then
         new_post $2 && vim "_inbox/$2.md"
     elif [[ $1 == "open" ]]; then
         open $2
+    elif [[ $1 == "find" ]]; then
+        find . -type f -not -path './git/*' -name $2
     elif [[ $1 == "lines" ]]; then
         line_count
-    elif [[ $1 == "add" ]]; then
-        git add . && git status
     else
         echo -e $usage
     fi 
@@ -59,3 +61,4 @@ function knote() {
 function open() {
     vim $(find . -type f -not -path './git/*' -name $1)
 }
+
