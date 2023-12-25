@@ -5,16 +5,18 @@ date: 2022-10-25 22:39:58
 
 ## 小伙伴们
 
-[Robotxm](https://moefactory.com/)：( ͡• ͜ʖ ͡• )
-[SuperBart](https://www.superbart.xyz/)：开源の佬
-[Holynia](https://holynia.github.io/)：二次元の文科佬
-[Albert](https://albertwnu.github.io)：TISの神
-[Ray](https://ray.al)：计算机收藏の佬
-[陈俊丞](https://comeintocalm.cn):ACM的跌
+[Robotxm](https://moefactory.com/)：能用电表得感谢这位
+[SuperBart](https://www.superbart.xyz/)：能查水表得感谢这位
+[Holynia](https://holynia.github.io/)：哎 二次元
+[Albert](https://albertwnu.github.io)：事TIS的成员，但真的好能鸽
+[Ray](https://ray.al)：啥时候办个计算机文物展子吧（
+[ComeIntoCalm](https://comeintocalm.cn):ACM的跌
 [Dimole](https://blog.dml.ink)：hacked by Dimole（逃
 [康师傅](https://blog.ksfu.top)：(╹ڡ╹ )
-[孤筝の温暖小窝](https://guzhengsvt.top):Ciallo～(∠・ω< )⌒☆
-[bszydxh](http://bszydxh.top):b师傅怎么啥都会啊（膜
+[孤筝の温暖小窝](https://guzhengsvt.top)：Ciallo～(∠・ω< )⌒☆
+[bszydxh](http://bszydxh.top)：b师傅怎么啥都会啊（膜
+[Reverier's Blog](https://blog.woooo.tech/)：rx师傅教我写ruast吧（做梦
+[Canxin Site](https://canxin121.github.io/)：怎么一个两个都写Ruast啊
 
 >想要交换友链的朋友们可以在下方留言
 >
