@@ -119,7 +119,7 @@ comment:
 #         qrcode: ''
 share:
   type: sharethis
-  install_url: "https://xeonds.github.io/"
+  install_url: "https://mxts.jiujiuer.xyz/"
 sidebar:
   left:
     sticky: false
@@ -129,7 +129,7 @@ widgets:
   - position: left
     type: profile
     author: xeonds
-    author_title: "Enjoy creating."
+    author_title: "ENJ0Y CREATiNG."
     location: Solaris, Earth
     avatar: /img/avatar.jpg
     avatar_rounded: false
@@ -157,10 +157,11 @@ widgets:
   - position: left
     type: links
     links:
-      Robotxm: https://moefactory.com
       Holynia: https://holynia.github.io
       Ray: https://ray.al
+      Robotxm: https://moefactory.com
       Dimole: https://blog.dml.ink
+      All: https://mxts.jiujiuer.xyz/links
   - position: left
     type: categories
   - position: right
