@@ -236,3 +236,256 @@ Detect GTK_IM_MODULE and QT_IM_MODULE being set and Wayland Input method fronten
 好好好搞定了。按照上面的设置先屏蔽了俩环境变量，然后删除了默认值，现在系统已经处于完全可用的状态。回头有时间了整理整理过程。
 
 >Fri 22 Dec 2023 05:14:55 PM CST
+
+## 又出问题了
+
+小笔记本上的arch的kde以至于其中的所有程序突然都变得特别卡。最奇怪的是这会的系统资源专用状况完全没有多高，CPU%，MEM37.4%的占用率应该很健康了吧。
+
+觉得的卡顿是因为我发现就连tmux里边开个vim写文档都卡得不行了才觉得不对劲。
+
+```bash
+systemd-+-NetworkManager
+        |-bluetoothd
+        |-clash
+        |-dbus-daemon
+        |-polkitd
+        |-rtkit-daemon
+        |-sddm-+-Xorg
+        |      `-sddm-helper---startplasma-x11
+        |-systemd-+-(sd-pam)
+        |         |-adb
+        |         |-agent
+        |         |-at-spi-bus-laun---dbus-daemon
+        |         |-at-spi2-registr
+        |         |-chrome_crashpad
+        |         |-dbus-daemon
+        |         |-dconf-service
+        |         |-fcitx5
+        |         |-gmenudbusmenupr
+        |         |-gvfs-udisks2-vo
+        |         |-gvfsd-+-gvfsd-dnssd
+        |         |       |-gvfsd-network
+        |         |       `-gvfsd-trash
+        |         |-gvfsd-fuse
+        |         |-gvfsd-metadata
+        |         |-kaccess
+        |         |-kactivitymanage
+        |         |-kded5
+        |         |-kglobalaccel5
+        |         |-konsole---bash---tmux: client
+        |         |-krunner---qq-+-qq---qq
+        |         |              |-qq---2*[qq]
+        |         |              `-qq
+        |         |-kscreen_backend
+        |         |-ksmserver---DiscoverNotifie
+        |         |-ksystemstats
+        |         |-kwalletd5
+        |         |-kwin_x11
+        |         |-latte-dock
+        |         |-linuxqq
+        |         |-obexd
+        |         |-org_kde_powerde
+        |         |-pipewire
+        |         |-pipewire-media-
+        |         |-plasmashell---crow
+        |         |-polkit-kde-auth
+        |         |-pulseaudio---gsettings-helpe
+        |         |-tmux: server-+-2*[bash---vim]
+        |         |              `-bash---sudo---sudo---pstree
+        |         |-2*[xdg-desktop-por]
+        |         |-xdg-document-po---fusermount3
+        |         |-xdg-permission-
+        |         `-xembedsniproxy
+        |-systemd-journal
+        |-systemd-logind
+        |-systemd-udevd
+        |-udisksd
+        |-upowerd
+        `-wpa_supplicant
+```
+
+上面是`sudo pstree -T`的输出，感觉这种卡顿可能就是de内存溢出了。理论上我感觉只要重启一下sddm马上就能变流畅。但是在这之前我想知道更详细的信息。
+
+先把qq关了试试。不出所料还是很卡。上google搜一下吧。
+
+草了，看到一个哥们系统偶尔卡顿最后发现是SSD挂掉的前兆。想起来这个本子用的是三星的老固态，系统盘的文件系统是btrfs；前几天还看群里某群u吐槽说btrfs在他那边对于固态寿命损伤挺严重的。也不知道是不是btrfs的问题。不过好在重要数据都有备份，丢了也不心疼，全从服务器上sync下来就行了。
+
+不过应该这次不是固态的问题，应该还是sddm本身的问题，不然很难解释怎么所有gui里边的东西都开始卡顿了
+
+```bash
+TIME                           PID  UID  GID SIG     COREFILE EXE                           SIZE
+Sun 2023-10-29 23:52:21 CST   2030 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Thu 2023-11-02 13:07:56 CST   3084    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Thu 2023-11-02 17:15:49 CST  36261 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Thu 2023-11-02 23:44:53 CST   1795 1000 1000 SIGTRAP missing  /tmp/.mount_linuxqFrCYKS/qq      -
+Sat 2023-11-04 18:43:36 CST   1640 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Sat 2023-11-04 18:45:41 CST   2255    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Sat 2023-11-04 18:46:34 CST   2300    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Sun 2023-11-05 18:16:28 CST  19274 1000 1000 SIGABRT missing  /opt/vscodium-bin/codium         -
+Sun 2023-11-05 18:16:30 CST  19330 1000 1000 SIGABRT missing  /opt/vscodium-bin/codium         -
+Sun 2023-11-05 22:13:13 CST  14279 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Thu 2023-11-09 23:30:51 CST  14724 1000 1000 SIGTRAP missing  /qq                              -
+Thu 2023-11-09 23:38:16 CST  15804 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Fri 2023-11-10 01:08:53 CST  14773 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Tue 2023-11-14 09:04:45 CST   5996 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Tue 2023-11-14 09:47:58 CST  10033 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Tue 2023-11-14 10:15:41 CST  75599 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Tue 2023-11-14 10:30:25 CST  13990 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Tue 2023-11-14 17:47:23 CST    575 1000 1000 SIGABRT missing  /usr/bin/plasmashell             -
+Tue 2023-11-14 21:00:24 CST  18347 1000 1000 SIGABRT missing  /usr/bin/plasmashell             -
+Wed 2023-11-15 00:34:08 CST  26489 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Wed 2023-11-15 01:14:11 CST  28479 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Wed 2023-11-15 11:34:37 CST  19955 1000 1000 SIGSEGV missing  /usr/bin/plasmashell             -
+Wed 2023-11-15 23:54:02 CST  36282 1000 1000 SIGSEGV missing  /opt/visual-studio-code/code     -
+Fri 2023-11-17 00:45:55 CST  16467 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Fri 2023-11-17 00:45:56 CST  40168 1000 1000 SIGTRAP missing  /qq                              -
+Sat 2023-11-18 01:12:06 CST  17969 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:06 CST  15257 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:06 CST  17286 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:56 CST  19088 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:56 CST  19770 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:56 CST  18906 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:56 CST  19731 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:56 CST  19689 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:12:57 CST  19591 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:10 CST  25066 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:11 CST  25053 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:11 CST  20320 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:11 CST  24308 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:13 CST  25240 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:13 CST  25205 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 01:13:14 CST  25646 1000 1000 SIGABRT missing  /usr/bin/ccze                    -
+Sat 2023-11-18 22:14:12 CST    576 1000 1000 SIGABRT missing  /usr/bin/plasmashell             -
+Sat 2023-11-18 23:37:15 CST   2175 1000 1000 SIGABRT missing  /usr/bin/plasmashell             -
+Sun 2023-11-19 12:59:47 CST   4430    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Sun 2023-11-19 13:00:33 CST   4459    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Sun 2023-11-19 13:00:34 CST   4469    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Sun 2023-11-19 13:06:05 CST   5821    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-11-20 20:53:13 CST    588 1000 1000 SIGSEGV missing  /usr/bin/plasmashell             -
+Mon 2023-11-20 20:56:33 CST   6077 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Mon 2023-11-20 22:56:05 CST   5427 1000 1000 SIGABRT missing  /usr/bin/plasmashell             -
+Mon 2023-11-20 22:59:54 CST  18385    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Tue 2023-11-21 23:30:23 CST  12137 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:25 CST  12093 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:26 CST  17572 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:26 CST  12015 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:26 CST  12016 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:27 CST  12459 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:27 CST  12003 1000 1000 SIGBUS  missing  /qq                              -
+Tue 2023-11-21 23:30:28 CST  12043 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Fri 2023-11-24 00:01:53 CST  14600 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Sat 2023-11-25 02:40:58 CST  32138 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Tue 2023-11-28 23:33:11 CST  41077 1000 1000 SIGTRAP missing  /qq                              -
+Wed 2023-11-29 11:43:44 CST  43973 1000 1000 SIGABRT missing  /usr/bin/adb                     -
+Wed 2023-11-29 11:44:06 CST  45189 1000 1000 SIGABRT missing  /usr/bin/adb                     -
+Wed 2023-11-29 23:29:56 CST  53151 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Wed 2023-11-29 23:45:58 CST  55228 1000 1000 SIGSEGV missing  /opt/visual-studio-code/code     -
+Thu 2023-11-30 00:13:43 CST  42637 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Sat 2023-12-02 01:12:16 CST  56991 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Mon 2023-12-04 10:28:09 CST  77126 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Mon 2023-12-04 15:18:23 CST  99034    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-12-04 15:19:05 CST  99068    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-12-04 15:20:45 CST  99231    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-12-04 15:54:13 CST 104472 1000 1000 SIGSEGV missing  /home/xeonds/code/pizip/pi       -
+Mon 2023-12-04 15:54:45 CST 104495 1000 1000 SIGSEGV missing  /home/xeonds/code/pizip/pi       -
+Mon 2023-12-04 15:55:06 CST 104521 1000 1000 SIGSEGV missing  /home/xeonds/code/pizip/pi       -
+Mon 2023-12-04 15:55:36 CST 104541 1000 1000 SIGSEGV missing  /home/xeonds/code/pizip/pi       -
+Mon 2023-12-04 17:28:20 CST 104920 1000 1000 SIGBUS  missing  /chrome_crashpad_handler         -
+Mon 2023-12-04 23:36:35 CST 119295 1000 1000 SIGSEGV missing  /opt/visual-studio-code/code     -
+Wed 2023-12-06 11:18:53 CST  16426    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-12-11 19:56:40 CST  97572 1000 1000 SIGTRAP missing  /tmp/.mount_linuxqSV6RFp/qq      -
+Tue 2023-12-12 01:01:33 CST 123670 1000 1000 SIGTRAP missing  /opt/visual-studio-code/code     -
+Fri 2023-12-15 14:50:41 CST  17039 1000 1000 SIGTRAP missing  /tmp/.mount_linuxqkQn53G/qq      -
+Sat 2023-12-16 23:55:13 CST  19892 1000 1000 SIGTRAP missing  /opt/visual-studio-code/code     -
+Mon 2023-12-18 13:16:16 CST  28074    0    0 SIGABRT none     /usr/bin/fcitx5-remote           -
+Mon 2023-12-18 15:08:22 CST  41701 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Tue 2023-12-19 21:37:06 CST  17530 1000 1000 SIGFPE  missing  /home/xeonds/code/c4/a.out       -
+Tue 2023-12-19 23:39:47 CST  20684 1000 1000 SIGTRAP missing  /tmp/.mount_linuxqllS3Xz/qq      -
+Wed 2023-12-20 12:31:27 CST  23806 1000 1000 SIGABRT missing  /usr/bin/clashctl                -
+Sun 2023-12-24 19:26:26 CST   5873 1000 1000 SIGTRAP present  /qq                           1.6M
+Mon 2023-12-25 01:59:52 CST   5951 1000 1000 SIGBUS  present  /chrome_crashpad_handler     42.5K
+```
+
+上面是`coredumpctl`的输出。好像sddm还没崩溃呢。再看看journal：
+
+```bash
+Dec 24 02:28:08 ark-station-breeze systemd[1]: Started Simple Desktop Display Manager.
+░░ Subject: A start job for unit sddm.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit sddm.service has finished successfully.
+░░ 
+░░ The job identifier is 108.
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Initializing...
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Starting...
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Logind interface found
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Adding new display...
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Loaded empty theme configuration
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Xauthority path: "/run/sddm/xauth_bDCTVn"
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Using VT 2
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Display server starting...
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Writing cookie to "/run/sddm/xauth_bDCTVn"
+Dec 24 02:28:08 ark-station-breeze sddm[407]: Running: /usr/bin/X -dpi 120 -background none -seat seat0 vt2 -auth /run/sddm/xauth_bDCTVn -noreset -displayfd 16
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Setting default cursor
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Running display setup script  "/usr/share/sddm/scripts/Xsetup"
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Display server started.
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Reading from "/usr/local/share/xsessions/plasma.desktop"
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Reading from "/usr/share/xsessions/plasma.desktop"
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Session "/usr/share/xsessions/plasma.desktop" selected, command: "/usr/bin/startplasma-x11" for VT 2
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: [PAM] Starting...
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: [PAM] Authenticating...
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:auth): pam_kwallet5: pam_sm_authenticate
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: [PAM] Preparing to converse...
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:auth): pam_kwallet5: Couldn't get password (it is empty)
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: [PAM] Conversation with 1 messages
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:auth): pam_kwallet5: Empty or missing password, doing nothing
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: [PAM] returning.
+Dec 24 02:28:09 ark-station-breeze sddm[407]: Authentication for user  "xeonds"  successful
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:setcred): pam_kwallet5: pam_sm_setcred
+Dec 24 02:28:09 ark-station-breeze sddm-helper[433]: pam_unix(sddm-autologin:session): session opened for user xeonds(uid=1000) by xeonds(uid=0)
+Dec 24 02:28:10 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:session): pam_kwallet5: pam_sm_open_session
+Dec 24 02:28:10 ark-station-breeze sddm-helper[433]: pam_kwallet5(sddm-autologin:session): pam_kwallet5: open_session called without kwallet5_key
+Dec 24 02:28:10 ark-station-breeze sddm-helper[433]: Writing cookie to "/tmp/xauth_XpVcsc"
+Dec 24 02:28:10 ark-station-breeze sddm-helper[433]: Starting X11 session: "" "/usr/share/sddm/scripts/Xsession \"/usr/bin/startplasma-x11\""
+Dec 24 02:28:10 ark-station-breeze sddm[407]: Session started true
+```
+
+哦还有xorg的：
+
+```bash
+-- No entries --
+```
+
+好吧空的。那看看top
+
+```bash
+
+[?1h=[?25l[H[J[mtop - 15:10:25 up 1 day, 12:42,  1 user,  load average: 1.40, 1.33, 1.29[m[39;49m[m[39;49m[K
+任务:[m[39;49m[1m 204 [m[39;49mtotal,[m[39;49m[1m   3 [m[39;49mrunning,[m[39;49m[1m 201 [m[39;49msleeping,[m[39;49m[1m   0 [m[39;49mstopped,[m[39;49m[1m   0 [m[39;49mzombie[m[39;49m[m[39;49m[K
+%Cpu(s):[m[39;49m[1m 28.6 [m[39;49mus,[m[39;49m[1m  0.0 [m[39;49msy,[m[39;49m[1m  0.0 [m[39;49mni,[m[39;49m[1m 71.4 [m[39;49mid,[m[39;49m[1m  0.0 [m[39;49mwa,[m[39;49m[1m  0.0 [m[39;49mhi,[m[39;49m[1m  0.0 [m[39;49msi,[m[39;49m[1m  0.0 [m[39;49mst[m[39;49m[m [m[39;49m[m[39;49m[K
+MiB Mem :[m[39;49m[1m   7835.3 [m[39;49mtotal,[m[39;49m[1m    584.1 [m[39;49mfree,[m[39;49m[1m   3807.3 [m[39;49mused,[m[39;49m[1m   4760.9 [m[39;49mbuff/cache[m[39;49m[m [m[39;49m[m    [m[39;49m[m[39;49m[K
+MiB Swap:[m[39;49m[1m      0.0 [m[39;49mtotal,[m[39;49m[1m      0.0 [m[39;49mfree,[m[39;49m[1m      0.0 [m[39;49mused.[m[39;49m[1m   4028.0 [m[39;49mavail Mem [m[39;49m[m[39;49m[K
+[K
+[7m 进程号 USER      PR  NI    VIRT    RES    SHR    %CPU  %MEM     TIME+ COMMAND  [m[39;49m[K
+[m[1m    411 root      20   0  859280  87628  30916 R  90.9   1.1 248:56.68 Xorg     [m[39;49m[K
+[m[1m  19316 xeonds    20   0 4028616 892492 271492 R  72.7  11.1   0:17.50 firefox  [m[39;49m[K
+[m  19461 xeonds    20   0 2713128 171852  88252 S  18.2   2.1   0:06.27 WebExte+ [m[39;49m[K
+[m[1m  19901 xeonds    20   0   15440   5760   3584 R   9.1   0.1   0:00.01 top      [m[39;49m[K
+[m      1 root      20   0   22220  10228   7028 S   0.0   0.1   0:02.61 systemd  [m[39;49m[K
+[m      2 root      20   0       0      0      0 S   0.0   0.0   0:00.04 kthreadd [m[39;49m[K
+[m      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+ [m[39;49m[K
+[m      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m      9 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m     12 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+ [m[39;49m[K
+[m     14 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tas+ [m[39;49m[K
+[m     15 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tas+ [m[39;49m[K
+[m     16 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tas+ [m[39;49m[K
+[m     17 root      20   0       0      0      0 S   0.0   0.0   0:30.95 ksoftir+ [m[39;49m[K[?1l>[25;1H
+[34h[?25h[K
+```
+
+抽象是抽象了点，但是能看出来好像是Xorg在发电，试试去tty重启xorg看看。

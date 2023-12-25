@@ -1,6 +1,6 @@
 # My blog's utiilties and aliases
 template=$(find ./_scaffolds | grep .md)
-usage="Usage:\tblog\tpush\n\t\tfetch\n\t\tnew\tpost_name\n\t\topen\tregex\n\t\tlines"
+usage="Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/lines"
 
 function ctl() {
     if [[ $1 == "push" ]]; then
