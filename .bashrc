@@ -5,7 +5,7 @@ usage="Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/li
 function ctl() {
     if [[ $1 == "push" ]]; then
         git add . && git commit -m "Vault backup $(date)" && git push 
-    elif [[ $1 == "fetch" ]]; then
+    elif [[ $1 == "pull" ]]; then
         git pull --rebase && echo "pull completed"
     elif [[ $1 == "stat" ]]; then
         git status
