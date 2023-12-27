@@ -162,18 +162,18 @@ widgets:
       Robotxm: https://moefactory.com
       Dimole: https://blog.dml.ink
       All: https://mxts.jiujiuer.xyz/links
-  - position: left
-    type: categories
+    # - position: left
+    # type: categories
   - position: right
     type: recent_posts
   - position: right
     type: archives
-  - position: right
-    type: tags
-    collapsed: true
-    order_by: name
-    amount:
-    show_count: true
+  # - position: right
+  #   type: tags
+  #   collapsed: true
+  #   order_by: name
+  #   amount:
+  #   show_count: true
   # -
   #     position: left
   #     type: subscribe_email
