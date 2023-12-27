@@ -19,6 +19,8 @@ function ctl() {
         find . -type f -not -path './git/*' -name $2
     elif [[ $1 == "lines" ]]; then
         line_count
+    elif [[ $1 == "words" ]]; then
+        echo "You have wrote $(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
     else
         echo -e $usage
     fi 
