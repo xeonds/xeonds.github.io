@@ -3,7 +3,7 @@ title: Flutter速通指南
 date: 2023-09-16 16:34:35
 author: xeonds
 toc: true
-excerpt: Presented by BenderBlog/SuperBart，感谢学长带咱~~重新~~入坑(OwO)
+excerpt: Presented by BenderBlog/SuperBart，感谢学长带咱入坑(OwO)
 tags:
     - Flutter
 ---
@@ -20,8 +20,7 @@ tags:
 
 ## SuperBart的讲座
 
-
-## Flutter概要
+### Flutter概要
 
 一套代码 (`./lib`), 多平台运行.
 
@@ -33,7 +32,7 @@ tags:
 
 Flutter的开发语言是Dart，初见印象：Dart= JS/C++(语言友好度和性能上) + Java(代码风格上) + Dart VM
 
-## Basic code format
+### Basic code format
 
 tldr
 
@@ -47,7 +46,7 @@ Just like Kotlin
 
 - Async
 
-## Basic layouts
+### Basic layouts
 
 - Widget
 - Text
@@ -55,7 +54,7 @@ Just like Kotlin
 - Row-Column
 - Container
 
-## Basic scaffolds
+### Basic scaffolds
 
 - AppBar
 - Action
@@ -64,7 +63,16 @@ Just like Kotlin
 - Body
 - BottomBar
 
-## Network
+### Network
 
 Mainly using `Dio`
 
+## 使用笔记
+
+### 关于WebViewWidget
+
+这玩意比较坑的一点是它只支持Android和iOS平台，对于Windows/Linux/Web平台，这玩意都是不支持的。。
+
+所以review同学的代码的时候，发现在我用Linux平台跑的时候报错了。搜了下才发现这问题。
+
+不过也无所谓了，反正这玩意本来就只是在Android/iOS上跑的。
