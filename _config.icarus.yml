@@ -122,10 +122,13 @@ share:
   install_url: "https://mxts.jiujiuer.xyz/"
 sidebar:
   left:
-    sticky: false
+    sticky: true
   right:
     sticky: false
 widgets:
+  - position: left
+    type: toc
+    index: true
   - position: left
     type: profile
     author: xeonds
@@ -151,9 +154,6 @@ widgets:
       RSS:
         icon: fas fa-rss
         url: /atom.xml
-  - position: left
-    type: toc
-    index: true
   - position: left
     type: links
     links:
