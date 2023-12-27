@@ -70,12 +70,20 @@ wget https://mirrors.ustc.edu.cn/node/latest-v20.x/node-v20.5.1-linux-x64.tar.gz
 && source ~/.bashrc
 ```
 
+如果是Arch Linux的话，直接yay/pacman启动就行。真香啊.jpg
+
 ## 换源
 
 一条指令就行，执行结果会在`~/.npmrc`里。
 
 ```bash
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com/
 ```
 
-换了淘宝源。
+`pnpm`方法大同小异：
+
+```bash
+# pnpm install & change source
+npm i pnpm -g
+pnpm config set registry https://registry.npmmirror.com/
+```
