@@ -297,3 +297,7 @@ id	encoder	status		name		size (mm)	modes	encoders
 		enums: HDCP Type0=0 HDCP Type1=1
 		value: 0
 
+## 解决
+最后解决了，似乎是在更新了内核后，i915也就是intel的核显驱动得到了更新，所以能正确识别外部的hdmi和dp接口了。
+
+之前从kali切过来就是因为显示驱动的问题，不过现在已经再也回不去了。毕竟arch比kali香多了。
