@@ -4,6 +4,7 @@ date: 2023-06-03 21:43:09
 author: xeonds
 toc: true
 excerpt: 积累起来的bash使用技巧，用来处理日常的一些问题
+cover: img/Screenshot_20231228_195638.png
 tags:
   - Bash
   - 数据统计
