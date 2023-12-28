@@ -1,6 +1,7 @@
 # My blog's utiilties and aliases
 template=$(find ./_scaffolds | grep .md)
 usage="Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/lines"
+greeting="Welcome back to blog, write something?"
 
 function ctl() {
     if [[ $1 == "push" ]]; then
@@ -21,6 +22,8 @@ function ctl() {
         line_count
     elif [[ $1 == "words" ]]; then
         echo "You have wrote $(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
+    elif [[ $1 == "recent" ]]; then
+        recent
     else
         echo -e $usage
     fi 
@@ -64,3 +67,20 @@ function open() {
     vim $(find . -type f -not -path './git/*' -name $1)
 }
 
+function recent() {
+    count=${1:-20}
+    order=${2:-"-r"}
+    echo "Recent $count files:"
+    find . -type f -name "*.md" -print0 |\
+        xargs -0 stat -c "%w %n" |\
+        sort -n "$order" |\
+        cut -d' ' -f4 |\
+        head -n "$count"
+}
+
+function welcome() {
+    echo -e $greeting
+    recent 5
+}
+
+welcome
