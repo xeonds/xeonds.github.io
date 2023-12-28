@@ -3,7 +3,7 @@ title: Arch Linux折腾笔记
 date: 2023-09-05 21:39:57
 author: xeonds
 toc: true
-excerpt: (*/ω＼*)
+excerpt: Btw I use arch.jpg
 tags:
   - Linux
 cover: /img/89596288_p0_master1200.jpg
