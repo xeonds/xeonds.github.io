@@ -502,3 +502,4 @@ systemctl --user restart plasma-kwin_x11
 
 试了试，问题完美解决，CPU占用也正常了。
 
+ 参考：[KDE解决GUI界面卡顿的问题](https://blog.mynook.info/post/kde-gui-sluggish-workaround/)
