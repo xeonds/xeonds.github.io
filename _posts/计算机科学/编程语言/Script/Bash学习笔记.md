@@ -533,3 +533,21 @@ xeonds@localhost#
 
 >其实现在Obsidian用的少了，反而是Vim用的更多了。一个是Vim性能和资源占用上确实能吊着前者打，另一个是Obsidian对于Vim的支持还是比较有限和割裂（比如`<Ctrl+C>`和`<Ctrl+V>`的处理，比如中文输入法的支持，在我这边的感知是达不到原生Vim的体感的）。不过Vim这边怎么复制粘贴图片是个大问题，不过有必要~~不咕咕咕~~的话，也许写个脚本也能搞定。
 
+### 进制转换
+
+Bash里边有个printf调用，好像是shell内建的POSIX标准命令。也是突然想起来能这么用的：
+
+```bash
+printf '%x\n' 2024
+```
+
+或者，也可以用`bc`或者`dc`解决：
+
+```bash
+$ echo 'obase=16; 9999999999999999999999' | bc
+21E19E0C9BAB23FFFFF
+$ echo '16o 9999999999999999999999 p' | dc
+21E19E0C9BAB23FFFFF
+```
+
+>ref:[BASH base conversion from decimal to hex](https://unix.stackexchange.com/questions/191205/bash-base-conversion-from-decimal-to-hex)
