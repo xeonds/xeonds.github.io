@@ -503,3 +503,9 @@ systemctl --user restart plasma-kwin_x11
 试了试，问题完美解决，CPU占用也正常了。
 
  参考：[KDE解决GUI界面卡顿的问题](https://blog.mynook.info/post/kde-gui-sluggish-workaround/)
+
+## 组合键
+
+其实主要是KDE Plasma的相关组合键。偶尔会意外发现一些组合键，就记录在这里了。
+
+- 切换桌面：`ctrl+F*`
