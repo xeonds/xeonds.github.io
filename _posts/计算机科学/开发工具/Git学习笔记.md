@@ -132,6 +132,16 @@ git config --global --add merge.ff false
 
 ### Log
 
+### Archive
+
+打包是个挺好用的功能，能直接把某个节点的文件树打包成压缩包，供分发使用。
+
+```bash
+git archive --format=zip --output=master.zip master
+```
+
+上面的指令将`master`分支最新的commit的目录树打包成`master.zip`。
+
 ### Tag
 
 Git tag是一种用于在Git仓库中标记特定版本的方法。它通常被用来标记重要的里程碑版本或发布版本，以便于在后续的开发或维护过程中快速定位和回溯到这些版本。
