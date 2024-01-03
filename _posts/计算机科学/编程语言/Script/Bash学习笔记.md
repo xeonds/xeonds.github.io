@@ -498,6 +498,19 @@ for file in .*; do [ -f "$file" ] && mv "$file" "${file#.}"; done
 - 修改/删除文件后缀: `${file%.*}`会删除文件的后缀，比如文件名是`document.pdf`,`${file%.*}`就是`document`
 - 替换文件名: `${parameter/pattern/replacement}`：比如`${file/.old./.new.}`能把文件名的`.old.`换为`.new.`
 
+#### find
+
+这一个指令的用法就值得讲半天。`find`是查找指定路径下匹配文件的有用工具，同时还能对已有的文件执行自定义的操作。最简单的用法就是查找文件：
+
+```bash
+find . -type f -name test*.md
+```
+如果要匹配多个正则求并集可以这么做：
+```bash
+find . -type f -name *.a -o -name *.b -o -name *.c
+```
+它会给出匹配的文件列表。然后使用其他工具处理就行，或者可以用`-exec`参数处理文件列表（后边再说
+
 ## 数据操作
 
 coreutils里边不少工具都是玩字符串魔术，也就是字符串处理的。这不光对于编写各宗脚本很有用，甚至在处理数据上也相当有用。特别是面对一些格式很奇怪的数据，现场找不到parser的那种，你几乎可以正则+批量操作秒了，不能秒怎么办？别急，这不还有`awk`嘛。说到这玩意，这既是个程序，也是个编程语言。它像python那样，既能用命令化的方式编辑文件，也能编写awk脚本来作为文件批量编辑的工具。
@@ -551,3 +564,4 @@ $ echo '16o 9999999999999999999999 p' | dc
 ```
 
 >ref:[BASH base conversion from decimal to hex](https://unix.stackexchange.com/questions/191205/bash-base-conversion-from-decimal-to-hex)
+
