@@ -509,3 +509,14 @@ systemctl --user restart plasma-kwin_x11
 其实主要是KDE Plasma的相关组合键。偶尔会意外发现一些组合键，就记录在这里了。
 
 - 切换桌面：`ctrl+F*`
+
+## 莫得休眠Hibernate选项
+找了半天发现是系统安装的时候没设置swap交换分区。不过暂时默认的睡眠也够用了，之后再考虑吧。
+
+## 备份
+
+>ref:[现代化的 Archlinux 安装，Btrfs、快照、休眠以及更多。](https://sspai.com/post/78916)
+
+其一就是软件列表备份。`pacman -Qe >> installed.txt`就可以备份已安装软件列表
+
+其二就是备份根目录数据。其中的`-avrh`用于保留文件权限。以及似乎必须得注意路径末尾的斜杠问题，rsync好像会区分这两个路径。`sudo rsync -avrh --progress /home/ /mnt/backup/`
