@@ -520,3 +520,8 @@ systemctl --user restart plasma-kwin_x11
 其一就是软件列表备份。`pacman -Qe >> installed.txt`就可以备份已安装软件列表
 
 其二就是备份根目录数据。其中的`-avrh`用于保留文件权限。以及似乎必须得注意路径末尾的斜杠问题，rsync好像会区分这两个路径。`sudo rsync -avrh --progress /home/ /mnt/backup/`
+
+## 关机等待时间
+一直忘了改这个东西了。有时候等待一些服务停止的时候等到倒计时结束才会停止。可以适当减少倒计时的时长环节这个问题。
+
+对应的参数在`/etc/systemd/system.conf`，更改`DefaultTimeoutStopSec=90s`为你想要的等待时间，我改成10s了。
