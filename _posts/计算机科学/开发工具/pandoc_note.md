@@ -48,3 +48,7 @@ pandoc -o $(OUTPUT) -f markdown -t docx $(MARKDOWN)
 
 最让我吃惊的是这玩意速度奇快,转换个快4000字的Markdown到Word，几乎跟我echo个字符串一样快，这还是我在7代intel移动端平台上测试的(?A?)
 
+- Markdown转Tex，速度也很快
+```bash
+pandoc -w latex ./test.md -o test.tex
+```
