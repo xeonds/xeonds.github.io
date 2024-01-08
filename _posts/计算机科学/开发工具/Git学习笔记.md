@@ -132,6 +132,16 @@ git config --global --add merge.ff false
 
 ### Log
 
+### Archive
+
+打包是个挺好用的功能，能直接把某个节点的文件树打包成压缩包，供分发使用。
+
+```bash
+git archive --format=zip --output=master.zip master
+```
+
+上面的指令将`master`分支最新的commit的目录树打包成`master.zip`。
+
 ### Tag
 
 Git tag是一种用于在Git仓库中标记特定版本的方法。它通常被用来标记重要的里程碑版本或发布版本，以便于在后续的开发或维护过程中快速定位和回溯到这些版本。
@@ -210,3 +220,51 @@ git config core.ignorecase false
 git submodule update --init --recursive
 ```
 
+- 拒绝合并无关的历史：？
+
+今天做数据库大作业的时候，在develop分支写完了前端代码。遂打算merge到main分支，但是收到了这样的警告：
+
+```bash
+xeonds@ark-station-breeze:~/Desktop/db-lab$ git merge develop 
+致命错误：拒绝合并无关的历史
+```
+
+然后就蒙圈了。主要是因为我明明记得我develop分支是从main分支checkout出来的啊......看看历史：
+
+```bash
+# main
+xeonds@ark-station-breeze:~/Desktop/db-lab$ git graph 
+* cbed40a (HEAD -> main, origin/main, github/main) initial commit
+# develop
+xeonds@ark-station-breeze:~/Desktop/db-lab$ git checkout develop 
+切换到分支 'develop'
+您的分支与上游分支 'origin/develop' 一致。
+xeonds@ark-station-breeze:~/Desktop/db-lab$ git graph 
+* 5f244db (HEAD -> develop, origin/develop, github/develop) Completed frontend
+* 571a5f9 Complete most fetch
+* a4a6799 Add company api Remove incidential binary file Fix commit box
+* 22bb06f frontend: a lot
+* 00d9963 Frontend
+* 74d0b2e remove unused files
+* 5da0243 add table for showing data
+* 3d63881 fix router
+* 02483ab add router for home & lint fix
+*   00f4504 Merge branch 'develop' of http://192.168.3.143:3000/xeonds/bus-admin into develop
+|\  
+| * 9ef740e home page completed
+| * 8073d22  change readme && add todo
+| * ba09829 Backend: - api support static fs: for frontend part - config.go: use viper to manage config file - model: conn use config in viper - main: finish init&startup
+|/  
+* 57ef7c6 add backend
+* 45aca82 initial commit
+```
+
+不是这啥情况？怎么都是initial commit结果hash不一样？大概进去看了一下两次提交，内容都是一样的，但是不知道为啥就成这样了。时间紧所以就不详细排查了。总之现在的策略是从develop分支完全merge过来，找了个[博客](https://www.cnblogs.com/xidianzxm/p/12965841.html)看到了这个问题的解决方法（虽然是拉取时候的，但是合并应该也行）：
+
+```bash
+git merge --allow-unrelated-histories develop
+```
+
+解决了。输完上面的指令之后，git就自动回溯了之前的每一次提交，并对每一次提交进行处理，合并initial commit不一致导致的冲突。反正完成之后有好几个main分支的历史提交都被重新修改了（我用的是no rebase策略）。
+
+这应该算是比较罕见的情况了。

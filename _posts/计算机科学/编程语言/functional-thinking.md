@@ -1,6 +1,6 @@
 ---
 title: 函数式编程范式
-date: 2023.12.11 2023 22:00:41
+date: 2023.12.11 22:00:41
 author: xeonds
 toc: true
 excerpt: (*/ω＼*)

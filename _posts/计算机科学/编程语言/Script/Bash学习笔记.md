@@ -4,6 +4,7 @@ date: 2023-06-03 21:43:09
 author: xeonds
 toc: true
 excerpt: 积累起来的bash使用技巧，用来处理日常的一些问题
+cover: img/Screenshot_20231228_195638.png
 tags:
   - Bash
   - 数据统计
@@ -496,4 +497,71 @@ for file in .*; do [ -f "$file" ] && mv "$file" "${file#.}"; done
 - 路径修改: 可以从全路径移除特定的路径。比如`${full_path#/path/to/}`可以变换路径为相对路径
 - 修改/删除文件后缀: `${file%.*}`会删除文件的后缀，比如文件名是`document.pdf`,`${file%.*}`就是`document`
 - 替换文件名: `${parameter/pattern/replacement}`：比如`${file/.old./.new.}`能把文件名的`.old.`换为`.new.`
+
+#### find
+
+这一个指令的用法就值得讲半天。`find`是查找指定路径下匹配文件的有用工具，同时还能对已有的文件执行自定义的操作。最简单的用法就是查找文件：
+
+```bash
+find . -type f -name test*.md
+```
+如果要匹配多个正则求并集可以这么做：
+```bash
+find . -type f -name *.a -o -name *.b -o -name *.c
+```
+它会给出匹配的文件列表。然后使用其他工具处理就行，或者可以用`-exec`参数处理文件列表（后边再说
+
+## 数据操作
+
+coreutils里边不少工具都是玩字符串魔术，也就是字符串处理的。这不光对于编写各宗脚本很有用，甚至在处理数据上也相当有用。特别是面对一些格式很奇怪的数据，现场找不到parser的那种，你几乎可以正则+批量操作秒了，不能秒怎么办？别急，这不还有`awk`嘛。说到这玩意，这既是个程序，也是个编程语言。它像python那样，既能用命令化的方式编辑文件，也能编写awk脚本来作为文件批量编辑的工具。
+
+### 文件按日期排序
+
+刚好要给博客系统写个脚本来增加个最近文件功能。所以就写了个脚本来首先获取一个按照日期排序的文件列表。做法很简单，就是那几样老工具继续组合，不过参数倒是挺新的，因为`ls`我平时用的时候几乎就没加过参数（）
+
+```bash
+find . -type f -name "*.md" -print0 |\
+    xargs -0 stat -c "%w %n" |\
+    sort -n |\
+    cut -d' ' -f4 |\
+    head -n 20
+
+```
+
+一个`find`用来找出匹配文件路径，一个`stat`转换为日期+时间的形式，剩下的就是排序和字符串操作了。另外如果想倒序输出的话（从最新到最旧输出文件列表），只需要给`sort`加个`-r`参数逆向排序就行了。
+
+把这东西加到我博客里边之后基本是这效果：
+
+```bash
+xeonds@localhost# cd blog
+Welcome back to blog, write something?
+Recent 5 files:
+./_posts/计算机科学/编程语言/Script/Bash学习笔记.md
+./_posts/计算机科学/计算机视觉/计算机视觉学习笔记.md
+./_posts/计算机科学/编程语言/JavaScript/记一次npm和nodejs安装过程.md
+./_posts/计算机科学/开发工具/VScode使用笔记.md
+./_posts/flutter-intro.md
+xeonds@localhost# 
+```
+
+>其实现在Obsidian用的少了，反而是Vim用的更多了。一个是Vim性能和资源占用上确实能吊着前者打，另一个是Obsidian对于Vim的支持还是比较有限和割裂（比如`<Ctrl+C>`和`<Ctrl+V>`的处理，比如中文输入法的支持，在我这边的感知是达不到原生Vim的体感的）。不过Vim这边怎么复制粘贴图片是个大问题，不过有必要~~不咕咕咕~~的话，也许写个脚本也能搞定。
+
+### 进制转换
+
+Bash里边有个printf调用，好像是shell内建的POSIX标准命令。也是突然想起来能这么用的：
+
+```bash
+printf '%x\n' 2024
+```
+
+或者，也可以用`bc`或者`dc`解决：
+
+```bash
+$ echo 'obase=16; 9999999999999999999999' | bc
+21E19E0C9BAB23FFFFF
+$ echo '16o 9999999999999999999999 p' | dc
+21E19E0C9BAB23FFFFF
+```
+
+>ref:[BASH base conversion from decimal to hex](https://unix.stackexchange.com/questions/191205/bash-base-conversion-from-decimal-to-hex)
 

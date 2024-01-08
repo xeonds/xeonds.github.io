@@ -3,7 +3,7 @@ title: Arch Linux折腾笔记
 date: 2023-09-05 21:39:57
 author: xeonds
 toc: true
-excerpt: (*/ω＼*)
+excerpt: Btw I use arch.jpg
 tags:
   - Linux
 cover: /img/89596288_p0_master1200.jpg
@@ -491,3 +491,37 @@ MiB Swap:[m[39;49m[1m      0.0 [m[39;49mtotal,[m[39;49m[1m      0.0 
 抽象是抽象了点，但是能看出来好像是Xorg在发电，试试去tty重启xorg看看。
 
 最后发现Xorg是sddm启动的，没办法直接重启了下sddm，问题解决，但是最不爽的是不知道问题到底是咋解决的。
+
+找到一个博客，发现好像不是xorg的问题，而是kwin的问题：暂停恢复合成时，会导致kwin卡顿，这时候重启一下kwin_x11就行了。
+
+这就好说了：
+
+```bash
+systemctl --user restart plasma-kwin_x11
+```
+
+试了试，问题完美解决，CPU占用也正常了。
+
+ 参考：[KDE解决GUI界面卡顿的问题](https://blog.mynook.info/post/kde-gui-sluggish-workaround/)
+
+## 组合键
+
+其实主要是KDE Plasma的相关组合键。偶尔会意外发现一些组合键，就记录在这里了。
+
+- 切换桌面：`ctrl+F*`
+
+## 莫得休眠Hibernate选项
+找了半天发现是系统安装的时候没设置swap交换分区。不过暂时默认的睡眠也够用了，之后再考虑吧。
+
+## 备份
+
+>ref:[现代化的 Archlinux 安装，Btrfs、快照、休眠以及更多。](https://sspai.com/post/78916)
+
+其一就是软件列表备份。`pacman -Qe >> installed.txt`就可以备份已安装软件列表
+
+其二就是备份根目录数据。其中的`-avrh`用于保留文件权限。以及似乎必须得注意路径末尾的斜杠问题，rsync好像会区分这两个路径。`sudo rsync -avrh --progress /home/ /mnt/backup/`
+
+## 关机等待时间
+一直忘了改这个东西了。有时候等待一些服务停止的时候等到倒计时结束才会停止。可以适当减少倒计时的时长环节这个问题。
+
+对应的参数在`/etc/systemd/system.conf`，更改`DefaultTimeoutStopSec=90s`为你想要的等待时间，我改成10s了。
