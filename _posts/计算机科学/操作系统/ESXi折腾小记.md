@@ -243,6 +243,24 @@ sudo smbpasswd -a [username]
 >最近把`XDU-Planet`贡献给`XDOSC`社区了，目前挂了很多人的~~黑~~历史，可以来[Planet](https://xdlinux.github.io/planet/)看看。
 
 总之，充分利用嘛。
+
+哦对，这两天还搭建了个Overleaf用来写LaTex。把编译阶段的任务甩给服务器做挺爽的。部署指南参考了[这篇](https://zhuanlan.zhihu.com/p/656444021)步骤记录如下：
+```bash
+mkdir -p overleaf && cd overleaf
+wget https://github.com/overleaf/overleaf/blob/main/docker-compose.yml
+# 上边下下来compose配置之后得先改点地方，比如overleaf的端口，volume的存放路径等
+docker-compose up -d
+# 配置完整的TexLive以支持完整编译
+docker exec -it sharelatex bash
+cd /usr/local/texlive
+wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh --no-check-certificate
+sh update-tlmgr-latest.sh -- --upgrade
+tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet
+tlmgr update --self --all # luaotfload-tool -fu
+tlmgr install scheme-full
+```
+最下边的`tlmgr install`就是用来安装各种CTAN包的工具。以后有缺失的包时可以按需安装。
+
 ## 运维
 
 服务器的躯体是硬件，灵魂是数据。物理上的安全备份这里先不论，这里主要说说数据上的安全和管理。
@@ -350,6 +368,18 @@ done < "$BACKUP_DIR/config.csv"                 # 备份任务配置数据位于
 如何整理磁盘上的文件？问问`mv, cp, ls, rm, cat, grep, sed, awk, xargs`；然后，用bash把它们拼起来就行。只要你想，你可以编写出任何脚本来整理你的所有文件。
 
 >TODO：具体的脚本太多了，这里地方小，写不下（溜
+
+---
+
+>2024.1.4：update
+
+很早之前就整上这个Windows Server 2012 R2数据中心版本了，之前一直纯当Windows用的，今天发现Windows Server Datacenter确实是有一些很便利数据中心管理的feature，其中最让我心动的无疑是它的Deduplication功能。这个部分作为服务器的可选功能，需要在服务器管理面板手动添加，而且微软的东西的一个好处就是文档有中文而且相对比较完善，参考[安装和启用数据删除](https://learn.microsoft.com/zh-cn/windows-server/storage/data-deduplication/install-enable)。虽然上边标注的适用版本里边好像没有Windows Server 2012 R2 Datacenter，但是我自己实测是支持这个版本的。
+
+具体的开启步骤上面的参考链接里边有，这里说下我的踩坑经历。首先就是这玩意的文件系统只支持NTFS和ReFS两种，并且必须是本地的磁盘（但是我主力Linux，而且文件比较乱，还没把磁盘重新分配给Windows），也就是说必须在ESXi里边把磁盘分配给Windows才能享受数据压缩。其次就是这个压缩是以块为粒度的，根据微软官方的说法而言，能够节省的空间确实不少，适合文件服务器和给Hyper-V服务器用，能显著节省空间。另外这个玩意是个定期运行的服务，服务的注意事项它也得注意。
+
+以及除了这个本体之外，还有一个`ddpeval.exe`是用来评估数据压缩效果的。可以先跑一次这个然后再根据实际情况决策是否启用数据压缩。还有就是这东西作为重型I/O操作，很吃内存和CPU，所以启用数据去重服务的时候得注意根据实际情况限制它可以使用的资源量。
+
+哎，要是这玩意有开源实现就好了，直接挂Linux底下定期执行。
 
 ### 自动运维
 
