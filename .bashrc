@@ -13,7 +13,7 @@ function ctl() {
     elif [[ $1 == "add" ]]; then
         git add . && git status
     elif [[ $1 == "new" ]]; then
-        new_post $2 && vim "_inbox/$2.md"
+        new_post "$2" && vim "_inbox/$2.md"
     elif [[ $1 == "open" ]]; then
         open $2
     elif [[ $1 == "find" ]]; then
