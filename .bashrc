@@ -70,7 +70,6 @@ function open() {
 function recent() {
     count=${1:-20}
     order=${2:-"-r"}
-    echo "Recent $count files:"
     find . -type f -name "*.md" -print0 |\
         xargs -0 stat -c "%w %n" |\
         sort -n "$order" |\
