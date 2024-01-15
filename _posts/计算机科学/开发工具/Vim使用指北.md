@@ -429,6 +429,10 @@ set guifont=Lucida\ Console:h14
 
 如果没效果就把语句从文件末尾移到开头。
 
+3. 无法使用剪切板
+
+最近用Vim的时候总是会跳出一个info：`Authorization required, but no authorization protocol specified`。最后在网上的`vim-use`邮件列表里边找到这个问题的答案了。原因是Vim和X-Server通信失败，导致出现了这个问题。为啥要访问X-Server呢？为了使用Vim的系统剪切板支持。所以解决方法可以是使用`vim -X`直接让Vim不和X-Server通信，100%有效。或者就是排查一下你的*nix发生了什么导致X-Server权限异常。
+
 ## 0x05.插件
 
 这个后面再说吧，反正前面的一套下来也差不多够用了~~除非你想拿Vim当IDE用~~
