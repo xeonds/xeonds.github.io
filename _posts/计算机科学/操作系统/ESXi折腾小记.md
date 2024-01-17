@@ -353,6 +353,62 @@ done < "$BACKUP_DIR/config.csv"                 # 备份任务配置数据位于
 
 另外我记得好像推荐`rsync`做增量备份的来着，不过我的这些数据可能不太适合增量备份所以没用。如果是照片一类的文件，倒是很适合rsync来处理。回头可以抽空升级下这个脚本。
 
+#### 备份服务器
+
+在继续阅读之前，**永远保证数据安全，root的无上权限永远意味着使用者的责任，按下回车之前一定再三检查指令！！！**
+
+```bash
+ssh username@server_ip "sudo dd if=/dev/sdX bs=4M status=progress" | dd of=/path/to/local/backup/server_root.img bs=4M
+```
+
+上面的指令，将远端服务器的一个分区直接备份到本地的一个文件中，块级别拷贝，安全可靠，就是`dd`指令特别危险，得谨慎使用。
+
+还原的时候，在目标计算机上启动Live CD进入一个临时系统，挂载磁盘然后用合适的指令还原数据：
+```bash
+dd if=/path/to/local/backup/server_root.img bs=4M status=progress | ssh username@new_server_ip "sudo dd of=/dev/sdY bs=4M status=progress"
+```
+
+如果是同一服务器备份还原，那还原之后直接用就行了。但是如果服务器硬件不一致的话，那就得重新配置一些东西了。
+
+1. 保证启动配置正确
+
+我用的是GRUB，解决方案如下。基本就是重新安装然后更新引导项。
+
+```bash
+# Assuming /mnt is the mount point of the restored system
+sudo mount /dev/sdY1 /mnt  # Mount the root partition
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+sudo chroot /mnt /bin/bash
+grub-install /dev/sdY
+update-grub
+exit
+```
+
+2. 磁盘大小恢复
+
+使用`dd`恢复有一个问题，就是如果新的系统盘变大了，那还原之后系统可能还以为大小和以前一样。这种情况就需要：
+
+```bash
+sudo resize2fs /dev/sdY1
+df -h # check whether the disk size covers the entire partition
+```
+
+完事之后可能还需要用`gparted`之类的东西变一下磁盘大小。
+
+3. 更新磁盘UUID
+
+这玩意其实其他地方也会需要，比如硬盘`UUID`因为各种玄学原因变化了。
+
+```bash
+sudo blkid /dev/sdY1
+sudo vi /etc/fstab # 更新其中对应设备的UUID
+```
+另外就是如果在`/etc/default/grub`里边的`GRUB_CMDLINE_LINUX`里边也指定了，那也得改成对应的。改完之后`sudo update-grub`。
+
+完事重启，应该就能正常使用了。
+
 ### 硬件安全
 
 首当其冲就是硬盘安全。这方面可以用`smartctl`来定期监测SMART信息确认磁盘状态。我试了下，好像ESXi里边我映射的硬盘也支持检测SMART信息。这里也可以写个脚本定期监测并发送监测报告~~此处可本~~。
