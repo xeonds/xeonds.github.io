@@ -12,44 +12,44 @@ tags:
 # Part I: Foundations of Advanced C Programming
 ## Introduction to Advanced C Programming
 ### Overview of the book
-\section{Overview}
+#### Overview
 Welcome to "Mastering C: The Power of Advanced Programming." In this chapter, we'll embark on a journey to explore the intricacies of advanced C programming and uncover the untapped potential that this versatile language offers.
 
-\subsection{Why Advanced C Programming Matters}
+##### Why Advanced C Programming Matters
 
 C, renowned for its simplicity and efficiency, has been a stalwart in the programming world since its inception. However, its true power lies in the hands of those who master its advanced features. In this section, we'll delve into the significance of advancing beyond the basics and harnessing the full potential of C.
 
-\paragraph{The Evolution of C}
+##### The Evolution of C
 C has evolved over the years, and with each iteration of the language standard, new features and capabilities have been introduced. From its humble beginnings to the present day, C has played a pivotal role in shaping the foundations of modern computing. This chapter will guide you through the historical context of C and set the stage for an in-depth exploration of its advanced features.
 
-\paragraph{Unleashing the Full Potential}
+##### Unleashing the Full Potential
 While C is often celebrated for its low-level capabilities, its advanced features are sometimes overlooked. Advanced C programming opens doors to intricate control flow mechanisms, memory manipulation, and efficient data structures. As we progress through this book, you'll discover how to wield these tools effectively, enabling you to write more robust, efficient, and maintainable code.
 
-\subsection{What Awaits You in This Book}
+##### What Awaits You in This Book
 Before we dive into the technical details, let's take a brief tour of what this book has to offer.
-\paragraph{Foundations of Advanced C Programming}
+- Foundations of Advanced C Programming
 The first part of the book lays the groundwork, covering essential concepts such as advanced control flow, pointers, memory management, and advanced data structures. By mastering these foundational elements, you'll be well-equipped to tackle more complex programming challenges.
 
-\paragraph{Advanced Techniques and Strategies}
+- Advanced Techniques and Strategies
 In the second part, we explore advanced techniques such as function pointers, macros, file handling, and multi-threading. These chapters provide practical insights into writing versatile and efficient code.
 
-\paragraph{Real-world Applications}
+- Real-world Applications
 The third part takes a hands-on approach, demonstrating how advanced C programming is applied in real-world scenarios. We'll delve into GNU/Linux kernel programming, network programming, and embedded systems development.
 
-\paragraph{Best Practices and Optimization}
+- Best Practices and Optimization
 Part four is dedicated to best practices and optimization. Learn how to write secure code, optimize performance, and ensure your C programs run smoothly.
 
-\paragraph{Advanced Topics in C}
+- Advanced Topics in C
 The fifth part delves into metaprogramming, code generation, C++ interoperability, and the latest C standards. These chapters explore the cutting edge of C programming, providing you with the tools to stay at the forefront of technology.
 
 In the final part, we'll recap the key concepts, provide additional resources for further learning, and encourage you to continue your journey.
 
-\section{Why using C?}
+##### Why using C?
 C is mostly considered as a relatively low-level programming language among plenty of high-level programming languages. So why do we choose such a relatively low-level language? This is partly because its freedom for users. The evolution of modern languages are limiting the usage of some basic language structs like GOTO, pointers, manually memory management, etc. These are considered powerful but maliculus features, for these features may lead to complex bugs and some serious problems. But this doesn't means that these tools are bad. In contrast, they are powerful tools. There are many schemes in modern programming languages that banned the usage of GOTO but replaced it with more reasonable language features, structures and more. This makes it easier to write programs with more robustness, but have less choices when getting into some big troubles.
 
 But, if you are using C, you can totally build your own language structures, schemes, etc. (Lisp can also do this, but this is not the topic of this book) This book will summarize some schemes(a.k.a black magics) that implemented in C, because pointer, GOTO and struct in C are all we need.
 
-\section{Basics of C}
+##### Basics of C
 This part only covers a basic part of C, for more detailed introduction, there are plenty of better choices if you are a beginner of C.
 
 \section{规约}
@@ -92,67 +92,66 @@ int main(void) {
 ### Advanced macro usage for code generation
 ### Techniques for function overloading in C
 
-## **File Handling and I/O Operations**
-   - File pointers and file handling in C
-   - Advanced input and output operations
-   - Serialization and deserialization techniques
+## File Handling and I/O Operations
+### File pointers and file handling in C
+### Advanced input and output operations
+### Serialization and deserialization techniques
 
-## **Multi-threading and Concurrency**
-   - Understanding threading in C
-   - Synchronization and communication between threads
-   - Practical examples of concurrent programming
+## Multi-threading and Concurrency
+### Understanding threading in C
+### Synchronization and communication between threads
+### Practical examples of concurrent programming
 
-## **Error Handling and Debugging**
-   - Techniques for effective error handling
-   - Debugging strategies in C
-   - Best practices for error-free code
+## Error Handling and Debugging
+### Techniques for effective error handling
+### Debugging strategies in C
+### Best practices for error-free code
 
 # Part III: Real-world Applications
-9. **GNU/Linux Kernel Programming**
-   - Overview of the GNU/Linux kernel
-   - Advanced C programming techniques used in the kernel
-   - Case studies and practical examples
+## GNU/Linux Kernel Programming
+### Overview of the GNU/Linux kernel
+### Advanced C programming techniques used in the kernel
+### Case studies and practical examples
 
-10. **Network Programming in C**
-    - Socket programming and network communication
-    - Developing network protocols in C
-    - Real-world examples of networked applications
+## Network Programming in C
+### Socket programming and network communication
+### Developing network protocols in C
+### Real-world examples of networked applications
 
-11. **C in Embedded Systems**
-    - Basics of embedded systems programming
-    - C programming for microcontrollers and IoT devices
-    - Case studies of embedded systems projects
+## C in Embedded Systems
+### Basics of embedded systems programming
+### C programming for microcontrollers and IoT devices
+### Case studies of embedded systems projects
 
 # Part IV: Best Practices and Optimization
-12. **Code Optimization Techniques**
-    - Profiling and identifying bottlenecks
-    - Techniques for optimizing C code
-    - Compiler optimizations and flags
+## Code Optimization Techniques
+### Profiling and identifying bottlenecks
+### Techniques for optimizing C code
+### Compiler optimizations and flags
 
-13. **Security Considerations in C**
-    - Common security vulnerabilities in C
-    - Best practices for writing secure code
-    - Techniques for preventing security exploits
+## Security Considerations in C
+### Common security vulnerabilities in C
+### Best practices for writing secure code
+### Techniques for preventing security exploits
 
-14. **Advanced C++ Interoperability**
-    - Compatibility between C and C++
-    - Techniques for using C++ features in C code
-    - Building mixed-language projects
+## Advanced C++ Interoperability
+### Compatibility between C and C++
+### Techniques for using C++ features in C code
+### Building mixed-language projects
 
 # Part V: Advanced Topics in C
-15. **Metaprogramming and Code Generation**
-    - Template metaprogramming in C
-    - Code generation techniques
-    - Advanced preprocessor directives
+## Metaprogramming and Code Generation
+### Template metaprogramming in C
+### Code generation techniques
+### Advanced preprocessor directives
 
-16. **Advanced C Features and Standards**
-    - Overview of the latest C standards
-    - Features introduced in recent C standards
-    - Adhering to best practices and future-proofing code
+## Advanced C Features and Standards
+### Overview of the latest C standards
+### Features introduced in recent C standards
+### Adhering to best practices and future-proofing code
 
 # Part VI: Conclusion
-17. **Mastering Advanced C: The Journey Ahead**
-    - Recap of key concepts
-    - Resources for further learning
-    - Encouragement for continuous improvement
-
+## Mastering Advanced C: The Journey Ahead
+### Recap of key concepts
+### Resources for further learning
+### Encouragement for continuous improvement
