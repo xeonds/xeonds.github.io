@@ -526,6 +526,11 @@ MiB Swap:[m[39;49m[1m      0.0 [m[39;49mtotal,[m[39;49m[1m      0.0 
 ```bash
 systemctl --user restart plasma-kwin_x11
 ```
+或者这个
+```bash
+setsid kwin_x11 --replace &
+```
+>ref:[律回彼境](https://www.glowmem.com/archives/archlinux-note#toc-head-7)
 
 试了试，问题完美解决，CPU占用也正常了。
 
@@ -782,3 +787,9 @@ Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
 
 另外还可以用`f`来触发`OOM Killer`。
 
+## 开机时间优化
+>ref: [律回彼境](https://www.glowmem.com/archives/archlinux-note#toc-head-7)
+
+使用`sudo systemd-analyze blame`可以查看系统开机时间详情。
+
+自动mount分区（也就是直接在`/etc/fstab`里边进行配置）会导致启动时间增大，所以更推荐写成一个脚本，在用户登录后自动执行挂载。脚本放置在 ~/.config/autostart/ 即可在用户登录后执行。
