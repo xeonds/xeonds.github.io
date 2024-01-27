@@ -793,3 +793,19 @@ Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
 使用`sudo systemd-analyze blame`可以查看系统开机时间详情。
 
 自动mount分区（也就是直接在`/etc/fstab`里边进行配置）会导致启动时间增大，所以更推荐写成一个脚本，在用户登录后自动执行挂载。脚本放置在 ~/.config/autostart/ 即可在用户登录后执行。
+
+## 又被Firefox爆了
+>虽然后来看日志发现是Firefox被kwin爆了
+
+这几天频繁出现桌面所有进程炸掉的情况，恢复后Firefox的Crash Report自己会跳出来。。不知道为啥，但是根据群u从`about:crashes`里边提交的崩溃报告来看，应该是kwin把Firefox爆了。
+
+根据老哥的建议，关闭了系统的自适应同步（Adaptive Sync）选项，按照他的惊叹，问题可能会少一些。
+
+## 传文件的姿势
+>什么姿势，还真没见过
+>-转自archlinux-cn-依云
+
+```bash
+tar c -C ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
+```
+
