@@ -63,6 +63,29 @@ export GOPROXY=https://goproxy.cn
 
 原因：`go test` 中不能使用 `fmt.Println("%v", v)`
 
-## 方案
+### 方案
 
 使用 `fmt.Printf("%+v", v)`
+
+## 工具链
+现代语言最大的优势就是工具链。
+
+```bash
+go tool dist list
+```
+
+依赖：
+
+```bash
+ldd [bin-name]
+```
+
+静态编译：
+```bash
+CGO_ENABLED=0 go build xxx
+# or this
+go build xxx -ldflags '-linkmode "external" -extldflags "-static"'
+```
+
+如果glibc版本不对的话，直接使用指定`LD_LIBRARY_PATH=.`的方法是无效的。
+>ref:[Glibc is hard-coded in the program](https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host)
