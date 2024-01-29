@@ -76,3 +76,8 @@ Mainly using `Dio`
 所以review同学的代码的时候，发现在我用Linux平台跑的时候报错了。搜了下才发现这问题。
 
 不过也无所谓了，反正这玩意本来就只是在Android/iOS上跑的。
+
+### 关于TextEditController
+
+声明一个文本框时，它会默认初始化一个TextEditController。如果你传递给它你定义的Controller，它就会使用你提供的而不是自己创建。另外特别注意，给TextField赋值这一项的行为不是常量表达式，不能在它和它的父结构中使用`const`关键字。
+

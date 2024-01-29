@@ -541,6 +541,7 @@ setsid kwin_x11 --replace &
 其实主要是KDE Plasma的相关组合键。偶尔会意外发现一些组合键，就记录在这里了。
 
 - 切换桌面：`ctrl+F*`
+- 无极缩放：`win+ctrl`+鼠标滚轮，真的好丝滑QAQ
 
 ## 莫得休眠Hibernate选项
 找了半天发现是系统安装的时候没设置swap交换分区。不过暂时默认的睡眠也够用了，之后再考虑吧。
@@ -806,6 +807,6 @@ Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
 >-转自archlinux-cn-依云
 
 ```bash
-tar c -C ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
+TAR C -c ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
 ```
 
