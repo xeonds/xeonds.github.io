@@ -89,3 +89,36 @@ go build xxx -ldflags '-linkmode "external" -extldflags "-static"'
 
 如果glibc版本不对的话，直接使用指定`LD_LIBRARY_PATH=.`的方法是无效的。
 >ref:[Glibc is hard-coded in the program](https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host)
+
+## 造轮子
+采用组合的方式将常用的范式写成函数，同时不失灵活性和潜力。
+
+### Gin
+
+对于Gin的复用主要是添加路由的方式进行抽象和标准化，同时编写一些较为通用的API Handlers：
+```golang
+func APIBuilder(router gin.IRouter, handlers ...func(*gin.RouterGroup) *gin.RouterGroup) func(gin.IRouter, string) *gin.RouterGroup {
+	return func(router gin.IRouter, path string) *gin.RouterGroup {
+		group := router.Group(path)
+		for _, handler := range handlers {
+			group = handler(group)
+		}
+		return group
+	}
+}
+```
+上面的函数实现了为一个`gin.RouterGroup`自动添加参数传入的handler列表。这样的构造器构造出的函数能用于给一个接口添加几个固定的Handler。在复用层面实现了快速的为一个结构体添加CRUD的能力，同时允许你编写自己的handler代码，以及自己的构造器。
+
+```golang
+func AddCRUD[T any](router gin.IRouter, path string, db *gorm.DB) *gin.RouterGroup {
+	return APIBuilder(router, func(group *gin.RouterGroup) *gin.RouterGroup {
+		group.GET("", getAll[T](db))
+		group.GET("/:id", get[T](db))
+		group.POST("", create[T](db))
+		group.PUT("/:id", update[T](db))
+		group.DELETE("/:id", delete[T](db))
+		return group
+	})(router, path)
+}
+```
+上面展示的就是构造器的一个用法，这个构造器构造的函数能用来快速给一个结构体添加CRUD接口。
