@@ -122,3 +122,35 @@ func AddCRUD[T any](router gin.IRouter, path string, db *gorm.DB) *gin.RouterGro
 }
 ```
 上面展示的就是构造器的一个用法，这个构造器构造的函数能用来快速给一个结构体添加CRUD接口。
+
+其中的Handler可以自己实现，并把自己的Handler通过上面的APIBuilder打包成一个可以快速调用的函数：
+
+```golang
+// 简单的Handler示范
+func create[T any](db *gorm.DB) func(c *gin.Context) {
+	return func(c *gin.Context) {
+		var d T
+		if err := c.ShouldBindJSON(&d); err != nil {
+			c.AbortWithStatus(404)
+			log.Println("[gorm]parse creation data failed: ", err)
+		} else {
+			if err := db.Create(&d).Error; err != nil {
+				c.AbortWithStatus(404)
+				log.Println("[gorm]create data failed: ", err)
+			} else {
+				c.JSON(200, d)
+			}
+		}
+	}
+}
+// 简单的调用示范
+type Hello struct {
+    Hello string
+    World string
+}
+r := gin.Default
+db, _ := gorm.Open(sqlite.Open("test"), &gorm.Config{})
+AddCRUD[Hello](r, "/hello", db)
+```
+
+上面几行代码就添加了四个对于Hello的CRUD API。
