@@ -65,9 +65,11 @@ Just like Kotlin
 
 ### Network
 
-Mainly using `Dio`
+主要使用`Flutter`的`Dio`。不过我用`http/http.dart`更多。
 
-## 使用笔记
+## 开发笔记
+
+评价是这玩意搓东西真的快。
 
 ### 关于WebViewWidget
 
@@ -80,4 +82,15 @@ Mainly using `Dio`
 ### 关于TextEditController
 
 声明一个文本框时，它会默认初始化一个TextEditController。如果你传递给它你定义的Controller，它就会使用你提供的而不是自己创建。另外特别注意，给TextField赋值这一项的行为不是常量表达式，不能在它和它的父结构中使用`const`关键字。
+
+### 关于sqflite
+这玩意有大坑（关于平台兼容性上的）。反正我目前尝试之后发现要么支持Windows/Linux/Mac等桌面端，要么支持Android/iOS等移动端的SQLite使用。
+
+### 关于ListView
+关于这个东西，得注意的就是嵌套使用。嵌套的子`ListView`，需要设置如下两个属性来避免滚定判定失效：
+
+```flutter
+shrinkWrap: true,
+physics: const NeverScrollableScrollPhysics(),
+```
 
