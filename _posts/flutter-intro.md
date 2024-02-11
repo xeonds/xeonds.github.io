@@ -98,3 +98,33 @@ shrinkWrap: true,
 physics: const NeverScrollableScrollPhysics(),
 ```
 
+### 关于项目结构
+```
+lib/
+  |- models/                  // Define your data entities here
+     |- entity1.dart
+     |- entity2.dart
+  |- services/                // Implement background service here
+     |- background_service.dart
+  |- screens/                 // Screens of your app
+     |- screen1/              // Screen 1 related files
+         |- screen1.dart
+         |- screen1_bloc.dart // If you're using BLoC pattern
+     |- screen2/              // Screen 2 related files
+         |- screen2.dart
+         |- screen2_bloc.dart // If you're using BLoC pattern
+     |- settings/             // Settings related pages
+         |- settings.dart
+         |- sub_setting1.dart
+         |- sub_setting2.dart
+  |- widgets/                 // Reusable widgets
+  |- providers/               // Provider setup and providers for data and services
+     |- app_provider.dart     // Main provider setup
+     |- data_provider.dart    // Provider for CRUD actions on data entities
+     |- service_provider.dart // Provider for background service
+  |- main.dart                // Entry point of the app
+```
+
+功能划分基本就这几块：UI，状态管理服务，数据实体，后台服务。代码嘛，能简洁点最好。
+
+另外就我的开发经验而言，最好不要过早规范化工程化。早期过于强调规范和过程的收益是负的。
