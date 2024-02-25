@@ -606,3 +606,15 @@ ssh username@server_ip "sudo dd if=/dev/sdX bs=4M status=progress" | dd of=/path
 ```bash
 sudo dd if=/dev/sdX bs=4M | ssh username@server_ip "dd of=/path/2/server_disk.img bs=4M status=progress"
 ```
+
+或者想在传输过程中对数据流压缩一下，在中间插个管道就行：
+
+```bash
+ssh x-server-local "sudo -S dd if=/dev/sda2 bs=4M status=progress" | bzip2 -c | dd of=sever-backup.img bs=4M
+```
+
+解压的时候管道反过来用就行：
+
+```bash
+dd if=server-backup.img bs=4M status=progress | bzip2 -c | ssh x-server-local "sudo -S dd of=/dev/sda2 bs=4M"
+```
