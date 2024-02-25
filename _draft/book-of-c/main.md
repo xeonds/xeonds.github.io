@@ -53,10 +53,15 @@ But, if you are using C, you can totally build your own language structures, sch
 This part only covers a basic part of C, for more detailed introduction, there are plenty of better choices if you are a beginner of C.
 
 \section{规约}
-大概就是出版物的常见格式都给显示一遍吧。
+大概就是出版物的常见格式都给展示一遍吧。
 
 ## Advanced Control Flow
+
+这部分从发展历史来讲述控制流，并介绍一些控制流的特殊用法。
 ### Goto statements and their use cases
+
+现如今所有的控制流基本都源自汇编中的无条件转移和条件转移。但是goto正如汇编一样，阅读难度大，维护难度也大，对于程序员的心智负担较重，因此之后的控制流都在尝试使用其他更受控，更直观的控制流来让我们更受控地使用goto。想直观理解为啥要这么做的话，某弹幕游戏的ECL脚本就是一个不错的例子。它的条件/非条件转移全部使用goto实现， 因此难以阅读和编写。
+
 ### Structured programming principles
 ### Advanced control flow mechanisms
 高级控制流这东西，现在最常见的基本都是对于GOTO和Loop的封装。现代语言在汇编的判断和有/无条件跳转指令的基础上，创造了许多封装完善，符合直觉的控制流结构。根据实际需要，在C中也可以实现更为强大和复杂但完善的控制流。而控制流的来源大多数时候是来源于实际和灵感，也来自对于现有代码的分析，抽象和形式化。下面会讲几种C中几种比较少见的控制流。有的是从其他语言抄来的，有的是对于现实的建模。

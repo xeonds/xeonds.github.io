@@ -575,3 +575,34 @@ $ echo '16o 9999999999999999999999 p' | dc
 
 >ref:[BASH base conversion from decimal to hex](https://unix.stackexchange.com/questions/191205/bash-base-conversion-from-decimal-to-hex)
 
+### 使用标准输入输出流
+
+>[POSIX Utility Syntax Guidelines, §12.2.13](http://www.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html#tag_12_02 "Utility Conventions") of _The Open Group Base Specifications_:
+>For utilities that use operands to represent files to be opened for either reading or writing, the '-' operand should be used only to mean standard input (or standard output when it is clear from context that an output file is being specified).
+
+从效果来看，命令最后跟随的`-`类似一个占位符，代表这个命令要处理的一个文件。这个占位符表示，明确将`stdin/stdout`作为所占位置的文件。比如你可以给一些文件操作命令最后加上`-`来表示文件，它就会将原本要写入文件的内容输出到屏幕上/从命令行读取原本作为输入的文件（的内容）。
+
+有了它，我们就能玩出来一些有意思的花样：
+
+- 压缩一个文件，边压缩边将文件传输到另一个设备：
+
+```bash
+tar -cjf - /path/to/directory-or-file | ssh user@hostname dd of=/path/to/destination/name-of-archive.tar.bz2
+```
+
+这个命令首先使用bzip2压缩文件，只不过将压缩后的文件借助`-`占位符输出到了`stdout`，然后借助管道符`|`将压缩好的文件数据传送到下一个命令。
+
+对于下一个命令，首先要知道它是ssh的一种用法，就是**在登陆后直接执行一条命令然后退出**，所以这条命令就是先连接到目标设备上，然后执行`dd of=/path/2/fname`来将文件写入到指定的位置。其中的`dd of=`也是`dd`的缺省用法，当`stdin`有输入时，就可以省略`if=`这个参数。
+
+- 备份远程`linux`设备全盘到当前设备
+
+在另一篇`ESXi折腾小记`里边我写过这种用法，一并记录到这里。
+```bash
+ssh username@server_ip "sudo dd if=/dev/sdX bs=4M status=progress" | dd of=/path/to/local/backup/server_root.img bs=4M
+```
+
+调换一下本地和远程设备也没问题：
+
+```bash
+sudo dd if=/dev/sdX bs=4M | ssh username@server_ip "dd of=/path/2/server_disk.img bs=4M status=progress"
+```
