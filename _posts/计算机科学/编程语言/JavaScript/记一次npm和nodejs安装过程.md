@@ -87,3 +87,7 @@ npm config set registry https://registry.npmmirror.com/
 npm i pnpm -g
 pnpm config set registry https://registry.npmmirror.com/
 ```
+
+今天开发的时候发现源一直不对，而且换不了，遂排查环境变量，`~/.npmrc`等都没发现问题。然后项目内全局搜索，发现项目底下也有个`.npmrc`设置了registry字段。删掉后恢复正常。
+
+推测是`.npmrc`可以被当前项目下的覆盖掉根目录下的。
