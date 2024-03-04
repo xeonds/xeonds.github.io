@@ -48,3 +48,21 @@ public:
     bool empty() { return in.empty() && out.empty(); }
 };
 ```
+
+203. 移除链表元素
+
+```cpp
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *res=head;
+        while(res && res->val==val) res = res->next;
+        for(ListNode *elem = res; elem && elem->next;) {
+            if(elem->next->val == val) elem->next = elem->next->next;
+            else elem=elem->next;
+        }
+        return res;
+    }
+};
+```
+
