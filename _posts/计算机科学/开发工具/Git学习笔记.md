@@ -172,6 +172,29 @@ git tag        # 列出所有标签
 git tag -l "v1.*"    # 列出所有以v1开头的标签
 ```
 
+## 规范
+
+### commit message
+>ref:知乎-猎龙星火
+
+`<type>(<scope>): <subject>`
+
+提交消息大致描述了本次提交的改动范围，需要有明确的意义。上面的格式是一种比较好的实践。
+
+- `type`：指明commit的类别
+    - `feat`：新增功能
+    - `fix`：修复bug
+    - `docs`：文档修改，比如CONTRIBUTING, README等
+    - `test`：增加/修改测试用例
+    - `style`：代码格式化，引用包排序等
+    - `perf`：体验优化，性能、体验、算法等
+    - `refactor`：代码重构，没有新功能/bug修复
+    - `chore`：改变构建流程，增加依赖、工具等
+    - `revert`：版本回滚
+    - `merge`：代码合并
+- `scope`：指明影响范围，比如影响到哪个模块就写上这个模块的名字
+- `subject`：关于提交的简短描述，可以附加issue地址，结尾不加标点符号
+
 ## 常见问题
 
 - Cannot do a soft reset in the middle of a merge
