@@ -18,7 +18,11 @@ sudo apt install git -y     # ubuntu, etc.
 sudo pacman -S git          # arch linux
 ```
 
-Windows从官网下载exe安装，一路下一步即可。
+Windows从官网下载exe安装，一路下一步即可。或者如果是Win10/11的话可以打开PowerShell执行下面的指令：
+
+```bash
+winget install git.git
+```
 
 ## 配置
 
@@ -100,6 +104,24 @@ git commit
 
 推送代码到远程仓库/拉取远程仓库到本地。用于同步本地和云端的代码更改。运行时一般不加啥参数，就是如果目标已经有了更改，可能得加上`--merge`或者`--rebase`来处理冲突。
 
+#### Pull --Rebase vs --Merge
+
+假设A和B同时克隆了一个仓库，并各自完成了一些修改。此时A想要推送自己的提交，却发现B已经推送了自己的提交。此时应该怎么做呢？
+
+两种方法，首先是merge。拉取的时候加上`--merge`选项，会自动合并你们的提交。如果有冲突，就会在你的合并编辑器里展示出来，待你修改完成后，以一个合并提交的方式提交上去。
+
+其次是rebase。它大致相当于“移花接木“：把你本地做的提交拼接到拉取下来的更改后边。这样产生的提交记录更加简洁。用法就是拉取时加上`--rebase`参数。
+
+两种方式的选择取决于你们项目的开发规范，以及你的喜好。如果偏爱简洁，你可能更喜欢rebase；如果你追求commit的尽可能详尽，那么merge可能更适合你。
+
+#### Pull submodule
+
+编译thtk的时候发现submodule没拉取，记录一下这玩意怎么拉）
+
+```bash
+git submodule update --init --recursive
+```
+
 ### GitHub Pull Request(PR)
 
 虽然不属于git的基本操作但还是提一嘴。这是GitHub的一个操作，用于将别的分支合并到一个特定的分支上。它的使用场景通常如下：你想贡献代码给一个开源项目，就先在GitHub上fork他们的仓库，随后在其中完成你的更改，创建提交。最后，发起一个Pull Request，请求目标仓库拉取你仓库的最新提交到它自身。这种合并是可以跨越仓库的，而前提是它们之间得是fork的关系：其他仓库都是这个仓库的`fork`。满足这个条件之后，就可以在GitHub上新建一个PR，来通过这样的方式贡献你的代码了。
@@ -130,7 +152,22 @@ git config --global --add merge.ff false
 
 ### Branch
 
+查看分支信息。
+
 ### Log
+
+查看历史提交记录。可以加一些参数来改变输出格式：
+
+- `--oneline`:一个提交只在一行内显示
+- `graph`:以提交树状图的形式展示提交记录
+
+我在`~/.gitconfig`里面加了一个alias：
+
+```ini
+[alias]
+	graph = log --oneline  --graph
+```
+这样就能在仓库里运行`git graph`在终端查看“图形”版的提交记录了。
 
 ### Archive
 
@@ -172,6 +209,18 @@ git tag        # 列出所有标签
 git tag -l "v1.*"    # 列出所有以v1开头的标签
 ```
 
+### Clone
+
+行为是拉取一个远端仓库，但是实际上它的后端是`git init`和`git config`——实际上`clone`命令的行为是创建url同名文件夹，进入其中，执行`git init`，再借助`config`设置remote的url为clone的url，最后执行git pull`。
+
+#### depth
+
+```bash
+git clone --depth=1 <repo_url>
+```
+
+在clone一些大型仓库时，可以指定`depth`参数来控制`clone`的提交记录深度。像上面指定depth为1表示clone下来的仓库只包含最新一次的提交记录。
+
 ## 规范
 
 ### commit message
@@ -195,15 +244,42 @@ git tag -l "v1.*"    # 列出所有以v1开头的标签
 - `scope`：指明影响范围，比如影响到哪个模块就写上这个模块的名字
 - `subject`：关于提交的简短描述，可以附加issue地址，结尾不加标点符号
 
+### Git Workflow
+
+借助Git来做项目控制，适用于小中规模团队。
+
+通俗来说，是借助Git的分支和合并功能来解决这个问题。每个分支负责特定的任务，通过合并分支来管理工作进度。
+
+#### 分支
+
+- `main`:正式分支，不可push。这个分支的每个版本都是正式可用的版本
+- `develop`:团队日常开发的分支，也不能push。
+- `feature/`:功能开发分支，在此分支进行功能开发，完成后pr到dev分支并删除该分支。一般一个人负责一个`feature/xxx`分支，可以push
+- `bugfix/`:问题修复分支
+- `release/`:正式版本分支，创建自`main`分支，创建后不能合并之后的版本
+- `hotfix/`:紧急修复，创建自`main/develop`
+- `support/`:版本支持分支
+
+流程一般是开发者们先根据文档，从`develop`分支`fork`出来一个`feature/xxx`分支，随后完成自己的开发后，请求code reviewer来pull自己的分支，并在review之后将自己的分支合并到`develop`分支上。其中，开发者可以创建`bugfix`分支来修复问题。
+
+一个版本的开发阶段完成后，就可以由负责人将develop分支merge到main分支，并使用tag打上版本标签来作为一个可供使用的正式版本使用。同时，可以借助GitHub Action等CI/CD工具来自动构建可分发的软件本体。
+
+当遇到用户提出的Issue时，进行`bugfix`或`hotfix`，完成后将它merge到`main`和`develop`分支。
+
+当出现来比较大的Breaking Changes，并且现在的版本已经足够稳定时，就可以根据版本号的通常语义约定跳到下一个大的版本号进行后续的开发，之前的版本可以创建一个`release/vA.B.C`分支作为一个稳定的大版本进行长期维护。
+
+这一套工作流程基本上将软件开发细化到了`feature`的粒度，也细化团队角色到developer和code reviewer这几类。
+
 ## 常见问题
 
+### 终止正在进行的合并
 - Cannot do a soft reset in the middle of a merge
 
 错误原因很显然，就是我们在合并分支时想要撤销上次提交。我通常是因为在一个设备上commit&push了一些代码，而在另一台设备上已经commit了一些代码，随后打算先pull同步一下再push上去。这时就会提示将pull下来的代码merge到本地仓库中，这时候我一般会merge&push，但是有时候发现不小心把另一个分支的给pull到当前分支了，这时候就需要取消错误的pull操作。然而此时已经进入了merge状态，所以只能先退出这状态再重新正确地同步仓库。
 
 首先，用`git stash`保存当前的更改，然后`git reset --merge`退出合并状态。这时再重新正确拉取代码即可。
 
-- Linux平台鉴权失败
+### Linux平台鉴权失败
 
 这是因为GitHub现在已经禁用了Git Cli的登录方式。因此我们需要重新配置其他的凭据管理器。比如我使用了`git-credential-oauth`，这样我就可以跳转到浏览器里登录认证GitHub凭据。配置方法很简单：
 
@@ -214,33 +290,13 @@ git-credential-oauth configure
 
 完成后，再执行push时，就会弹出浏览器窗口提示授权GitHub帐号了。
 
-- 文件上传和下载后，文件名大小写变化
+### 文件上传和下载后，文件名大小写变化
 
 git默认设置中，对于文件名的设置是**大小写不敏感**。因此如果有必要的话，还是把这个设为false来解决问题吧：
 
 ```bash
-# 首先获取当前设置状态，为true则执行下一条指令
-git config --get core.ignorecase 
-# 设置不忽略大小写
-git config core.ignorecase false
-```
-
-- Git Pull --Rebase vs --Merge
-
-假设A和B同时克隆了一个仓库，并各自完成了一些修改。此时A想要推送自己的提交，却发现B已经推送了自己的提交。此时应该怎么做呢？
-
-两种方法，首先是merge。拉取的时候加上`--merge`选项，会自动合并你们的提交。如果有冲突，就会在你的合并编辑器里展示出来，待你修改完成后，以一个合并提交的方式提交上去。
-
-其次是rebase。它大致相当于“移花接木“：把你本地做的提交拼接到拉取下来的更改后边。这样产生的提交记录更加简洁。用法就是拉取时加上`--rebase`参数。
-
-两种方式的选择取决于你们项目的开发规范，以及你的喜好。如果偏爱简洁，你可能更喜欢rebase；如果你追求commit的尽可能详尽，那么merge可能更适合你。
-
-- Git拉取submodule
-
-编译thtk的时候发现submodule没拉取，记录一下这玩意怎么拉）
-
-```bash
-git submodule update --init --recursive
+git config --get core.ignorecase    # 首先获取当前设置状态，为true则执行下一条指令
+git config core.ignorecase false    # 设置不忽略大小写
 ```
 
 - 拒绝合并无关的历史：？
