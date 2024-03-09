@@ -270,12 +270,18 @@ git clone --depth=1 <repo_url>
 
 这一套工作流程基本上将软件开发细化到了`feature`的粒度，也细化团队角色到developer和code reviewer这几类。
 
+#### 工具
+
+Linux上比较推荐`gitflow-avh`插件，可以比较方便地按照Git Workflow的方式进行项目管理。具体使用可以去看它的帮助选项，或者看看[Tower提供的介绍文档](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)。截至目前，[仓库](https://github.com/petervanderdoes/gitflow-avh)已经Archive了，也不知道为什么。
+
 ## 常见问题
 
 ### 终止正在进行的合并
-- Cannot do a soft reset in the middle of a merge
 
-错误原因很显然，就是我们在合并分支时想要撤销上次提交。我通常是因为在一个设备上commit&push了一些代码，而在另一台设备上已经commit了一些代码，随后打算先pull同步一下再push上去。这时就会提示将pull下来的代码merge到本地仓库中，这时候我一般会merge&push，但是有时候发现不小心把另一个分支的给pull到当前分支了，这时候就需要取消错误的pull操作。然而此时已经进入了merge状态，所以只能先退出这状态再重新正确地同步仓库。
+>具体报错：`Cannot do a soft reset in the middle of a merge`
+>解决方案：`git reset --merge `
+
+错误原因是我们在合并分支时想要取消。我通常是因为在一个设备上commit&push了一些代码，而在另一台设备上已经commit了一些代码，随后打算先pull同步一下再push上去。这时就会提示将pull下来的代码merge到本地仓库中，这时候我一般会merge&push，但是有时候发现不小心把另一个分支的给pull到当前分支了，这时候就需要取消错误的pull操作。然而此时已经进入了merge状态，所以只能先退出这状态再重新正确地同步仓库。
 
 首先，用`git stash`保存当前的更改，然后`git reset --merge`退出合并状态。这时再重新正确拉取代码即可。
 
