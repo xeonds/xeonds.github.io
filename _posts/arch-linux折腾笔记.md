@@ -264,6 +264,8 @@ Detect GTK_IM_MODULE and QT_IM_MODULE being set and Wayland Input method fronten
 
 >Fri 22 Dec 2023 05:14:55 PM CST
 
+编辑：这个选项不用在命令行里修改，直接去系统设置里边的`Startup nad shutdown->Login Screen->Behavior`里边修改`...with session = `的选项就行了。
+
 ## 又出问题了
 
 小笔记本上的arch的kde以至于其中的所有程序突然都变得特别卡。最奇怪的是这会的系统资源专用状况完全没有多高，CPU%，MEM37.4%的占用率应该很健康了吧。
