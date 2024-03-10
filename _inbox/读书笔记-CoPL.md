@@ -17,7 +17,9 @@ plankalkui, fortran，lisp, algol60, cobol, basic, pl/i，apl,snobol, simula67, 
 
 ## 描述语法和语义
 
-表达式文法的BNF和EBNF版本
+表达式文法的BNF和EBNF版本。
+
+语法是一个四元组，文法的集合是一个元组，语义则是语法的“增强版”，对于语言的类型检查等都有重要作用。
 
 ## 词法分析和语法分析
 
