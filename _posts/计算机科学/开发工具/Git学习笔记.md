@@ -274,6 +274,21 @@ git clone --depth=1 <repo_url>
 
 Linux上比较推荐`gitflow-avh`插件，可以比较方便地按照Git Workflow的方式进行项目管理。具体使用可以去看它的帮助选项，或者看看[Tower提供的介绍文档](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow)。截至目前，[仓库](https://github.com/petervanderdoes/gitflow-avh)已经Archive了，也不知道为什么。
 
+#### 步骤
+
+开发前使用`git flow init`创建符合Git Workflow的分支结构。
+
+开发时，使用`git flow feature/hotfix/release/xxx start <name>`来从源分支创建一个新的分支。
+
+开发完成后，先把当前分支merge到develop等分支，然后使用`git flow feature/hotfix/xxx finish`来完成过当前分支的开发工作，并将它从本地和云端删除。
+
+至于如何删除远端的分支：
+
+```bash
+git push origin -d <branch-name>  # 删除远程分支
+git branch -d feature/xxx         # 删除本地分支
+```
+
 ## 常见问题
 
 ### 终止正在进行的合并
