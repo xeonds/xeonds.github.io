@@ -1,0 +1,211 @@
+<h1 id="part-i-foundations-of-advanced-c-programming">Part I:
+Foundations of Advanced C Programming</h1>
+<h2 id="introduction-to-advanced-c-programming">Introduction to Advanced
+C Programming</h2>
+<h3 id="overview-of-the-book">Overview of the book</h3>
+<p>Welcome to “Mastering C: The Power of Advanced Programming.” In this
+chapter, we’ll embark on a journey to explore the intricacies of
+advanced C programming and uncover the untapped potential that this
+versatile language offers.</p>
+<p>C, renowned for its simplicity and efficiency, has been a stalwart in
+the programming world since its inception. However, its true power lies
+in the hands of those who master its advanced features. In this section,
+we’ll delve into the significance of advancing beyond the basics and
+harnessing the full potential of C.</p>
+<p>C has evolved over the years, and with each iteration of the language
+standard, new features and capabilities have been introduced. From its
+humble beginnings to the present day, C has played a pivotal role in
+shaping the foundations of modern computing. This chapter will guide you
+through the historical context of C and set the stage for an in-depth
+exploration of its advanced features.</p>
+<p>While C is often celebrated for its low-level capabilities, its
+advanced features are sometimes overlooked. Advanced C programming opens
+doors to intricate control flow mechanisms, memory manipulation, and
+efficient data structures. As we progress through this book, you’ll
+discover how to wield these tools effectively, enabling you to write
+more robust, efficient, and maintainable code.</p>
+Before we dive into the technical details, let’s take a brief tour of
+what this book has to offer.
+<p>The first part of the book lays the groundwork, covering essential
+concepts such as advanced control flow, pointers, memory management, and
+advanced data structures. By mastering these foundational elements,
+you’ll be well-equipped to tackle more complex programming
+challenges.</p>
+<p>In the second part, we explore advanced techniques such as function
+pointers, macros, file handling, and multi-threading. These chapters
+provide practical insights into writing versatile and efficient
+code.</p>
+<p>The third part takes a hands-on approach, demonstrating how advanced
+C programming is applied in real-world scenarios. We’ll delve into
+GNU/Linux kernel programming, network programming, and embedded systems
+development.</p>
+<p>Part four is dedicated to best practices and optimization. Learn how
+to write secure code, optimize performance, and ensure your C programs
+run smoothly.</p>
+<p>The fifth part delves into metaprogramming, code generation, C++
+interoperability, and the latest C standards. These chapters explore the
+cutting edge of C programming, providing you with the tools to stay at
+the forefront of technology.</p>
+<p>In the final part, we’ll recap the key concepts, provide additional
+resources for further learning, and encourage you to continue your
+journey.</p>
+<p>C is mostly considered as a relatively low-level programming language
+among plenty of high-level programming languages. So why do we choose
+such a relatively low-level language? This is partly because its freedom
+for users. The evolution of modern languages are limiting the usage of
+some basic language structs like GOTO, pointers, manually memory
+management, etc. These are considered powerful but maliculus features,
+for these features may lead to complex bugs and some serious problems.
+But this doesn’t means that these tools are bad. In contrast, they are
+powerful tools. There are many schemes in modern programming languages
+that banned the usage of GOTO but replaced it with more reasonable
+language features, structures and more. This makes it easier to write
+programs with more robustness, but have less choices when getting into
+some big troubles.</p>
+<p>But, if you are using C, you can totally build your own language
+structures, schemes, etc. (Lisp can also do this, but this is not the
+topic of this book) This book will summarize some schemes(a.k.a black
+magics) that implemented in C, because pointer, GOTO and struct in C are
+all we need.</p>
+<p>This part only covers a basic part of C, for more detailed
+introduction, there are plenty of better choices if you are a beginner
+of C.</p>
+<p>大概就是出版物的常见格式都给显示一遍吧。</p>
+<h2 id="advanced-control-flow">Advanced Control Flow</h2>
+<h3 id="goto-statements-and-their-use-cases">Goto statements and their
+use cases</h3>
+<h3 id="structured-programming-principles">Structured programming
+principles</h3>
+<h3 id="advanced-control-flow-mechanisms">Advanced control flow
+mechanisms</h3>
+<p>高级控制流这东西，现在最常见的基本都是对于GOTO和Loop的封装。现代语言在汇编的判断和有/无条件跳转指令的基础上，创造了许多封装完善，符合直觉的控制流结构。根据实际需要，在C中也可以实现更为强大和复杂但完善的控制流。而控制流的来源大多数时候是来源于实际和灵感，也来自对于现有代码的分析，抽象和形式化。下面会讲几种C中几种比较少见的控制流。有的是从其他语言抄来的，有的是对于现实的建模。</p>
+<h4 id="谁说c不能try-catch的">谁说C不能try-catch的</h4>
+<p>你可曾听说过一种GOTO实现的异常处理？没有？那你用过Golang没？</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div>
+<h4
+id="这怎么不叫闭包你就说是不是闭的吧">这怎么不叫闭包，你就说是不是闭的吧</h4>
+<h4 id="看好了switch是这么用的">看好了，switch是这么用的</h4>
+<h4 id="python的while-if-else组合c也可以做到的哦">Python的while if
+else组合，C也可以做到的哦</h4>
+<h4 id="goto不削能玩">GOTO不削能玩？</h4>
+<h4 id="循环怎么你了">循环怎么你了</h4>
+<h4
+id="及时刹车你猜高德纳为啥讨厌goto">及时刹车：你猜高德纳为啥讨厌GOTO</h4>
+<h2 id="pointers-and-memory-management">Pointers and Memory
+Management</h2>
+<h3 id="understanding-pointers-in-depth">Understanding pointers
+in-depth</h3>
+<h3 id="dynamic-memory-allocation-and-deallocation">Dynamic memory
+allocation and deallocation</h3>
+<h3 id="pointer-arithmetic-and-advanced-memory-manipulation">Pointer
+arithmetic and advanced memory manipulation</h3>
+<h2 id="advanced-data-structures">Advanced Data Structures</h2>
+<h3 id="implementation-of-linked-lists-stacks-and-queues">Implementation
+of linked lists, stacks, and queues</h3>
+<h3 id="trees-and-graph-representations-in-c">Trees and graph
+representations in C</h3>
+<h3 id="efficient-data-structure-design-in-c">Efficient data structure
+design in C</h3>
+<h1 id="part-ii-advanced-techniques-and-strategies">Part II: Advanced
+Techniques and Strategies</h1>
+<h2 id="advanced-functions-and-macros">Advanced Functions and
+Macros</h2>
+<h3 id="function-pointers-and-their-applications">Function pointers and
+their applications</h3>
+<h3 id="advanced-macro-usage-for-code-generation">Advanced macro usage
+for code generation</h3>
+<h3 id="techniques-for-function-overloading-in-c">Techniques for
+function overloading in C</h3>
+<h2 id="file-handling-and-io-operations">File Handling and I/O
+Operations</h2>
+<h3 id="file-pointers-and-file-handling-in-c">File pointers and file
+handling in C</h3>
+<h3 id="advanced-input-and-output-operations">Advanced input and output
+operations</h3>
+<h3 id="serialization-and-deserialization-techniques">Serialization and
+deserialization techniques</h3>
+<h2 id="multi-threading-and-concurrency">Multi-threading and
+Concurrency</h2>
+<h3 id="understanding-threading-in-c">Understanding threading in C</h3>
+<h3
+id="synchronization-and-communication-between-threads">Synchronization
+and communication between threads</h3>
+<h3 id="practical-examples-of-concurrent-programming">Practical examples
+of concurrent programming</h3>
+<h2 id="error-handling-and-debugging">Error Handling and Debugging</h2>
+<h3 id="techniques-for-effective-error-handling">Techniques for
+effective error handling</h3>
+<h3 id="debugging-strategies-in-c">Debugging strategies in C</h3>
+<h3 id="best-practices-for-error-free-code">Best practices for
+error-free code</h3>
+<h1 id="part-iii-real-world-applications">Part III: Real-world
+Applications</h1>
+<h2 id="gnulinux-kernel-programming">GNU/Linux Kernel Programming</h2>
+<h3 id="overview-of-the-gnulinux-kernel">Overview of the GNU/Linux
+kernel</h3>
+<h3 id="advanced-c-programming-techniques-used-in-the-kernel">Advanced C
+programming techniques used in the kernel</h3>
+<h3 id="case-studies-and-practical-examples">Case studies and practical
+examples</h3>
+<h2 id="network-programming-in-c">Network Programming in C</h2>
+<h3 id="socket-programming-and-network-communication">Socket programming
+and network communication</h3>
+<h3 id="developing-network-protocols-in-c">Developing network protocols
+in C</h3>
+<h3 id="real-world-examples-of-networked-applications">Real-world
+examples of networked applications</h3>
+<h2 id="c-in-embedded-systems">C in Embedded Systems</h2>
+<h3 id="basics-of-embedded-systems-programming">Basics of embedded
+systems programming</h3>
+<h3 id="c-programming-for-microcontrollers-and-iot-devices">C
+programming for microcontrollers and IoT devices</h3>
+<h3 id="case-studies-of-embedded-systems-projects">Case studies of
+embedded systems projects</h3>
+<h1 id="part-iv-best-practices-and-optimization">Part IV: Best Practices
+and Optimization</h1>
+<h2 id="code-optimization-techniques">Code Optimization Techniques</h2>
+<h3 id="profiling-and-identifying-bottlenecks">Profiling and identifying
+bottlenecks</h3>
+<h3 id="techniques-for-optimizing-c-code">Techniques for optimizing C
+code</h3>
+<h3 id="compiler-optimizations-and-flags">Compiler optimizations and
+flags</h3>
+<h2 id="security-considerations-in-c">Security Considerations in C</h2>
+<h3 id="common-security-vulnerabilities-in-c">Common security
+vulnerabilities in C</h3>
+<h3 id="best-practices-for-writing-secure-code">Best practices for
+writing secure code</h3>
+<h3 id="techniques-for-preventing-security-exploits">Techniques for
+preventing security exploits</h3>
+<h2 id="advanced-c-interoperability">Advanced C++ Interoperability</h2>
+<h3 id="compatibility-between-c-and-c">Compatibility between C and
+C++</h3>
+<h3 id="techniques-for-using-c-features-in-c-code">Techniques for using
+C++ features in C code</h3>
+<h3 id="building-mixed-language-projects">Building mixed-language
+projects</h3>
+<h1 id="part-v-advanced-topics-in-c">Part V: Advanced Topics in C</h1>
+<h2 id="metaprogramming-and-code-generation">Metaprogramming and Code
+Generation</h2>
+<h3 id="template-metaprogramming-in-c">Template metaprogramming in
+C</h3>
+<h3 id="code-generation-techniques">Code generation techniques</h3>
+<h3 id="advanced-preprocessor-directives">Advanced preprocessor
+directives</h3>
+<h2 id="advanced-c-features-and-standards">Advanced C Features and
+Standards</h2>
+<h3 id="overview-of-the-latest-c-standards">Overview of the latest C
+standards</h3>
+<h3 id="features-introduced-in-recent-c-standards">Features introduced
+in recent C standards</h3>
+<h3 id="adhering-to-best-practices-and-future-proofing-code">Adhering to
+best practices and future-proofing code</h3>
+<h1 id="part-vi-conclusion">Part VI: Conclusion</h1>
+<h2 id="mastering-advanced-c-the-journey-ahead">Mastering Advanced C:
+The Journey Ahead</h2>
+<h3 id="recap-of-key-concepts">Recap of key concepts</h3>
+<h3 id="resources-for-further-learning">Resources for further
+learning</h3>
+<h3 id="encouragement-for-continuous-improvement">Encouragement for
+continuous improvement</h3>

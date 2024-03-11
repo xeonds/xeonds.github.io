@@ -243,6 +243,24 @@ sudo smbpasswd -a [username]
 >最近把`XDU-Planet`贡献给`XDOSC`社区了，目前挂了很多人的~~黑~~历史，可以来[Planet](https://xdlinux.github.io/planet/)看看。
 
 总之，充分利用嘛。
+
+哦对，这两天还搭建了个Overleaf用来写LaTex。把编译阶段的任务甩给服务器做挺爽的。部署指南参考了[这篇](https://zhuanlan.zhihu.com/p/656444021)步骤记录如下：
+```bash
+mkdir -p overleaf && cd overleaf
+wget https://github.com/overleaf/overleaf/blob/main/docker-compose.yml
+# 上边下下来compose配置之后得先改点地方，比如overleaf的端口，volume的存放路径等
+docker-compose up -d
+# 配置完整的TexLive以支持完整编译
+docker exec -it sharelatex bash
+cd /usr/local/texlive
+wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh --no-check-certificate
+sh update-tlmgr-latest.sh -- --upgrade
+tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet
+tlmgr update --self --all # luaotfload-tool -fu
+tlmgr install scheme-full
+```
+最下边的`tlmgr install`就是用来安装各种CTAN包的工具。以后有缺失的包时可以按需安装。
+
 ## 运维
 
 服务器的躯体是硬件，灵魂是数据。物理上的安全备份这里先不论，这里主要说说数据上的安全和管理。
@@ -335,6 +353,78 @@ done < "$BACKUP_DIR/config.csv"                 # 备份任务配置数据位于
 
 另外我记得好像推荐`rsync`做增量备份的来着，不过我的这些数据可能不太适合增量备份所以没用。如果是照片一类的文件，倒是很适合rsync来处理。回头可以抽空升级下这个脚本。
 
+#### 备份服务器
+
+在继续阅读之前，**永远保证数据安全，root的无上权限永远意味着使用者的责任，按下回车之前一定再三检查指令！！！**
+
+```bash
+ssh username@server_ip "sudo dd if=/dev/sdX bs=4M status=progress" | dd of=/path/to/local/backup/server_root.img bs=4M
+```
+
+上面的指令，将远端服务器的一个分区直接备份到本地的一个文件中，块级别拷贝，安全可靠，就是`dd`指令特别危险，得谨慎使用。
+
+还原的时候，在目标计算机上启动Live CD进入一个临时系统，挂载磁盘然后用合适的指令还原数据：
+```bash
+dd if=/path/to/local/backup/server_root.img bs=4M status=progress | ssh username@new_server_ip "sudo dd of=/dev/sdY bs=4M status=progress"
+```
+
+如果是同一服务器备份还原，那还原之后直接用就行了。但是如果服务器硬件不一致的话，那就得重新配置一些东西了。
+
+1. 保证启动配置正确
+
+我用的是GRUB，解决方案如下。基本就是重新安装然后更新引导项。
+
+```bash
+# Assuming /mnt is the mount point of the restored system
+sudo mount /dev/sdY1 /mnt  # Mount the root partition
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+sudo chroot /mnt /bin/bash
+grub-install /dev/sdY
+update-grub
+exit
+```
+
+2. 磁盘大小恢复
+
+使用`dd`恢复有一个问题，就是如果新的系统盘变大了，那还原之后系统可能还以为大小和以前一样。这种情况就需要：
+
+```bash
+sudo resize2fs /dev/sdY1
+df -h # check whether the disk size covers the entire partition
+```
+
+完事之后可能还需要用`gparted`之类的东西变一下磁盘大小。
+
+3. 更新磁盘UUID
+
+这玩意其实其他地方也会需要，比如硬盘`UUID`因为各种玄学原因变化了。
+
+```bash
+sudo blkid /dev/sdY1
+sudo vi /etc/fstab # 更新其中对应设备的UUID
+```
+另外就是如果在`/etc/default/grub`里边的`GRUB_CMDLINE_LINUX`里边也指定了，那也得改成对应的。改完之后`sudo update-grub`。
+
+完事重启，应该就能正常使用了。
+
+>如果服务器是全新安装，并且采用UEFI启动的话，那必须手动重建EFI分区，而且它得是硬盘的第一个分区。详细参考这里：[全新安装 - archlinux简明指南](https://arch.icekylin.online/guide/rookie/basic-install-detail.html#%F0%9F%86%95-%E5%85%A8%E6%96%B0%E5%AE%89%E8%A3%85)
+
+不过我自己迁移的时候因为几块硬盘倒来倒去太麻烦，索性就直接重装系统了。迁移之后，对于之前的数据恢复，找到那个备份生成的.img文件，用下面的指令挂载然后恢复数据就行：
+
+```bash
+sudo mount -o ro,noload server-old.img ./old/
+```
+
+上面的镜像和要挂载的目录改成你自己需要的就行。要迁移的项目就下面几个：
+
+| 名称 | 路径 |
+| ------- | ------------ |
+| crontab | `/etc/cron.*/`和`crontab -l`的内容 |
+| home下的各种服务 | ~/ |
+| 各种自定义脚本 | `/usr/local/bin` |
+
 ### 硬件安全
 
 首当其冲就是硬盘安全。这方面可以用`smartctl`来定期监测SMART信息确认磁盘状态。我试了下，好像ESXi里边我映射的硬盘也支持检测SMART信息。这里也可以写个脚本定期监测并发送监测报告~~此处可本~~。
@@ -350,6 +440,18 @@ done < "$BACKUP_DIR/config.csv"                 # 备份任务配置数据位于
 如何整理磁盘上的文件？问问`mv, cp, ls, rm, cat, grep, sed, awk, xargs`；然后，用bash把它们拼起来就行。只要你想，你可以编写出任何脚本来整理你的所有文件。
 
 >TODO：具体的脚本太多了，这里地方小，写不下（溜
+
+---
+
+>2024.1.4：update
+
+很早之前就整上这个Windows Server 2012 R2数据中心版本了，之前一直纯当Windows用的，今天发现Windows Server Datacenter确实是有一些很便利数据中心管理的feature，其中最让我心动的无疑是它的Deduplication功能。这个部分作为服务器的可选功能，需要在服务器管理面板手动添加，而且微软的东西的一个好处就是文档有中文而且相对比较完善，参考[安装和启用数据删除](https://learn.microsoft.com/zh-cn/windows-server/storage/data-deduplication/install-enable)。虽然上边标注的适用版本里边好像没有Windows Server 2012 R2 Datacenter，但是我自己实测是支持这个版本的。
+
+具体的开启步骤上面的参考链接里边有，这里说下我的踩坑经历。首先就是这玩意的文件系统只支持NTFS和ReFS两种，并且必须是本地的磁盘（但是我主力Linux，而且文件比较乱，还没把磁盘重新分配给Windows），也就是说必须在ESXi里边把磁盘分配给Windows才能享受数据压缩。其次就是这个压缩是以块为粒度的，根据微软官方的说法而言，能够节省的空间确实不少，适合文件服务器和给Hyper-V服务器用，能显著节省空间。另外这个玩意是个定期运行的服务，服务的注意事项它也得注意。
+
+以及除了这个本体之外，还有一个`ddpeval.exe`是用来评估数据压缩效果的。可以先跑一次这个然后再根据实际情况决策是否启用数据压缩。还有就是这东西作为重型I/O操作，很吃内存和CPU，所以启用数据去重服务的时候得注意根据实际情况限制它可以使用的资源量。
+
+哎，要是这玩意有开源实现就好了，直接挂Linux底下定期执行。
 
 ### 自动运维
 
@@ -378,6 +480,23 @@ sudo swapoff /swap.img    # 这里需要改成你的swap文件
 # sudo rm /swap.img       # 可选
 ```
 至于关不关，区别似乎不大，但是确实节省了我一些磁盘空间，理论上能延缓磁盘使用寿命。具体还是得看服务器日常内存占用情况而决定。
+
+### 权限管理
+
+服务器平时总是空着的，所以打算把服务器给几个哥们也分配个号。想来想去虚拟化的话性能损耗比较大，不如上用户组来进行权限管理，刚好也多一个深入学习Linux系统的机会。
+
+首先是创建用户组：`sudo groupadd dim0`，创建完成后再更改用户组权限即可。
+
+然后是创建所有用户：`for user in {tesla,zimin,holynia,ray}; do sudo useradd -m -G dim0 $user; done`，创建用户的同时，将他们加入`dim0`用户组，并且自动为他们创建用户目录。
+
+完成之后就是修改用户组的权限了。他们创建的时候就不在`wheel`用户组中，所以没有`sudo`权限。
+
+对于需要禁止访问的目录，更改权限和所有权就行：
+
+```
+sudo chown xeonds:wheel /path/2/dir
+sudo chmod go-x /path/2/dir
+```
 
 ## 尾声
 

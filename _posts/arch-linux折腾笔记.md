@@ -38,6 +38,33 @@ xrandr --output eDP-1 --auto --output HDMI-1 --auto --panning [C*E]x[D*F]+[A]+0 
 - [1] [Barry的笔记](https://nmgit.net/2020/139/)
 - [2] [X11 多显示器配置：玩转 XRandR](https://harttle.land/2019/12/24/auto-xrandr.html)
 
+## pacman入门
+问了问GPT，大概做了下笔记如下：
+```bash
+sudo pacman -Sy                     # 更新软件包数据库
+sudo pacman -S package_name         # 安装软件包，可批量安装
+sudo pacman -R package_name         # 删除软件包但保留配置
+sudo pacman -Rn package_name        # 删除包和配置
+sudo pacman -Syu                    # 升级所有已安装的包
+sudo pacman -Sc                     # 清理pacman缓存的旧包
+sudo pacman -Ss search_term         # 查找软件包
+sudo pacman -Si package_name        # 查找软件包信息
+sudo pacman -Rns $(pacman -Qdtq)    # 删除未使用依赖包
+```
+
+另外，`Syu`和`Syyu`的区别在于后者强制刷新了软件仓库缓存。后者虽然更新比较及时，但是用得多对于软件源仓库并不友好，而且浪费资源，不宜过于频繁使用。
+
+最底下那个移除孤儿包的操作少用，用的时候手动确认是否包括重要依赖。
+
+另外还有个操作，就是完整备份安装过的包列表，然后在新的系统上重新安装，这个用`pacman`可以做到。
+
+```bash
+pacman -Qqe > installed_packages.txt                # 备份当前系统上所有已经明确安装的包
+sudo pacman -S --needed - < installed_packages.txt  # 只安装其中没有安装过的包
+```
+
+不过使用这个操作的时候，记得得保证清单的实时性，因为arch滚动更新，系统一直是新的，备份列表太久没更新的话在新系统上安装会有依赖，兼容等等问题。
+
 ## 启用外部ssh连接
 
 如果想从外部连接到Arch的电脑上，只要安装了openssh就行。Arch默认不会启动`sshd`，所以我们得手动开启：
@@ -236,6 +263,8 @@ Detect GTK_IM_MODULE and QT_IM_MODULE being set and Wayland Input method fronten
 好好好搞定了。按照上面的设置先屏蔽了俩环境变量，然后删除了默认值，现在系统已经处于完全可用的状态。回头有时间了整理整理过程。
 
 >Fri 22 Dec 2023 05:14:55 PM CST
+
+编辑：这个选项不用在命令行里修改，直接去系统设置里边的`Startup nad shutdown->Login Screen->Behavior`里边修改`...with session = `的选项就行了。
 
 ## 又出问题了
 
@@ -499,6 +528,11 @@ MiB Swap:[m[39;49m[1m      0.0 [m[39;49mtotal,[m[39;49m[1m      0.0 
 ```bash
 systemctl --user restart plasma-kwin_x11
 ```
+或者这个
+```bash
+setsid kwin_x11 --replace &
+```
+>ref:[律回彼境](https://www.glowmem.com/archives/archlinux-note#toc-head-7)
 
 试了试，问题完美解决，CPU占用也正常了。
 
@@ -509,6 +543,7 @@ systemctl --user restart plasma-kwin_x11
 其实主要是KDE Plasma的相关组合键。偶尔会意外发现一些组合键，就记录在这里了。
 
 - 切换桌面：`ctrl+F*`
+- 无极缩放：`win+ctrl`+鼠标滚轮，真的好丝滑QAQ
 
 ## 莫得休眠Hibernate选项
 找了半天发现是系统安装的时候没设置swap交换分区。不过暂时默认的睡眠也够用了，之后再考虑吧。
@@ -525,3 +560,255 @@ systemctl --user restart plasma-kwin_x11
 一直忘了改这个东西了。有时候等待一些服务停止的时候等到倒计时结束才会停止。可以适当减少倒计时的时长环节这个问题。
 
 对应的参数在`/etc/systemd/system.conf`，更改`DefaultTimeoutStopSec=90s`为你想要的等待时间，我改成10s了。
+
+## 记一次内核卡死
+挺草的说起来。征兆是先是firefox崩了，然后把kwin也爆了。第二次是kwin自己爆炸了，然后玩mc java的时候就OOM+CPU 100%了。问了下群里老哥，发现没开SysRq，不然的话就能在内核卡死的时候使用一些组合键来让内核执行一些有限操作。
+
+等待了大概40min，无果，只能以>2min的不规律时间响应键盘中断，老哥推测可能是活锁，而且OOM也没来得及出动。所以就含泪重启，跟自己tmux里边一堆窗口告别了。
+
+重启，看看内核日志：`sudo journalctl -k -b-1`查看上次启动的日志：
+
+```log
+Jan 16 10:43:33 ark-station kernel: Bluetooth: hci0: Malformed MSFT vendor event: 0x02
+Jan 16 10:43:33 ark-station kernel: Bluetooth: hci0: Found Intel DDC parameters: intel/ibt-0040-4150.ddc
+Jan 16 10:43:33 ark-station kernel: Bluetooth: hci0: Applying Intel DDC parameters completed
+Jan 16 10:43:33 ark-station kernel: Bluetooth: hci0: Firmware timestamp 2023.42 buildtype 1 build 73111
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Microcode SW error detected. Restarting 0x0.
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Start IWL Error Log Dump:
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Transport status: 0x0000004A, valid: 6
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Loaded firmware version: 83.e8f84e98.0 so-a0-hr-b0-83.ucode
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000071 | NMI_INTERRUPT_UMAC_FATAL    
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x000002F0 | trm_hw_status0
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | trm_hw_status1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x004D9024 | branchlink2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x004CF2F2 | interruptlink1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x004CF2F2 | interruptlink2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00015346 | data1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000010 | data2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | data3
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0022F89E | beacon time
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x001E1C6F | tsf low
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | tsf hi
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | time gp1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x001ED6DD | time gp2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000001 | uCode revision type
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000053 | uCode version major
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xE8F84E98 | uCode version minor
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000370 | hw version
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00C80002 | board version
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x80DDFC04 | hcmd
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00020000 | isr0
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | isr1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x48F00002 | isr2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00C3000C | isr3
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | isr4
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x001C0103 | last cmd Id
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00015346 | wait_event
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000010 | l2p_control
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000020 | l2p_duration
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0000003F | l2p_mhvalid
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | l2p_addr_match
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000009 | lmpm_pmg_sel
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | timestamp
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00004870 | flow_handler
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Start IWL Error Log Dump:
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Transport status: 0x0000004A, valid: 7
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x2010190E | ADVANCED_SYSASSERT
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | umac branchlink1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x804703E0 | umac branchlink2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xC0081500 | umac interruptlink1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | umac interruptlink2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0101971C | umac data1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xDEADBEEF | umac data2
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xDEADBEEF | umac data3
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000053 | umac major
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xE8F84E98 | umac minor
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x001ED6D7 | frame pointer
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0xC0886BE0 | stack pointer
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0024010D | last host cmd
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000000 | isr status reg
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: IML/ROM dump:
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000B03 | IML/ROM error/state
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0000518C | IML/ROM data1
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000090 | IML/ROM WFPM_AUTH_KEY_0
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: Fseq Registers:
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x60000000 | FSEQ_ERROR_CODE
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00350002 | FSEQ_TOP_INIT_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00150001 | FSEQ_CNVIO_INIT_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0000A482 | FSEQ_OTP_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00000003 | FSEQ_TOP_CONTENT_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x4552414E | FSEQ_ALIVE_TOKEN
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00080400 | FSEQ_CNVI_ID
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x01300504 | FSEQ_CNVR_ID
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00080400 | CNVI_AUX_MISC_CHIP
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x01300504 | CNVR_AUX_MISC_CHIP
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x05B0905B | CNVR_SCU_SD_REGS_SD_REG_DIG_DCDC_VTRIM
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x0000025B | CNVR_SCU_SD_REGS_SD_REG_ACTIVE_VDIG_MIRROR
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00150001 | FSEQ_PREV_CNVIO_INIT_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00350002 | FSEQ_WIFI_FSEQ_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x00350002 | FSEQ_BT_FSEQ_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: 0x000000DC | FSEQ_CLASS_TP_VERSION
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: UMAC CURRENT PC: 0x8048f214
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: LMAC1 CURRENT PC: 0xd0
+Jan 16 10:43:33 ark-station kernel: iwlwifi 0000:00:14.3: WRT: Collecting data: ini trigger 4 fired (delay=0ms).
+Jan 16 10:43:33 ark-station kernel: ieee80211 phy0: Hardware restart was requested
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: WRT: Invalid buffer destination
+Jan 16 10:43:34 ark-station kernel: Bluetooth: MGMT ver 1.22
+Jan 16 10:43:34 ark-station kernel: Bluetooth: hci0: Bad flag given (0x1) vs supported (0x0)
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: WFPM_UMAC_PD_NOTIFICATION: 0x20
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: WFPM_LMAC2_PD_NOTIFICATION: 0x1f
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: WFPM_AUTH_KEY_0: 0x90
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: CNVI_SCU_SEQ_DATA_DW9: 0x10
+Jan 16 10:43:34 ark-station kernel: iwlwifi 0000:00:14.3: RFIm is deactivated, reason = 5
+Jan 16 10:43:38 ark-station kernel: wlan0: authenticate with e2:cb:4f:01:72:a7
+Jan 16 10:43:38 ark-station kernel: wlan0: send auth to e2:cb:4f:01:72:a7 (try 1/3)
+Jan 16 10:43:38 ark-station kernel: wlan0: authenticated
+Jan 16 10:43:38 ark-station kernel: wlan0: associate with e2:cb:4f:01:72:a7 (try 1/3)
+Jan 16 10:43:38 ark-station kernel: wlan0: RX AssocResp from e2:cb:4f:01:72:a7 (capab=0x1511 status=0 aid=1)
+Jan 16 10:43:38 ark-station kernel: wlan0: associated
+Jan 16 10:47:20 ark-station kernel: kwin_wayland[901]: segfault at 0 ip 0000561fd234c33f sp 00007fff916f35c0 error 4 in kwin_wayland[561fd2348000+110000] likely on CPU 13 (core 25, socket 0)
+Jan 16 10:47:20 ark-station kernel: Code: 8b 47 58 48 8b 58 10 48 01 c3 48 63 40 04 4c 8d 24 c3 49 39 dc 75 0d eb 2a 66 90 48 83 c3 08 49 39 dc 74 1f 48 8b 3b 48 89 ee <48> 8b 07 ff 50 60 84 c0 74 e7 48 83 c4 08 5b 5d 41 5c 41 5d c3 0f
+Jan 16 10:49:41 ark-station systemd-fstab-generator[2389003]: Failed to create unit file '/run/systemd/generator/-.mount', as it already exists. Duplicate entry in '/etc/fstab'?
+Jan 16 11:15:18 ark-station kernel: wlan0: deauthenticating from e2:cb:4f:01:72:a7 by local choice (Reason: 3=DEAUTH_LEAVING)
+Jan 16 11:15:18 ark-station kernel: wlan0: authenticate with f0:9b:b8:16:62:30
+Jan 16 11:15:18 ark-station kernel: wlan0: 80 MHz not supported, disabling VHT
+Jan 16 11:15:18 ark-station kernel: wlan0: send auth to f0:9b:b8:16:62:30 (try 1/3)
+Jan 16 11:15:18 ark-station kernel: wlan0: authenticated
+Jan 16 11:15:18 ark-station kernel: wlan0: associate with f0:9b:b8:16:62:30 (try 1/3)
+Jan 16 11:15:18 ark-station kernel: wlan0: RX AssocResp from f0:9b:b8:16:62:30 (capab=0x1421 status=0 aid=2)
+Jan 16 11:15:18 ark-station kernel: wlan0: associated
+Jan 16 11:15:18 ark-station kernel: wlan0: Limiting TX power to 20 (20 - 0) dBm as advertised by f0:9b:b8:16:62:30
+Jan 16 11:21:36 ark-station kernel: wlan0: disconnect from AP f0:9b:b8:16:62:30 for new auth to f0:9b:b8:16:62:40
+Jan 16 11:21:36 ark-station kernel: wlan0: authenticate with f0:9b:b8:16:62:40
+Jan 16 11:21:36 ark-station kernel: wlan0: send auth to f0:9b:b8:16:62:40 (try 1/3)
+Jan 16 11:21:36 ark-station kernel: wlan0: authenticated
+Jan 16 11:21:36 ark-station kernel: wlan0: associate with f0:9b:b8:16:62:40 (try 1/3)
+Jan 16 11:21:36 ark-station kernel: wlan0: RX ReassocResp from f0:9b:b8:16:62:40 (capab=0x1501 status=0 aid=4)
+Jan 16 11:21:36 ark-station kernel: wlan0: associated
+Jan 16 11:21:36 ark-station kernel: wlan0: Limiting TX power to 30 (30 - 0) dBm as advertised by f0:9b:b8:16:62:40
+Jan 16 11:22:44 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* Atomic update failure on pipe A (start=282494 end=282495) time 187 us, min 1579, max 1599, scanline start 1564, end 1602
+Jan 16 11:41:50 ark-station kernel: wlan0: disconnect from AP f0:9b:b8:16:62:40 for new auth to f0:9b:b8:16:5c:40
+Jan 16 11:41:50 ark-station kernel: wlan0: authenticate with f0:9b:b8:16:5c:40
+Jan 16 11:41:50 ark-station kernel: wlan0: send auth to f0:9b:b8:16:5c:40 (try 1/3)
+Jan 16 11:41:50 ark-station kernel: wlan0: authenticated
+Jan 16 11:41:50 ark-station kernel: wlan0: associate with f0:9b:b8:16:5c:40 (try 1/3)
+Jan 16 11:41:50 ark-station kernel: wlan0: RX ReassocResp from f0:9b:b8:16:5c:40 (capab=0x1501 status=0 aid=2)
+Jan 16 11:41:50 ark-station kernel: wlan0: associated
+Jan 16 11:41:50 ark-station kernel: wlan0: Limiting TX power to 23 (23 - 0) dBm as advertised by f0:9b:b8:16:5c:40
+Jan 16 18:00:05 ark-station kernel: wlan0: deauthenticating from f0:9b:b8:16:5c:40 by local choice (Reason: 3=DEAUTH_LEAVING)
+Jan 16 18:00:05 ark-station kernel: wlan0: authenticate with e2:cb:4f:01:72:a7
+Jan 16 18:00:05 ark-station kernel: wlan0: send auth to e2:cb:4f:01:72:a7 (try 1/3)
+Jan 16 18:00:05 ark-station kernel: wlan0: authenticated
+Jan 16 18:00:05 ark-station kernel: wlan0: associate with e2:cb:4f:01:72:a7 (try 1/3)
+Jan 16 18:00:05 ark-station kernel: wlan0: RX AssocResp from e2:cb:4f:01:72:a7 (capab=0x1511 status=0 aid=3)
+Jan 16 18:00:05 ark-station kernel: wlan0: associated
+Jan 16 18:41:38 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* Atomic update failure on pipe A (start=2487239 end=2487240) time 230 us, min 1579, max 1599, scanline start 1566, end 1613
+Jan 16 19:34:40 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* Atomic update failure on pipe A (start=2869004 end=2869005) time 158 us, min 1579, max 1599, scanline start 1570, end 1602
+Jan 16 20:01:05 ark-station kernel: atkbd serio0: Unknown key pressed (translated set 2, code 0x8b on isa0060/serio0).
+Jan 16 20:01:05 ark-station kernel: atkbd serio0: Use 'setkeycodes e00b <keycode>' to make it known.
+Jan 16 20:01:05 ark-station kernel: atkbd serio0: Unknown key released (translated set 2, code 0x8b on isa0060/serio0).
+Jan 16 20:01:05 ark-station kernel: atkbd serio0: Use 'setkeycodes e00b <keycode>' to make it known.
+Jan 16 20:01:07 ark-station kernel: atkbd serio0: Unknown key pressed (translated set 2, code 0x8a on isa0060/serio0).
+Jan 16 20:01:07 ark-station kernel: atkbd serio0: Use 'setkeycodes e00a <keycode>' to make it known.
+Jan 16 20:01:07 ark-station kernel: atkbd serio0: Unknown key released (translated set 2, code 0x8a on isa0060/serio0).
+Jan 16 20:01:07 ark-station kernel: atkbd serio0: Use 'setkeycodes e00a <keycode>' to make it known.
+Jan 16 20:02:39 ark-station kernel: atkbd serio0: Unknown key pressed (translated set 2, code 0x8b on isa0060/serio0).
+Jan 16 20:02:39 ark-station kernel: atkbd serio0: Use 'setkeycodes e00b <keycode>' to make it known.
+Jan 16 20:02:39 ark-station kernel: atkbd serio0: Unknown key released (translated set 2, code 0x8b on isa0060/serio0).
+Jan 16 20:02:39 ark-station kernel: atkbd serio0: Use 'setkeycodes e00b <keycode>' to make it known.
+Jan 16 20:02:51 ark-station kernel: atkbd serio0: Unknown key pressed (translated set 2, code 0x8a on isa0060/serio0).
+Jan 16 20:02:51 ark-station kernel: atkbd serio0: Use 'setkeycodes e00a <keycode>' to make it known.
+Jan 16 20:02:51 ark-station kernel: atkbd serio0: Unknown key released (translated set 2, code 0x8a on isa0060/serio0).
+Jan 16 20:02:51 ark-station kernel: atkbd serio0: Use 'setkeycodes e00a <keycode>' to make it known.
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* GT0: GUC: Engine reset failed on 0:0 (rcs0) because 0x00000000
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GPU HANG: ecode 12:1:84dffffb, in Render thread [3009924]
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] Resetting chip for GuC failed to reset engine mask=0x1
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] Render thread[3009924] context reset due to GPU hang
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GuC firmware i915/adlp_guc_70.bin version 70.13.1
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GT0: HuC firmware i915/tgl_huc.bin version 7.9.3
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GT0: HuC: authenticated for all workloads
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GUC: submission enabled
+Jan 16 20:18:46 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GUC: SLPC enabled
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* GT0: GUC: Engine reset failed on 0:0 (rcs0) because 0x00000000
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GPU HANG: ecode 12:1:84dffffb, in Render thread [3009924]
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] Resetting chip for GuC failed to reset engine mask=0x1
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] Render thread[3009924] context reset due to GPU hang
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GuC firmware i915/adlp_guc_70.bin version 70.13.1
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GT0: HuC firmware i915/tgl_huc.bin version 7.9.3
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GT0: HuC: authenticated for all workloads
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GUC: submission enabled
+Jan 16 20:45:01 ark-station kernel: i915 0000:00:02.0: [drm] GT0: GUC: SLPC enabled
+Jan 16 20:49:08 ark-station kernel: INFO: task IPC Launch:2387456 blocked for more than 122 seconds.
+Jan 16 20:49:16 ark-station kernel:       Not tainted 6.6.10-arch1-1 #1
+Jan 16 20:49:27 ark-station kernel: "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+Jan 16 20:49:32 ark-station kernel: task:IPC Launch      state:D stack:0     pid:2387456 ppid:870    flags:0x00004002
+Jan 16 20:49:38 ark-station kernel: Call Trace:
+Jan 16 20:49:48 ark-station kernel:  <TASK>
+Jan 16 20:50:00 ark-station kernel:  __schedule+0x3e7/0x1410
+Jan 16 20:50:16 ark-station kernel:  schedule+0x5e/0xd0
+Jan 16 20:50:28 ark-station kernel:  schedule_preempt_disabled+0x15/0x30
+Jan 16 20:50:36 ark-station kernel:  rwsem_down_write_slowpath+0x203/0x690
+Jan 16 20:50:43 ark-station kernel:  ? prealloc_shrinker+0x6a/0xd0
+Jan 16 20:50:51 ark-station kernel:  ? __pfx_set_anon_super_fc+0x10/0x10
+Jan 16 20:50:57 ark-station kernel:  down_write+0x5b/0x60
+Jan 16 20:51:04 ark-station kernel:  __prealloc_shrinker+0x70/0x350
+Jan 16 20:51:11 ark-station kernel:  ? kvasprintf+0x82/0xd0
+Jan 16 20:51:17 ark-station kernel:  ? __pfx_set_anon_super_fc+0x10/0x10
+Jan 16 20:51:23 ark-station kernel:  prealloc_shrinker+0x7b/0xd0
+Jan 16 20:51:28 ark-station kernel:  alloc_super+0x272/0x2e0
+Jan 16 20:51:35 ark-station kernel:  sget_fc+0x63/0x330
+Jan 16 20:51:41 ark-station kernel:  ? __pfx_mqueue_fill_super+0x10/0x10
+Jan 16 20:51:55 ark-station kernel:  get_tree_nodev+0x27/0x90
+Jan 16 20:52:02 ark-station kernel:  vfs_get_tree+0x26/0xf0
+Jan 16 20:52:07 ark-station kernel:  ? refcount_dec_and_lock+0x11/0x70
+Jan 16 20:52:12 ark-station kernel:  fc_mount+0x12/0x40
+Jan 16 20:52:17 ark-station kernel:  mq_init_ns+0x10f/0x1b0
+Jan 16 20:52:21 ark-station kernel:  copy_ipcs+0x134/0x270
+Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
+```
+
+看了一圈最后找到个issue，看样子我应该是drm/i195受害者咯。
+
+### SysRq: Keyboard Shortcuts
+>systemd has the SysRq permissions bitmask set to 0x10 by default, which does not allow process signalling or rebooting, among other things. To allow full use of the SysRq key on your system, add kernel.sysrq = 1 to your sysctl configuration. Values greater than 1 can be used to selectively enable SysRq functions; see the Linux kernel documentation for details. If you want to make sure it will be enabled even before the partitions are mounted and in the initrd, then add sysrq_always_enabled=1 to your kernel parameters.
+>
+>Note that changing the setting through these methods will cause the changes to persist across reboots. If you want to try changing the SysRq settings for just your current session, you can run either sysctl kernel.sysrq=1 or echo "1" > /proc/sys/kernel/sysrq.
+>
+>There are some obvious security risks involved in fully enabling the SysRq key. In addition to forcing reboots and the like, it can be used to dump the contents of the CPU registers, which could theoretically reveal sensitive information. Since using it requires physical access to the system (unless you go out of your way), most desktop users will probably consider the level of risk acceptable. That said, make sure you fully understand the implications of enabling it and the dynamics of the larger context in which your system is operating before you turn SysRq all the way on. 
+
+上边是[arch wiki](https://wiki.archlinux.org/title/keyboard_shortcuts)的资料链接，可以参考下开开这玩意。这玩意的快捷键可以这么记：*Reboot Even If System Utterly Broken*。用法就是`Alt+SysRq+这六个单词首字母缩写`，功能分别是
+- `Unraw`：切换键盘输入到ASCII模式，
+- `Terminate`：给所有进程发送`SIGTERM`，
+- `Kill`：发送`SIGKILL`给所有进程，
+- `Sync`：写入数据到磁盘，
+- `Unmount`：卸载然后挂载所有文件系统为只读模式，
+- `Reboot`：重启。
+
+另外还可以用`f`来触发`OOM Killer`。
+
+## 开机时间优化
+>ref: [律回彼境](https://www.glowmem.com/archives/archlinux-note#toc-head-7)
+
+使用`sudo systemd-analyze blame`可以查看系统开机时间详情。
+
+自动mount分区（也就是直接在`/etc/fstab`里边进行配置）会导致启动时间增大，所以更推荐写成一个脚本，在用户登录后自动执行挂载。脚本放置在 ~/.config/autostart/ 即可在用户登录后执行。
+
+## 又被Firefox爆了
+>虽然后来看日志发现是Firefox被kwin爆了
+
+这几天频繁出现桌面所有进程炸掉的情况，恢复后Firefox的Crash Report自己会跳出来。。不知道为啥，但是根据群u从`about:crashes`里边提交的崩溃报告来看，应该是kwin把Firefox爆了。
+
+根据老哥的建议，关闭了系统的自适应同步（Adaptive Sync）选项，按照他的惊叹，问题可能会少一些。
+
+## 传文件的姿势
+>什么姿势，还真没见过
+>-转自archlinux-cn-依云
+
+```bash
+TAR C -c ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
+```
+

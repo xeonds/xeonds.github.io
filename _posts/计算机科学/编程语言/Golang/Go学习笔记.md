@@ -63,6 +63,101 @@ export GOPROXY=https://goproxy.cn
 
 原因：`go test` 中不能使用 `fmt.Println("%v", v)`
 
-## 方案
+### 方案
 
 使用 `fmt.Printf("%+v", v)`
+
+## 工具链
+现代语言最大的优势就是工具链。
+
+```bash
+go tool dist list
+```
+
+依赖：
+
+```bash
+ldd [bin-name]
+```
+
+静态编译：
+```bash
+CGO_ENABLED=0 go build xxx
+# or this
+go build xxx -ldflags '-linkmode "external" -extldflags "-static"'
+```
+
+如果glibc版本不对的话，直接使用指定`LD_LIBRARY_PATH=.`的方法是无效的。
+>ref:[Glibc is hard-coded in the program](https://stackoverflow.com/questions/847179/multiple-glibc-libraries-on-a-single-host)
+
+## 造轮子
+采用组合的方式将常用的范式写成函数，同时不失灵活性和潜力。
+
+### Gin
+
+对于Gin的复用主要是添加路由的方式进行抽象和标准化，同时编写一些较为通用的API Handlers：
+```golang
+func APIBuilder(router gin.IRouter, handlers ...func(*gin.RouterGroup) *gin.RouterGroup) func(gin.IRouter, string) *gin.RouterGroup {
+	return func(router gin.IRouter, path string) *gin.RouterGroup {
+		group := router.Group(path)
+		for _, handler := range handlers {
+			group = handler(group)
+		}
+		return group
+	}
+}
+```
+上面的函数实现了为一个`gin.RouterGroup`自动添加参数传入的handler列表。这样的构造器构造出的函数能用于给一个接口添加几个固定的Handler。在复用层面实现了快速的为一个结构体添加CRUD的能力，同时允许你编写自己的handler代码，以及自己的构造器。
+
+```golang
+func AddCRUD[T any](router gin.IRouter, path string, db *gorm.DB) *gin.RouterGroup {
+	return APIBuilder(router, func(group *gin.RouterGroup) *gin.RouterGroup {
+		group.GET("", getAll[T](db))
+		group.GET("/:id", get[T](db))
+		group.POST("", create[T](db))
+		group.PUT("/:id", update[T](db))
+		group.DELETE("/:id", delete[T](db))
+		return group
+	})(router, path)
+}
+```
+上面展示的就是构造器的一个用法，这个构造器构造的函数能用来快速给一个结构体添加CRUD接口。
+
+其中的Handler可以自己实现，并把自己的Handler通过上面的APIBuilder打包成一个可以快速调用的函数：
+
+```golang
+// 简单的Handler示范
+func create[T any](db *gorm.DB) func(c *gin.Context) {
+	return func(c *gin.Context) {
+		var d T
+		if err := c.ShouldBindJSON(&d); err != nil {
+			c.AbortWithStatus(404)
+			log.Println("[gorm]parse creation data failed: ", err)
+		} else {
+			if err := db.Create(&d).Error; err != nil {
+				c.AbortWithStatus(404)
+				log.Println("[gorm]create data failed: ", err)
+			} else {
+				c.JSON(200, d)
+			}
+		}
+	}
+}
+// 简单的调用示范
+type Hello struct {
+    Hello string
+    World string
+}
+r := gin.Default
+db, _ := gorm.Open(sqlite.Open("test"), &gorm.Config{})
+AddCRUD[Hello](r, "/hello", db)
+```
+
+上面几行代码就添加了四个对于Hello的CRUD API。
+
+而且你应该注意到了，上面crud的实现我传入了`gorm.DB`来完成实际的crud动作。主要是因为数据库查询的动作我不知道应该怎么传入，而且又不想自己搓个大而全的框架出来——简洁的函数更合我的胃口。
+
+下一步就是尝试抽象以前自己编写的后端，试着用简洁又不失灵活度的方法创建一个渐进式辅助函数包。
+
+>最近发现了go-zero这个脚手架，主打面向`k8s`整微服务开发。框架做的还行，甚至基于go语法搓了个DSL出来。里边包含的单体微服务的框架对我有比较大的启发作用，我打算把它变成一个更FP的工具包拿来用。
+>以及Goland好像看着确实不错。

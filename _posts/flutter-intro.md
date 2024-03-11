@@ -65,9 +65,15 @@ Just like Kotlin
 
 ### Network
 
-Mainly using `Dio`
+主要使用`Flutter`的`Dio`。不过我用`http/http.dart`更多。
 
-## 使用笔记
+## 开发笔记
+
+评价是Flutter这玩意搓东西真的快。
+
+Flutter使用的dart语言，强类型和可写性平衡的挺舒服的。语法上，Dart算是JavaScript的继承，语法大差不差，改进了JavaScript混乱的类型系统，还封装了不少挺不错的语法特性，比如那个Future，用着还行。还有内置的高级数据结构之类的，用着挺省心。
+
+不过写这东西，我好像很少单独注意语法层面的东西，一般都是定义个返回Widget的build函数完事。另外这语言比较像DSL，没见过别处有用这玩意的。
 
 ### 关于WebViewWidget
 
@@ -76,3 +82,49 @@ Mainly using `Dio`
 所以review同学的代码的时候，发现在我用Linux平台跑的时候报错了。搜了下才发现这问题。
 
 不过也无所谓了，反正这玩意本来就只是在Android/iOS上跑的。
+
+### 关于TextEditController
+
+声明一个文本框时，它会默认初始化一个TextEditController。如果你传递给它你定义的Controller，它就会使用你提供的而不是自己创建。另外特别注意，给TextField赋值这一项的行为不是常量表达式，不能在它和它的父结构中使用`const`关键字。
+
+### 关于sqflite
+这玩意有大坑（关于平台兼容性上的）。反正我目前尝试之后发现要么支持Windows/Linux/Mac等桌面端，要么支持Android/iOS等移动端的SQLite使用。
+
+### 关于ListView
+关于这个东西，得注意的就是嵌套使用。嵌套的子`ListView`，需要设置如下两个属性来避免滚定判定失效：
+
+```flutter
+shrinkWrap: true,
+physics: const NeverScrollableScrollPhysics(),
+```
+
+### 关于项目结构
+```
+lib/
+  |- models/                  // Define your data entities here
+     |- entity1.dart
+     |- entity2.dart
+  |- services/                // Implement background service here
+     |- background_service.dart
+  |- screens/                 // Screens of your app
+     |- screen1/              // Screen 1 related files
+         |- screen1.dart
+         |- screen1_bloc.dart // If you're using BLoC pattern
+     |- screen2/              // Screen 2 related files
+         |- screen2.dart
+         |- screen2_bloc.dart // If you're using BLoC pattern
+     |- settings/             // Settings related pages
+         |- settings.dart
+         |- sub_setting1.dart
+         |- sub_setting2.dart
+  |- widgets/                 // Reusable widgets
+  |- providers/               // Provider setup and providers for data and services
+     |- app_provider.dart     // Main provider setup
+     |- data_provider.dart    // Provider for CRUD actions on data entities
+     |- service_provider.dart // Provider for background service
+  |- main.dart                // Entry point of the app
+```
+
+功能划分基本就这几块：UI，状态管理服务，数据实体，后台服务。代码嘛，能简洁点最好。
+
+另外就我的开发经验而言，最好不要过早规范化工程化。早期过于强调规范和过程的收益是负的。
