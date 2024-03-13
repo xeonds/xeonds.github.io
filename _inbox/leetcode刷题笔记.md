@@ -121,4 +121,8 @@ func isOver(direction []int) bool {
         }
         return false
 }
+
+func isOver(distance []int) bool {
+
+
 ```
