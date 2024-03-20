@@ -812,3 +812,79 @@ Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
 TAR C -c ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
 ```
 
+## 文件系统迁移
+
+>有条件的话，建议还是全新安装最好。
+
+Reference:
+
+- [如何将你的文件系统转换为 Btrfs | Linux 中国](https://zhuanlan.zhihu.com/p/512761420)
+- [Linux_Personal_Note/Linux系统之rsync 备份与还原 - github.com](https://github.com/BarryWanghyw/Linux_Personal_Note/blob/master/Linux%E7%B3%BB%E7%BB%9F%E4%B9%8Brsync%20%E5%A4%87%E4%BB%BD%E4%B8%8E%E8%BF%98%E5%8E%9F.md)
+- [从ext4迁移到btrfs - imlk's blog](http://blog.imlk.top/posts/migrating-to-btrfs/)
+- [GRUB broken after conversion to btrfs - Superuser.com](https://superuser.com/questions/524186/grub-broken-after-conversion-to-btrfs)
+- [Boot on btrfs subvolume error: “mount: /new_root: unknown filesystem type ‘btrfs’ ”](https://forum.manjaro.org/t/boot-on-btrfs-subvolume-error-mount-new-root-unknown-filesystem-type-btrfs/152116)
+
+参考了几个博客，跟着感觉走最后总算是有惊无险整好了。
+
+本来是想用`btrfs-convert`给直接原地转换的，但是奈何superblock大小太小，转换失败。没办法，自己动手丰衣足食。
+
+
+首先先是把原来的系统备份好：
+
+```bash
+dd if=/dev/nvme0n1p5 of=/path/to/another/disk/backup.img bs=4M status=progress
+```
+
+有备份了，开整。
+
+发现手边没有U盘，但是有个root的手机。于是就用DriveDroid+一个Arch的LiveISO让它发挥余热了。
+
+启动挺顺利，记得把ArchISO挂载为只读USB存储设备。进去之后**确保确实备份了之后格式化设备**（一定要多确认几遍，）：
+
+```bash
+mkfs.btrfs -L arch-driver /dev/nvme0n1p5    # 这里务必多确认几遍
+```
+
+然后创建子卷，布局我用的适合`timeshift`的默认方案：
+
+```bash
+mount -t btrfs -o compress=zstd /dev/nvme0n1p5 /mnt
+btrfs subvolume create /mnt/@ # 创建 / 目录子卷
+btrfs subvolume create /mnt/@home # 创建 /home 目录子卷
+umount /mnt
+
+mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p5 /mnt
+mkdir /mnt/home
+mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p5 /mnt/home
+mkdir -p /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot
+```
+
+创建完成之后，准备迁移数据：
+
+```bash
+mkdir ~/old-fs
+monut /path/to/your/backup/backup.img ~/old-fs
+rsync -av ~/old-fs/home/ /mnt/home/
+rsync -av --exclude={"/proc","/dev"} ~/old-fs/ /mnt/
+```
+
+等复制完成之后，就可以着手修复系统引导了。这里先用`iwctl`连上网。之后就该开始修复GRUB了：
+
+```bash
+genfstab -U /mnt > /mnt/etc/fstab
+# 此时手动检查下结果是否正确
+# 可以cat /mnt/etc/fstab看看
+arch-chroot /mnt
+pacman -S grub-btrfs    # 安装支持btrfs版本的GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH
+sed -i 's/loglevel=3 quiet/loglevel=5 nowatchdog/g' /etc/default/grub
+echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+```
+
+然后理论上就OK了。此时`ctrl+d`退出`chroot`然后`umount -R /mnt && reboot`，重启，进入新系统看看吧。
+
+反正解决完一堆问题，成功进系统之后，我惊悚地发现，磁盘可用空间从8G变成了30G~~而且`btrfs balance /`之后还又多出来1G~~。根据rx所说，btrfs对于文本的压缩效果特别好。那指不定是给我一堆`node_modules`压缩干净了？
+
+谁知道，大概是透明压缩确实顶吧。经过测试，timeshift和其他的btrfs特性都能正常使用。
+
