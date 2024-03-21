@@ -177,6 +177,21 @@ serviceAxios({
 
 这样就行了。里面的`download()`是随便封装的一个下载Blob文件的工具函数，参数分别是blob数据，MIME类型和文件名。
 
+关于这个`download`函数的实现：
+
+```javascript
+export default (data: any, contentType: string, fileName: string) => {
+  const downloadLink = window.document.createElement('a')
+  downloadLink.href = window.URL.createObjectURL(
+    new Blob([data], { type: contentType })
+  )
+  downloadLink.download = fileName
+  document.body.appendChild(downloadLink)
+  downloadLink.click()
+  document.body.removeChild(downloadLink)
+}
+```
+
 ## 反思
 
 这学期学计网的时候，重点学的部分是物理层，数据链路层，网络层以及传输层。唯一剩下的一层应用层则因为课时压缩直接压没了（但是期末大题还是考了SMTP协议）。但是恰恰是应用层这一部分在日常前端开发中使用最多。
