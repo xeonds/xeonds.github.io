@@ -809,7 +809,7 @@ Jan 16 20:52:26 ark-station kernel:  create_new_namespaces+0xa1/0x2e0
 >-转自archlinux-cn-依云
 
 ```bash
-TAR C -c ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
+tar C -c ~tmp/makepkg/wayfire-lily-git/src/build/src wayfire | ssh root@kvm-archkde tar xvU -C /usr/bin/
 ```
 
 ## 文件系统迁移
