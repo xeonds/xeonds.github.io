@@ -21,3 +21,8 @@ tags:
 ## 参数
 
 `-B, --always-make` Unconditionally make all targets.
+
+## MISC
+之前会遇到Make一个target时总是会提示已经最新了，但是这个target底下的文件并不是最新的。虽然用`.PHONY`可以解决，但是始终是个问题。
+
+今天偶然发现，这是因为target和文件夹重名，把target改成一个不存在的文件就好了。Makefile的target一般指向一个文件，指向文件夹的话或许会因为子文件的改动没有更新文件夹，这就导致文件夹看起来没有改动，导致Make提醒你文件没有改动，并不进行Make。
