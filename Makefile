@@ -3,7 +3,7 @@ template := $(shell find ./_scaffolds | grep .md)
 usage := "Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/lines"
 greeting := "Welcome back to blog, write something?"
 
-.PHONY: push pull stat add new open find lines words recent deploy image_url_proc new_post line_count knote open recent welcome
+.PHONY: push pull stat add new open find lines words recent deploy image_url_proc new line_count knote open recent welcome
 
 # Functions
 push:
@@ -18,12 +18,6 @@ stat:
 add:
 	git add . && git status
 
-new:
-	new_post "$(filter-out $@,$(MAKECMDGOALS))" && vim "_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"
-
-open:
-	open "$(filter-out $@,$(MAKECMDGOALS))"
-
 find:
 	find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
 
@@ -32,9 +26,6 @@ lines:
 
 words:
 	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
-
-recent:
-	recent
 
 deploy:
 	cd .. && \
@@ -46,14 +37,14 @@ deploy:
 image_url_proc:
 	find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
 
-new_post:
-	content=$$(cat $(template) | sed -e "s/{{title}}/$1/" -e "s/{{date}} {{time}}/$$(date '+%Y-%m-%d %H:%M:%S')/g"); \
-	fname="_inbox/$1.md"; \
+new:
+	content=$$(cat $(template) | sed -e "s/{{title}}/$(filter-out $@,$(MAKECMDGOALS))/" -e "s/{{date}} {{time}}/$$(date '+%Y-%m-%d %H:%M:%S')/g"); \
+	fname="_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"; \
 	if [ -e $$fname ]; then \
 		echo "File already exists"; \
 	else \
 		echo -e "$$content" > "$$fname"; \
-	fi
+	fi && vim "_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"
 
 line_count:
 	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
@@ -77,6 +68,11 @@ recent:
 
 welcome:
 	echo -e $(greeting)
-	recent 5
+	find . -type f -name "*.md" -print0 | \
+	xargs -0 stat -c "%w %n" | \
+	sort -n | \
+	cut -d' ' -f4 | \
+	head -n 5
 
-
+diff:
+	git diff HEAD
