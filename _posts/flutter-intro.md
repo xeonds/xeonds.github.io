@@ -128,3 +128,9 @@ lib/
 功能划分基本就这几块：UI，状态管理服务，数据实体，后台服务。代码嘛，能简洁点最好。
 
 另外就我的开发经验而言，最好不要过早规范化工程化。早期过于强调规范和过程的收益是负的。
+
+### MISC
+
+- Invalid kernel binary version
+
+解决方法：清理`flutter/bin/cache` 下缓存。在Arch Linux下，通过pacman安装的flutter的缓存目录位于`/usr/lib/flutter/bin/cache`，可以用`whereis`命令找到。

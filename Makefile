@@ -3,7 +3,7 @@ template := $(shell find ./_scaffolds | grep .md)
 usage := "Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/lines"
 greeting := "Welcome back to blog, write something?"
 
-.PHONY: push pull stat add new open find lines words recent deploy image_url_proc new line_count knote open recent welcome
+.PHONY: push pull stat add new open find lines words recent deploy image_url_proc knote welcome
 
 # Functions
 push:
@@ -22,7 +22,7 @@ find:
 	find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
 
 lines:
-	line_count
+	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
 
 words:
 	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
@@ -45,9 +45,6 @@ new:
 	else \
 		echo -e "$$content" > "$$fname"; \
 	fi && vim "_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"
-
-line_count:
-	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
 
 knote:
 	datetime=$$(date '+%Y-%m-%d-%H:%M:%S'); \
