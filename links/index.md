@@ -17,6 +17,7 @@ date: 2022-10-25 22:39:58
 [bszydxh](http://bszydxh.top)：b师傅怎么啥都会啊（膜
 [Reverier's Blog](https://blog.woooo.tech/)：rx师傅教我写ruast吧（做梦
 [Canxin Site](https://canxin121.github.io/)：怎么一个两个都写Ruast啊
+[小北的书夹](blog.xiaobeo.top)：`just so so`
 
 >想要交换友链的朋友们可以在下方留言
 >
