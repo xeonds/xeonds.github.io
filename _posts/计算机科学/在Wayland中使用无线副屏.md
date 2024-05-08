@@ -7,7 +7,7 @@ excerpt: (*/ω＼*)
 tags:
   - Linux
   - Wayland
-cover: /img/__frieren_fern_stark_himmel_eisen_and_1_more_sousou_no_frieren_drawn_by_gejiandenghuo__c621db12aa21b1d8723bd2938643025c.jpg
+cover: img/frieren.jpg
 ---
 
 ## 废话
