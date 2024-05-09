@@ -24,6 +24,7 @@ date: 2022-10-25 22:39:58
 [Aweip](https://aweip.com/)：且愿饮冰而热血不凉
 [康师傅](https://blog.ksfu.top/)：ksf什么时候V我BYD
 [ForestLee](https://forestlee.top/)：感谢学长送的极品圣遗物（
+[木生懒得写博客](https://blog.lsy223622.com/)：`立 flag 小能手`
 
 >想要交换友链的朋友们可以在下方留言
 >
