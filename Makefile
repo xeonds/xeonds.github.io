@@ -3,7 +3,7 @@ template := $(shell find ./_scaffolds | grep .md)
 usage := "Usage:\tctl\tpush/fetch/stat/add/new/open <fname_reg>/find <fname_reg>/lines"
 greeting := "Welcome back to blog, write something?"
 
-.PHONY: push pull stat add new open find lines words recent deploy image_url_proc knote welcome
+.PHONY: push pull stat add new open find lines words recent deploy image_url_proc knote welcome gen clean
 
 # Functions
 push:
@@ -33,6 +33,11 @@ deploy:
 	cd deploy && git checkout deploy && \
 	cp -r blog deploy/source && \
 	cd deploy && pnpm i && pnpm run server
+
+gen:
+	rm -rf dist && mkdir -p dist
+	find ./_{inbox,posts} -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
+	(cd ./dist && find . -type f -name '*.html' -printf '<li><a href="%p">%f</a></li>\n') > ./dist/index.html
 
 image_url_proc:
 	find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
