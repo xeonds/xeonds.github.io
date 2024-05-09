@@ -39,7 +39,11 @@ gen:
 	find ./_posts -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
 	pandoc -s -f markdown -t html --mathjax --metadata title="xero's blog" -o ./dist/index.html \
 		<(echo -e ">ENJ0Y CREATiNG\n\n") \
-		<(find ./_posts -type f -name '*.md' -printf '- [%f](%f.html)\n' | sed -e "s/\.md//g")
+		./links/index.md \
+		<(echo -e "## ToC\n") \
+		<(find ./_posts -type f -name '*.md' -printf '- [%f](%f.html)\n' | sed -e "s/\.md//g") \
+		./about/index.md \
+		<(echo -e "2024 | xero's blog | powered by pandoc")
 
 image_url_proc:
 	find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
