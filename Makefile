@@ -35,9 +35,11 @@ deploy:
 	cd deploy && pnpm i && pnpm run server
 
 gen:
-	rm -rf dist && mkdir -p dist
+	rm -rf dist && mkdir -p dist && cp -r img dist
 	find ./_{inbox,posts} -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
-	(cd ./dist && find . -type f -name '*.html' -printf '<li><a href="%p">%f</a></li>\n') > ./dist/index.html
+	pandoc -s -f markdown -t html --mathjax --metadata title="xero's blog" -o ./dist/index.html \
+		<(echo -e ">ENJ0Y CREATiNG\n\n") \
+		<(find ./_{inbox,posts} -type f -name '*.md' -printf '- [%f](%f.html)\n' | sed -e "s/\.md//g")
 
 image_url_proc:
 	find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
