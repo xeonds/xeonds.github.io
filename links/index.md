@@ -23,6 +23,7 @@ date: 2022-10-25 22:39:58
 [BLOG](https://hiangzahoong.github.io/)：sf什么时候换个标题
 [Aweip](https://aweip.com/)：且愿饮冰而热血不凉
 [康师傅](https://blog.ksfu.top/)：ksf什么时候V我BYD
+[ForestLee](https://forestlee.top/)：感谢学长送的极品圣遗物（
 
 >想要交换友链的朋友们可以在下方留言
 >
