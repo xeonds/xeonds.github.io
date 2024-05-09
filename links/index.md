@@ -17,7 +17,7 @@ date: 2022-10-25 22:39:58
 - [bszydxh](http://bszydxh.top)：b师傅怎么啥都会啊（膜
 - [Reverier's Blog](https://blog.woooo.tech/)：rx师傅教我开发吧（做梦
 - [Canxin Site](https://canxin121.github.io/)：哎你们Ruast批
-- [小北的书夹](blog.xiaobeo.top)：`just so so`
+- [小北的书夹](https://blog.xiaobeo.top)：`just so so`
 - [王兰花椒粉](https://wanglanhuajiaofen.fun/)：名字好怪.jpg
 - [闪电豹猫的自留地](https://hhzm.win/)：JK触发器：亻尔女子
 - [BLOG](https://hiangzahoong.github.io/)：sf什么时候换个标题
