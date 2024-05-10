@@ -11,7 +11,7 @@ date: 2022-10-12 00:58:46
 
 游戏玩的不多，一直断断续续在玩的只有mc。
 
-Homepage (zh) (in maintaince) | [Blog (mirror)](https://mxts.jiujiuer.xyz)
+Homepage (zh) (in maintaince) | [Blog](https://mxts.jiujiuer.xyz) | [Blog (Pure)](https://blog.iris.al/)
 
 ![xeonds's GitHub stats](https://github-readme-stats.vercel.app/api?username=xeonds)
 
@@ -36,4 +36,19 @@ Gin+Vue构建的RSS博客聚合站
 Flutter练手作，复刻AutoSync。另外还有个用Flutter填坑的MCSM Panel，但是这东西用的不多也就没咋积极更新了
 
 另外这个博客的发布也借助`GitHub Action`实现了自动化编译发布，详见[这里](https://xeonds.github.io/2022/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/)和[我的workflow配置文件](https://github.com/xeonds/xeonds.github.io/blob/master/.github/workflows/hexo-deploy.yml)。
+
+~~极速~~纯文字版的博客使用了如下的指令实现：
+
+```bash
+gen:
+	rm -rf dist && mkdir -p dist && cp -r img dist
+	find ./_posts -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
+	pandoc -s -f markdown -t html --mathjax --metadata title="xero's blog" -o ./dist/index.html \
+		<(echo -e ">enj0y creating\n\n") \
+		./links/index.md \
+		<(echo -e "## toc\n") \
+		<(find ./_posts -type f -name '*.md' -printf '- [%f](%f.html)\n' | sed -e "s/\.md//g") \
+		./about/index.md \
+		<(echo -e "2024 | xero's blog | powered by pandoc")
+```
 
