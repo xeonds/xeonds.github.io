@@ -78,6 +78,40 @@ Global search Regular Expression and Print out the lines。常用工具，虽然
 
 更多详细的用法可以参考`man`。
 
+### wget
+
+参数众多的下载工具，从建立镜像站到带cookie下载都能完成。
+
+- **Non-interactive**: Wget can operate in the background, allowing you to initiate a download and disconnect from the system while it completes the task.
+- **Recursive downloading**: Wget can create local copies of entire websites, preserving the original directory structure.
+- **Link conversion**: It can convert links in downloaded files to point at local files for offline viewing.
+- **Time-stamping**: Wget checks if remote files have changed since the last retrieval and automatically fetches updated versions.
+- **Respects Robot Exclusion Standard**: Wget adheres to `/robots.txt` rules.
+
+| Parameter | Function |
+| --- | --- |
+| `-r` | Recursive download (download entire directories) |
+| `-O <filename>` | Save downloaded file with a specific name |
+| `-nc` | Skip download if file already exists |
+| `-np` | Don't ascend to parent directories |
+| `-P <directory>` | Save files to a specific directory |
+| `-q` | Quiet mode (suppress output) |
+| **`-c` (or `--continue`)** | Resume a partially downloaded file. |
+| **`-i <file>`** | Read URLs from a file and download them. |
+| **`-k` (or `--convert-links`)** | Convert links in downloaded files to point at local files. |
+| **`-t <number>`** | Set the number of retries for failed downloads. |
+| **`-U <agent-string>`** | Set the User-Agent header for HTTP requests. |
+| **`-e <command>`** | Execute a command after downloading. |
+| **`-x`** | Force directories to be created even if they don't exist. |
+| **`-l <depth>`** | Specify the maximum recursion depth. |
+| **`-A <accept-list>`** | Accept only files with specific extensions. |
+| **`-R <reject-list>`** | Reject files with specific extensions. |
+| **`--limit-rate=<rate>`** | Limit download speed (e.g., `--limit-rate=1M`). |
+
+- [GNU Wget Manual](https://www.gnu.org/software/wget/manual/wget.html)
+- [Linux man page for wget](https://www.man7.org/linux/man-pages/man1/wget.1.html)
+- [Stack Overflow: wget with GET parameters](https://stackoverflow.com/questions/17671098/wget-with-get-parameters)
+
 ## 一些用法
 
 黑魔法开始了（不是
