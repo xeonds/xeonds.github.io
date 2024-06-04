@@ -28,11 +28,7 @@ words:
 	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
 
 deploy:
-	cd .. && \
-	rm -rf deploy && cp -r blog deploy && \
-	cd deploy && git checkout deploy && \
-	cp -r blog deploy/source && \
-	cd deploy && pnpm i && pnpm run server
+	docker compose up -d
 
 gen:
 	rm -rf dist && mkdir -p dist && cp -r img dist
