@@ -35,6 +35,10 @@ Gin+Vue构建的RSS博客聚合站
 
 Flutter练手作，复刻AutoSync。另外还有个用Flutter填坑的MCSM Panel，但是这东西用的不多也就没咋积极更新了
 
+[![sqlc](https://github-readme-stats.vercel.app/api/pin/?username=xeonds&repo=sqlc&show_owner=true)](https://github.com/xeonds/xync-backup)
+
+借助`OCaml`编写的简单的SQL解释器，以及一个简单的数据库后端实现。非常喜欢这个语言的类型系统，`Type Deduction`+纯纯函数式爽飞了好吧
+
 另外这个博客的发布也借助`GitHub Action`实现了自动化编译发布，详见[这里](https://xeonds.github.io/2022/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/)和[我的workflow配置文件](https://github.com/xeonds/xeonds.github.io/blob/master/.github/workflows/hexo-deploy.yml)。
 
 ~~极速~~纯文字版的博客使用了如下的指令实现：
