@@ -21,6 +21,20 @@ cover: /img/89596288_p0_master1200.jpg
 
 这点上因人而异。我装了layan主题之后，再换个壁纸，装个latte就差不多了。我的原则是，美化差不多就行，但是前提是别影响到系统性能。
 
+### 稍微详细点
+
+首先是图标主题，这两个我是Tela+Layan；其次是上下两个任务栏，都设置了：
+- Alignment-Center
+- Width-Fill width/Center
+- Opacity-Translucent
+- Style-Floating
+
+上面的任务栏用spacer分为了三段，左边单独一个Global Menu，中间一堆仪表盘，右边System Tray；下面的部分，用Latte Seperator分割三段，左边Application Dashbaord，中间Icons-only Task Manager，右边PlasMusic Toolbar。
+
+壁纸可以用静态壁纸，也可以用视频当视频壁纸。
+
+完成之后效果应该不错。
+
 ## 显示适配
 
 单显示器的配置很简单，改下dpi缩放就基本ok。如果是多显示器的话，就会复杂一些。参考下面的公式：
@@ -35,7 +49,7 @@ xrandr --output eDP-1 --auto --output HDMI-1 --auto --panning [C*E]x[D*F]+[A]+0 
 
 ## 参考链接
 
-- [1] [Barry的笔记](https://nmgit.net/2020/139/)
+- [x] [Barry的笔记](https://nmgit.net/2020/139/)
 - [2] [X11 多显示器配置：玩转 XRandR](https://harttle.land/2019/12/24/auto-xrandr.html)
 
 ## pacman入门
@@ -205,6 +219,69 @@ systemctl enable --now clash.service
 白围着大大转，大大通过小白的夸奖获得自我满足，然后小白的吃喝拉撒都包给大大解决的模式。通过这个项目我感觉我已经彻底认识到这个民族的前面为什么会有一堵墙了。没有墙哪来的大大。所以到处都是什么附件回帖可见，等级多少用户组可见，一个论坛一个大大供小白跪舔，不需要政府造墙，网民也会自发造墙。这尼玛连做个翻墙软件都要造墙，真是令人叹为观止。这是一个造了几干年墙的保守的农耕民族，缺乏对别人的基本尊重，不愿意分享，喜欢遮遮掩掩，喜欢小圈子抱团，大概这些传统是改不掉了吧。
 
 另外还有一个，就是切换节点必须得使用clash的控制端口（在`config.yaml`中给出，一般是`9090`），所以还必须得有个控制面板。一般Windows平台都是用~~已经似了的~~Clash For Windows作为控制面板的，而Linux这边使用<https://clash.razord.top/>也就是~~也已经似了的~~[Clash的官方控制面板](https://github.com/Dreamacro/clash-dashboard/)作为控制面板的。实在不行了可以用命令行下的TUI工具`clashctl`来手动切换节点，应该也能用。
+
+### eXtended：通过RESTfulAPI操作clash-core
+
+研究一下`clash-dashboard`和`clash`的源代码就能看得出来了。其他的我就不说了，这里只说最常用的几个操作：
+
+- 节点列表 `GET http://localhost:9097/providers/proxies`
+- 切换节点 `PUT http://localhost:9097/proxies/组名 name=节点名`
+- 测速 `GET http://localhost:9097/proxies/节点名/delay`
+- Clash版本 `GET http://localhost:9097/version`
+
+一个简单的cli实现：
+
+```bash
+#!/bin/bash
+
+BASE_URL="http://localhost:9097"
+
+get_proxies() {
+    curl -s "${BASE_URL}/providers/proxies" | jq .
+}
+
+switch_proxy() {
+    local group_name=$1
+    local node_name=$2
+    curl -s -X PUT -d "name=${node_name}" "${BASE_URL}/proxies/${group_name}" | jq .
+}
+
+get_delay() {
+    local node_name=$1
+    curl -s "${BASE_URL}/proxies/${node_name}/delay" | jq .
+}
+
+get_clash_version() {
+    curl -s "${BASE_URL}/version"
+}
+
+case "$1" in
+    list)
+        get_proxies
+        ;;
+    switch)
+        if [[ -z "$2" || -z "$3" ]]; then
+            echo "Usage: $0 switch <group_name> <node_name>"
+            exit 1
+        fi
+        switch_proxy "$2" "$3"
+        ;;
+    delay)
+        if [[ -z "$2" ]]; then
+            echo "Usage: $0 delay <node_name>"
+            exit 1
+        fi
+        get_delay "$2"
+        ;;
+    version)
+        get_clash_version
+        ;;
+    *)
+        echo "Usage: $0 {list|switch|delay|version}"
+        exit 1
+        ;;
+esac
+```
 
 ## RDP连接Windows
 
