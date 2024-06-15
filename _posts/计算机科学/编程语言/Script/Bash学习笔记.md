@@ -112,6 +112,44 @@ Global search Regular Expression and Print out the lines。常用工具，虽然
 - [Linux man page for wget](https://www.man7.org/linux/man-pages/man1/wget.1.html)
 - [Stack Overflow: wget with GET parameters](https://stackoverflow.com/questions/17671098/wget-with-get-parameters)
 
+### pdftk
+
+一个用来处理pdf的工具箱。目前我的用法主要是连接多个pdf：
+
+```bash
+pdftk 1.pdf 2.pdf cat output sum.pdf
+```
+
+下面是pdftk的帮助手册，可以参照：
+
+```bash
+SYNOPSIS
+       pdftk <input PDF files | - | PROMPT>
+            [ input_pw <input PDF owner passwords | PROMPT> ]
+            [ <operation> <operation arguments> ]
+            [ output <output filename | - | PROMPT> ]
+            [ encrypt_40bit | encrypt_128bit | encrypt_aes128 ]
+            [ allow <permissions> ]
+            [ owner_pw <owner password | PROMPT> ]
+            [ user_pw <user password | PROMPT> ]
+            [ flatten ] [ need_appearances ]
+            [ compress | uncompress ]
+            [ keep_first_id | keep_final_id ] [ drop_xfa ] [ drop_xmp ]
+            [ replacement_font <font name> ]
+            [ verbose ] [ dont_ask | do_ask ]
+       Where:
+            <operation> may be empty, or:
+            [ cat | shuffle | burst | rotate |
+              generate_fdf | fill_form |
+              background | multibackground |
+              stamp | multistamp |
+              dump_data | dump_data_utf8 |
+              dump_data_fields | dump_data_fields_utf8 |
+              dump_data_annots |
+              update_info | update_info_utf8 |
+              attach_files | unpack_files ]
+```
+
 ## 一些用法
 
 黑魔法开始了（不是

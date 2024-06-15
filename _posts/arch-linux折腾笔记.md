@@ -965,3 +965,60 @@ echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 
 谁知道，大概是透明压缩确实顶吧。经过测试，timeshift和其他的btrfs特性都能正常使用。
 
+## 在Btrfs上开启swap
+
+>Ref: [Btrfs文件系统启用交换文件(swap) - Pipci](https://www.cnblogs.com/pipci/p/14856606.html)
+最近主力机寄了，无奈让另一台i5-7300U的本子当主力。开swap主要是因为8+256的配置实在有点吃不消,平时开几个VSCode跟浏览器标签页就差不多满内存了。
+
+问题是之前用一般方法开启swap的时候总会在swapon这一步遇到问题，后来查了下才发现是btrfs上的交换文件有几个限制：
+
+- **不支持在快照卷上配置交换文件，建议单独创建子卷**
+- **不支持在跨越多个物理设备的卷上创建交换文件**
+
+>是的，我才知道btrfs是能跨硬盘组阵列的QAQ
+
+所以流程是创建一个新的subvolume，然后设置上一些标记之后再创建swap文件，最后开启swap。
+
+下面是来自我找到的博客的操作记录，在我的6.9.3的内核上验证基本没有问题：
+
+>注意，下面的操作在`/`下进行
+
+```bash
+# 创建swap子卷
+te@EY-B:/$ sudo btrfs subvolume create swap
+Create subvolume './swap'
+
+# 在swap子卷下创建一个0 byte大小的交换文件
+te@EY-B:/swap$ sudo truncate -s 0 /swap/swapfile
+
+# 配置交换文件权限
+te@EY-B:/swap$ sudo chmod 600 /swap/swapfile 
+
+# 配置交换文件属性，具有'C'属性集的文件将不受 copy-on-write 的约束。
+# 注意:对于btrfs，“C”标志应该是设置新的或空文件。
+te@EY-B:/swap$ sudo chattr +C /swap/swapfile 
+
+# 配置btrfs禁止压缩交换文件
+te@EY-B:/swap$ sudo btrfs property set /swap compression none
+
+# 将交换文件填充至需要的大小
+te@EY-B:/swap$ sudo dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
+
+# 格式化交换文件
+te@EY-B:/swap$ sudo mkswap /swap/swapfile 
+
+# 启用交换文件
+te@EY-B:/swap$ sudo swapon /swap/swapfile
+
+# 编辑 /etc/fstab 自动挂载，添加或编辑以下行：
+sudo echo "/swap/swapfile    none    swap    sw    0    0" >> /etc/fstab
+```
+
+完成之后重启，用`free -h`看看挂载结果：
+
+![](img/Pasted%20image%2020240615145856.png)
+
+>继续苟一阵子吧...等考试周结束之后再想想怎么处理这个机革的本子
+>毕竟是用40G内存+12700H带我用Arch爽了快一年的本子，还是挺有感情的
+>就是这玩意刚过保4个月就寄实在是有点绷不住
+
