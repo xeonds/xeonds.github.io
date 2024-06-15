@@ -7,33 +7,33 @@ greeting := "Welcome back to blog, write something?"
 
 # Functions
 push:
-	git add . && git commit -m "Vault backup $$(date)" && git push
+	@git add . && git commit -m "Vault backup $$(date)" && git push
 
 pull:
-	git pull --rebase && echo "pull completed"
+	@git pull --rebase && echo "pull completed"
 
 stat:
-	git status
+	@git status
 
 add:
-	git add . && git status
+	@git add . && git status
 
 find:
-	find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
+	@find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
 
 lines:
-	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
+	@echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
 
 words:
-	echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
+	@echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -m) words"
 
 deploy:
-	docker compose up -d
+	@docker compose up -d
 
 gen:
-	rm -rf dist && mkdir -p dist && cp -r img dist
-	find ./_posts -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
-	pandoc -s -f markdown -t html --mathjax --metadata title="xero's blog" -o ./dist/index.html \
+	@rm -rf dist && mkdir -p dist && cp -r img dist
+	@find ./_posts -type f -name "*.md" -exec sh -c 'pandoc "$$1" -s -o "./dist/$$(basename "$$1" .md).html" --mathjax' _ {} \;
+	@pandoc -s -f markdown -t html --mathjax --metadata title="xero's blog" -o ./dist/index.html \
 		<(echo -e ">ENJ0Y CREATiNG\n\n") \
 		./links/index.md \
 		<(echo -e "## ToC\n") \
@@ -42,10 +42,10 @@ gen:
 		<(echo -e "2024 | xero's blog | powered by pandoc")
 
 image_url_proc:
-	find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
+	@find . -type f -name "*.md" -exec sed -i 's/\!\[\[\(.*\)\/\(.*\)\]\]/\!\[\2\]\(\/img\/\2\)/gi' {} \;
 
 new:
-	content=$$(cat $(template) | sed -e "s/{{title}}/$(filter-out $@,$(MAKECMDGOALS))/" -e "s/{{date}} {{time}}/$$(date '+%Y-%m-%d %H:%M:%S')/g"); \
+	@content=$$(cat $(template) | sed -e "s/{{title}}/$(filter-out $@,$(MAKECMDGOALS))/" -e "s/{{date}} {{time}}/$$(date '+%Y-%m-%d %H:%M:%S')/g"); \
 	fname="_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"; \
 	if [ -e $$fname ]; then \
 		echo "File already exists"; \
@@ -54,15 +54,15 @@ new:
 	fi && vim "_inbox/$(filter-out $@,$(MAKECMDGOALS)).md"
 
 knote:
-	datetime=$$(date '+%Y-%m-%d-%H:%M:%S'); \
+	@datetime=$$(date '+%Y-%m-%d-%H:%M:%S'); \
 	echo -e $$(sed -e "s/{{title}}/$$datetime/" -e "s/{{date}} {{time}}/$$(date '+%Y-%m-%d %H:%M:%S')/" $(template)) > "_inbox/$$datetime.md"; \
 	vim "_inbox/$$datetime.md"
 
 open:
-	vim $$(find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS)))
+	@vim $$(find . -type f -not -path './git/*' -name "$(filter-out $@,$(MAKECMDGOALS))")
 
 recent:
-	count=$(word 1,$(MAKECMDGOALS)); \
+	@count=$(word 1,$(MAKECMDGOALS)); \
 	order=$(word 2,$(MAKECMDGOALS)); \
 	find . -type f -name "*.md" -print0 | \
 	xargs -0 stat -c "%w %n" | \
@@ -71,12 +71,15 @@ recent:
 	head -n "$$count"
 
 welcome:
-	echo -e $(greeting)
-	find . -type f -name "*.md" -print0 | \
+	@echo -e $(greeting)
+	@find . -type f -name "*.md" -print0 | \
 	xargs -0 stat -c "%w %n" | \
 	sort -n | \
 	cut -d' ' -f4 | \
 	head -n 5
 
 diff:
-	git diff HEAD
+	@git diff HEAD
+
+clean:
+	@rm -rf ./dist
