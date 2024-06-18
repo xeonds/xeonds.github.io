@@ -150,6 +150,14 @@ SYNOPSIS
               attach_files | unpack_files ]
 ```
 
+### libreoffice
+
+最近用这东西在命令行里做ppt转pdf，特别方便：
+
+```bash
+libreoffice --headless --invisible --convert-to pdf *.ppt
+```
+
 ## 一些用法
 
 黑魔法开始了（不是
