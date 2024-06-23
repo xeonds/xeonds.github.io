@@ -19,7 +19,7 @@ add:
 	@git add . && git status
 
 find:
-	@find . -type f -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
+	@find . -type f -not -path './dist/*' -not -path './git/*' -name $(filter-out $@,$(MAKECMDGOALS))
 
 lines:
 	@echo "You have wrote $$(find _* -type f -name *.md | xargs cat 2>/dev/null | wc -l) lines in total!"
