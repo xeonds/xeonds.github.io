@@ -1022,3 +1022,45 @@ sudo echo "/swap/swapfile    none    swap    sw    0    0" >> /etc/fstab
 >毕竟是用40G内存+12700H带我用Arch爽了快一年的本子，还是挺有感情的
 >就是这玩意刚过保4个月就寄实在是有点绷不住
 
+## aur的制作和发布
+
+aur就是archlinux user repo，借助PKGBUILD可以快速简单地编排应用的编译构建流程。如果遇到一个GitHub的项目，你就可以编写一个PKGBUILD来编排一个从源码编译出应用包的构建脚本。
+
+这次我用`python-etcpak-git`作为例子来记录aur的制作和提交。
+
+### 编写PKGBUILD
+
+### 注册AUR
+
+首先生成密钥，打开终端，输入`ssh-keygen`然后回车，按照提示生成公私钥。假设密钥名称保存为`aur-key`。
+
+然后编辑`~/.ssh/config`，在末尾追加：
+
+```ssh
+Host aur.archlinux.org
+  IdentityFile ~/.ssh/aur-key
+  User aur
+```
+
+完成后，复制`aur-key.pub`的内容，开始注册账号。
+
+在<https://aur.archlinux.org>注册登陆，正确填写邮，用户名和`aur-key.pub`的内容。完成后打开邮箱的密码重设链接设置密码，完成后即可发布自己的PKGBUILD到aur。
+
+### 发布PKGBUILD
+
+>要是不确定可以参考arckwiki中的介绍，将自己的PKGBUILD挂到邮件列表/论坛内，让大火帮你检查。
+
+我要发布的软件包叫`python-etcpak-git`，那么就是使用下面的指令初始化仓库：
+
+```bash
+git clone ssh://aur@aur.archlinux.org/python-etcpak-git.git
+```
+
+完成后，进入该目录并放置自己的PKGBUILD文件，按照要求填写后，生成信息：
+
+```bash
+makepkg --printsrcinfo > .SRCINFO
+```
+
+最后将PKGBUILD和.SRCINFO添加到git中，提交。**不过记得先更改本地分支名为`master`**，因为aur只允许推送到master分支。完成后推送，~~请坐和放宽~~，过阵子应该就能用yay安装你的包了。
+
