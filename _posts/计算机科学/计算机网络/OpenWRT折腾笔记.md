@@ -11,7 +11,7 @@ tags:
 
 ### OpenWRT拨号失败
 
-今天换了OpenWRT，在WAN端口设置拨号后发现拨号失败，报错为`USER_REQUEST`。试了下[这个]()解决方案：强制给端口指定MAC地址之后，发现拨号成功了。。
+今天换了OpenWRT，在WAN端口设置拨号后发现拨号失败，报错为`USER_REQUEST`。试了下[这个](https://jkboy.com/archives/44971.html)解决方案：强制给端口指定MAC地址之后，发现拨号成功了。。
 
 具体操作：网络管理端启用ssh，通过ssh连接路由器后，执行下面的指令：
 
