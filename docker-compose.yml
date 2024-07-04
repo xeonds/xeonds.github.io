@@ -7,5 +7,5 @@ services:
     volumes:
       - ./dist:/usr/share/nginx/html:ro
     ports:
-      - "8080:80"
+      - "2021:80"
 
