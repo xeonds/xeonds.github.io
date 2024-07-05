@@ -158,6 +158,14 @@ SYNOPSIS
 libreoffice --headless --invisible --convert-to pdf *.ppt
 ```
 
+### tmux
+
+强大够用的终端复用工具，或者说是tui多窗口管理工具~~twm（不是~~
+
+#### 快捷键
+
+- `<c-b> <c-c>`：在tmux中创建新的session
+
 ## 一些用法
 
 黑魔法开始了（不是
