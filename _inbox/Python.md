@@ -88,6 +88,10 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 包名
 ```
 
+## 疑难杂症
+
+- [python - conda when running give RuntimeError: OpenSSL 3.0's legacy provider failed to load - Stack Overflow](https://stackoverflow.com/questions/76949979/conda-when-running-give-runtimeerror-openssl-3-0s-legacy-provider-failed-to-lo)
+
 ## 其他资料
 
 - [[Crypto入门指北]]：在这个方面，Python也是很实用的工具
