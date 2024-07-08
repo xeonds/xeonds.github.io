@@ -165,6 +165,13 @@ libreoffice --headless --invisible --convert-to pdf *.ppt
 #### 快捷键
 
 - `<c-b> <c-c>`：在tmux中创建新的session
+- `<c-b> c`：在tmux中创建新的window
+
+### ranger
+
+今天用的时候忘名字了）记录一下
+
+一个终端下的tui文件管理器，部分支持Vim键位。
 
 ## 一些用法
 
