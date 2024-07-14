@@ -44,6 +44,24 @@ root@Ubuntu:~# cat /etc/docker/daemon.json
 
 最后使用`docker info` 就可以查看是否更换镜像成功。
 
+## 使用指南
+
+### 离线使用
+
+>最近国内docker镜像都歇菜之后，倒也该了解下这方面的知识了
+
+假设目标设备已经安装docker，但是无法正常使用docker pull。那么找到一个有网络条件的设备，使用`docker pull`命令从Docker Hub或其他仓库拉取所需的镜像。完成后，使用`docker save`命令将镜像保存到文件中：
+```bash
+docker save -o /path/to/image.tar imageName:tag
+```
+完成后，将生成的`.tar`文件复制到存储介质中。
+
+在无网络设备上插上你的存储设备，使用`docker load`命令从`.tar`文件中加载镜像：
+```bash
+docker load -i /path/to/image.tar
+```
+后续用法就没啥区别了。
+
 ## 疑难杂症
 
 ### `tls: failed to verify certificate: x509: certificate signed by unknown authority`
@@ -66,3 +84,5 @@ root@Ubuntu:~# cat /etc/docker/daemon.json
 
 如果是`ubuntu:latest`的话，那大概率已经安装`ca-certificates`，执行2，3尝试即可。
 
+## 参考文献
+- Docker官方文档：<https://docs.docker.com/>
