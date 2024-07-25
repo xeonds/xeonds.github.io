@@ -173,6 +173,10 @@ libreoffice --headless --invisible --convert-to pdf *.ppt
 
 一个终端下的tui文件管理器，部分支持Vim键位。
 
+### tokei
+
+也是忘了名字了，一个代码行数统计工具。
+
 ## 一些用法
 
 黑魔法开始了（不是
