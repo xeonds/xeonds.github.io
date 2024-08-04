@@ -150,3 +150,11 @@ ssh -D localhost:1080 远端主机
 
 连接命令加上`-X`参数，然后主机就会开启X转发。用`-x`则是关闭X转发。没用过，不过看起来像是服务器上跑进程，本地跑GUI的做法？
 
+### 2. SSHFS
+安装`sshfs`之后，就可以用ssh的方式将远程的文件系统挂载到本地了。
+
+```bash
+sudo sshfs -o allow_other,default_permissions xeonds@10.0.0.154:/home/xeonds /mnt/ark-station-breeze/
+```
+
+例如上面的指令，我将局域网中一个机器的用户目录挂载到了当前目录下。
