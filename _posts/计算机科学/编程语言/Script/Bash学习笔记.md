@@ -179,7 +179,18 @@ libreoffice --headless --invisible --convert-to pdf *.ppt
 
 ### httpie
 
-能替代curl的，用来发送http请求的一个小工具。
+能替代curl的，用来发送http请求的一个小工具。比如可以这么用：
+
+```bash
+http --json POST http://example.com/api/resource <<EOF
+{
+  "name": "John Doe",
+  "age": 30
+}
+EOF
+```
+
+来向后端发送一个请求。
 
 ## 一些用法
 
