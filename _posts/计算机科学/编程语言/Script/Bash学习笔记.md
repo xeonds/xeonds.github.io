@@ -177,6 +177,10 @@ libreoffice --headless --invisible --convert-to pdf *.ppt
 
 也是忘了名字了，一个代码行数统计工具。
 
+### httpie
+
+能替代curl的，用来发送http请求的一个小工具。
+
 ## 一些用法
 
 黑魔法开始了（不是
