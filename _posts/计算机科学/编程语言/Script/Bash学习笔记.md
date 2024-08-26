@@ -192,6 +192,25 @@ EOF
 
 来向后端发送一个请求。
 
+### curl
+
+或者用`curl`也挺好的：
+
+```bash
+curl -X POST                // 指定请求方法
+     -H "application/json"  // 指定请求头
+     -H "Authorization: xxxxxx"
+     -d '{"key": "value"}'  // 请求体数据
+```
+
+### github-cli
+
+二进制文件名称是`gh`，是github官方推出的命令行版github客户端。
+
+```bash
+sudo pacman -S github-cli
+```
+
 ## 一些用法
 
 黑魔法开始了（不是
