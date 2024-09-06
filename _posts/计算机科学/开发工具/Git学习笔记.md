@@ -221,6 +221,14 @@ git clone --depth=1 <repo_url>
 
 在clone一些大型仓库时，可以指定`depth`参数来控制`clone`的提交记录深度。像上面指定depth为1表示clone下来的仓库只包含最新一次的提交记录。
 
+### 仓库信息
+
+Git中有一些工具，能够便利地查看仓库的信息，比如下面的Bash指令能够以`r114.514`的格式输出仓库的**提交数.Hash值**格式的版本号。
+
+```bash
+printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+```
+
 ## 规范
 
 ### commit message
