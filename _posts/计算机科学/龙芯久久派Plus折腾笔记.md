@@ -123,8 +123,33 @@ make install
 
 ```bash
 ./configure --host=loongarch64-unknown-linux-gnu --prefix=$HOME/2k300/openssh/install/openssh --with-ssl-dir=$HOME/2k300/openssh/install/openssl --with-zlib=$HOME  
-/2k300/openssh/install/zlib LDFLAGS="-static -pthread" --sysconfdir=/etc/ssh
+/2k300/openssh/install/zlib LDFLAGS="-static -pthread" --sysconfdir=/etc/ssh --disable-strip
 make
+make install-files
 ```
 
 > 注意 此处使用`~`概率会导致编译异常，使用`$HOME`代替
+
+这里因为没找到在哪指定strip工具的位置而禁用了strip，所以产物会稍微有丶大。
+
+编译结束之后，产物可以在`$HOME/2k300/openssh/install/openssh`中找到。直接把文件传输到99pi对应的目录里即可。
+
+传输方法可以使用tty串口传输，不过速度太慢：
+
+```bash
+# server-side
+uuencode [filename-in-99pi] < [file] > /dev/ttyUSB0
+# 99pi-side
+uudecode < /dev/ttyS0 
+```
+
+也可以使用tftp传输：
+
+```bash
+# server-side:
+sudo uftpd -n -o ftp=0,tftp=69 ./
+# 99pi-side
+tftp -g -l ssh-xxx -r openssh/bin/ssh-xxx [114.5.1.4]
+```
+
+剩下的后面说。
