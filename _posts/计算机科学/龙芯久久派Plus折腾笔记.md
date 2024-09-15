@@ -153,3 +153,69 @@ tftp -g -l ssh-xxx -r openssh/bin/ssh-xxx [114.5.1.4]
 ```
 
 剩下的后面说。
+
+## 交叉编译Vim
+
+- ncurses: <https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz>
+- vim: <https://github.com/vim/vim>
+
+```
+tar -zxvf ncurses-6.5.tar.gz && rm ncurses-6.5.tar.gz
+cd ncurses-6.5/
+./configure --prefix=$HOME/2k300/vim/nc_install --host=loongarch64-unknown-linux-gnu --without-cxx-binding --without-ada --without-progs --without-tests --with-shared
+make -j && make install
+```
+
+
+```bash
+export TARGET=loongarch64-unknown-linux-gnu
+
+```
+
+## 安装Arch Linux
+
+主要原因是aur比较香，而且软件分发也相对简单，反正pacman作为包管理够用。
+
+### 大概思路
+
+北大的LCPU整了个LA64的AUR镜像源：
+
+[Arch Linux for Loongarch64](https://loongarchlinux.lcpu.dev/)
+
+arch安装的核心就是准备一个能跑起来pacstrap的环境，然后就能用pacstrap去准备arch的rootfs了。
+
+## 刷uboot
+
+可以借助tftp刷入，也可以usb刷入。我用了后一种方法：
+
+```bash
+# 主系统
+mkfs.ext2 /dev/sdb    # 格式化U盘
+mount /dev/sdb ./tmp
+cp u-boot-spl-gz.bin ./tmp/
+umount ./tmp
+```
+
+```bash
+# 99pi
+# 插入U盘
+# 启动时多次按c进入PMON控制台
+fload /dev/fs/ext2@usb0/u-boot-spl-gz.bin
+```
+
+下面是输出：
+
+```bash
+PMON> fload /dev/fs/ext2@usb0/u-boot-spl-gz.bin                                                            /  
+Loading file: /dev/fs/ext2@usb0/u-boot-spl-gz.bin dl_offset 900000000f800000 addr 900000000f800000  
+(bin)                                                                                                      |  
+Loaded 580432 bytes  
+  
+Programming flash 900000000f800000:8db50 into 800000001c000000  
+Erase end!                                                                                                 /  
+Programming end!  
+Verifying FLASH. No Errors found.  
+PMON>
+```
+
+此时就完成了，可以重启了。

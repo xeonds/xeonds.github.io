@@ -215,6 +215,12 @@ sudo pacman -S github-cli
 
 黑魔法开始了（不是
 
+### Bash自身的快捷键
+
+#### 指令编辑
+
+对于长指令，可以在`export EDITOR=vim`的情况下，使用`<ctrl-x> <ctrl-e>`快捷键来在编辑器中完成指令，并在退出编辑器后执行。
+
 ### 统计输出情况
 
 ```bash
