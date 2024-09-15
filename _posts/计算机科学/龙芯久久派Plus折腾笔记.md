@@ -184,6 +184,22 @@ export TARGET=loongarch64-unknown-linux-gnu
 
 arch安装的核心就是准备一个能跑起来pacstrap的环境，然后就能用pacstrap去准备arch的rootfs了。
 
+> 意外发现原来有LA64的arch安装iso，这下不用自己准备rootfs了，好耶
+> 居然忘了3A6000已经能用Arch了
+
+解压发现其中的`airootfs.sfs`，arch下安装`squashfs-tools`后，使用`sudo unsquashfs airootfs.sfs`解压rootfs。完成后编译一个`uImage`，丢到rootfs的`/boot`下。
+
+准备一个ext4的U盘，将rootfs复制到其中。
+
+U盘插入99pi，启动并进入uboot cli，输入：
+
+```bash
+ext4load usb 0:1 ${loadaddr} boot/uImage
+bootm ${loadaddr}
+```
+
+手动启动系统。
+
 ## 刷uboot
 
 可以借助tftp刷入，也可以usb刷入。我用了后一种方法：
