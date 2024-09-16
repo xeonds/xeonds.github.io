@@ -76,7 +76,14 @@ rsn_pairwise=CCMP
 
 哦它没有openssh啊。
 
-## 交叉编译OpenSSH
+## 交叉编译
+
+>[在x86设备上跨架构构建龙芯的Arch Linux软件包 - 星外之神的博客 | wszqkzqk Blog](https://wszqkzqk.github.io/2024/08/08/devtools-loong64/)
+>[pacman/提示和技巧 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Pacman/%E6%8F%90%E7%A4%BA%E5%92%8C%E6%8A%80%E5%B7%A7#%E4%BB%8E_CD/DVD_%E6%88%96_U_%E7%9B%98%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85)
+>[离线安装 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85)
+>[从现有 Linux 发行版安装 Arch Linux - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E4%BB%8E%E7%8E%B0%E6%9C%89_Linux_%E5%8F%91%E8%A1%8C%E7%89%88%E5%AE%89%E8%A3%85_Arch_Linux#%E5%9C%A8%E5%AE%BF%E4%B8%BB%E7%B3%BB%E7%BB%9F%E4%B8%8A%E8%BF%90%E8%A1%8C_pacman)
+
+### OpenSSH
 
 准备目录./openssh并进入，下载源码：
 
@@ -154,7 +161,7 @@ tftp -g -l ssh-xxx -r openssh/bin/ssh-xxx [114.5.1.4]
 
 剩下的后面说。
 
-## 交叉编译Vim
+### Vim
 
 - ncurses: <https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz>
 - vim: <https://github.com/vim/vim>
