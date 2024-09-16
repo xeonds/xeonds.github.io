@@ -283,6 +283,12 @@ case "$1" in
 esac
 ```
 
+### FAQ:常见代理连接失败问题
+
+- 检查本机时间是否同步：`sudo timedatectl set-ntp true`
+- 检查ISP提供的配置文件是否失效
+- 检查本地互联网连接
+
 ## RDP连接Windows
 
 用Arch多了，有时候得偶尔远程一下Windows。配置了半天`Remmina`+`freerdp`，可能这玩意和我风水不合吧，半天跑不起来。遂尝试了下`rdesktop`，秒连（也不知道为啥）：
@@ -293,6 +299,16 @@ rdesktop 114.5.1.4
 ```
 
 然后输账号密码登陆就行了。因为暂时这样就够用所以就没咋折腾。
+
+## scrcpy连接android
+
+```bash
+sudo pacman -S scrcpy
+adb connect 114.5.1.4:1919
+scrcpy
+```
+
+测试延迟相当低，比各家的流转效果都好。支持键盘和鼠标输入。
 
 ## X11迁移Wayland
 主要动机：支持一下双屏不同缩放的功能，不然一个高分屏+一个普通1080p的组合太痛苦了。

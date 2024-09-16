@@ -219,7 +219,9 @@ sudo pacman -S github-cli
 
 #### 指令编辑
 
-对于长指令，可以在`export EDITOR=vim`的情况下，使用`<ctrl-x> <ctrl-e>`快捷键来在编辑器中完成指令，并在退出编辑器后执行。
+- `c-x, c-e` 在编辑器中编辑命令并在编辑器退出后执行命令，配合`export EDITOR=vim`
+- `c-a/e` 行首/行尾
+- `c-w` 以空格为分隔删除单词
 
 ### 统计输出情况
 

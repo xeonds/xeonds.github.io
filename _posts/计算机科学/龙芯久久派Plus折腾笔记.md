@@ -159,7 +159,7 @@ tftp -g -l ssh-xxx -r openssh/bin/ssh-xxx [114.5.1.4]
 - ncurses: <https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz>
 - vim: <https://github.com/vim/vim>
 
-```
+```bash
 tar -zxvf ncurses-6.5.tar.gz && rm ncurses-6.5.tar.gz
 cd ncurses-6.5/
 ./configure --prefix=$HOME/2k300/vim/nc_install --host=loongarch64-unknown-linux-gnu --without-cxx-binding --without-ada --without-progs --without-tests --with-shared
@@ -194,11 +194,15 @@ arch安装的核心就是准备一个能跑起来pacstrap的环境，然后就�
 U盘插入99pi，启动并进入uboot cli，输入：
 
 ```bash
-ext4load usb 0:1 ${loadaddr} boot/uImage
+ext4load usb 0 ${loadaddr} boot/uImage
 bootm ${loadaddr}
 ```
 
 手动启动系统。
+
+不过启动失败了，查报错感觉问题可能出在指令集不兼容上了，似乎是LA64的SIMD指令在2k300上用不了。
+
+下一步应该就是手动编译一个arch rootfs再安装了。
 
 ## 刷uboot
 
