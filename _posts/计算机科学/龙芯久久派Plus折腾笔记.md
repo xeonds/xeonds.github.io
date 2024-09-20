@@ -179,9 +179,10 @@ export TARGET=loongarch64-unknown-linux-gnu
 
 ```
 
-### Linux
+### Linux Kernel
 
-#### 准备工作
+>参考文档：龙芯2K300.软件uboot用户手册0.2
+
 把linux6.9源码里的
 
 - `arch/loongarch/boot/dts`
@@ -194,11 +195,59 @@ make ARCH=loongarch CROSS_COMPILE=loongarch64-unknown-linux-gnu- ls2k0300_99_pai
 make ARCH=loongarch CROSS_COMPILE=loongarch64-unknown-linux-gnu- -j8
 ```
 
-## 安装Arch Linux
+产物：
+
+- `arch/loongarch/boot/vmlinux.bin`
+- `System.map`
+
+现在制作`vmlinux.bin.lzma`
+
+```bash
+lzma -k ./linux-6.11/arch/loongarch/boot/vmlinux.bin
+mv ./linux-6.11/arch/loongarch/boot/vmlinux.bin.lzma ./
+```
+
+创建文件：multi.its，并更新其中的
+
+- `images/kernel-1/entry`：为`./linux-6.11/System.map`中的`kernel_entry`的地址，格式参考下方
+- `images/kernel-1/data`：为lzma文件相对于当前文件的路径
+
+```bash
+/*
+* U-Boot uImage source file with multiple kernels and ramdisks blobs
+*/
+/dts-v1/;
+/{
+    description = "Various kernels and ramdisks blobs";
+    #address-cells = <2>;
+    images {
+        kernel-1 {
+            description = "vmlinux";
+            data = /incbin/("vmlinux.bin.lzma");
+            type = "kernel";
+            arch = "loongarch";
+            os = "linux";
+            compression = "lzma";
+            load = <0x90000000 0x00200000>;
+            entry = <0x90000000 0x01348000>;
+        };
+    };
+    configurations {
+        default = "config-1";
+        config-1 {
+            description = "vanilla-2.6.23 configuration";
+            kernel = "kernel-1";
+            loadables = "kernel-1";
+        };
+    };
+};
+```
+
+生成`uImage`镜像：`mkimage -f multi.its uImage`
+
+### Arch Linux
 
 主要原因是aur比较香，而且软件分发也相对简单，反正pacman作为包管理够用。
-
-### 大概思路
 
 北大的LCPU整了个LA64的AUR镜像源：
 
@@ -209,11 +258,11 @@ arch安装的核心就是准备一个能跑起来pacstrap的环境，然后就�
 > 意外发现原来有LA64的arch安装iso，这下不用自己准备rootfs了，好耶
 > 居然忘了3A6000已经能用Arch了
 
+>哦，忘了，3A6000的abi跟2K0300不太一样，果然最后还是翻车了
+
 解压发现其中的`airootfs.sfs`，arch下安装`squashfs-tools`后，使用`sudo unsquashfs airootfs.sfs`解压rootfs。完成后编译一个`uImage`，丢到rootfs的`/boot`下。
 
-准备一个ext4的U盘，将rootfs复制到其中。
-
-U盘插入99pi，启动并进入uboot cli，输入：
+准备一个ext4的U盘，将rootfs复制到其中。U盘插入99pi，启动并进入uboot cli，输入：
 
 ```bash
 ext4load usb 0 ${loadaddr} boot/uImage
