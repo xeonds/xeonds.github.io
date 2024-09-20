@@ -1080,3 +1080,13 @@ makepkg --printsrcinfo > .SRCINFO
 
 最后将PKGBUILD和.SRCINFO添加到git中，提交。**不过记得先更改本地分支名为`master`**，因为aur只允许推送到master分支。完成后推送，~~请坐和放宽~~，过阵子应该就能用yay安装你的包了。
 
+## PKGBUILD笔记
+
+[makepkg(8) — Arch manual pages](https://man.archlinux.org/man/makepkg.8)
+[makepkg.conf(5) — Arch manual pages](https://man.archlinux.org/man/makepkg.conf.5.en)
+[makepkg - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Makepkg)
+
+makepkg可以使用一些额外的环境变量参数和一些cli参数：
+
+- `MAKEFLAGS` 指定传递给make的参数
+- `CHOST` 指定交叉编译的--host参数

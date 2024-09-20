@@ -179,6 +179,21 @@ export TARGET=loongarch64-unknown-linux-gnu
 
 ```
 
+### Linux
+
+#### 准备工作
+把linux6.9源码里的
+
+- `arch/loongarch/boot/dts`
+- `include/dts-bindings`
+
+复制到新的内核源码的对应位置，然后
+
+```bash
+make ARCH=loongarch CROSS_COMPILE=loongarch64-unknown-linux-gnu- ls2k0300_99_pai_wifi_defconfig
+make ARCH=loongarch CROSS_COMPILE=loongarch64-unknown-linux-gnu- -j8
+```
+
 ## 安装Arch Linux
 
 主要原因是aur比较香，而且软件分发也相对简单，反正pacman作为包管理够用。
@@ -246,3 +261,32 @@ PMON>
 ```
 
 此时就完成了，可以重启了。
+
+## 编译busybox最小系统
+
+流程很简单：
+
+```bash
+	mkdir -p ./{src,}
+```
+
+### 问题
+
+- 编译失败
+
+不知道为啥，换`musl-gcc`就可以了。
+
+- `make menuconfig`总是会失败
+
+刚开始以为确实是依赖问题，把能想到的玩意都装了一圈之后觉得不对劲上Arch Wiki搜了一下：
+
+[[已解决] make menuconfig 和 ncurses 库的问题 / 新手 / Arch Linux 论坛](https://bbs.archlinux.org/viewtopic.php?id=295859)
+[esp8266-rtos-sdk-aur-ncurses-fix.patch - aur.git - AUR Package Repositories](https://aur.archlinux.org/cgit/aur.git/tree/esp8266-rtos-sdk-aur-ncurses-fix.patch?h=esp8266-rtos-sdk)
+
+最后发现是`./scripts/kconfig/lxdialog/check-lxdialog.sh`的锅。里边的`check()`函数对main的写法有问题：应该在下图的main()前面加上int才能正常check到是否安装了ncurses库。
+
+![](img/Pasted%20image%2020240920214920.png)
+
+- 启动失败
+
+我这里是因为menuconfig总是失败所以没法开**Build static binary**，开开就能跑了。
