@@ -83,6 +83,12 @@ rsn_pairwise=CCMP
 >[离线安装 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85)
 >[从现有 Linux 发行版安装 Arch Linux - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E4%BB%8E%E7%8E%B0%E6%9C%89_Linux_%E5%8F%91%E8%A1%8C%E7%89%88%E5%AE%89%E8%A3%85_Arch_Linux#%E5%9C%A8%E5%AE%BF%E4%B8%BB%E7%B3%BB%E7%BB%9F%E4%B8%8A%E8%BF%90%E8%A1%8C_pacman)
 
+参数，来自xdosc的佬@chi
+
+```bash
+CFLAGS='--with-arch=loongarch64 --with-tune=la464 --with-abi=lp64d --with-simd=none --disable-threads'
+```
+
 ### OpenSSH
 
 准备目录./openssh并进入，下载源码：
@@ -310,6 +316,13 @@ PMON>
 ```
 
 此时就完成了，可以重启了。
+
+### 配置uboot参数
+
+```bash
+setenv bootargs console=ttyS0,115200n8 root=/dev/sda1 rootdelay=3
+saveenv
+```
 
 ## 编译busybox最小系统
 
