@@ -17,6 +17,10 @@ cover: /img/89596288_p0_master1200.jpg
 
 桌面环境、cn源、透明代理之类的配置，也可以参考上面的教程。关于透明代理，也可以参考[这篇文章](https://blog.linioi.com/posts/clash-on-arch/)。
 
+### Tips
+
+- 为了使用timeshift恢复时正常启动，建议删除/etc/fstab里的subvolid部分：`sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab`
+
 ## 美化
 
 这点上因人而异。我装了layan主题之后，再换个壁纸，装个latte就差不多了。我的原则是，美化差不多就行，但是前提是别影响到系统性能。
@@ -1090,3 +1094,4 @@ makepkg可以使用一些额外的环境变量参数和一些cli参数：
 
 - `MAKEFLAGS` 指定传递给make的参数
 - `CHOST` 指定交叉编译的--host参数
+
