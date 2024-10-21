@@ -83,3 +83,6 @@ diff:
 
 clean:
 	@rm -rf ./dist
+
+archive:
+	@tar -jcvf ./blog-archive.tar.bz ./*
