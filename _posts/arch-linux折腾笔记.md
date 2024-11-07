@@ -1095,3 +1095,13 @@ makepkg可以使用一些额外的环境变量参数和一些cli参数：
 - `MAKEFLAGS` 指定传递给make的参数
 - `CHOST` 指定交叉编译的--host参数
 
+
+## wechat-uos分辨率问题
+
+>ref: [Arch 上使用微信原生版本](https://manateelazycat.github.io/2024/03/26/wechat-linux-version/)
+
+```bash
+sudo vim /usr/share/applications/wechat-universal.desktop
+# 修改Exec行为下列内容
+Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=2 wechat-universal %u
+```
