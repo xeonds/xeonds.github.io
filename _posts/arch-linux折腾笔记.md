@@ -1105,3 +1105,52 @@ sudo vim /usr/share/applications/wechat-universal.desktop
 # 修改Exec行为下列内容
 Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=2 wechat-universal %u
 ```
+
+## linux进程资源管理
+
+`util-linux`：一组实用工具
+
+![](img/Pasted%20image%2020241126000041.png)
+
+`systemd-run`：便捷地限制进程资源
+
+Here's how you can use `systemd-run` to limit CPU and memory usage:
+1. **Limit CPU usage**:
+   To limit CPU usage to 50% of one core, you can use the `CPUQuota` option:
+   ```bash
+   systemd-run --scope --cpu-quota=50000 my_process
+   ```
+   The `CPUQuota` value is in microseconds and is relative to the available CPU time (100% being equal to one CPU core).
+2. **Limit memory usage**:
+   To limit memory usage to 512MB, you can use the `MemoryMax` option:
+   ```bash
+   systemd-run --scope --memory-max=512M my_process
+   ```
+Here's an example combining both CPU and memory limits:
+```bash
+systemd-run --scope --cpu-quota=50000 --memory-max=512M my_process
+```
+Replace `my_process` with the actual command you want to run.
+Here's what each option does:
+- `--scope`: This creates a transient scope unit for the process. It's a good choice for short-lived processes.
+- `--cpu-quota`: Sets the CPU time limit for the process. The value is in microseconds and is relative to the available CPU time.
+- `--memory-max`: Sets the maximum amount of memory the process can use.
+After running the command, `systemd-run` will print the name of the created scope unit, which you can use to monitor the resource usage or to clean up the unit after the process has finished.
+To monitor the CPU and memory usage of the process, you can use:
+```bash
+systemctl status <scope-unit-name>
+```
+Replace `<scope-unit-name>` with the actual name of the scope unit that `systemd-run` printed out.
+To clean up the transient scope unit after the process has finished, you can use:
+```bash
+systemctl stop <scope-unit-name>
+```
+Remember that `systemd-run` is part of systemd, and it might not be available or might have different options on systems that do not use systemd.
+
+## sync
+
+Synchronize cached writes to persistent storage
+
+## obs-虚拟摄像头
+
+从26.1版开始，OBS 支持 Linux 虚拟摄像机输出。要使用它，[安装](file:///usr/share/doc/arch-wiki-zh-cn/html/zh-cn/Help:%E9%98%85%E8%AF%BB.html#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85 "安装") [v4l2loopback-dkms](https://archlinux.org/packages/?name=v4l2loopback-dkms)包，并将用户加入`video`组，还需要为已安装的内核安装适当的头文件包，如 [linux-headers](https://archlinux.org/packages/?name=linux-headers)包 或 [linux-lts-headers](https://archlinux.org/packages/?name=linux-lts-headers)包，然后 OBS 中会出现_启动虚拟摄像机_按钮。如果`v4l2loopback`包中的[内核模块](file:///usr/share/doc/arch-wiki-zh-cn/html/zh-cn/%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97.html "内核模块")尚未加载，OBS 会自动尝试加载它，并要求获得管理权限（使用 [pkexec(1)](https://man.archlinux.org/man/pkexec.1)）。
