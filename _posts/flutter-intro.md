@@ -134,3 +134,19 @@ lib/
 - Invalid kernel binary version
 
 解决方法：清理`flutter/bin/cache` 下缓存。在Arch Linux下，通过pacman安装的flutter的缓存目录位于`/usr/lib/flutter/bin/cache`，可以用`whereis`命令找到。
+
+- Error fetching devices: XMLHttpRequest error.
+
+在开发flutter web应用遇到的，项目使用了
+
+```dart
+import 'package:http/http.dart' as http;
+```
+
+作为网络请求库。
+
+我遇到的问题是因为跨域造成的，这个提示有很强的误导性：
+
+![](img/Pasted%20image%2020241226024120.png)
+
+后端设置一下跨域允许就好了。
