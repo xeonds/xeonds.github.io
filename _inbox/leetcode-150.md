@@ -31,3 +31,88 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 }
 ```
 
+## 27.移除元素
+
+>也就是将所有值等于k的元素上浮到数组末尾，并返回值非k的元素数量
+
+双指针，尾指针指向最末非val元素不断前移；首指针后移，并在值为val时和尾指针交换
+
+最后返回**尾指针+1**表示非val元素数量
+
+```go
+func removeElement(nums []int, val int) int {
+    i, j := 0, len(nums)-1
+    for j>=0 && nums[j] == val {
+        j--
+    }
+    if j < 0 {
+        return 0    // 没有非val的元素
+    }
+    // 此时的j一定不是val
+
+    for i < j {
+        if nums[i] == val {
+            nums[i]=nums[j]
+            nums[j]=val
+            for j>= i && nums[j] == val {
+                j--
+            }
+        }
+        i++
+    }
+    return j+1
+}
+```
+
+## 26.删除有序数组重复元素
+
+> 1 2 2 3 3 -> 1 2 3 _ _ ，同时返回len(123)
+
+双指针，一个指向排序后队列，一个正序遍历队列，当二者元素不同时排序后队列新增元素。
+
+```go
+func removeDuplicates(nums []int) int {
+    i, j, l:= 0, 0, len(nums)
+    for j<l {
+        if nums[i]!=nums[j]{
+            i++
+            nums[i]=nums[j]
+        }
+        j++
+    }
+    return i+1
+}
+```
+
+## 80.删除有序数组重复元素2
+
+> 1 2 2 2 3 3 -> 1 2 2 3 3, 并返回len(1 2 2 3 3)=5
+
+三指针法，i作为输出，j和k探测答案区间长度，进入新区间则按照长度输出答案到i处。最后循环外处理最后一个区间
+
+```go
+func removeDuplicates(nums []int) int {
+    i, j, k, l, m:= 0,0,0,len(nums), 2
+    for k<l{
+        if nums[j]!= nums[k]{
+            for range(min(k-j, m)){
+                nums[i]=nums[j]
+                i++
+            }
+            j=k
+        }
+        k++
+    }
+    for range(min(m,k-j)){
+        nums[i]=nums[j]
+        i++
+    }
+    return i
+}
+
+func min(a,b int)int{
+    if a<b{return a}
+    return b
+}
+```
+
