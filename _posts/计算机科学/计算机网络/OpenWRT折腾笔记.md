@@ -23,6 +23,7 @@ tags:
 - [多拨和负载均衡配置教程 | All about X-Wrt](https://blog.x-wrt.com/docs/xwan/)
 - [如何设置OpenWrt多拨的负载均衡策略-xiaowei-极全网](https://www.jiqw.com/gj/31897.jhtml)
 - [OpenWrt 路由器 MacVLAN+MWAN3 校园网多拨超详细指南](https://myth.cx/p/openwrt-macvlan-mwan3/)
+- [OpenWrt 多拨负载均衡不起作用_openwrt负载均衡-CSDN博客](https://blog.csdn.net/qq_29997037/article/details/137808291)
 
 ## 疑难杂症
 
